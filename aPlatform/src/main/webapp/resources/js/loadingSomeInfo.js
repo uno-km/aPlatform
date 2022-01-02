@@ -1,6 +1,5 @@
 
 window.onload = function(){
-	function onloadevent(){
-	document.getElementById("loading").style.visibility="hidden"
-	}
+	document.getElementById("loading").style.visibility="hidden";
+	document.getElementById("loading_window").style.visibility="hidden";
 }
