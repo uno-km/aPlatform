@@ -19,7 +19,7 @@
 				<div class="row">
 					<div class="col-xl-2"></div>
 					<div class="col-xl-8">
-						<a href="index"><img src="/resources/assets/useable/logo1.png"
+						<a href=""><img src="/resources/assets/useable/logo1.png"
 							style="max-width: 100%; height: auto;"></a>
 					</div>
 					<div class="col-xl-2"></div>
