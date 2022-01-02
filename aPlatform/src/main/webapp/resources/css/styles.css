@@ -81,7 +81,7 @@
 	}
 }
 
-loading {
+#loading {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -6508,9 +6508,13 @@ keyframes spinner-border {to { transform:rotate(360deg) /* rtl:ignore */;
 
 
 
+
+
 %
 {
 opacity
+
+
 
 
 
@@ -6520,7 +6524,11 @@ opacity
 
 
 
+
+
 1
+
+
 
 
 ;
@@ -6529,12 +6537,18 @@ transform
 
 
 
+
+
 :
 
 
 
 
+
+
 none
+
+
 
 
 ;
@@ -6550,9 +6564,13 @@ keyframes spinner-grow { 0% {
 
 
 
+
+
 %
 {
 opacity
+
+
 
 
 
@@ -6562,7 +6580,11 @@ opacity
 
 
 
+
+
 1
+
+
 
 
 ;
@@ -6571,12 +6593,18 @@ transform
 
 
 
+
+
 :
 
 
 
 
+
+
 none
+
+
 
 
 ;

@@ -1,8 +1,6 @@
-<!-- Core theme JS-->
-<script src="/resources/js/scripts.js"></script>
 <!-- Favicon-->
-<link rel="icon" type="image/x-icon"
-	href="/resources/assets/favicon.ico" />
+<!-- <link rel="icon" type="image/x-icon" -->
+<!-- 	href="/resources/assets/favicon.ico" /> -->
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/styles.css" rel="stylesheet" />
 <!-- Bootstrap icons-->

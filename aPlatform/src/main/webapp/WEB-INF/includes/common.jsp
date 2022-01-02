@@ -3,9 +3,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<div class="loading">
+<script type="text/javascript" src="/resources/js/scripts.js"></script>
+<script type="text/javascript" src="/resources/js/loadingSomeInfo.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+	integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<div id="loading">
 	<div class="spinner-border" role="status">
-		<span class="visually-hidden">Loading...</span>
+		<span class="visually-hidden"></span>
 	</div>
 </div>
 
