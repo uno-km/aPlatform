@@ -26,12 +26,12 @@
 				</div>
 			</div>
 			<div class="container" id="servicesNavbar">
-<!-- 				<ul class="nav justify-content-center"> -->
-<!-- 					<li class="nav-item"><a class="nav-link active" -->
-<!-- 						aria-current="page" href="#">Active</a></li> -->
-<!-- 					<li class="nav-item"><a class="nav-link" href="#">Link</a></li> -->
-<!-- 					<li class="nav-item"><a class="nav-link" href="#">Link</a></li> -->
-<!-- 				</ul> -->
+				<ul class="nav justify-content-center">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="#">Active</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+				</ul>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-xl-6">
@@ -93,8 +93,6 @@
 	<section class="showcase">
 		<div class="container-fluid p-0">
 			<div class="row g-0">
-				<!-- 				<div class="col-lg-6 order-lg-2 text-white showcase-img" -->
-				<!-- 					style="background-image: url('assets/img/bg-showcase-1.jpg')"></div> -->
 				<div class="col-lg-6 order-lg-1 my-auto showcase-text">
 					<h2>Fully Responsive Design</h2>
 					<p class="lead mb-0">When you use a theme created by Start
@@ -104,8 +102,6 @@
 				</div>
 			</div>
 			<div class="row g-0">
-				<!-- 				<div class="col-lg-6 text-white showcase-img" -->
-				<!-- 					style="background-image: url('assets/img/bg-showcase-2.jpg')"></div> -->
 				<div class="col-lg-6 my-auto showcase-text">
 					<h2>Updated For Bootstrap 5</h2>
 					<p class="lead mb-0">Newly improved, and full of great utility
@@ -115,8 +111,6 @@
 				</div>
 			</div>
 			<div class="row g-0">
-				<!-- 				<div class="col-lg-6 order-lg-2 text-white showcase-img" -->
-				<!-- 					style="background-image: url('assets/img/bg-showcase-3.jpg')"></div> -->
 				<div class="col-lg-6 order-lg-1 my-auto showcase-text">
 					<h2>Easy to Use & Customize</h2>
 					<p class="lead mb-0">Landing Page is just HTML and CSS with a
@@ -134,8 +128,6 @@
 			<div class="row">
 				<div class="col-lg-4">
 					<div class="testimonial-item mx-auto mb-5 mb-lg-0">
-						<!-- 						<img class="img-fluid rounded-circle mb-3" -->
-						<!-- 							src="assets/img/testimonials-1.jpg" alt="..." /> -->
 						<h5>Margaret E.</h5>
 						<p class="font-weight-light mb-0">"This is fantastic! Thanks
 							so much guys!"</p>
@@ -143,8 +135,6 @@
 				</div>
 				<div class="col-lg-4">
 					<div class="testimonial-item mx-auto mb-5 mb-lg-0">
-						<!-- 						<img class="img-fluid rounded-circle mb-3" -->
-						<!-- 							src="assets/img/testimonials-2.jpg" alt="..." /> -->
 						<h5>Fred S.</h5>
 						<p class="font-weight-light mb-0">"Bootstrap is amazing. I've
 							been using it to create lots of super nice landing pages."</p>
@@ -152,8 +142,6 @@
 				</div>
 				<div class="col-lg-4">
 					<div class="testimonial-item mx-auto mb-5 mb-lg-0">
-						<!-- 						<img class="img-fluid rounded-circle mb-3" -->
-						<!-- 							src="assets/img/testimonials-3.jpg" alt="..." /> -->
 						<h5>Sarah W.</h5>
 						<p class="font-weight-light mb-0">"Thanks so much for making
 							these free resources available to us!"</p>
@@ -163,7 +151,6 @@
 		</div>
 	</section>
 </body>
-
 
 <%@ include file="/WEB-INF/includes/footer.jsp"%>
 <%@ include file="/WEB-INF/includes/indexBootStrap.jsp"%>
