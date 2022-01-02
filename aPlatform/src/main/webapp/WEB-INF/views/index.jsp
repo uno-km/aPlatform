@@ -1,29 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%-- <%@ include file="/WEB-INF/includes/header.jsp"%> --%>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Landing Page - Start Bootstrap Theme</title>
+<title>내손안에 플랫폼 - aPlatForm</title>
 
 </head>
 <body>
-
 	<!-- Masthead-->
-	<header class="masthead">
+	<section class="features-icons bg-light text-center">
 		<div class="container position-relative">
+			<div class="container ">
+				<div class="row">
+					<div class="col-xl-2"></div>
+					<div class="col-xl-8">
+						<a href="index"><img src="/resources/assets/useable/logo1.png"
+							style="max-width: 100%; height: auto;"></a>
+					</div>
+					<div class="col-xl-2"></div>
+				</div>
+			</div>
 			<div class="row justify-content-center">
 				<div class="col-xl-6">
 					<div class="text-center text-white">
-						<!-- Page heading-->
-						<img class="img-fluid rounded-circle mb-3"
-							src="/resources/assets/useable/logo1.png" alt="..." />
-						<!-- Email address input-->
 						<div class="row">
 							<div class="col">
-								<input class="form-control form-control-lg" id="emailAddress"
+								<input class="form-control form-control-lg" id="searchInput"
 									type="email" placeholder="검색어를 입력하세요."
 									data-sb-validations="required,email" />
 							</div>
@@ -36,7 +42,7 @@
 				</div>
 			</div>
 		</div>
-	</header>
+	</section>
 	<!-- Icons Grid-->
 	<section class="features-icons bg-light text-center">
 		<div class="container">
