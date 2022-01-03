@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/includes/common.jsp"%>
-
 <%-- <%@ include file="/WEB-INF/includes/header.jsp"%> --%>
 <head>
 <meta charset="utf-8" />
@@ -10,7 +9,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>내손안에 플랫폼 - aPlatForm</title>
-
 </head>
 <body>
 	<!-- Masthead-->
@@ -20,18 +18,25 @@
 				<div class="row">
 					<div class="col-xl-2"></div>
 					<div class="col-xl-8">
-						<a href=""><img src="/resources/assets/useable/logo1.png"
-							style="max-width: 100%; height: auto;"></a>
+						<a href="">
+							<img src="/resources/assets/useable/logo_onlyWord.png"
+								style="max-width: 100%; height: auto;" id='logo_onlyWord'>
+						</a>
 					</div>
 					<div class="col-xl-2"></div>
 				</div>
 			</div>
 			<div class="container" id="servicesNavbar">
 				<ul class="nav justify-content-center">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="#">Active</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="#">Active</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Link</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Link</a>
+					</li>
 				</ul>
 			</div>
 			<div class="row justify-content-center">
@@ -93,7 +98,6 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 				<div class="col-xl-2"></div>
 			</div>
