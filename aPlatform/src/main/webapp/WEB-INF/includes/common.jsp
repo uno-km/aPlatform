@@ -1,14 +1,8 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ include file="/WEB-INF/includes/jstl.jsp"%>
 <link href="/resources/css/styles.css" rel="stylesheet" />
 <link href="/resources/css/unoCss.css" rel="stylesheet" />
-
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.11.3.js"></script>
-
 <script type="text/javascript" src="/resources/js/scripts.js"></script>
 <script type="text/javascript" src="/resources/js/loadingSomeInfo.js"></script>
 <div id="loading_window">
@@ -35,7 +29,6 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
 	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
 	crossorigin="anonymous"></script>
-
-
 <%@ include file="/WEB-INF/includes/indexBootStrap.jsp"%>
 <%@ include file="/WEB-INF/includes/sideRemoteCnt.jsp"%>
+<%@ include file="/WEB-INF/includes/header.jsp"%>
