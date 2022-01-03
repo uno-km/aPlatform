@@ -1,12 +1,14 @@
 window.onload = function(){
 	document.getElementById("loading").style.visibility="hidden";
 	document.getElementById("loading_window").style.visibility="hidden";
+	debugger;
 	load_service_list;
 	
 }
 
 
 function load_service_list(){
+	ajax;
 }
 
 function ajax(){
