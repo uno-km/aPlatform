@@ -4,6 +4,7 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <link href="/resources/css/styles.css" rel="stylesheet" />
+<link href="/resources/css/unoCss.css" rel="stylesheet" />
 
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.11.3.js"></script>
@@ -37,3 +38,4 @@
 
 
 <%@ include file="/WEB-INF/includes/indexBootStrap.jsp"%>
+<%@ include file="/WEB-INF/includes/sideRemoteCnt.jsp"%>

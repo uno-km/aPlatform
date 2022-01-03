@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "/loadservice/")
-public class maiaDataLoadSO {
+public class mainDataLoadSO {
 	@PostMapping(value = "serviceList/")
 	@ResponseBody
 	public void serviceList() {
