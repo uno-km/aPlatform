@@ -70,6 +70,7 @@
 		scroll-behavior: smooth;
 	}
 }
+
 body {
 	margin: 0;
 	font-family: var(- -bs-body-font-family);
@@ -6514,9 +6515,13 @@ keyframes spinner-border {to { transform:rotate(360deg) /* rtl:ignore */;
 
 
 
+
+
 %
 {
 opacity
+
+
 
 
 
@@ -6578,7 +6583,11 @@ opacity
 
 
 
+
+
 1
+
+
 
 
 
@@ -6639,6 +6648,8 @@ transform
 
 
 
+
+
 :
 
 
@@ -6670,7 +6681,11 @@ transform
 
 
 
+
+
 none
+
+
 
 
 
@@ -6738,9 +6753,13 @@ keyframes spinner-grow { 0% {
 
 
 
+
+
 %
 {
 opacity
+
+
 
 
 
@@ -6802,7 +6821,11 @@ opacity
 
 
 
+
+
 1
+
+
 
 
 
@@ -6863,6 +6886,8 @@ transform
 
 
 
+
+
 :
 
 
@@ -6894,7 +6919,11 @@ transform
 
 
 
+
+
 none
+
+
 
 
 
