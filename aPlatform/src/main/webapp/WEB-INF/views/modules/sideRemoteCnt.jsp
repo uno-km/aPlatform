@@ -24,13 +24,16 @@
 								id="exampleCheck1">
 							<label class="form-check-label" for="exampleCheck1">로그인유지</label>
 						</div>
-						<button type="submit" class="btn btn-primary">로그인</button>
+						<button type="button" class="btn btn-primary">로그인</button>
+						<button type="button" class="btn btn-primary"
+							data-bs-toggle="modal" data-bs-target="#exampleModal">
+							회원가입</button>
 					</div>
 				</li>
 				<li>
-					<a href="">회원가입</a>
 				</li>
 			</ol>
 		</div>
 	</div>
 </div>
+<%@ include file="/WEB-INF/views/modules/signUp.jsp"%>

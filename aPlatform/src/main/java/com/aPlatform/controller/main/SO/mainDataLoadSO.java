@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = "/loadservice/")
 public class mainDataLoadSO {
-	@PostMapping(value = "serviceList/")
+	@PostMapping(value = "servicelist/")
 	@ResponseBody
 	public void serviceList() {
 		System.out.println("check");
