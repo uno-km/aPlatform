@@ -1,5 +1,3 @@
-/**
- * 
- */
+const UserActive = require('./UserActive');
 
 	
