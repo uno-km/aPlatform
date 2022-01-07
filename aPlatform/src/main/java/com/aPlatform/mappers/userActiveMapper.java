@@ -7,9 +7,9 @@ import com.aPlatform.controller.user.VO.UserinfoVO;
 @Mapper
 public interface userActiveMapper
 {
-	public UserinfoVO getUserInfo(UserinfoVO userVO);
+	public UserinfoVO getUserInfo(UserinfoVO userinfoVO);
 
-	public void signUp(UserinfoVO userVO);
+	public void signUp(UserinfoVO userinfoVO);
 
-	public int checkDuplicationId(UserinfoVO userVO);
+	public int checkDuplicationId(UserinfoVO userinfoVO);
 }

@@ -18,7 +18,6 @@ public class UserActiveSO
 	@RequestMapping(method = RequestMethod.GET, value = "/signup")
 	public boolean register(@RequestBody UserinfoVO userinfoVO)
 	{
-		
 		return loginDAO.registerUser(userinfoVO);
 	}
 	@RequestMapping(method = RequestMethod.GET, value = "/checkid")
