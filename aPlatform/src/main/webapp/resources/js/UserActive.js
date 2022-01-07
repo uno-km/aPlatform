@@ -1,8 +1,10 @@
 class UserActive{
+    constructor(){
+        this.userInputId = document.getElementsByName('sideRemoteId');
 
+        this._console();
+    }
+    
+    _console = console.log(this.userInputId);
 
-}
-let kim = new UserActive();
-console.log(kim)
-
-module.exports = { UserActive };
+};

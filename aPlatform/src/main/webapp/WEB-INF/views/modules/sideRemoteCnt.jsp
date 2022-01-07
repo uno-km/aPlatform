@@ -12,11 +12,11 @@
 								data-bs-toggle="modal" data-bs-target="#uploadeMedia">글올리기</button>
 						</c:if>
 						<div class="mb-3">
-							<input type="text" class="form-control" id="sideRemoteId"
+							<input type="text" class="form-control sideRemoteId" id="" name = 'sideRemoteId'
 								placeholder="아이디">
 						</div>
 						<div class="mb-3">
-							<input type="password" class="form-control" id="sideRemotePW"
+							<input type="password" class="form-control" id="" name = 'sideRemoteId'
 								placeholder="비빌번호.">
 						</div>
 						<div class="mb-3 form-check">
