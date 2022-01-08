@@ -1,5 +1,8 @@
 package com.aPlatform.controller.user.BO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +21,7 @@ public class LoginBO
 		UserinfoVO tempVO = userActiveMapper.getUserInfo(UserinfoVO);
 		if(Validation.isNullCheck(tempVO))
 		{
+
 			userActiveMapper.signUp(UserinfoVO);
 			return true;
 		}
@@ -43,6 +47,9 @@ public class LoginBO
 
 	public boolean checkDuplId(UserinfoVO UserinfoVO)
 	{
+		List<UserinfoVO> list = new ArrayList<UserinfoVO>();
+		list = userActiveMapper.loadAllUserInfo();
+		System.out.println(list.toString());
 		if(userActiveMapper.checkDuplicationId(UserinfoVO) == 0)
 		{
 			return true;

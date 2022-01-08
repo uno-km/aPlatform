@@ -16,6 +16,20 @@
 	</select>
 	<select
 		resultType="com.aPlatform.controller.user.VO.UserinfoVO"
+		id="loadAllUserInfo">
+		SELECT
+			USER_ID
+			, USER_PASSWORD
+			, USER_EMAIL
+			, USER_NAME
+			, USER_PHONENUM
+			, USER_AUTH
+			, USER_BIRTH
+		FROM
+			USER_INFO
+	</select>
+	<select
+		resultType="com.aPlatform.controller.user.VO.UserinfoVO"
 		parameterType="com.aPlatform.controller.user.VO.UserinfoVO"
 		id="getUserInfo">
 		SELECT

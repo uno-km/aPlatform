@@ -23,16 +23,19 @@ public class UserActiveSO
 	@RequestMapping(method = RequestMethod.GET, value = "/checkid")
 	public boolean checkDuplId(@RequestBody UserinfoVO userinfoVO)
 	{
+		System.out.println(loginDAO.checkDuplId(userinfoVO));
 		return loginDAO.checkDuplId(userinfoVO);
 	}
 	@RequestMapping(method = RequestMethod.GET, value = "/signin")
 	public boolean signinUser(@RequestBody UserinfoVO userinfoVO)
 	{
+		System.out.println(loginDAO.signinUser(userinfoVO));
 		return loginDAO.signinUser(userinfoVO);
 	}
 	@RequestMapping(method = RequestMethod.GET, value = "/test")
 	public String test()
 	{
+		
 		return "index";
 	}
 }
