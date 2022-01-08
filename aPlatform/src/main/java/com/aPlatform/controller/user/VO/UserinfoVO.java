@@ -12,5 +12,4 @@ public class UserinfoVO
 	private String user_phonenum;
 	private String user_auth;
 	private String user_birth;
-
 }

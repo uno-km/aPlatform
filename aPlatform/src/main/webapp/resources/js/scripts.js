@@ -2,6 +2,7 @@ var btn = document.getElementById("loginButton");
 var result ="";
 /* 통신에 사용 될 XMLHttpRequest 객체 정의 */
 var httpRequest = new XMLHttpRequest();
+var strictId="qwe";
 
 	/* button이 클릭되었을때 이벤트 */
     	btn.addEventListener('click', () => {
@@ -14,7 +15,7 @@ var httpRequest = new XMLHttpRequest();
             if (httpRequest.readyState == 4) {
 			      if (httpRequest.status === 200) {
 			    	// result = httpRequest.response;
-                    alert(inputName);
+                    alert(strictId);
 			      } else {
 			        alert('Request Error!');
 			      }

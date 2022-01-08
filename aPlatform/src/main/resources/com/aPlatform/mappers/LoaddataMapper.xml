@@ -6,13 +6,26 @@
 	<select resultType="com.aPlatform.controller.main.VO.NavbarListVO" id="loadNavbar">
 <!-- 	<select parameterType="com.aPlatform.controller.main.VO.NavbarVO" -->
 <!-- 		resultType="com.aPlatform.controller.main.VO.NavbarListVO" id="loadNavbar"> -->
+<!-- 		SELECT -->
+<!-- 			SVC_TEMPLIT_ID 			tmplt_id -->
+<!-- 			, SVC_TEMPLIT_SEQ		tmplt_seq -->
+<!-- 			, SVC_TEMPLIT_FIGURE	tmplt_figure -->
+<!-- 			, SVC_TEMPLIT_DES		tmplt_des -->
+<!-- 			, SVC_TEMPLIT_STTUS		tmplt_sttus -->
+<!-- 			, SVC_TEMPLIT_USER_ID	user_id -->
+<!-- 		FROM -->
+<!-- 			SVC_TEMPLIT_LIST_DTL -->
+<!-- 		WHERE -->
+<!-- 			SVC_TEMPLIT_USER_ID = 'qwe' -->
+<!-- 		ORDER BY -->
+<!-- 			SVC_TEMPLIT_SEQ ASC -->
 		SELECT
-			SVC_TEMPLIT_ID 			tmplt_id
-			, SVC_TEMPLIT_SEQ		tmplt_seq
-			, SVC_TEMPLIT_FIGURE	tmplt_figure
-			, SVC_TEMPLIT_DES		tmplt_des
-			, SVC_TEMPLIT_STTUS		tmplt_sttus
-			, SVC_TEMPLIT_USER_ID	user_id
+			SVC_TEMPLIT_ID 			
+			, SVC_TEMPLIT_SEQ		
+			, SVC_TEMPLIT_FIGURE	
+			, SVC_TEMPLIT_DES		
+			, SVC_TEMPLIT_STTUS		
+			, SVC_TEMPLIT_USER_ID	
 		FROM
 			SVC_TEMPLIT_LIST_DTL
 		WHERE

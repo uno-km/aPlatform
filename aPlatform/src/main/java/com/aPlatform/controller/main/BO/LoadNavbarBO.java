@@ -17,7 +17,7 @@ public class LoadNavbarBO
 	{
 		String user_id = "qwe";
 		NavbarVO navbarVO = new NavbarVO();
-		navbarVO.setUser_id(user_id);
+		navbarVO.setSvc_templit_user_id(user_id);
 		List<NavbarVO> list = loaddataMapper.loadNavbar(navbarVO);
 		return list;
 	}
