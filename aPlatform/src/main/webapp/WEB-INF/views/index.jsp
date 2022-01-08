@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/includes/common.jsp"%>
-<%-- <%@ include file="/WEB-INF/includes/header.jsp"%> --%>
+<%@ include file="/WEB-INF/includes/header.jsp"%>
+<%@ include file="/WEB-INF/views/modules/loading.jsp"%>
+
 <head>
 <meta charset="utf-8" />
 <meta name="viewport"
@@ -119,4 +121,6 @@
 	</section>
 	<!-- Testimonials-->
 </body>
+<script type="text/javascript" src="/resources/js/UserActive.js"></script>
 <%@ include file="/WEB-INF/includes/footer.jsp"%>
+<%@ include file="/WEB-INF/views/modules/sideRemoteCnt.jsp"%>
