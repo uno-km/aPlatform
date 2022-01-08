@@ -30,4 +30,9 @@ public class UserActiveSO
 	{
 		return loginDAO.signinUser(userinfoVO);
 	}
+	@RequestMapping(method = RequestMethod.GET, value = "/test")
+	public String test()
+	{
+		return "index";
+	}
 }
