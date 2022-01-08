@@ -3,7 +3,6 @@
 <link href="/resources/css/unoCss.css" rel="stylesheet" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.11.3.js"></script>
-<script type="text/javascript" src="/resources/js/scripts.js"></script>
 <script type="text/javascript" src="/resources/js/loadingSomeInfo.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
