@@ -17,6 +17,7 @@ public class LoadNavbarBO
 	public List<NavbarVO> loadNavbar(Map<String, String> param)
 	{
 		String user_id = "qwe";
+		String user = param.get("user_id");
 		NavbarVO navbarVO = new NavbarVO();
 		navbarVO.setUser_id(user_id);
 		List<NavbarVO> list = loaddataMapper.loadNavbar(navbarVO);

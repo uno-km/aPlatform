@@ -120,7 +120,20 @@
 		</div>
 	</section>
 	<!-- Testimonials-->
+	<h1>AJAX GET TEST</h1>
+	Name:
+	<input type="text" id="inputName"></input>
+	<button id="ajaxCall">호출</button>
+	<!-- 응답 받은 name 및 age 데이터를 추가해서 작성할 간단한 결과 텍스트 -->
+	<h2>
+		<span id="name"></span>
+		의 나이는
+		<span id="age"></span>
+		입니다.
+	</h2>
+
 </body>
+
 <script type="text/javascript" src="/resources/js/UserActive.js"></script>
 <%@ include file="/WEB-INF/includes/footer.jsp"%>
 <%@ include file="/WEB-INF/views/modules/sideRemoteCnt.jsp"%>
