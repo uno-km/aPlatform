@@ -1,5 +1,3 @@
-const { string } = require("prop-types");
-
 (function(window){
     'use strict';
     function Utils() {
@@ -20,7 +18,7 @@ const { string } = require("prop-types");
             }
             return true;
         },
-        gfun_isNull : function(inputValue) {
+        gfn_IsNull : function(inputValue) {
             if(inputValue==null){
                 return true;
             } 
@@ -52,6 +50,16 @@ const { string } = require("prop-types");
                 if(!ignoreDTO.hasOwnProperty(DTO)){
                     return outVO[DTO];
                 }
+            }
+        },
+        gfn_ObjectQueryString : function(obj){
+            if(!obj) return ;
+            if(obj instanceof Object){
+                return Object.keys(obj).map(el =>{
+                    return `${el}=${obj[el]}`
+                }).join('&');
+            }else{
+                return ;
             }
         }
     }

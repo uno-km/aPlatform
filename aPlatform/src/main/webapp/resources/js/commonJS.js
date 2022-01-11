@@ -1,5 +1,3 @@
-const { unstable_getFirstCallbackNode } = require("scheduler");
-
 (function(winbdow)
 {
     'use Strict';
@@ -34,9 +32,9 @@ const { unstable_getFirstCallbackNode } = require("scheduler");
     CommonAjax.prototype.fn_Ajax = function(dtoHeader, reqyestDTO, async, optionValue){
         optionValue = Utils.gfn_IsNull(optionValue) ? null : optionValue;
         var objSendVO = {};
-        // if(!Utils.gfn_IsNull(dtoHeader)){
-        //     objSendVO = dtoHeader;
-        // }
+        if(!Utils.gfn_IsNull(dtoHeader)){
+            objSendVO = dtoHeader;;
+        }
         // if(!Utils.gfn_IsEmpty(Utis.get_GetSessionValue('inVO'))){
         //     objSendVO
         // }
@@ -51,6 +49,7 @@ const { unstable_getFirstCallbackNode } = require("scheduler");
                 if(this.status ==200 || this.status ==201){
                     if(!Utils.gfn_IsNull(this.responseText)){
                         var jsonResponse = JSON.parse(this.responseText.replace(/&~44;/gi,'&#44;'));
+                        Utils.gfn_CHkError(jsonResponse);
                         var processJson = optionValue == null ? Utils.GetUnitDTO(jsonResponse) : jsonResponse;
                         if(!Utils.gfn_IsNull(callBack)){
                             try{
@@ -78,5 +77,5 @@ const { unstable_getFirstCallbackNode } = require("scheduler");
     function CommonSubmit() {
         
     }
-    window.CommonAjax =  new CommonAjaxl;
+    window.CommonAjax =  new CommonAjax();
 })(window)

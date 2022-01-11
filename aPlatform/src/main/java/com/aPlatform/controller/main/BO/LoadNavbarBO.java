@@ -17,21 +17,8 @@ public class LoadNavbarBO
 	public MainDataLoadOutVO loadNavbar(Map<String, String> param)
 	{
 		MainDataLoadOutVO outVO = new MainDataLoadOutVO();
-		String user_id = "qwe";
-		String user = param.get("user_id");
-		System.out.println(user);
 		NavbarVO navbarVO = new NavbarVO();
-		navbarVO.setUser_id(user_id);
-		outVO.setNavbaroutVO(loaddataMapper.loadNavbar(navbarVO));
-		return outVO;
-	}
-	public MainDataLoadOutVO loadNavbar2(Map<String, String> param)
-	{
-		MainDataLoadOutVO outVO = new MainDataLoadOutVO();
-		String user_id = "qwe";
-		String user = param.get("user_id");
-		NavbarVO navbarVO = new NavbarVO();
-		navbarVO.setUser_id(user_id);
+		navbarVO.setUser_id(param.get("user_id"));
 		outVO.setNavbaroutVO(loaddataMapper.loadNavbar(navbarVO));
 		return outVO;
 	}
