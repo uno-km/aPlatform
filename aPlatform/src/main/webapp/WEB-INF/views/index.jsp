@@ -29,17 +29,6 @@
 				</div>
 			</div>
 			<div class="container" id="servicesNavbar">
-				<ul class="nav justify-content-center">
-					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="#">Active</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
-					</li>
-				</ul>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-xl-6">
