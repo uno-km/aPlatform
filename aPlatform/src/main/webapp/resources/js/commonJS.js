@@ -22,7 +22,9 @@
     function CommonAjax(){
 
     }
+
     CommonAjax.prototype = new CommonRequest();
+
     CommonAjax.prototype.fn_SetCallBack = function(callback){
         this.callBack =  callback;
     }
@@ -43,17 +45,17 @@
         this.type= '';
         var xmlHttpRequest =  new XMLHttpRequest();
         var url =  encodeURI(this.url);
-
+        console.log(this.responseText);
         xmlHttpRequest.onreadystatechange = function(){
             if(this.readyState ==4){
                 if(this.status ==200 || this.status ==201){
                     if(!Utils.gfn_IsNull(this.responseText)){
+                        console.log(this.responseText);
                         var jsonResponse = JSON.parse(this.responseText.replace(/&~44;/gi,'&#44;'));
-                        Utils.gfn_CHkError(jsonResponse);
                         var processJson = optionValue == null ? Utils.GetUnitDTO(jsonResponse) : jsonResponse;
                         if(!Utils.gfn_IsNull(callBack)){
                             try{
-                                callback(processJson);
+                                callBack(processJson);
                             }
                             catch(e){
                                 console.error(e);

@@ -8,7 +8,7 @@ var user_id = ""
 		var maindataLoadInVO = {
 			"user_id" : user_id
 		}
-		CommonAjax.gfn_SetUrl(`/dataload/navbar?${Utils.gfn_ObjectQueryString(maindataLoadInVO)}`);
+		CommonAjax.gfn_SetUrl(`/dataload/navbar.json?${Utils.gfn_ObjectQueryString(maindataLoadInVO)}`);
 		CommonAjax.fn_SetType("GET")
 		CommonAjax.fn_SetCallBack((data)=> {
 			console.log("json연동 성공");
