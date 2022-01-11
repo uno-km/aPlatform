@@ -1,6 +1,8 @@
 <%@ include file="/WEB-INF/includes/jstl.jsp"%>
 <link href="/resources/css/styles.css" rel="stylesheet" />
 <link href="/resources/css/unoCss.css" rel="stylesheet" />
+<script type="text/javascript" src="/resources/js/commonJS.js"></script>
+<script type="text/javascript" src="/resources/js/Util.js"></script>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.11.3.js"></script>
 <script type="text/javascript" src="/resources/js/loadingSomeInfo.js"></script>

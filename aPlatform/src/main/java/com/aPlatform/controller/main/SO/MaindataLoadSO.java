@@ -1,23 +1,26 @@
 package com.aPlatform.controller.main.SO;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.aPlatform.controller.main.DAO.MaindataLoadDAO;
+import com.aPlatform.controller.main.VO.MainDataLoadOutVO;
 
-@Controller
+@RestController
 @RequestMapping(value = "/dataload")
 public class MaindataLoadSO
 {
 	@Autowired
 	MaindataLoadDAO maindataLoadDAO;
-	@RequestMapping(method = RequestMethod.POST , value="/navbar")
-	public void serviceList()
+	@GetMapping(value = "/navbar"  ,produces = {MediaType.APPLICATION_JSON_VALUE})
+	public MainDataLoadOutVO serviceList(@RequestParam Map<String, String> param)
 	{
-		System.out.println(maindataLoadDAO.loadNavbar());
+		return maindataLoadDAO.loadNavbar(param);
 	}
-
-	
 }

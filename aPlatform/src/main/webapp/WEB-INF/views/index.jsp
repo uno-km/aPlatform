@@ -29,17 +29,6 @@
 				</div>
 			</div>
 			<div class="container" id="servicesNavbar">
-				<ul class="nav justify-content-center">
-					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="#">Active</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
-					</li>
-				</ul>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-xl-6">
@@ -121,6 +110,7 @@
 	</section>
 	<!-- Testimonials-->
 </body>
+
 <script type="text/javascript" src="/resources/js/UserActive.js"></script>
 <%@ include file="/WEB-INF/includes/footer.jsp"%>
 <%@ include file="/WEB-INF/views/modules/sideRemoteCnt.jsp"%>

@@ -14,10 +14,8 @@
 		FROM
 			SVC_TEMPLIT_LIST_DTL
 		WHERE
-			SVC_TEMPLIT_USER_ID = '${user_id}'
+			SVC_TEMPLIT_USER_ID = #{user_id}
 		ORDER BY
 			SVC_TEMPLIT_SEQ ASC
-
 	</select>
-
 </mapper>
