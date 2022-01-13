@@ -38,7 +38,7 @@ public class UserActiveSO
 	{
 		return "index";
 	}
-	@RequestMapping(method = RequestMethod.GET, value = "/customlogin")
+	@RequestMapping(method = RequestMethod.GET, value = "/customLogin")
 	public String login(String error, String logout, Model model)
 	{
 		if(error != null) {
