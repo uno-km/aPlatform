@@ -10,10 +10,10 @@
 <body>
 	<h1>Acces Denied</h1>
 	<h2>
-		<c:out value="${SPRING_SECURITY_403_EXCEPTION.getMessage()} }" />
+		<c:out value="${SPRING_SECURITY_403_EXCEPTION.getMessage()}" />
 	</h2>
 	<h2>
-		<c:out value="${msg} }" />
+		<c:out value="${msg}" />
 	</h2>
 </body>
 </html>

@@ -7,7 +7,7 @@
 	http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<!-- <bean id="customAccessDenied" class="org.study.security.CustomAccessDeniedHandler"></bean> -->
+	<bean id="customAccessDenied" class="com.aPlatform.controller.error.security.CustomAccessDeniedHandler"></bean>
 	<!-- <bean id="customLoginSuccess" class="org.study.security.CustomLoginSuccessHandler"></bean> -->
 	<!-- <bean id="bcryptPasswordEncoder" -->
 	<!-- class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" /> -->
@@ -18,7 +18,7 @@
 		<security:intercept-url pattern="/all" access="permitAll" />
 		<security:intercept-url pattern="/member" access="hasRole('ROLE_MEMBER')" />
 		<security:intercept-url pattern="/manager" access="hasRole('ROLE_MANAGER')" />
-		<!-- <security:access-denied-handler ref="customAccessDenied" /> -->
+		<security:access-denied-handler ref="customAccessDenied" />
 		<!-- <security:form-login login-page="/customLogin" /> -->
 		<!-- <security:logout logout-url="/customLogout" invalidate-session="true" /> -->
 		<!-- <security:remember-me data-source-ref="dataSource" -->
@@ -26,7 +26,7 @@
 		<!-- <security:logout logout-url="/customLogout" invalidate-session="true" -->
 		<!-- delete-cookies="remember-me,JSESSION_ID" /> -->
 		<security:form-login/>
-		<security:access-denied-handler error-page="/accessError"/>
+<!-- 		<security:access-denied-handler error-page="/accessError"/> -->
 	</security:http>
 	<security:authentication-manager>
 		<security:authentication-provider>
