@@ -26,5 +26,4 @@ public class UserMileStone
 	{
 		log.info("manager member");
 	}
-
 }

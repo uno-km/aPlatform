@@ -25,7 +25,7 @@
 		<!-- token-validity-seconds="2419200" /> -->
 		<!-- <security:logout logout-url="/customLogout" invalidate-session="true" -->
 		<!-- delete-cookies="remember-me,JSESSION_ID" /> -->
-		<security:form-login/>
+		<security:form-login login-page="/user/customlogin" />
 <!-- 		<security:access-denied-handler error-page="/accessError"/> -->
 	</security:http>
 	<security:authentication-manager>
