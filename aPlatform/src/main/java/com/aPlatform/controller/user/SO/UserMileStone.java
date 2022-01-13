@@ -7,7 +7,7 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Controller
-@RequestMapping(value = "/sample")
+@RequestMapping(value = "")
 public class UserMileStone
 {
 	@GetMapping("/all")
