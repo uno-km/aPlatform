@@ -40,4 +40,9 @@ public class UserMileStone
 			model.addAttribute("logout", "Logout!!");
 		}
 	}
+	@GetMapping("/customLogout")
+	public void logout()
+	{
+		log.info("custom logout");
+	}
 }
