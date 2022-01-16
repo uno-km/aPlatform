@@ -13,8 +13,8 @@
 		class="com.aPlatform.controller.error.security.CustomLoginSuccessHandler"></bean>
 	<bean id="customNoOpPasswordEncoder"
 		class="com.aPlatform.controller.error.security.CustomNoOpPasswordEncoder"></bean>
-	<!-- <bean id="bcryptPasswordEncoder" -->
-	<!-- class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" /> -->
+	<!-- <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" 
+		/> -->
 	<!-- <bean id="customUserDetailsService" class="com.aPlatform.controller.error.security.CustomUserDetailsService"></bean> -->
 
 	<security:http auto-config="true" use-expressions="true">
