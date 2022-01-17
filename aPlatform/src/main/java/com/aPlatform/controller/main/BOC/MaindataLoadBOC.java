@@ -1,4 +1,4 @@
-package com.aPlatform.controller.main.DAO;
+package com.aPlatform.controller.main.BOC;
 
 import java.util.Map;
 
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.aPlatform.controller.main.BO.LoadNavbarBO;
 import com.aPlatform.controller.main.VO.MainDataLoadOutVO;
 @Service
-public class MaindataLoadDAO
+public class MaindataLoadBOC
 {
 	@Autowired
 	LoadNavbarBO loadNavbarBO;

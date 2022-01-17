@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aPlatform.controller.main.DAO.MaindataLoadDAO;
+import com.aPlatform.controller.main.BOC.MaindataLoadBOC;
 import com.aPlatform.controller.main.VO.MainDataLoadOutVO;
 
 @RestController
@@ -17,7 +17,7 @@ import com.aPlatform.controller.main.VO.MainDataLoadOutVO;
 public class MaindataLoadSO
 {
 	@Autowired
-	MaindataLoadDAO maindataLoadDAO;
+	MaindataLoadBOC maindataLoadDAO;
 	@GetMapping(value = "/navbar"  ,produces = {MediaType.APPLICATION_JSON_VALUE})
 	public MainDataLoadOutVO serviceList(@RequestParam Map<String, String> param)
 	{

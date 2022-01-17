@@ -8,15 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>
-		<c:out value="${error}" />
+<h1>여기가 어딜까</h1>
+	<h2><c:out value="${error}" />
 	</h2>
 	<h2>
 		<c:out value="${logout}" />
 	</h2>
 	<form method='post' action="/login">
-		<input type='text' name='username' value='qwe'>
-		<input type='password' name='password' value='qwe'>
+		<input type='text' name='username' >
+		<input type='password' name='password' >
 		<input type='submit'>
 		<input type='hidden' name='${_csrf.parameterName}'
 			value='${_csrf.token}'>

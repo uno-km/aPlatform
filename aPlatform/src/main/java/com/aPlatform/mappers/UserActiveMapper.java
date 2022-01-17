@@ -4,12 +4,13 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.aPlatform.controller.user.VO.UserinfoOutVO;
 import com.aPlatform.controller.user.VO.UserinfoVO;
 
 @Mapper
-public interface userActiveMapper
+public interface UserActiveMapper
 {
-	public UserinfoVO getUserInfo(UserinfoVO userinfoVO);
+	public UserinfoOutVO getUserInfo(UserinfoVO userinfoVO);
 
 	public void signUp(UserinfoVO userinfoVO);
 

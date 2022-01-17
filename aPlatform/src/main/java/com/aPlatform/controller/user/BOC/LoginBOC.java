@@ -1,14 +1,17 @@
-package com.aPlatform.controller.user.DAO;
+package com.aPlatform.controller.user.BOC;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aPlatform.controller.user.BO.LoginBO;
+import com.aPlatform.controller.user.VO.UserinfoOutVO;
 import com.aPlatform.controller.user.VO.UserinfoVO;
 import com.unoCode.Validation;
 
 @Service
-public class LoginDAO
+public class LoginBOC
 {
 
 	@Autowired
@@ -24,13 +27,13 @@ public class LoginDAO
 		return loginBO.registerUser(UserinfoVO);
 	}
 
-	public boolean signinUser(UserinfoVO UserinfoVO)
+	public UserinfoOutVO signinUser(UserinfoVO UserinfoVO, HttpSession session)
 	{
-		if(UserinfoVO.getUser_id().isEmpty())
+		if(loginBO.checkUser(UserinfoVO))
 		{
-			return false;
+			return loginBO.signinUser(UserinfoVO, session);
 		}
-		return loginBO.signinUser(UserinfoVO);
+		return null;
 	}
 	public boolean checkDuplId(UserinfoVO UserinfoVO)
 	{
