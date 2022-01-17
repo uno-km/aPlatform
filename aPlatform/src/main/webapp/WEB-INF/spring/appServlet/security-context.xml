@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security 
+	http://www.springframework.org/schema/security/spring-security.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="customAccessDenied"
+		class="com.aPlatform.controller.error.security.CustomAccessDeniedHandler"></bean>
+	<bean id="customLoginSuccess"
+		class="com.aPlatform.controller.error.security.CustomLoginSuccessHandler"></bean>
+	<bean id="customNoOpPasswordEncoder"
+		class="com.aPlatform.controller.error.security.CustomNoOpPasswordEncoder"></bean>
+	<!-- <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" 
+		/> -->
+	<!-- <bean id="customUserDetailsService" class="com.aPlatform.controller.error.security.CustomUserDetailsService"></bean> -->
+
+	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/all" access="permitAll" />
+		<security:intercept-url pattern="/member" access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/manager" access="hasRole('ROLE_MANAGER')" />
+		<security:access-denied-handler ref="customAccessDenied" />
+		<security:form-login login-page="/customLogin"
+			authentication-success-handler-ref="customLoginSuccess" />
+		<!-- <security:form-login login-page="/customLogin" /> -->
+		<security:logout logout-url="/customLogout" invalidate-session="true" />
+		<!-- <security:remember-me data-source-ref="dataSource" -->
+		<!-- token-validity-seconds="2419200" /> -->
+		<!-- <security:logout logout-url="/customLogout" invalidate-session="true" -->
+		<!-- delete-cookies="remember-me,JSESSION_ID" /> -->
+		<!-- <security:access-denied-handler error-page="/accessError"/> -->
+	</security:http>
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT USER_ID AS USERNAME, USER_PASSWORD AS PASSWORD, USER_ENABLE AS ENABLED FROM USER_INFO WHERE USER_ID = ?"
+				authorities-by-username-query="SELECT USER_ID AS USERNAME, USER_AUTH AS AUTHRITY FROM USER_INFO WHERE USER_ID = ?" />
+			<!-- <security:user-service> -->
+			<!-- <security:user name="qwe" password="{noop}qwe" authorities="ROLE_MEMBER" /> -->
+			<!-- <security:user name="asd" password="{noop}asd" authorities="ROLE_MANAGER" /> -->
+			<!-- </security:user-service> -->
+			<!-- user-service-ref="customUserDetailsService"> -->
+			<!-- <security:password-encoder ref="bcryptPasswordEncoder" /> -->
+			<security:password-encoder ref="customNoOpPasswordEncoder" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>

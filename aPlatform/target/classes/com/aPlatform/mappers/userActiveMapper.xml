@@ -12,7 +12,7 @@
 		FROM
 			USER_INFO
 		WHERE
-			USER_ID = '${user_id}'
+			USER_ID = #{user_id}
 	</select>
 	<select
 		resultType="com.aPlatform.controller.user.VO.UserinfoVO"
@@ -43,7 +43,7 @@
 		FROM
 			USER_INFO
 		WHERE
-			USER_ID = '${user_id}'
+			USER_ID = #{user_id}
 	</select>
 	<insert parameterType="com.aPlatform.controller.user.VO.UserinfoVO" id="signUp">
 		INSERT INTO
@@ -59,13 +59,13 @@
 		)
 		VALUES
 		(
-			'${user_id}'
-			, '${user_password}'
-			, '${user_email}'
-			, '${user_name}'
-			, '${user_phonenum}'
-			, '${user_auth}'
-			, '${user_birth}'
+			#{user_id}
+			, #{user_password}
+			, #{user_email}
+			, #{user_name}#
+			, #{user_phonenum}
+			, #{user_auth}
+			, #{user_birth}
 		)
 	</insert>
 </mapper>
