@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.aPlatform.mappers.userActiveMapper">
+<mapper namespace="com.aPlatform.mappers.UserActiveMapper">
 
 	<select resultType="int" parameterType="com.aPlatform.controller.user.VO.UserinfoVO"
 		id="checkDuplicationId">
