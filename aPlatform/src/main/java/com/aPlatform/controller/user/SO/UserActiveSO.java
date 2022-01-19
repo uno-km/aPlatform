@@ -1,5 +1,9 @@
 package com.aPlatform.controller.user.SO;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,40 +24,31 @@ import com.aPlatform.controller.user.VO.UserinfoVO;
 public class UserActiveSO
 {
 	@Autowired
-	LoginBOC loginDAO;
+	LoginBOC loginBOC;
 	@RequestMapping(method = RequestMethod.GET, value = "/signup")
 	public boolean register(@RequestBody UserinfoVO userinfoVO)
 	{
-		return loginDAO.registerUser(userinfoVO);
+		return loginBOC.registerUser(userinfoVO);
 	}
 	@RequestMapping(method = RequestMethod.GET, value = "/checkid")
 	public boolean checkDuplId(@RequestBody UserinfoVO userinfoVO)
 	{
-		System.out.println(loginDAO.checkDuplId(userinfoVO));
-		return loginDAO.checkDuplId(userinfoVO);
+		System.out.println(loginBOC.checkDuplId(userinfoVO));
+		return loginBOC.checkDuplId(userinfoVO);
 	}
+	
 	@RequestMapping(method = RequestMethod.POST, value = "/signin")
 	public ResponseEntity<UserinfoOutVO> signinUser(
-			@RequestBody UserinfoVO userinfoVO, HttpSession session)
+			@RequestBody UserinfoVO userinfoVO, Model model,
+			HttpServletRequest request) throws ServletException, IOException
 	{
+
 		UserinfoOutVO outVO = new UserinfoOutVO();
-		outVO = loginDAO.signinUser(userinfoVO, session);
+		outVO = loginBOC.signinUser(userinfoVO);
+		HttpSession session = request.getSession();
+		loginBOC.setSession(outVO, session, model);
 		return outVO != null
 				? new ResponseEntity<>(outVO, HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	@RequestMapping(method = RequestMethod.GET, value = "/customLogin")
-	public String login(String error, String logout, Model model)
-	{
-		if(error != null)
-		{
-			model.addAttribute("error", "Login Error Check Your Account");
-		}
-		if(logout != null)
-		{
-			model.addAttribute("logout", "Logout!!");
-		}
-		return "loginPage";
-	}
-
 }

@@ -28,8 +28,10 @@
 					<div class="col-xl-2"></div>
 				</div>
 			</div>
-			<div class="container" id="servicesNavbar">
-			</div>
+			<c:if test="${!empty user_id}">
+				<h1>gdgd</h1>
+			</c:if>
+			<div class="container" id="servicesNavbar"></div>
 			<div class="row justify-content-center">
 				<div class="col-xl-6">
 					<div class="text-center text-white">

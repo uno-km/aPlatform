@@ -7,7 +7,7 @@
 			<ol class="list-unstyled mb-0">
 				<li>
 					<div class="d-grid gap-2">
-						<c:if test="${!empty loginUser}">
+						<c:if test="${!empty user_id}">
 							<button class="btn btn-primary" type="button"
 								data-bs-toggle="modal" data-bs-target="#uploadeMedia">글올리기</button>
 						</c:if>

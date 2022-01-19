@@ -4,6 +4,11 @@ var httpRequest = new XMLHttpRequest();
 
 
 $(document).ready(function () {
+    if(!localStorage.length<1){
+        callNavBar();
+    }
+
+
     btn.addEventListener('click', () => {
       var user_id = document.getElementById("sideRemoteId").value;
       var user_password = document.getElementById("sideRemoteId").value;
@@ -19,7 +24,8 @@ $(document).ready(function () {
           async : false,
           contentType: 'application/json; charset=utf-8',
           success: function (data) {
-              callNavBar(data);
+              setSession(data);
+              callNavBar();
               signin(data);
           },
           error: function () {
@@ -55,11 +61,24 @@ $(document).ready(function () {
 //         CommonAjax.fn_Ajax(null, null, true, 'VO');
 //     });
 // });
+var setSession = function(data){
+    localStorage.clear
+    localStorage.setItem('user_auth', data.user_auth);
+    localStorage.setItem('user_birth', data.user_birth );
+    localStorage.setItem('user_email',  data.user_email);
+    localStorage.setItem('user_id',  data.user_id);
+    localStorage.setItem('user_name', data.user_name);
+    localStorage.setItem('user_password',  data.user_password);
+    localStorage.setItem('user_phonenum',  data.user_phonenum);
+}
+
 var signin = function (data) {
 }
-var callNavBar = function (data) {
+var callNavBar = function () {
+    const here_user_id = localStorage.getItem('user_id');
+    
     var navbaroutVO = {
-        "user_id":  data.user_id
+        "user_id":  here_user_id
     }
     $.ajax({
         type:'POST',
@@ -79,16 +98,23 @@ var callNavBar = function (data) {
 var setNavbar = function (data) {
     var navbarList = "";
     var navbarOutVO = data.navbaroutVO;
+    var jbBtn =document.createElement( 'button' );
+    var jbBtnText = document.createTextNode( 'Click' );
+    jbBtn.appendChild( jbBtnText );
+    document.body.appendChild( jbBtn );
 
     if (navbarOutVO.length > 0) {
-        navbarList = "<ul class='nav justify-content-center'>";
+        navbarList = "<c:if test=`${not empty sessionScope.user_id}`>";
+        navbarList +=   "<ul class='nav justify-content-center'>";
         for (var i = 0; i < navbarOutVO.length; i++) {
             navbarList += "<li class='nav-item'>";
             navbarList += "		<a class='nav-link active' aria-current='page' href='#'>" +
                     navbarOutVO[i].tmplt_id + "</a>";
             navbarList += "</li>";
         }
-        navbarList += "</ul>";
+        navbarList +=   "</ul>";
+        navbarList += "</c:if>";
+        
     }
     const inputBody = document.getElementById('servicesNavbar');
     inputBody.innerHTML = navbarList;
