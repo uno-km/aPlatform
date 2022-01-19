@@ -3,6 +3,8 @@ package com.aPlatform.controller.user.SO;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,15 +33,14 @@ public class UserActiveSO
 		return loginDAO.checkDuplId(userinfoVO);
 	}
 	@RequestMapping(method = RequestMethod.POST, value = "/signin")
-	public UserinfoOutVO signinUser(@RequestBody UserinfoVO userinfoVO,
-			HttpSession session)
+	public ResponseEntity<UserinfoOutVO> signinUser(
+			@RequestBody UserinfoVO userinfoVO, HttpSession session)
 	{
-		return loginDAO.signinUser(userinfoVO, session);
-	}
-	@RequestMapping(method = RequestMethod.GET, value = "/test")
-	public String test()
-	{
-		return "index";
+		UserinfoOutVO outVO = new UserinfoOutVO();
+		outVO = loginDAO.signinUser(userinfoVO, session);
+		return outVO != null
+				? new ResponseEntity<>(outVO, HttpStatus.OK)
+				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	@RequestMapping(method = RequestMethod.GET, value = "/customLogin")
 	public String login(String error, String logout, Model model)

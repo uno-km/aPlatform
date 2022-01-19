@@ -111,6 +111,5 @@
 	<!-- Testimonials-->
 </body>
 
-<script type="text/javascript" src="/resources/js/UserActive.js"></script>
 <%@ include file="/WEB-INF/includes/footer.jsp"%>
 <%@ include file="/WEB-INF/views/modules/sideRemoteCnt.jsp"%>
