@@ -1,4 +1,3 @@
-var btn = document.getElementById("loginButton");
 var result = "";
 var httpRequest = new XMLHttpRequest();
 
@@ -6,9 +5,46 @@ var httpRequest = new XMLHttpRequest();
 $(document).ready(function () {
     if(!localStorage.length<1){
         callNavBar();
+    }else{
+        setRemoteCtrl();
     }
 
+});
+var setRemoteCtrl = function(){
+    let struct_div = "";
+    struct_div += `<div class="position-sticky border rounded" style="top: 10rem;">`
+    struct_div += `<div class="p-4">`
+    struct_div += `    <ol class="list-unstyled mb-0">`
+    struct_div += `        <li>`
+    struct_div += `            <div class="d-grid gap-2">`
+    struct_div += `                <div class="mb-3">`
+    struct_div += `                    <input type="text" class="form-control" id='sideRemoteId''`
+    struct_div += `                        placeholder="아이디">`
+    struct_div += `                </div>`
+    struct_div += `                <div class="mb-3">`
+    struct_div += `                    <input type="password" class="form-control" name='sideRemotePW'`
+    struct_div += `                        placeholder="비빌번호.">`
+    struct_div += `                </div>`
+    struct_div += `                <div class="mb-3 form-check">`
+    struct_div += `                    <input type="checkbox" class="form-check-input"`
+    struct_div += `                        id="exampleCheck1">`
+    struct_div += `                    <label class="form-check-label" for="exampleCheck1">로그인유지</label>`
+    struct_div += `                </div>`
+    struct_div += `                <button type="button" class="btn btn-primary" id="loginButton">로그인</button>`
+    struct_div += `                 <button type="button" class="btn btn-primary"`
+    struct_div += `                    data-bs-toggle="modal" data-bs-target="#exampleModal">`
+    struct_div += `                    회원가입</button>`
+    struct_div += `            </div>`
+    struct_div += `        </li>`
+    struct_div += `        <li></li>`
+    struct_div += `    </ol>`
+    struct_div += `</div>`
+    struct_div += `</div>`
+    ;
+    const inputBody = document.getElementById('sideRemoteController');
+    inputBody.innerHTML = struct_div;
 
+    var btn = document.getElementById("loginButton");
     btn.addEventListener('click', () => {
       var user_id = document.getElementById("sideRemoteId").value;
       var user_password = document.getElementById("sideRemoteId").value;
@@ -33,8 +69,7 @@ $(document).ready(function () {
           }
       });
   });
-});
-
+}
 // $(document).ready(function () {
 //     btn.addEventListener('click', () => {
 //         var user_id = document
