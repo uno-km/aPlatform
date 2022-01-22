@@ -36,17 +36,14 @@ public class UserActiveSO
 		System.out.println(loginBOC.checkDuplId(userinfoVO));
 		return loginBOC.checkDuplId(userinfoVO);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/signin")
 	public ResponseEntity<UserinfoOutVO> signinUser(
-			@RequestBody UserinfoVO userinfoVO, Model model,
-			HttpServletRequest request) throws ServletException, IOException
+			@RequestBody UserinfoVO userinfoVO)
 	{
 
 		UserinfoOutVO outVO = new UserinfoOutVO();
 		outVO = loginBOC.signinUser(userinfoVO);
-		HttpSession session = request.getSession();
-		loginBOC.setSession(outVO, session, model);
 		return outVO != null
 				? new ResponseEntity<>(outVO, HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
