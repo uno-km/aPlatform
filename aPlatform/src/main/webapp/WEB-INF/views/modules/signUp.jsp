@@ -16,6 +16,7 @@
 			<div class="modal-body">
 				<div id='signUpModalBody'>
 				</div>
+				<hr/>
 				<div class="progress">
 					<div
 						class="progress-bar progress-bar-striped progress-bar-animated"
