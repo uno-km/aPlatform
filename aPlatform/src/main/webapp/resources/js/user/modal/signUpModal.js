@@ -29,8 +29,8 @@ function signUpModalNextBnt(){
 }
 
 function setInitSignUpModal(){
-    this.signUpModalCnt='1';
-    this.signUpModalProgress='0%';
+    this.signUpModalCnt.value='1';
+    this.signUpModalProgress.width='0%';
     setSignUpModal_checkPage();
 }
 
