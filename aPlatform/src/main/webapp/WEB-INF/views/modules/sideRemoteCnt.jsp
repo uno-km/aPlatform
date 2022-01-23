@@ -4,4 +4,5 @@
 <div id='sideRemoteController'>
 </div>
 <script type="text/javascript" src="/resources/js/UserActive.js"></script>
+
 <%@ include file="/WEB-INF/views/modules/signUp.jsp"%>
