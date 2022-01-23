@@ -1,6 +1,6 @@
 //회원가입 모달 전용 js 파일
-var signUpModalCnt = document.getElementById('signUpModalCnt').value;
-var signUpModalProgress = document.getElementById('signUpModalProgress').style.width;
+var signUpModalCnt = document.getElementById('signUpModalCnt');
+var signUpModalProgress = document.getElementById('signUpModalProgress').style;
 
 function signUpModalNextBnt(){
     switch(this.signUpModalCnt.value){
@@ -29,6 +29,8 @@ function signUpModalNextBnt(){
 }
 
 function setInitSignUpModal(){
+    document.getElementById('signUpModal').style.display='block';
+    var myModal = document.getElementById('signUpModal');
     this.signUpModalCnt.value='1';
     this.signUpModalProgress.width='0%';
     setSignUpModal_checkPage();

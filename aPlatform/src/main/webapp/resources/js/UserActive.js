@@ -2,6 +2,7 @@ var result = "";
 var httpRequest = new XMLHttpRequest();
 
 $(document).ready(function () {
+    document.getElementById('signUpModal').style.display='none';
     callNavBar();
     if(!localStorage.length<1){
         setLoginedRemoteCtrl();
@@ -52,13 +53,10 @@ var setLoginedRemoteCtrl = function(){
             <li>
                 <div class="d-grid gap-2">
                     <div class="mb-3">
-                       
                     </div>
                     <div class="mb-3">
-                        
                     </div>
                     <div class="mb-3 form-check">
-
                     </div>
                      <button type="button" class="btn btn-primary" onclick="logout()">로그아웃</button>
                 </div>
