@@ -125,7 +125,9 @@ function checkEmail(){
     if(!(signupModalInputtedUserEmail.value.match(regExp)!=null)) alert('올바른 이메일을 입력해주세요');
     else sumeIvt='true';
     if(sumeIvt=='true'&&sumeUvt=='true'){
+        const user_email = signupModalInputtedUserEmail.value+"@"+showSelectedValue.value;
         checkEmailForValidate();
+        sendEmailForCheckValidation(user_email);
     }
 }
 function checkEmailForValidate(){
@@ -155,4 +157,20 @@ function countDown3min(){
             document.getElementById('setTime').innerText = '시간이 초과되었습니다.';
         }
     }, 1000); 
+}
+function sendEmailForCheckValidation(user_email) {
+    $.ajax({
+        type: 'GET',
+        url: '/user/checkEmail?user_email='+user_email,
+        dataType: 'JSON',
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        success: function () {
+            alert('success!!');
+        },
+        error: function () {
+            alert('통신실패!!');
+        }
+    });
+
 }

@@ -26,7 +26,6 @@ public class UserActiveSO
 	@RequestMapping(method = RequestMethod.GET, value = "/checkid")
 	public boolean checkDuplId(@RequestBody UserinfoVO userinfoVO)
 	{
-		System.out.println(loginBOC.checkDuplId(userinfoVO));
 		return loginBOC.checkDuplId(userinfoVO);
 	}
 
@@ -34,7 +33,6 @@ public class UserActiveSO
 	public ResponseEntity<UserinfoOutVO> signinUser(
 			@RequestBody UserinfoVO userinfoVO)
 	{
-
 		UserinfoOutVO outVO = new UserinfoOutVO();
 		outVO = loginBOC.signinUser(userinfoVO);
 		return outVO != null
