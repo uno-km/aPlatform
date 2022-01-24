@@ -34,7 +34,7 @@ var setRemoteCtrl = function(){
                         <label class="form-check-label" for="exampleCheck1">로그인유지</label>
                     </div>
                     <button type="button" class="btn btn-primary" id="loginButton" onclick="signin()">로그인</button>
-                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal" onclick='setInitSignUpModal()'>회원가입</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal" onclick='setInitSignUpModal()'>회원가입</button>
                 </div>
             </li>
             <li></li>

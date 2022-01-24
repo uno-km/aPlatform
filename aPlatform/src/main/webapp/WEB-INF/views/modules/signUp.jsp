@@ -7,6 +7,8 @@
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<input type="hidden" id="signUpModalCnt" value='1' />
+		<input type="hidden" id="signUpModalEmailInputValidateTest" value='false' />
+		<input type="hidden" id="signUpModalEmailUrlValidateTest" value='false' />
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">회원가입</h5>
@@ -27,7 +29,7 @@
 			<div class="modal-footer">
 
 				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">닫기</button>
+					data-bs-dismiss="modal" onclick='signUpModalCloseBtn()'>닫기</button>
 				<button type="button" class="btn btn-primary"
 					id='signUpModalNextBnt' onclick="signUpModalNextBnt()">다음</button>
 			</div>
