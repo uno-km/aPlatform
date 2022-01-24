@@ -1,5 +1,7 @@
 package com.aPlatform.controller.user.BO;
 
+
+
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -11,6 +13,8 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.stereotype.Service;
+@Service
 public class CheckEmailBO
 {
 	public void gmailSend(String user_email)
