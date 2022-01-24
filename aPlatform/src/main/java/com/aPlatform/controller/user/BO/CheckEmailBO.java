@@ -21,7 +21,6 @@ public class CheckEmailBO
 	{
 		final String user = "unokim014745@gmail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정
 		final String password = "dmsgh!!#"; // 패스워드
-		
 		// SMTP 서버 정보를 설정한다.
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -29,7 +28,6 @@ public class CheckEmailBO
 		prop.put("mail.smtp.auth", "true");
 		prop.put("mail.smtp.ssl.enable", "true");
 		prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-
 		Session session = Session.getDefaultInstance(prop,
 				new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication()
@@ -50,7 +48,6 @@ public class CheckEmailBO
 			message.setText("내용을 입력하세요"); // 메일 내용을 입력
 			// send the message
 			Transport.send(message); //// 전송
-			System.out.println("message sent successfully...");
 		}
 		catch (AddressException e)
 		{
