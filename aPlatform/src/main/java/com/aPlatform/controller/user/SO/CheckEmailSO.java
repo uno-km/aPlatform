@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aPlatform.controller.user.BO.CheckEmailBO;
 
@@ -17,7 +18,7 @@ public class CheckEmailSO
 	@Autowired
 	CheckEmailBO checkEmailBO;
 	@RequestMapping(method = RequestMethod.GET, value = "/checkEmail")
-	public void sendGmail(Model model, HttpServletRequest request)
+	public @ResponseBody void sendGmail(Model model, HttpServletRequest request)
 	{
 		String user_email = request.getParameter("user_email");
 		checkEmailBO.gmailSend(user_email);

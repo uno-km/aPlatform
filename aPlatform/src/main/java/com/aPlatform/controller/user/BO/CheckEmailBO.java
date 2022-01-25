@@ -1,7 +1,5 @@
 package com.aPlatform.controller.user.BO;
 
-
-
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -28,6 +26,7 @@ public class CheckEmailBO
 		prop.put("mail.smtp.auth", "true");
 		prop.put("mail.smtp.ssl.enable", "true");
 		prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+		int random = (int) (Math.random() * 89999999) + 10000000;
 		Session session = Session.getDefaultInstance(prop,
 				new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication()

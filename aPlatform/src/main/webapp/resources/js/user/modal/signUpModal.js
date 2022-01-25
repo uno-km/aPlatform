@@ -126,8 +126,8 @@ function checkEmail(){
     else sumeIvt='true';
     if(sumeIvt=='true'&&sumeUvt=='true'){
         const user_email = signupModalInputtedUserEmail.value+"@"+showSelectedValue.value;
-        checkEmailForValidate();
         sendEmailForCheckValidation(user_email);
+        checkEmailForValidate();
     }
 }
 function checkEmailForValidate(){
@@ -162,15 +162,13 @@ function sendEmailForCheckValidation(user_email) {
     $.ajax({
         type: 'GET',
         url: '/user/checkEmail?user_email='+user_email,
-        dataType: 'JSON',
         async: false,
         contentType: 'application/json; charset=utf-8',
-        success: function () {
-            alert('success!!');
+        success: function (data) {
+            alert('data');
         },
         error: function () {
             alert('통신실패!!');
         }
     });
-
 }
