@@ -3,6 +3,7 @@ var signUpModalCnt = document.getElementById('signUpModalCnt');
 var signUpModalProgress = document.getElementById('signUpModalProgress').style;
 var cnt = 180;
 var counter = '';
+var getRandom = "";
 
 function signUpModalNextBnt(){
     switch(this.signUpModalCnt.value){
@@ -128,17 +129,42 @@ function checkEmail(){
         const user_email = signupModalInputtedUserEmail.value+"@"+showSelectedValue.value;
         sendEmailForCheckValidation(user_email);
         checkEmailForValidate();
+        countDown3min();
     }
 }
 function checkEmailForValidate(){
     let struct_div = `  <hr/>
-                        <div class="form-floating md-3" >
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                            <label for="floatingTextarea" id='setTime'></label>
-                        </div>`;
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-floating md-3" >
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="textAreaForCheckRandom"></textarea>
+                                            <label for="textAreaForCheckRandom" id='setTime'></label>
+                                            </div>
+                                        </div>
+                                    <div class="col-sm-4">
+                                        <button type="button" class="btn btn-primary" onclick="checkRandom()">입력완료</button>
+                                        <button type="button" class="btn btn-primary" onclick="checkEmail()">재전송</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
     const inputBody = document.getElementById('checkEmailConfirm');
     inputBody.innerHTML = struct_div;
-    countDown3min();
+}
+function checkRandom(){
+    const testAreaVal = document.getElementById('textAreaForCheckRandom').value;
+    if(testAreaVal.length==0||testAreaVal==null){
+        alert("빈칸을 입력하셨습니다. 다시 입력해주세요.");
+    }
+    if(testAreaVal==this.getRandom){
+        alert("확인완료");
+        document.getElementById('signUpModalEmailRandomCheck').value ='true';
+        this.getRandom ='';
+    }
+    else{
+        alert("틀렸습니다. 다시 입력해주세요.");
+    }
 }
 function signUpModalCloseBtn(){
     if (counter != null) {
@@ -146,6 +172,9 @@ function signUpModalCloseBtn(){
     }
 }
 function countDown3min(){
+    if (counter != null) {
+        clearTimeout(counter);
+    }
     this.cnt = 180;
     document.getElementById('setTime').innerText = this.cnt;
     this.counter = setInterval(() => {
@@ -155,6 +184,7 @@ function countDown3min(){
         if(this.cnt<=0){
             clearInterval(this.cnt);
             document.getElementById('setTime').innerText = '시간이 초과되었습니다.';
+            this.getRandom="";
         }
     }, 1000); 
 }
@@ -172,10 +202,13 @@ function sendEmailForCheckValidation(user_email) {
         dataType: 'JSON', 
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-            alert(data);
+            setRandom(data);
         },
         error: function () {
             alert('통신실패!!');
         }
     });
+}
+function setRandom(data){
+    this.getRandom = data;
 }

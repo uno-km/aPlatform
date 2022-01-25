@@ -8,7 +8,7 @@
     		EMAIL 				AS OPER_MAIL
 		    ,   MAIL_PASSWORD 	AS OPER_PASSWORD
 		    ,   MAIL_TITLE
-		    ,   MAIL_SBST
+		    ,   MAIL_TXT
 		FROM 
  		   OPE_MAIL_DTL
 		WHERE

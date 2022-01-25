@@ -9,6 +9,7 @@
 		<input type="hidden" id="signUpModalCnt" value='1' />
 		<input type="hidden" id="signUpModalEmailInputValidateTest" value='false' />
 		<input type="hidden" id="signUpModalEmailUrlValidateTest" value='false' />
+		<input type="hidden" id="signUpModalEmailRandomCheck" value='false' />
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">회원가입</h5>
