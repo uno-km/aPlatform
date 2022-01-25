@@ -1,5 +1,6 @@
 package com.aPlatform.controller.user.BO;
 
+import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -11,14 +12,18 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.aPlatform.mappers.OperEmailMapper;
 @Service
 public class CheckEmailBO
 {
-	public void gmailSend(String user_email)
+	@Autowired
+	OperEmailMapper operEmailMapper;
+	public String gmailSend(Map<String, String> inMap)
 	{
-		final String user = "unokim014745@gmail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정
-		final String password = "dmsgh!!#"; // 패스워드
+		Map<String, String> resMap = operEmailMapper.getOperationMail(inMap);
 		// SMTP 서버 정보를 설정한다.
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -31,32 +36,37 @@ public class CheckEmailBO
 				new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication()
 					{
-						return new PasswordAuthentication(user, password);
+						return new PasswordAuthentication(
+								resMap.get("OPER_MAIL"),
+								resMap.get("OPER_PASSWORD"));
 					}
 				});
 		try
 		{
 			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(user));
+			message.setFrom(new InternetAddress(resMap.get("OPER_MAIL")));
 			// 수신자메일주소
 			message.addRecipient(Message.RecipientType.TO,
-					new InternetAddress(user_email));
+					new InternetAddress(inMap.get("user_email")));
 			// Subject
-			message.setSubject("제목을 입력하세요"); // 메일 제목을 입력
+			message.setSubject(resMap.get("MAIL_TITLE")); // 메일 제목을 입력
 			// Text
-			message.setText("내용을 입력하세요"); // 메일 내용을 입력
+			message.setText(resMap.get("MAIL_TXT")+" \n "+random); // 메일 내용을 입력
 			// send the message
 			Transport.send(message); //// 전송
+			return Integer.toString(random);
 		}
 		catch (AddressException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return "AE";
 		}
 		catch (MessagingException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return "ME";
 		}
 	}
 }

@@ -159,13 +159,20 @@ function countDown3min(){
     }, 1000); 
 }
 function sendEmailForCheckValidation(user_email) {
+    const sendingVO = {
+        "mail_sbst" : "CHK"
+    ,   "mail_send_time" : "signup"  
+    ,   "user_email" : user_email 
+    }
     $.ajax({
         type: 'GET',
-        url: '/user/checkEmail?user_email='+user_email,
+        url: '/user/checkEmail',
         async: false,
+        data : sendingVO,
+        dataType: 'JSON', 
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-            alert('data');
+            alert(data);
         },
         error: function () {
             alert('통신실패!!');

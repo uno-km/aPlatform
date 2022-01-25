@@ -1,11 +1,9 @@
 package com.aPlatform.mappers;
 
-import java.util.List;
-
-import com.aPlatform.controller.main.VO.NavbarVO;
+import java.util.Map;
 
 public interface OperEmailMapper
 {
-	public List<NavbarVO> loadNavbar(NavbarVO navbarVO);
+	public Map<String,String> getOperationMail(Map<String, String> inMap);
 
 }
