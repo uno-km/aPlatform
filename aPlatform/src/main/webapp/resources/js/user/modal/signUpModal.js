@@ -11,7 +11,7 @@ function signUpModalNextBnt(){
 
             console.log(signUpModalCnt);
             this.signUpModalCnt.value='2';
-            this.signUpModalProgress.width='25%';
+            this.signUpModalProgress.width='50%';
             setSignUpModal_EmailIdCheck();
             break;
         case '2':
@@ -21,13 +21,13 @@ function signUpModalNextBnt(){
             }
             console.log(signUpModalCnt);
             this.signUpModalCnt.value='3';
-            this.signUpModalProgress.width='50%';
+            this.signUpModalProgress.width='75%';
             
             break;
         case '3':
             console.log(signUpModalCnt);
             this.signUpModalCnt.value='4';
-            this.signUpModalProgress.width='75%';
+            this.signUpModalProgress.width='100%';
             break;
         case '4':
             console.log(signUpModalCnt);
@@ -39,7 +39,7 @@ function signUpModalNextBnt(){
 function setInitSignUpModal(){
     document.getElementById('signUpModal').style.display='block';
     this.signUpModalCnt.value='1';
-    this.signUpModalProgress.width='0%';
+    this.signUpModalProgress.width='25%';
     // setSignUpModal_EmailIdCheck();
     setSignUpModal_checkPage();
 }
@@ -62,7 +62,6 @@ const inputBody = document.getElementById('signUpModalBody');
 inputBody.innerHTML = struct_div;
 };
 function setCheckAll(){
-
 }
 function setSignUpModal_EmailIdCheck(){
     let struct_div = `  <div class="input-group mb-3">

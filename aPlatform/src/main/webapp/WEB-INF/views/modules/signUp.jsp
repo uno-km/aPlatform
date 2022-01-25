@@ -24,7 +24,7 @@
 					<div
 						class="progress-bar progress-bar-striped progress-bar-animated"
 						role="progressbar" aria-valuenow="75" aria-valuemin="0"
-						id="signUpModalProgress" aria-valuemax="100" style="width: 0%"></div>
+						id="signUpModalProgress" aria-valuemax="100" style="width: 25%"></div>
 				</div>
 			</div>
 			<div class="modal-footer">
