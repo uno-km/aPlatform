@@ -8,15 +8,21 @@ var getRandom = "";
 function signUpModalNextBnt(){
     switch(this.signUpModalCnt.value){
         case '1':
+
             console.log(signUpModalCnt);
             this.signUpModalCnt.value='2';
             this.signUpModalProgress.width='25%';
             setSignUpModal_EmailIdCheck();
             break;
         case '2':
+            if(!(document.getElementById('signUpModalEmailRandomCheck').value=='true')) {
+                alert('이메일 인증을 해주세요.');
+                break;
+            }
             console.log(signUpModalCnt);
             this.signUpModalCnt.value='3';
             this.signUpModalProgress.width='50%';
+            
             break;
         case '3':
             console.log(signUpModalCnt);
@@ -30,37 +36,34 @@ function signUpModalNextBnt(){
             break;
     };
 }
-
 function setInitSignUpModal(){
     document.getElementById('signUpModal').style.display='block';
     this.signUpModalCnt.value='1';
     this.signUpModalProgress.width='0%';
-    setSignUpModal_EmailIdCheck();
-    // setSignUpModal_checkPage();
+    // setSignUpModal_EmailIdCheck();
+    setSignUpModal_checkPage();
 }
-
 function setSignUpModal_checkPage(){
     let struct_div = `  <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="signUpModal_consetrate_all" >
+                            <input class="form-check-input" type="checkbox" value="all" id="signUpModal_consetrate_all" >
                             <label class="form-check-label" for="flexCheckDefault"> 전체 동의 </label>
                         </div>
                         <div class="alert alert-warning" role="alert">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="signUpModal_consetrate1">
+                                <input class="form-check-input" type="checkbox" value="accept1" id="signUpModal_consetrate1">
                                 <label class="form-check-label" for="flexCheckDefault">약관에 동의합니다. </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="signUpModal_consetrate2" >
+                                <input class="form-check-input" type="checkbox" value="accept2" id="signUpModal_consetrate2" >
                                 <label class="form-check-label" for="flexCheckDefault">약관에 동의합니다. </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="signUpModal_consetrate3" >
-                                <label class="form-check-label" for="flexCheckDefault"> 만 14세 이상입니다. </label>
                             </div>
                         </div>`;
 const inputBody = document.getElementById('signUpModalBody');
 inputBody.innerHTML = struct_div;
 };
+function setCheckAll(){
+
+}
 function setSignUpModal_EmailIdCheck(){
     let struct_div = `  <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="이메일" aria-label="Username" id="signupModalInputtedUserEmail">
@@ -212,3 +215,24 @@ function sendEmailForCheckValidation(user_email) {
 function setRandom(data){
     this.getRandom = data;
 }
+
+function setSignUpModal_IdPasswordCheck(){
+    let struct_div = `  <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="이메일" aria-label="Username" id="signupModalInputtedUserEmail">
+                            <span class="input-group-text">@</span>
+                            <input type="text" class="form-control" placeholder="naver.com" id="showSelectedValue" value ="naver.com" aria-label="Username" disabled='true' />
+               	            <select class="form-select" aria-label="Default select example" onchange="selectEmailChange(this)">
+  						    	<option selected value ="naver">네이버</option>
+  							    <option value="google">구글</option>
+  							    <option value="daum">다음</option>
+  							    <option value="user_email_input">직접입력</option>
+							</select>
+                        </div>
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button type="button" class="btn btn-primary" id="checkEmail" onclick="checkEmail()">이메일 인증</button>
+                        </div>
+                        <div id='checkEmailConfirm' ></div>
+                        `;
+const inputBody = document.getElementById('signUpModalBody');
+inputBody.innerHTML = struct_div;
+};

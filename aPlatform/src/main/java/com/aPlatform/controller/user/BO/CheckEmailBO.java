@@ -24,7 +24,6 @@ public class CheckEmailBO
 	public String gmailSend(Map<String, String> inMap)
 	{
 		Map<String, String> resMap = operEmailMapper.getOperationMail(inMap);
-		// SMTP 서버 정보를 설정한다.
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
 		prop.put("mail.smtp.port", 465);
@@ -45,26 +44,20 @@ public class CheckEmailBO
 		{
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(resMap.get("OPER_MAIL")));
-			// 수신자메일주소
 			message.addRecipient(Message.RecipientType.TO,
 					new InternetAddress(inMap.get("user_email")));
-			// Subject
 			message.setSubject(resMap.get("MAIL_TITLE")); // 메일 제목을 입력
-			// Text
-			message.setText(resMap.get("MAIL_TXT")+" \n "+random); // 메일 내용을 입력
-			// send the message
+			message.setText(resMap.get("MAIL_TXT") + " \n " + random); // 메일 내용을 입력
 			Transport.send(message); //// 전송
 			return Integer.toString(random);
 		}
 		catch (AddressException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return "AE";
 		}
 		catch (MessagingException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return "ME";
 		}
