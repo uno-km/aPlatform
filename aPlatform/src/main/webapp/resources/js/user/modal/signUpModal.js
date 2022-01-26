@@ -217,7 +217,7 @@ function setRandom(data){
 
 function setSignUpModal_IdPasswordCheck(){
     let struct_div = `  <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="이메일" aria-label="Username" id="signupModalInputtedUserEmail">
+                            <input type="email" class="form-control" placeholder="이메일" aria-label="Username" id="signupModalInputtedUserEmail">
                             <span class="input-group-text">@</span>
                             <input type="text" class="form-control" placeholder="naver.com" id="showSelectedValue" value ="naver.com" aria-label="Username" disabled='true' />
                	            <select class="form-select" aria-label="Default select example" onchange="selectEmailChange(this)">
@@ -232,6 +232,6 @@ function setSignUpModal_IdPasswordCheck(){
                         </div>
                         <div id='checkEmailConfirm' ></div>
                         `;
-const inputBody = document.getElementById('signUpModalBody');
+const inputBody = document.getElementById('testWebView');
 inputBody.innerHTML = struct_div;
 };

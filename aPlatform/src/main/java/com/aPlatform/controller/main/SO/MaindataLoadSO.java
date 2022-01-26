@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,5 +24,10 @@ public class MaindataLoadSO
 	public MainDataLoadOutVO serviceList(@RequestBody Map<String, String> param)
 	{
 		return maindataLoadDAO.loadNavbar(param);
+	}
+	@GetMapping(value = "/tw")
+	public String go2TestWeb()
+	{
+		return "/tw";
 	}
 }
