@@ -19,7 +19,6 @@ public class CheckEmailSO
 	@Autowired
 	OperMailBOC operMailBOC;
 	@RequestMapping(method = RequestMethod.GET, value = "/checkEmail")
-	// public @ResponseBody void sendGmail(Model model, HttpServletRequest request)
 	public @ResponseBody String sendGmail(Model model,
 			@RequestParam Map<String, Object> param)
 	{

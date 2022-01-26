@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aPlatform.controller.user.BOC.LoginBOC;
 import com.aPlatform.controller.user.VO.UserinfoOutVO;
@@ -18,14 +20,18 @@ public class UserActiveSO
 {
 	@Autowired
 	LoginBOC loginBOC;
+	@ResponseBody
 	@RequestMapping(method = RequestMethod.GET, value = "/signup")
 	public boolean register(@RequestBody UserinfoVO userinfoVO)
 	{
 		return loginBOC.registerUser(userinfoVO);
 	}
+	@ResponseBody
 	@RequestMapping(method = RequestMethod.GET, value = "/checkid")
-	public boolean checkDuplId(@RequestBody UserinfoVO userinfoVO)
+	public boolean checkDuplId(@RequestParam String user_id)
 	{
+		UserinfoVO userinfoVO = new UserinfoVO();
+		userinfoVO.setUser_id(user_id);
 		return loginBOC.checkDuplId(userinfoVO);
 	}
 

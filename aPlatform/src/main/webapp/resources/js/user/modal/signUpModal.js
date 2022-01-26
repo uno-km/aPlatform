@@ -22,9 +22,14 @@ function signUpModalNextBnt(){
             console.log(signUpModalCnt);
             this.signUpModalCnt.value='3';
             this.signUpModalProgress.width='75%';
-            
+            clearTimeout(this.counter);
+            setSignUpModal_IdPasswordCheck();
             break;
         case '3':
+            if (!(document.getElementById('checkDuplTest').value == 'true' && document.getElementById('firstInputPassword').className == 'form-control is-valid')) {
+                alert('아이디중복체크 또는 비밀번호를 확인해주세요!');
+                break;
+            }
             console.log(signUpModalCnt);
             this.signUpModalCnt.value='4';
             this.signUpModalProgress.width='100%';
@@ -40,7 +45,6 @@ function setInitSignUpModal(){
     document.getElementById('signUpModal').style.display='block';
     this.signUpModalCnt.value='1';
     this.signUpModalProgress.width='25%';
-    // setSignUpModal_EmailIdCheck();
     setSignUpModal_checkPage();
 }
 function setSignUpModal_checkPage(){
@@ -170,21 +174,20 @@ function checkRandom(){
 }
 function signUpModalCloseBtn(){
     if (counter != null) {
-        clearTimeout(counter);
+        clearTimeout(this.counter);
     }
 }
 function countDown3min(){
     if (counter != null) {
-        clearTimeout(counter);
+        clearTimeout(this.counter);
     }
     this.cnt = 180;
     document.getElementById('setTime').innerText = this.cnt;
     this.counter = setInterval(() => {
-        clearInterval(cnt);
         this.cnt--;
         document.getElementById('setTime').innerText = this.cnt;
         if(this.cnt<=0){
-            clearInterval(this.cnt);
+            clearInterval(this.counter);
             document.getElementById('setTime').innerText = '시간이 초과되었습니다.';
             this.getRandom="";
         }
@@ -216,22 +219,137 @@ function setRandom(data){
 }
 
 function setSignUpModal_IdPasswordCheck(){
-    let struct_div = `  <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="이메일" aria-label="Username" id="signupModalInputtedUserEmail">
-                            <span class="input-group-text">@</span>
-                            <input type="text" class="form-control" placeholder="naver.com" id="showSelectedValue" value ="naver.com" aria-label="Username" disabled='true' />
-               	            <select class="form-select" aria-label="Default select example" onchange="selectEmailChange(this)">
-  						    	<option selected value ="naver">네이버</option>
-  							    <option value="google">구글</option>
-  							    <option value="daum">다음</option>
-  							    <option value="user_email_input">직접입력</option>
-							</select>
-                        </div>
-                        <div class="d-grid gap-2 col-6 mx-auto">
-                            <button type="button" class="btn btn-primary" id="checkEmail" onclick="checkEmail()">이메일 인증</button>
-                        </div>
-                        <div id='checkEmailConfirm' ></div>
-                        `;
-const inputBody = document.getElementById('testWebView');
+let struct_div = `  
+        <div class="input-group mb-3">
+            <div class="input-group mb-3">
+                <input type="hidden" id="checkDuplTest" value="false" />
+                <input type="text" class="form-control"
+                    placeholder="가입하실 아이디를 입력해주세요." aria-describedby="button-addon2"
+                    id='inputtedId'>
+                <button class="btn btn btn-primary" type="button"
+                    id="button-addon2" onclick='checkDuplicataionId()'>중복검사</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch"
+                            id="numExist" disabled>
+                        <label class="form-check-label" for="flexSwitchCheckDisabled">숫자여부</label>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch"
+                            id="specialCharExist" disabled>
+                        <label class="form-check-label"
+                            for="flexSwitchCheckCheckedDisabled">특수문자</label>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch"
+                            id="wordCntCheck" disabled>
+                        <label class="form-check-label" for="specialCharExist">8자
+                            이상</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input type="password" class="form-control"
+                id="firstInputPassword" onkeyup='printName()'
+                placeholder="8자이상, 숫자, 특수기호포함">
+
+        </div>
+        <div class="input-group mb-3">
+            <input type="password" class="form-control"
+                id="secondInputPassword" onkeyup='printName()'
+                placeholder="8자이상, 숫자, 특수기호포함">
+        </div>
+        <div id='result' hidden='true' />
+    </div>
+`;
+const inputBody = document.getElementById('signUpModalBody');
 inputBody.innerHTML = struct_div;
-};
+}
+function checkDuplicataionId() {
+    const inputtedId = document.getElementById("inputtedId");
+    $.ajax({
+        type : 'GET',
+        url : '/user/checkid?user_id=' + inputtedId.value,
+        async : false,
+        dataType : 'json',
+        contentType : 'application/json; charset=utf-8',
+        success : function(data) {
+            judgeDuplicataion(data);
+        },
+        error : function() {
+            alert('통신실패!!');
+        }
+    });
+}
+function judgeDuplicataion(data) {
+    const inputtedId = document.getElementById("inputtedId");
+    if (null == inputtedId.value || inputtedId.value.length == 0) {
+        document.getElementById('checkDuplTest').value = 'false';
+        alert('아이디를 입력해주세요.');
+        inputtedId.className = 'form-control is-invalid';
+    } else {
+        if (data == true) {
+            document.getElementById('checkDuplTest').value = 'true';
+            alert('사용가능한 아이디입니다.');
+            inputtedId.className = 'form-control is-valid';
+        } else {
+            document.getElementById('checkDuplTest').value = 'false';
+            alert('중복된 아이디입니다.');
+            inputtedId.className = 'form-control is-invalid';
+        }
+    }
+}
+function printName() {
+    var pattern1 = /[0-9]/; // 숫자
+    var pattern2 = /[~!@#$%^&*()_+|<>?:{}]/; // 특수문자
+
+    const res = document.getElementById("result");
+    const firstInputPassword = document.getElementById('firstInputPassword');
+    const secondInputPassword = document.getElementById('secondInputPassword');
+    res.innerText = firstInputPassword.value;
+    if (!pattern1.test(firstInputPassword.value)) {
+        document
+            .getElementById('numExist')
+            .checked = false;
+    } else {
+        document
+            .getElementById('numExist')
+            .checked = true;
+    }
+
+    if (!pattern2.test(firstInputPassword.value)) {
+        document
+            .getElementById('specialCharExist')
+            .checked = false;
+    } else {
+        document
+            .getElementById('specialCharExist')
+            .checked = true;
+    }
+
+    if (res.innerText.length >= '8') {
+        document
+            .getElementById('wordCntCheck')
+            .checked = true;
+    } else {
+        document
+            .getElementById('wordCntCheck')
+            .checked = false;
+    }
+    if (firstInputPassword.value == secondInputPassword.value && document.getElementById('numExist').checked && document.getElementById('specialCharExist').checked && document.getElementById('wordCntCheck').checked) {
+        firstInputPassword.className = 'form-control is-valid';
+        secondInputPassword.className = 'form-control is-valid';
+    } else {
+        firstInputPassword.className = 'form-control';
+        secondInputPassword.className = 'form-control';
+    }
+}
