@@ -317,33 +317,21 @@ function printName() {
     const secondInputPassword = document.getElementById('secondInputPassword');
     res.innerText = firstInputPassword.value;
     if (!pattern1.test(firstInputPassword.value)) {
-        document
-            .getElementById('numExist')
-            .checked = false;
+        document.getElementById('numExist').checked = false;
     } else {
-        document
-            .getElementById('numExist')
-            .checked = true;
+        document.getElementById('numExist').checked = true;
     }
 
     if (!pattern2.test(firstInputPassword.value)) {
-        document
-            .getElementById('specialCharExist')
-            .checked = false;
+        document.getElementById('specialCharExist').checked = false;
     } else {
-        document
-            .getElementById('specialCharExist')
-            .checked = true;
+        document.getElementById('specialCharExist').checked = true;
     }
 
     if (res.innerText.length >= '8') {
-        document
-            .getElementById('wordCntCheck')
-            .checked = true;
+        document.getElementById('wordCntCheck').checked = true;
     } else {
-        document
-            .getElementById('wordCntCheck')
-            .checked = false;
+        document.getElementById('wordCntCheck').checked = false;
     }
     if (firstInputPassword.value == secondInputPassword.value && document.getElementById('numExist').checked && document.getElementById('specialCharExist').checked && document.getElementById('wordCntCheck').checked) {
         firstInputPassword.className = 'form-control is-valid';

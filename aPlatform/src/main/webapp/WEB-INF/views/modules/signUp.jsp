@@ -10,6 +10,8 @@
 		<input type="hidden" id="signUpModalEmailInputValidateTest" value='false' />
 		<input type="hidden" id="signUpModalEmailUrlValidateTest" value='false' />
 		<input type="hidden" id="signUpModalEmailRandomCheck" value='false' />
+		<input type="hidden" id="signUpModalNameCheck" value='false' />
+		<input type="hidden" id="signUpModalBirthCheck" value='false' />
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">회원가입</h5>
@@ -17,7 +19,7 @@
 					aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<div id='signUpModalBody'>
+				<div id='signUpModalBody' >
 				</div>
 				<hr/>
 				<div class="progress">
