@@ -56,7 +56,7 @@
 		const pattern2 = /[~!@#$%^&*()_+|<>?:{}]/; // 특수문자
 		const inputUserName = document.getElementById('inputUserName');
 		const signUpModalNameCheck = document
-				.getElementById('signUpModalNameCheck');
+				.getElementById('signUpModalNameCheck'); 
 		if (pattern1.test(inputUserName.value)) {
 			inputUserName.className = 'form-control is-invalid';
 			signUpModalNameCheck.value = 'false';
