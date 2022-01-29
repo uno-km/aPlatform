@@ -126,7 +126,7 @@ var callNavBar = function () {
                 setNavbar(data);
             },
             error: function () {
-                alert('통신실패!!');
+                alert('통신실패!!'); 
             }
         });
     }
