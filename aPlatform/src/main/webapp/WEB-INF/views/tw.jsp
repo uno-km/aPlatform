@@ -20,7 +20,7 @@
 					<div class="form-floating mb-3">
 						<input type="number" class="form-control" id="inputUserBirth"
 							oninput="checkBirth(this, 6)">
-						<label for="inputUserBirth">생년월일을 입력해주세요. (YYYDDMM)</label>
+						<label for="inputUserBirth">생년월일을 입력해주세요. (YYDDMM)</label>
 					</div>
 					<div class="form-floating mb-3">
 						<input type="tel" class="form-control" id="floatingInput">
@@ -56,7 +56,7 @@
 		const pattern2 = /[~!@#$%^&*()_+|<>?:{}]/; // 특수문자
 		const inputUserName = document.getElementById('inputUserName');
 		const signUpModalNameCheck = document
-				.getElementById('signUpModalNameCheck'); 
+				.getElementById('signUpModalNameCheck');
 		if (pattern1.test(inputUserName.value)) {
 			inputUserName.className = 'form-control is-invalid';
 			signUpModalNameCheck.value = 'false';
@@ -78,12 +78,15 @@
 	function checkBirth(inputUserBirth, maxlength) {
 		const signUpModalBirthCheck = document
 				.getElementById('signUpModalBirthCheck');
-		if (inputUserBirth.value.length > maxlength) {
-			inputUserBirth.value = inputUserBirth.value.substr(0, maxlength);
+		if (inputUserBirth.value.length == maxlength) {
 			inputUserBirth.className = 'form-control is-valid';
-		}else{
+		} else {
 			inputUserBirth.className = 'form-control';
 			signUpModalBirthCheck.value = 'false';
+		}
+		if (inputUserBirth.value.length > maxlength) {
+			inputUserBirth.value = inputUserBirth.value.substr(0, maxlength);
+
 		}
 	}
 </script>
