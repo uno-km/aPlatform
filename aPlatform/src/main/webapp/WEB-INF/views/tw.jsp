@@ -83,7 +83,7 @@
 		} else {
 			inputUserBirth.className = 'form-control';
 			signUpModalBirthCheck.value = 'false';
-		}
+		} 
 		if (inputUserBirth.value.length > maxlength) {
 			inputUserBirth.value = inputUserBirth.value.substr(0, maxlength);
 
