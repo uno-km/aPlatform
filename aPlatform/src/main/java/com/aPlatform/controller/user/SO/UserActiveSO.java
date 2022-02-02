@@ -34,7 +34,7 @@ public class UserActiveSO
 		userinfoVO.setUser_id(user_id);
 		return loginBOC.checkDuplId(userinfoVO);
 	}
-
+	@ResponseBody
 	@RequestMapping(method = RequestMethod.POST, value = "/signin")
 	public ResponseEntity<UserinfoOutVO> signinUser(
 			@RequestBody UserinfoVO userinfoVO)
