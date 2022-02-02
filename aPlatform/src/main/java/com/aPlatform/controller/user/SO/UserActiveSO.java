@@ -30,7 +30,7 @@ public class UserActiveSO
 	@RequestMapping(method = RequestMethod.GET, value = "/checkid")
 	public boolean checkDuplId(@RequestParam String user_id)
 	{
-		UserinfoVO userinfoVO = new UserinfoVO();
+		UserinfoVO userinfoVO = new UserinfoVO(); 
 		userinfoVO.setUser_id(user_id);
 		return loginBOC.checkDuplId(userinfoVO);
 	}
