@@ -52,7 +52,6 @@ public class LoginBO
 		return outVO;
 	}
 
-
 	public boolean checkDuplId(UserinfoVO UserinfoVO)
 	{
 		List<UserinfoVO> list = new ArrayList<UserinfoVO>();

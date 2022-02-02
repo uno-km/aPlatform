@@ -18,7 +18,7 @@ import com.aPlatform.controller.user.VO.UserinfoVO;
 @RequestMapping(value = "/user")
 public class UserActiveSO
 {
-	@Autowired
+	@Autowired 
 	LoginBOC loginBOC;
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.GET, value = "/signup")
@@ -30,7 +30,7 @@ public class UserActiveSO
 	@RequestMapping(method = RequestMethod.GET, value = "/checkid")
 	public boolean checkDuplId(@RequestParam String user_id)
 	{
-		UserinfoVO userinfoVO = new UserinfoVO();
+		UserinfoVO userinfoVO = new UserinfoVO(); 
 		userinfoVO.setUser_id(user_id);
 		return loginBOC.checkDuplId(userinfoVO);
 	}
