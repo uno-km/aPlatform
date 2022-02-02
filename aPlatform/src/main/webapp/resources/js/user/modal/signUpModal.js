@@ -8,11 +8,15 @@ var getRandom = "";
 function signUpModalNextBnt(){
     switch(this.signUpModalCnt.value){
         case '1':
-
             console.log(signUpModalCnt);
-            this.signUpModalCnt.value='2';
-            this.signUpModalProgress.width='50%';
+            checkCheckBox();
+            if(document.getElementById("signUpModalCheck").value == 'false'){
+                alert("체크박스를 확인해주세요!");
+                break;
+            }
             setSignUpModal_EmailIdCheck();
+            this.signUpModalCnt.value='2';
+            this.signUpModalProgress.width='25%';
             break;
         case '2':
             if(!(document.getElementById('signUpModalEmailRandomCheck').value=='true')) {
@@ -20,19 +24,20 @@ function signUpModalNextBnt(){
                 break;
             }
             console.log(signUpModalCnt);
-            this.signUpModalCnt.value='3';
-            this.signUpModalProgress.width='75%';
             clearTimeout(this.counter);
             setSignUpModal_IdPasswordCheck();
+            this.signUpModalCnt.value='3';
+            this.signUpModalProgress.width='50%';
             break;
         case '3':
             if (!(document.getElementById('checkDuplTest').value == 'true' && document.getElementById('firstInputPassword').className == 'form-control is-valid')) {
                 alert('아이디중복체크 또는 비밀번호를 확인해주세요!');
                 break;
             }
+            inputUserIdPassword();
             console.log(signUpModalCnt);
             this.signUpModalCnt.value='4';
-            this.signUpModalProgress.width='100%';
+            this.signUpModalProgress.width='75%';
             break;
         case '4':
             console.log(signUpModalCnt);
@@ -44,28 +49,47 @@ function signUpModalNextBnt(){
 function setInitSignUpModal(){
     document.getElementById('signUpModal').style.display='block';
     this.signUpModalCnt.value='1';
-    this.signUpModalProgress.width='25%';
+    this.signUpModalProgress.width='0%';
+    this.signUpUserId.value='';
+    this.signUpUserPassword.value='';
+    this.signUpUserEmail.value='';
+    this.signUpUserName.value='';
+    this.signUpUserBirth.value='';
+    this.signUpUserPhone.value='';
     setSignUpModal_checkPage();
 }
 function setSignUpModal_checkPage(){
     let struct_div = `  <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="all" id="signUpModal_consetrate_all" >
+                            <input class="form-check-input" type="checkbox" value="all" id="signUpModal_consetrate_all" onClick="selectAll(this)" name="signUpCheckBox">
                             <label class="form-check-label" for="flexCheckDefault"> 전체 동의 </label>
                         </div>
                         <div class="alert alert-warning" role="alert">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="accept1" id="signUpModal_consetrate1">
+                                <input class="form-check-input" type="checkbox" value="accept1" name="signUpCheckBox" id="signUpcheckBox1">
                                 <label class="form-check-label" for="flexCheckDefault">약관에 동의합니다. </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="accept2" id="signUpModal_consetrate2" >
+                                <input class="form-check-input" type="checkbox" value="accept2" name="signUpCheckBox" id="signUpcheckBox2">
                                 <label class="form-check-label" for="flexCheckDefault">약관에 동의합니다. </label>
                             </div>
                         </div>`;
 const inputBody = document.getElementById('signUpModalBody');
 inputBody.innerHTML = struct_div;
 };
-function setCheckAll(){
+function selectAll(selectAll){
+    const checkAll = document.getElementsByName('signUpCheckBox');
+    checkAll.forEach((checkbox) => {
+        checkbox.checked = selectAll.checked;        
+    });
+}
+function checkCheckBox(){
+    const signUpcheckBox1 = document.getElementById("signUpcheckBox1");
+    const signUpcheckBox2 = document.getElementById("signUpcheckBox2");
+    if(signUpcheckBox1.checked && signUpcheckBox2.checked){
+        document.getElementById("signUpModalCheck").value = 'true';
+    }else{
+        document.getElementById("signUpModalCheck").value = 'false';
+    }
 }
 function setSignUpModal_EmailIdCheck(){
     let struct_div = `  <div class="input-group mb-3">
@@ -160,12 +184,14 @@ function checkEmailForValidate(){
 }
 function checkRandom(){
     const testAreaVal = document.getElementById('textAreaForCheckRandom').value;
+    const user_email = document.getElementById('signupModalInputtedUserEmail').value + '@' + document.getElementById('showSelectedValue').value;
     if(testAreaVal.length==0||testAreaVal==null){
         alert("빈칸을 입력하셨습니다. 다시 입력해주세요.");
     }
     if(testAreaVal==this.getRandom){
         alert("확인완료");
         document.getElementById('signUpModalEmailRandomCheck').value ='true';
+        this.signUpUserEmail.value = user_email;
         this.getRandom ='';
     }
     else{
@@ -340,4 +366,8 @@ function printName() {
         firstInputPassword.className = 'form-control';
         secondInputPassword.className = 'form-control';
     }
+}
+function inputUserIdPassword(){
+    this.signUpUserPassword = document.getElementById('firstInputPassword');
+    this.signUpUserId = document.getElementById('inputtedId');
 }

@@ -7,11 +7,20 @@
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<input type="hidden" id="signUpModalCnt" value='1' />
+		<input type="hidden" id="signUpModalCheck" value='false' />
 		<input type="hidden" id="signUpModalEmailInputValidateTest" value='false' />
 		<input type="hidden" id="signUpModalEmailUrlValidateTest" value='false' />
 		<input type="hidden" id="signUpModalEmailRandomCheck" value='false' />
 		<input type="hidden" id="signUpModalNameCheck" value='false' />
 		<input type="hidden" id="signUpModalBirthCheck" value='false' />
+
+		<input type="hidden" id="signUpUserId" value=""/>
+		<input type="hidden" id="signUpUserPassword" value=""/>
+		<input type="hidden" id="signUpUserEmail" value=""/>
+		<input type="hidden" id="signUpUserName" value=""/>
+		<input type="hidden" id="signUpUserBirth" value=""/>
+		<input type="hidden" id="signUpUserPhone" value=""/>
+
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">회원가입</h5>
