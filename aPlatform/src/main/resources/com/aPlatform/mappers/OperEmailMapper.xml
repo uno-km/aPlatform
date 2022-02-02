@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aPlatform.mappers.OperEmailMapper">
+
+	<select resultType="map" parameterType="map" id="getOperationMail">
+		SELECT
+    		EMAIL 				AS OPER_MAIL
+		    ,   MAIL_PASSWORD 	AS OPER_PASSWORD
+		    ,   MAIL_TITLE
+		    ,   MAIL_TXT
+		FROM 
+ 		   OPE_MAIL_DTL
+		WHERE
+ 		   MAIL_SBST			=	#{mail_sbst}
+ 		   AND   MAIL_SEND_TIME	=	#{mail_send_time}
+ 	</select>
+</mapper>

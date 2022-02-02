@@ -6,30 +6,31 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aPlatform.controller.user.VO.UserinfoOutVO;
 import com.aPlatform.controller.user.VO.UserinfoVO;
-import com.aPlatform.mappers.userActiveMapper;
+import com.aPlatform.mappers.UserActiveMapper;
 import com.unoCode.Validation;
 
 @Service
 public class LoginBO
 {
 	@Autowired
-	userActiveMapper userActiveMapper;
+	UserActiveMapper userActiveMapper;
 
 	public boolean registerUser(UserinfoVO UserinfoVO)
 	{
-		UserinfoVO tempVO = userActiveMapper.getUserInfo(UserinfoVO);
+		UserinfoOutVO tempVO = userActiveMapper.getUserInfo(UserinfoVO);
 		if(Validation.isNullCheck(tempVO))
 		{
-
 			userActiveMapper.signUp(UserinfoVO);
 			return true;
 		}
 		return false;
 	}
-	public boolean signinUser(UserinfoVO UserinfoVO)
+
+	public boolean checkUser(UserinfoVO UserinfoVO)
 	{
-		UserinfoVO tempVO = userActiveMapper.getUserInfo(UserinfoVO);
+		UserinfoOutVO tempVO = userActiveMapper.getUserInfo(UserinfoVO);
 		if(Validation.isNullCheck(tempVO))
 		{
 			return false;
@@ -45,6 +46,13 @@ public class LoginBO
 		return true;
 	}
 
+	public UserinfoOutVO signinUser(UserinfoVO UserinfoVO)
+	{
+		UserinfoOutVO outVO = userActiveMapper.getUserInfo(UserinfoVO);
+		return outVO;
+	}
+
+
 	public boolean checkDuplId(UserinfoVO UserinfoVO)
 	{
 		List<UserinfoVO> list = new ArrayList<UserinfoVO>();
@@ -56,4 +64,5 @@ public class LoginBO
 		}
 		return false;
 	}
+
 }
