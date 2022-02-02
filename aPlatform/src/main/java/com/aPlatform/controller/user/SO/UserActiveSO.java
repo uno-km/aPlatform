@@ -18,7 +18,7 @@ import com.aPlatform.controller.user.VO.UserinfoVO;
 @RequestMapping(value = "/user")
 public class UserActiveSO
 {
-	@Autowired
+	@Autowired 
 	LoginBOC loginBOC;
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.GET, value = "/signup")
