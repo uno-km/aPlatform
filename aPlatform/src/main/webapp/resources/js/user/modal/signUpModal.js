@@ -36,12 +36,14 @@ function signUpModalNextBnt(){
             }
             inputUserIdPassword();
             console.log(signUpModalCnt);
+            setSignUpModal_NameBirthPhoneInput();
             this.signUpModalCnt.value='4';
             this.signUpModalProgress.width='75%';
             break;
         case '4':
             console.log(signUpModalCnt);
-            this.signUpModalCnt.value='1';
+            inputUserNameBirthPhone();
+            signUp();
             this.signUpModalProgress.width='100%';
             break;
     };
@@ -370,4 +372,115 @@ function printName() {
 function inputUserIdPassword(){
     this.signUpUserPassword = document.getElementById('firstInputPassword');
     this.signUpUserId = document.getElementById('inputtedId');
+}
+
+function setSignUpModal_NameBirthPhoneInput(){
+    let struct_div = `  
+    <div class="form-floating mb-3">
+        <input type="name" class="form-control" id="inputUserName" onkeyup="checkName()">
+        <label for="inputUserName">이름을 입력해주세요.</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" id="inputUserBirth" oninput="checkBirth(this, 6)">
+        <label for="inputUserBirth">생년월일을 입력해주세요. (YYDDMM)</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="tel" class="form-control" id="inputUserPhone">
+        <label for="floatingInput">전화번호를 입력해주세요. (선택)</label>
+    </div>
+    <input type="hidden" id="signUpModalNameCheck" value='false' />
+    <input type="hidden" id="signUpModalBirthCheck" value='false' />
+    `;
+    const inputBody = document.getElementById('signUpModalBody');
+    inputBody.innerHTML = struct_div;
+}
+function checkDuplicataionId() {
+	const inputtedId = document.getElementById("inputtedId");
+	$.ajax({
+		type : 'GET',
+		url : '/user/checkid?user_id=' + inputtedId.value,
+		async : false,
+		dataType : 'json',
+		contentType : 'application/json; charset=utf-8',
+		success : function(data) {
+			judgeDuplicataion(data);
+		},
+		error : function() {
+			alert('통신실패!!');
+		}
+	});
+}
+function checkName() {
+	const pattern1 = /[0-9]/; // 숫자
+	const pattern2 = /[~!@#$%^&*()_+|<>?:{}]/; // 특수문자
+	const inputUserName = document.getElementById('inputUserName');
+	const signUpModalNameCheck = document.getElementById('signUpModalNameCheck');
+	if (pattern1.test(inputUserName.value)) {
+		inputUserName.className = 'form-control is-invalid';
+		signUpModalNameCheck.value = 'false';
+		} else {
+		if (pattern2.test(inputUserName.value)) {
+			inputUserName.className = 'form-control is-invalid';
+			signUpModalNameCheck.value = 'false';
+		} else {
+			if (inputUserName.value.length >= '2') {
+				inputUserName.className = 'form-control is-valid';
+				signUpModalNameCheck.value = 'true';
+			} else {
+				inputUserName.className = 'form-control';
+				signUpModalNameCheck.value = 'false';
+			}
+		}
+	}
+}
+function checkBirth(inputUserBirth, maxlength) {
+	const signUpModalBirthCheck = document.getElementById('signUpModalBirthCheck');
+	if (inputUserBirth.value.length == maxlength) {
+		inputUserBirth.className = 'form-control is-valid';
+	} else {
+		inputUserBirth.className = 'form-control';
+		signUpModalBirthCheck.value = 'false';
+	} 
+	if (inputUserBirth.value.length > maxlength) {
+		inputUserBirth.value = inputUserBirth.value.substr(0, maxlength);
+	}
+}
+function inputUserNameBirthPhone(){
+    const inputUserName = document.getElementById('inputUserName').value;
+    const inputUserBirth = document.getElementById('inputUserBirth').value;
+    const inputUserPhone = document.getElementById('inputUserPhone').value;
+    this.signUpUserName.value = inputUserName;
+    this.signUpUserBirth.value =inputUserBirth;
+    this.signUpUserPhone.value = inputUserPhone;
+}
+
+function signUp(){
+    var maindataLoadInVO = {
+        "user_id": this.signUpUserId.value,
+        "user_password": this.signUpUserPassword.value,
+        "user_email" : this.signUpUserEmail.value,
+        "user_name" : this.signUpUserName.value,
+        "user_phonenum" : this.signUpUserPhone.value,
+        "user_birth" : this.signUpUserBirth.value,
+        "user_auth" : '100'
+    }
+    $.ajax({
+        type: 'POST', //post 방식으로 전송
+        url: '/user/signup', //데이터를 주고받을 파일 주소
+        data: JSON.stringify(maindataLoadInVO), //위의 변수에 담긴 데이터를 전송해준다.
+        dataType: 'JSON', 
+        async : false,
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {  
+            if(data){
+                alert("성공");
+            }
+            else{
+                alert("실패..");
+            }
+        },
+        error: function () {
+            alert('통신실패!!');
+        }
+    });
 }

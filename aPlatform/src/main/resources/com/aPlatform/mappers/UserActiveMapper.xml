@@ -56,7 +56,7 @@
 		#{user_id}
 		, #{user_password}
 		, #{user_email}
-		, #{user_name}#
+		, #{user_name}
 		, #{user_phonenum}
 		, #{user_auth}
 		, #{user_birth}
