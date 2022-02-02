@@ -37,6 +37,7 @@ function signUpModalNextBnt(){
             inputUserIdPassword();
             console.log(signUpModalCnt);
             setSignUpModal_NameBirthPhoneInput();
+            buttonChange();
             this.signUpModalCnt.value='4';
             this.signUpModalProgress.width='75%';
             break;
@@ -47,6 +48,14 @@ function signUpModalNextBnt(){
             this.signUpModalProgress.width='100%';
             break;
     };
+}
+function buttonChange(){
+    let button_div = `
+    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+    id='signUpModalNextBnt' onclick="signUpModalNextBnt()">다음</button>
+    `
+    const inputDiv = document.getElementById('buttonChange');
+    inputDiv.innerHTML = button_div;
 }
 function setInitSignUpModal(){
     document.getElementById('signUpModal').style.display='block';
@@ -473,7 +482,7 @@ function signUp(){
         contentType: 'application/json; charset=utf-8',
         success: function (data) {  
             if(data){
-                alert("성공");
+                alert("회원가입에 성공했습니다.");
             }
             else{
                 alert("실패..");

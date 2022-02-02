@@ -27,11 +27,11 @@ var setRemoteCtrl = function(){
                         <input type="text" class="form-control" id='sideRemoteId' placeholder="아이디" onkeyup="enterkey('login')">
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" name='sideRemotePW' placeholder="비빌번호." onkeyup="enterkey('login')">
+                        <input type="password" class="form-control" id='sideRemotePW' name='sideRemotePW' placeholder="비빌번호." onkeyup="enterkey('login')">
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">로그인유지</label>
+                        <label class="form-check-label" for="exampleCheck1">자동 로그인</label>
                     </div>
                     <button type="button" class="btn btn-primary" id="loginButton" onclick="signin()">로그인</button>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal" onclick='setInitSignUpModal()'>회원가입</button>
@@ -85,7 +85,7 @@ function logout () {
 }
 function signin () {
       var user_id = document.getElementById("sideRemoteId").value;
-      var user_password = document.getElementById("sideRemoteId").value;
+      var user_password = document.getElementById("sideRemotePW").value;
       var maindataLoadInVO = {
           "user_id": user_id,
           "user_password": user_password
