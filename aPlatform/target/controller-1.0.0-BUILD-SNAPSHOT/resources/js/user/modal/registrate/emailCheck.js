@@ -18,7 +18,7 @@ function setSignUpModal_EmailIdCheck(){
                         `;
 const inputBody = document.getElementById('signUpModalBody');
 inputBody.innerHTML = struct_div;
-};
+}
 function selectEmailChange(selected){
     const selected_value = selected[selected.selectedIndex].value;
     let showSelectedValue = document.getElementById('showSelectedValue');
