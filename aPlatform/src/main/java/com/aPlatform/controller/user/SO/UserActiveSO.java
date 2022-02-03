@@ -21,7 +21,7 @@ public class UserActiveSO
 	@Autowired 
 	LoginBOC loginBOC;
 	@ResponseBody
-	@RequestMapping(method = RequestMethod.GET, value = "/signup")
+	@RequestMapping(method = RequestMethod.POST, value = "/signup")
 	public boolean register(@RequestBody UserinfoVO userinfoVO)
 	{
 		return loginBOC.registerUser(userinfoVO);
@@ -34,7 +34,7 @@ public class UserActiveSO
 		userinfoVO.setUser_id(user_id);
 		return loginBOC.checkDuplId(userinfoVO);
 	}
-
+	@ResponseBody
 	@RequestMapping(method = RequestMethod.POST, value = "/signin")
 	public ResponseEntity<UserinfoOutVO> signinUser(
 			@RequestBody UserinfoVO userinfoVO)

@@ -1,7 +1,5 @@
-var result = "";
-var httpRequest = new XMLHttpRequest();
-
-$(document).ready(function () {
+;
+window.addEventListener('load', function() {
     document.getElementById('signUpModal').style.display='none';
     callNavBar();
     if(!localStorage.length<1){
@@ -10,13 +8,14 @@ $(document).ready(function () {
         setRemoteCtrl();
     }
 });
+
 function enterkey(stts) {
     if (window.event.keyCode == 13) {
         if(stts=="login")signin();
     }
 }
 
-var setRemoteCtrl = function(){
+function setRemoteCtrl(){
     let struct_div = `
     <div class="position-sticky border rounded" style="top: 10rem;">
     <div class="p-4">
@@ -27,11 +26,11 @@ var setRemoteCtrl = function(){
                         <input type="text" class="form-control" id='sideRemoteId' placeholder="아이디" onkeyup="enterkey('login')">
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" name='sideRemotePW' placeholder="비빌번호." onkeyup="enterkey('login')">
+                        <input type="password" class="form-control" id='sideRemotePW' name='sideRemotePW' placeholder="비빌번호." onkeyup="enterkey('login')">
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">로그인유지</label>
+                        <label class="form-check-label" for="exampleCheck1">자동 로그인</label>
                     </div>
                     <button type="button" class="btn btn-primary" id="loginButton" onclick="signin()">로그인</button>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal" onclick='setInitSignUpModal()'>회원가입</button>
@@ -40,36 +39,31 @@ var setRemoteCtrl = function(){
             <li></li>
         </ol>
     </div>
-    </div>`
-    ;
+    </div>`;
     const inputBody = document.getElementById('sideRemoteController');
     inputBody.innerHTML = struct_div;
 }
-var setLoginedRemoteCtrl = function(){
+function setLoginedRemoteCtrl(){
     let struct_div = `
     <div class="position-sticky border rounded" style="top: 10rem;">
     <div class="p-4">
         <ol class="list-unstyled mb-0">
             <li>
                 <div class="d-grid gap-2">
-                    <div class="mb-3">
-                    </div>
-                    <div class="mb-3">
-                    </div>
-                    <div class="mb-3 form-check">
-                    </div>
-                     <button type="button" class="btn btn-primary" onclick="logout()">로그아웃</button>
+                    <div class="mb-3"></div>
+                    <div class="mb-3"></div>
+                    <div class="mb-3 form-check"></div>
+                    <button type="button" class="btn btn-primary" onclick="logout()">로그아웃</button>
                 </div>
             </li>
             <li></li>
         </ol>
     </div>
-    </div>`
-    ;
+    </div>`;
     const inputBody = document.getElementById('sideRemoteController');
     inputBody.innerHTML = struct_div;
 }
-var setSession = function(data){
+function setSession(data){
     localStorage.clear();
     localStorage.setItem('user_auth', data.user_auth);
     localStorage.setItem('user_birth', data.user_birth );
@@ -84,9 +78,9 @@ function logout () {
     window.location.reload();
 }
 function signin () {
-      var user_id = document.getElementById("sideRemoteId").value;
-      var user_password = document.getElementById("sideRemoteId").value;
-      var maindataLoadInVO = {
+      const user_id = document.getElementById("sideRemoteId").value;
+      const user_password = document.getElementById("sideRemotePW").value;
+      const maindataLoadInVO = {
           "user_id": user_id,
           "user_password": user_password
       }
@@ -95,7 +89,7 @@ function signin () {
           url: '/user/signin', //데이터를 주고받을 파일 주소
           data: JSON.stringify(maindataLoadInVO), //위의 변수에 담긴 데이터를 전송해준다.
           dataType: 'JSON', 
-          async : false,
+//          async : false,
           contentType: 'application/json; charset=utf-8',
           success: function (data) {
               setSession(data);
@@ -107,20 +101,20 @@ function signin () {
           }
       });
 }
-var callNavBar = function () {
+function callNavBar() {
     if(localStorage.length===0){
         console.log("로그인기록없음");
     }else{
         const here_user_id = localStorage.getItem('user_id');
-        var navbaroutVO = {
-            "user_id":  here_user_id
-        }
+        const navbaroutVO = {
+        		"user_id":  here_user_id
+        	}
         $.ajax({
             type:'POST',
             url: '/dataload/navbar',
             data: JSON.stringify(navbaroutVO),
             dataType: 'JSON', 
-            async : false,
+//            async : false,
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
                 setNavbar(data);
@@ -131,9 +125,9 @@ var callNavBar = function () {
         });
     }
 }
-var setNavbar = function (data) {
-    var navbarList = "";
-    var navbarOutVO = data.navbaroutVO;
+function setNavbar(data) {
+    let navbarList = "";
+    const navbarOutVO = data.navbaroutVO;
     if (navbarOutVO.length > 0) {
         navbarList = "<c:if test=`${not empty sessionScope.user_id}`>";
         navbarList +=   "<ul class='nav justify-content-center'>";
@@ -150,4 +144,3 @@ var setNavbar = function (data) {
     const inputBody = document.getElementById('servicesNavbar');
     inputBody.innerHTML = navbarList;
 }
-
