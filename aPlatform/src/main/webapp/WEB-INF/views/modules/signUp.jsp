@@ -50,5 +50,5 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript"
-	src="/resources/js/user/modal/signUpModal.js"></script>
+<script type="text/javascript"	src="/resources/js/user/modal/signUpModal.js"></script>
+<script type="text/javascript"	src="/resources/js/user/modal/registrate/emailCheck.js"></script>
