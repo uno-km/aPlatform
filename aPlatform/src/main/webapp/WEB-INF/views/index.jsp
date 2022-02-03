@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/includes/common.jsp"%>
-<%-- <%@ include file="/WEB-INF/includes/header.jsp"%> --%>
+<%@ include file="/WEB-INF/includes/header.jsp"%>
+<%@ include file="/WEB-INF/views/modules/loading.jsp"%>
+
 <head>
 <meta charset="utf-8" />
 <meta name="viewport"
@@ -26,19 +28,10 @@
 					<div class="col-xl-2"></div>
 				</div>
 			</div>
-			<div class="container" id="servicesNavbar">
-				<ul class="nav justify-content-center">
-					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="#">Active</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
-					</li>
-				</ul>
-			</div>
+			<c:if test="${!empty user_id}">
+				<h1>gdgd</h1>
+			</c:if>
+			<div class="container" id="servicesNavbar"></div>
 			<div class="row justify-content-center">
 				<div class="col-xl-6">
 					<div class="text-center text-white">
@@ -119,4 +112,6 @@
 	</section>
 	<!-- Testimonials-->
 </body>
+
 <%@ include file="/WEB-INF/includes/footer.jsp"%>
+<%@ include file="/WEB-INF/views/modules/sideRemoteCnt.jsp"%>
