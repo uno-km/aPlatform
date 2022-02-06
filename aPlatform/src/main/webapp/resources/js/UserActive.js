@@ -133,8 +133,8 @@ function setNavbar(data) {
         navbarList +=   "<ul class='nav justify-content-center'>";
         for (var i = 0; i < navbarOutVO.length; i++) {
             navbarList += "<li class='nav-item'>";
-            navbarList += "		<a class='nav-link active' aria-current='page' href='#'>" +
-                    navbarOutVO[i].tmplt_id + "</a>";
+            navbarList += "		<a class='nav-link active' aria-current='page' href='"+/service/+ navbarOutVO[i].tmplt_address+"'>"; 
+            navbarList += navbarOutVO[i].tmplt_id + "</a>";
             navbarList += "</li>";
         }
         navbarList +=   "</ul>";
