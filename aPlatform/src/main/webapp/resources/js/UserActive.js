@@ -20,7 +20,7 @@ function setRemoteCtrl(){
     <div class="sideRemote_line">
         <ol class="list-unstyled mb-0">
             <li>
-                <div class="d-grid gap-2">
+                <div class="sideRemote_signinInput">
                     <div class="mb-3">
                         <input type="text" class="form-control" id='sideRemoteId' placeholder="아이디" onkeyup="enterkey('login')">
                     </div>
@@ -43,8 +43,7 @@ function setRemoteCtrl(){
 }
 function setLoginedRemoteCtrl(){
     let struct_div = `
-    <div class="position-sticky border rounded" style="top: 10rem;">
-    <div class="p-4">
+    <div class="sideRemote_line">
         <ol class="list-unstyled mb-0">
             <li>
                 <div class="d-grid gap-2">
@@ -56,7 +55,6 @@ function setLoginedRemoteCtrl(){
             </li>
             <li></li>
         </ol>
-    </div>
     </div>`;
     const inputBody = document.getElementById('sideRemoteController');
     inputBody.innerHTML = struct_div;

@@ -81,8 +81,10 @@ function checkEmailForValidate(){
                                             </div>
                                         </div>
                                     <div class="col-sm-4">
-                                        <button type="button" class="btn btn-primary" onclick="checkRandom()">입력완료</button>
-                                        <button type="button" class="btn btn-primary" onclick="checkEmail()">재전송</button>
+    									<div class='sideRemote_signinInput'>
+    										<button type="button" class="btn btn-primary" onclick="checkRandom()">입력완료</button>
+    										<button type="button" class="btn btn-primary" onclick="checkEmail()">재전송</button>
+    									</div>
                                     </div>
                                 </div>
                             </div>
