@@ -3,6 +3,7 @@
 <%@ include file="/WEB-INF/includes/common.jsp"%>
 <%@ include file="/WEB-INF/includes/header.jsp"%>
 <%@ include file="/WEB-INF/views/modules/loading.jsp"%>
+<%@ include file="/WEB-INF/views/modules/overviewNavbar.jsp"%>
 
 <head>
 <meta charset="utf-8" />

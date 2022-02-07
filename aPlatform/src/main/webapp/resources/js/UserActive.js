@@ -1,4 +1,6 @@
 ;
+var floadOverViewNavBar ="";
+
 window.addEventListener('load', function() {
     document.getElementById('signUpModal').style.display='none';
     callNavBar();
@@ -125,18 +127,43 @@ function setNavbar(data) {
     let navbarList = "";
     const navbarOutVO = data.navbaroutVO;
     if (navbarOutVO.length > 0) {
+    	navbarList = "";
         navbarList = "<c:if test=`${not empty sessionScope.user_id}`>";
         navbarList +=   "<ul class='nav justify-content-center'>";
         for (var i = 0; i < navbarOutVO.length; i++) {
-            navbarList += "<li class='nav-item'>";
-            navbarList += "		<a class='nav-link active' aria-current='page' href='"+/service/+ navbarOutVO[i].tmplt_address+"'>"; 
+            navbarList += "<li class='nav-item' id='"+navbarOutVO[i].tmplt_figure+"'";
+            navbarList += "onmouseover='overviewNavBarOpen(id)' onmouseout='overviewNavBarClose(id)'>";
+            navbarList += "		<a class='nav_template_link' aria-current='page' href='"+/service/+ navbarOutVO[i].tmplt_address+"'>"; 
             navbarList += navbarOutVO[i].tmplt_id + "</a>";
             navbarList += "</li>";
         }
         navbarList +=   "</ul>";
         navbarList += "</c:if>";
-        
     }
     const inputBody = document.getElementById('servicesNavbar');
     inputBody.innerHTML = navbarList;
+}
+
+function overviewNavBarOpen(tmplt) {
+	this.floadOverViewNavBar = document.getElementById('floadOverViewNavBar');
+	floadOverViewNavBar.style.animation="fadeIn 1s";
+	floadOverViewNavBar.style.display="flex";
+	fillOverviewWindow(tmplt);
+}
+function overviewNavBarClose(tmplt) {
+	this.floadOverViewNavBar = document.getElementById('floadOverViewNavBar');
+	floadOverViewNavBar.style.display="none";
+	clearOverviewWindow();
+}
+
+function fillOverviewWindow(tmplt) {
+	
+	let overViewWindow = "<h1>"+tmplt+"</h1>";
+    const inputBody = document.getElementById('floadOverViewNavBar');
+    inputBody.innerHTML = overViewWindow;
+}
+function clearOverviewWindow() {
+	let overViewWindow = "";
+    const inputBody = document.getElementById('floadOverViewNavBar');
+    inputBody.innerHTML = overViewWindow;
 }

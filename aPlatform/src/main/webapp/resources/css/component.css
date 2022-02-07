@@ -1,7 +1,28 @@
 @charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css); 
 
 .sideRemoteController {height: 0%;width: 12%;color: #333;font-size: 12px;position: fixed;z-index: 999;top: 35%;left: 86%;}
-.sideRemote_line {top: 10rem;background-color: #ccc;padding: 1rem !important;border-radius: 0.25rem !important;border: 1px solid #ccc !important;position: -webkit-sticky !important;position: sticky !important;box-shadow: 2px 2px 3px #777777;}
+.sideRemote_line {top: 10rem;background-color: #ccc;padding: 1rem ;border-radius: 0.25rem ;border: 1px solid #ccc ;position: -webkit-sticky ;position: sticky;box-shadow: 2px 2px 3px #777777;}
 .sideRemote_line:HOVER{background-color: #9bcdff;}
-.sideRemote_signinInput {display: grid !important;gap: 0.3rem !important;}
-#servicesNavbar{height: 40px}
+.sideRemote_signinInput {display: grid;gap: 0.3rem !important;}
+.nav_template_link{display: block;padding:0 1rem;color: #5376aa;text-decoration: none;}
+.floadOverViewNavBar{
+	display :none; 
+	height: 500px;
+    background: #ffffff;
+    border: 3px solid #ccc;
+    border-radius: 1rem;
+    width: 50%;
+    top: 40%;
+    left: 25%;
+    bottom: auto;
+    position: sticky;
+    position: fixed;
+    z-index: 120;
+    box-shadow: 0.5px 3px 3px 4px #777777;
+}  
+@keyframes fadeIn {from {opacity: 0;}to {opacity: 1;}}
+@keyframes fadeOut {from {opacity: 1;}to {opacity: 0;}}
+#servicesNavbar{height: 40px ;font-family: 'hanna'; font-size: 25px;color: #8080ff}
+ 
