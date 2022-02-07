@@ -17,8 +17,7 @@ function enterkey(stts) {
 
 function setRemoteCtrl(){
     let struct_div = `
-    <div class="position-sticky border rounded" style="top: 10rem;">
-    <div class="p-4">
+    <div class="sideRemote_line">
         <ol class="list-unstyled mb-0">
             <li>
                 <div class="d-grid gap-2">
@@ -28,17 +27,16 @@ function setRemoteCtrl(){
                     <div class="mb-3">
                         <input type="password" class="form-control" id='sideRemotePW' name='sideRemotePW' placeholder="비빌번호." onkeyup="enterkey('login')">
                     </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">자동 로그인</label>
-                    </div>
+                    <div class="form-check form-switch">
+    					<input class="form-check-input" type="checkbox" role="switch" id="autoLogin">
+    					<label class="form-check-label" for="autoLogin">자동 로그인</label>
+    				</div>
                     <button type="button" class="btn btn-primary" id="loginButton" onclick="signin()">로그인</button>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal" onclick='setInitSignUpModal()'>회원가입</button>
                 </div>
             </li>
             <li></li>
         </ol>
-    </div>
     </div>`;
     const inputBody = document.getElementById('sideRemoteController');
     inputBody.innerHTML = struct_div;

@@ -8581,10 +8581,9 @@ keyframes placeholder-wave { 100% {
 		!important;
 }
 
-.bg-light { -
+.bg-light {
 	-bs-bg-opacity: 1;
-	background-color: rgba(var(- -bs-light-rgb), var(- -bs-bg-opacity))
-		!important;
+	background-color: #400040 !important;
 }
 
 .bg-dark { -
