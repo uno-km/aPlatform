@@ -1,21 +1,15 @@
 @charset "UTF-8";
 
 @media screen and (max-width: 1200px) {
-	.sideRemoteController {
-		display: none;
-	}
-	#size_header {
-		display: flex;
-	}
+	.sideRemoteController {display: none;}
+	#size_header {display: flex;}
+	.mainPage{width: 100%;}
 }
 
 @media screen and (min-width: 1200px) {
-	.sideRemoteController {
-		display: inline;
-	}
-	#size_header {
-		display: none;
-	}
+	.sideRemoteController {display: inline;}
+	#size_header {display: none;}
+	.mainPage{width: 60%;}
 }
 
 #loading_window {
@@ -31,7 +25,6 @@
 
 #loading {
 	overflow: hidden;
-	/* 	visibility: view; */
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -40,4 +33,14 @@
 	height: 3rem;
 	position: absolute;
 	visibility: view;
+}
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+    background: yellow;
+}
+
+body {
+    min-height: 100%;
 }
