@@ -8,6 +8,7 @@
 </head>
 <body>
 	<h1>테스트화면입니다.</h1>
+	<h1>${test}</h1>
 	<div id="testWebView">
 		<div class="container">
 			<div class="row">

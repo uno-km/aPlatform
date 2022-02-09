@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.aPlatform.controller.main.BOC.MaindataLoadBOC;
 import com.aPlatform.controller.main.VO.MainDataLoadOutVO;
@@ -26,8 +27,11 @@ public class MaindataLoadSO
 		return maindataLoadDAO.loadNavbar(param);
 	}
 	@GetMapping(value = "/tw")
-	public String go2TestWeb()
+	public ModelAndView go2TestWeb()
 	{
-		return "/tw";
+		ModelAndView modelandview = new ModelAndView();
+		modelandview.setViewName("tw");
+		modelandview.addObject("test", "ㅎㅇ");
+		return modelandview;
 	}
 }

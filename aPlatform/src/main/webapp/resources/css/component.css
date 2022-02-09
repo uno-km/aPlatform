@@ -8,7 +8,8 @@
 .sideRemote_signinInput {display: grid;gap: 0.3rem !important;}
 .nav_template_link{display: block;padding:0 1rem;color: #5376aa;text-decoration: none;}
 .floadOverViewNavBar{
-	display :none; 
+	display :inline-block; 
+/* 	display :none;  */
 	height: 500px;
     background: #ffffff;
     border: 3px solid #ccc;
