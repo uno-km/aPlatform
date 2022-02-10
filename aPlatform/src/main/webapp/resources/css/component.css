@@ -28,6 +28,11 @@
 @keyframes fadeOut {from {opacity: 1;}to {opacity: 0;}}
 #servicesNavbar{height: 40px ;font-family: 'hanna'; font-size: 25px;color: #8080ff}
 
-.mainPage {height: 100%;width: 60%;background-color: darksalmon;top: 0;left: 20%;display: block;position: fixed;}
+.mainPage {height: 1000px;width: 60%;background-color: darksalmon;top: 0;left: 20%;display: block;position: absolute;}
 @media screen and (max-width: 1200px) {.mainPage{width: 100%;left:0%;}}
 @media screen and (min-width: 1200px) {.mainPage{width: 60%;}}
+
+/*금융 서비스쪽*/
+.TopSection{height:250px;width:100%;background-color: black;}
+.MiddleSection{height:100px;width:100%;background-color: green;}
+.ContentsSection{height:100%;width:100%;background-color: yellow;}

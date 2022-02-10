@@ -4,8 +4,13 @@
 
 <html>
 <meta charset="UTF-8">
-<title>내 손안의 금융 - aFinace</title>
-<div class='mainPage'></div>
-
+<title>내 손안의 금융 - aFinance</title>
+<body class='finBody'>
+	<div class='mainPage'>
+		<%@ include file="/WEB-INF/views/finance/TopSection.jsp"%>
+		<%@ include file="/WEB-INF/views/finance/MiddleSection.jsp"%>
+		<%@ include file="/WEB-INF/views/finance/ContentsSection.jsp"%>
+	</div>
+</body>
 </html>
 <%@ include file="/WEB-INF/includes/footer.jsp"%>

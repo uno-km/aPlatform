@@ -5,7 +5,6 @@
 
 
 <%@ include file="/WEB-INF/views/modules/overviewNavbar.jsp"%>
-<%@ include file="/WEB-INF/includes/header.jsp"%>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport"

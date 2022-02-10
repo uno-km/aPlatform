@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- Footer-->
-<footer class="footer">
+<footer class="footerUno">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 h-100 text-center text-lg-start my-auto">
