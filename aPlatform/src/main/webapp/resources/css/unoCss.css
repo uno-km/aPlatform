@@ -11,7 +11,7 @@
 }
 #toggleMenuOnOff{display: none;}
 #toggleMenuOnOff:CHECKED ~ .toggleHeader{height: 400px;}
-.toggleHeader{position:fixed; height: 60px;width: 100%;background-color: #292929;z-index: 10;ani}
+.toggleHeader{position:sticky; height: 60px;width: 100%;background-color: #292929;z-index: 10;top:0;}
 .toggleHeader > label > i{font-size: 4rem;color: #b5b5b5;}
 #loading_window {
 	overflow: hidden;
@@ -38,4 +38,4 @@
 html {position: relative;min-height: 100%;margin: 0;}
 body {min-height: 100%;}
 footer {width: 100%;position: fixed;bottom: 0;left: 0;}
-footer.footerUno {padding-top: 1.2rem;height:70px;background-color: #0d1f3c;}
+footer.footerUno {padding-top: 1.2rem;height:70px;background-color: rgb(0, 30, 60);}
