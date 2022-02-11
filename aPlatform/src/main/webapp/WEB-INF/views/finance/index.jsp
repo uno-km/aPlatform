@@ -5,7 +5,7 @@
 <html>
 <meta charset="UTF-8">
 <title>내 손안의 금융 - aFinance</title>
-<body style="background-color: rgb(0, 30, 60);">
+<body style="background-color: var(--myBackGround);">
 	<div class='bodyDvi'>
 		<div class='mainPage'>
 			<%@ include file="/WEB-INF/views/finance/TopSection.jsp"%>
