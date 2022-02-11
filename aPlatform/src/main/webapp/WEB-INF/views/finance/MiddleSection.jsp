@@ -4,7 +4,7 @@
 		<div class="unoRow">
 			<div class='col-85'>
 				<div class="input-group">
-					<input type="text" class="form-control">
+					<input type="text" class="form-control" style='border: 2px solid #0d6efd;'>
 					<button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
 						<span class="visually-hidden-focusable">Toggle Dropdown</span>
 					</button>

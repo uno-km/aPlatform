@@ -5,12 +5,14 @@
 <html>
 <meta charset="UTF-8">
 <title>내 손안의 금융 - aFinance</title>
-<body class='finBody'>
-	<div class='mainPage'>
-		<%@ include file="/WEB-INF/views/finance/TopSection.jsp"%>
-		<%@ include file="/WEB-INF/views/finance/MiddleSection.jsp"%>
-		<%@ include file="/WEB-INF/views/finance/ContentsSection.jsp"%>
+<body style="background-color: rgb(0, 30, 60);">
+	<div class='bodyDvi'>
+		<div class='mainPage'>
+			<%@ include file="/WEB-INF/views/finance/TopSection.jsp"%>
+			<%@ include file="/WEB-INF/views/finance/MiddleSection.jsp"%>
+			<%@ include file="/WEB-INF/views/finance/ContentsSection.jsp"%>
+		</div>
 	</div>
+	<%@ include file="/WEB-INF/includes/footer.jsp"%>
 </body>
 </html>
-<%@ include file="/WEB-INF/includes/footer.jsp"%>

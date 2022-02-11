@@ -1,5 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <section class='ContentsSection'>
-	<a href='#'>콘텐츠 섹션</a>
+	<div class='FirstRowInSection'>
+		<a href='#'>콘텐츠 섹션</a>
+		<div></div>
+		<div></div>
+	</div>
+	<div class='SecondRowInSection'>
+		<div></div>
+		<div></div>
+	</div>
+	<div class='ThirdRowInSection'>
+		<div></div>
+		<div></div>
+	</div>
 </section>
