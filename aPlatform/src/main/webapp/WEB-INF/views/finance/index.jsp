@@ -16,3 +16,4 @@
 	<%@ include file="/WEB-INF/includes/footer.jsp"%>
 </body>
 </html>
+<%@ include file="/WEB-INF/views/modules/sideRemoteCnt.jsp"%>
