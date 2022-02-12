@@ -1,0 +1,65 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css); 
+:root{
+	--myBackGround:rgb(0, 30, 60);
+}
+
+.sideRemoteController {height: 0%;width: 12%;color: #333;font-size: 12px;position: fixed;z-index: 999;top: 35%;left: 86%;}
+.sideRemote_line {top: 10rem;background-color: #ccc;padding: 1rem ;border-radius: 0.25rem ;border: 1px solid #ccc ;position: -webkit-sticky ;position: sticky;box-shadow: 2px 2px 3px #777777;}
+.sideRemote_line:HOVER{background-color: #9bcdff;}
+.sideRemote_signinInput {display: grid;gap: 0.3rem !important;}
+.nav_template_link{display: block;padding:0 1rem;color: #5376aa;text-decoration: none;}
+
+.floadOverViewNavBar{
+	display :inline-block; 
+	height: 500px;
+    background: #ffffff;
+    border: 3px solid #ccc;
+    border-radius: 1rem;
+    width: 50%;
+    top: 40%;
+    left: 25%;
+    bottom: auto;
+    position: sticky;
+    position: fixed;
+    z-index: 120;
+    box-shadow: 0.5px 3px 3px 4px #777777;
+}  
+@keyframes fadeIn {from {opacity: 0;}to {opacity: 1;}}
+@keyframes fadeOut {from {opacity: 1;}to {opacity: 0;}}
+#servicesNavbar{height: 40px ;font-family: 'hanna'; font-size: 25px;color: #8080ff}
+.bodyDvi{height: 1300px;  margin:0;padding-bottom: 66px}
+.mainPage {height: 1200px;width: 60%;background-color: #001e3c;top: 0;left: 20%;display: block;position: relative;padding-bottom:66px;}
+@media screen and (max-width: 1200px) {.mainPage{width: 100%;left:0%;} .MiddleSection{position:relative;}.unoBnt{font-size: 100%;}}
+@media screen and (min-width: 1200px) {.mainPage{width: 60%;} .MiddleSection{position:sticky;}.unoBnt{font-size: 25px;}}
+
+/*금융 서비스쪽*/
+.TopSection{height:300px;width:100%;background-color: black;}
+.IndexImg{height: 240px;background-color: #000000;}
+.ShortView{height: 60px;background-color: #292929;}
+.MiddleSection{height:100px;width:100%;background-color: var(--myBackGround);top:0px;}
+.MiddleSection .form-control{background-color: var(--myBackGround);color:white;line-height: 40px;font-size: 30px;font-family: sans-serif;}
+.MiddleSection .form-control:FOCUS{background-color: var(--myBackGround);color: white;}
+.textInput {padding-top: 1.5rem;padding-left: 1rem;padding-right: 1rem;height: 70%;}
+.MiddleSection .textInput .col-85{flex : 0 0 auto;width: 85%;}
+.MiddleSection .textInput .col-15{flex : 0 0 auto;width: 13%;}
+.unoBnt {color: #fff;background-color: #0d6efd;border-color: #0d6efd;height: 100%;width: 100%;border-radius: 1.5rem;}
+.unoBnt:hover {
+	color: #fff;
+	background-color: #0b5ed7;
+	border-color: #0a58ca;
+}
+.unoBnt:focus {
+	color: #fff;
+	background-color: #0b5ed7;
+	border-color: #0a58ca;
+	box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
+}
+.unoRow{display: flex;flex-wrap: wrap;margin-top: calc(-1 * var(--bs-gutter-y));margin-right: calc(-.5 * var(--bs-gutter-x));margin-left: calc(-.5 * var(--bs-gutter-x));}
+.ContentsSection{height:900px;width:100%;}
+.ContentsSection .FirstRowInSection{display:flex;height:33.333%;width:100%;top:0%;left:0%;background-color: white;float: left;}
+.ContentsSection .SecondRowInSection{display:flex;height:33.333%;width:100%;top:0%;left:0%;background-color: red;float: left;}
+.ContentsSection .ThirdRowInSection{display:flex;height:33.333%;width:100%;top:0%;left:0%;background-color: blue;float: left;}
+.FirstRecInRow {height:100%;flex : 0 0 auto;width:50%;background-color: blue;}
+.SecondRecInRow {height:100%;flex : 0 0 auto;width:50%;left:50%;background-color: red;}
