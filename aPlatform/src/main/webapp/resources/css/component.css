@@ -2,7 +2,7 @@
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css); 
 :root{
-	--myBackGround:var(--myBackGround);
+	--myBackGround:rgb(0, 30, 60);
 }
 
 .sideRemoteController {height: 0%;width: 12%;color: #333;font-size: 12px;position: fixed;z-index: 999;top: 35%;left: 86%;}
