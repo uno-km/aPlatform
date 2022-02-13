@@ -25,8 +25,7 @@ public class GetURLInfo
 		BufferedReader buff = new BufferedReader(
 				new InputStreamReader(new URL(marketURLMap.get(market))
 						.openConnection().getInputStream()));
-		Utils.pharsingURL(buff, marketURLMap, market, pharseType);
-		return null;
+		return Utils.pharsingURL(buff, marketURLMap, market, pharseType);
 	}
 }
 

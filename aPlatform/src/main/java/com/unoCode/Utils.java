@@ -19,7 +19,8 @@ public class Utils
 				{
 					if(line.contains(marketURLMap.get(pharseType)))
 					{
-						outMap.put(market, line.split(">")[1].split("<")[0]); // 지수 포인트
+						outMap.put(market + "_" + pharseType,
+								line.split(">")[1].split("<")[0]); // 지수 포인트
 						return outMap;
 					}
 					line = buff.readLine();
@@ -30,17 +31,22 @@ public class Utils
 				String[] sub = {"_ant" , "_org" , "_frg" };
 				while (line != null)
 				{
-					if(line.contains(marketURLMap.get(pharseType)) && cnt < 3)
+					if(line.contains(marketURLMap.get(pharseType)))
 					{
-						outMap.put(market + sub[cnt],
+						outMap.put(market + "_" + pharseType + sub[cnt],
 								line.split("<dd class=\"dd\">")[1]
 										.split("<span>")[0].split("\">")[1]);
 						cnt++;
 					}
+					if(cnt == 3)
+					{
+						return outMap;
+					}
 					line = buff.readLine();
 				}
+
 				break;
 		}
-		return marketURLMap;
+		return outMap;
 	}
 }
