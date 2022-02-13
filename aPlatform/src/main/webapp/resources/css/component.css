@@ -29,7 +29,7 @@
 @keyframes fadeIn {from {opacity: 0;}to {opacity: 1;}}
 @keyframes fadeOut {from {opacity: 1;}to {opacity: 0;}}
 #servicesNavbar{height: 40px ;font-family: 'hanna'; font-size: 25px;color: #8080ff}
-.bodyDvi{height: 1300px;  margin:0;padding-bottom: 66px}
+.bodyDvi{height: 1300px;margin:0;padding-bottom: 66px}
 .mainPage {height: 1200px;width: 60%;background-color: #001e3c;top: 0;left: 20%;display: block;position: relative;padding-bottom:66px;}
 @media screen and (max-width: 1200px) {.mainPage{width: 100%;left:0%;} .MiddleSection{position:relative;}.unoBnt{font-size: 100%;}}
 @media screen and (min-width: 1200px) {.mainPage{width: 60%;} .MiddleSection{position:sticky;}.unoBnt{font-size: 25px;}}

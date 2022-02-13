@@ -12,16 +12,16 @@
 <title>내손안에 플랫폼 - aPlatForm</title>
 </head>
 <html>
-<body>
+<body style="background-color: var(--myBackGround);">
 	<!-- Masthead-->
-	<section class="features-icons bg-light text-center">
+	<section class="features-icons text-center">
 		<div class="container position-relative">
 			<div class="container ">
 				<div class="row">
 					<div class="col-xl-2"></div>
 					<div class="col-xl-8">
 						<a href="">
-							<img src="/resources/assets/useable/logo_onlyWord.png" style="max-width: 100%; height: auto;" id='logo_onlyWord'>
+							<img src="/resources/assets/useable/logo_onlyWord_blue.png" style="max-width: 100%; height: auto;" id='logo_onlyWord'>
 						</a>
 					</div>
 					<div class="col-xl-2"></div>
@@ -48,7 +48,7 @@
 		</div>
 	</section>
 	<!-- Icons Grid-->
-	<section class="features-icons bg-light text-center">
+	<section class="features-icons text-center">
 		<div class="container ">
 			<div class="row">
 				<div class="col-xl-2"></div>
