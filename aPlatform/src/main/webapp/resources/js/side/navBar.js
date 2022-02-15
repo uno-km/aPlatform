@@ -3,25 +3,25 @@ function setRemoteCtrl(){
 	if(document.getElementById('sideRemoteController')) {
 		let struct_div = `
 				<div class="sideRemote_line">
-				<ol class="list-unstyled mb-0">
-				<li>
-				<div class="sideRemote_signinInput">
-				<div class="mb-3">
-				<input type="text" class="form-control" id='sideRemoteId' placeholder="아이디" onkeyup="enterkey('login')">
-				</div>
-				<div class="mb-3">
-				<input type="password" class="form-control" id='sideRemotePW' name='sideRemotePW' placeholder="비빌번호." onkeyup="enterkey('login')">
-				</div>
-				<div class="form-check form-switch">
-				<input class="form-check-input" type="checkbox" role="switch" id="autoLogin">
-				<label class="form-check-label" for="autoLogin">자동 로그인</label>
-				</div>
-				<button type="button" class="btn btn-primary" id="loginButton" onclick="signin()">로그인</button>
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal" onclick='setInitSignUpModal()'>회원가입</button>
-				</div>
-				</li>
-				<li></li>
-				</ol>
+					<ol class="list-unstyled mb-0">
+						<li>
+							<div class="sideRemote_signinInput">
+								<div class="mb-3">
+									<input type="text" class="form-control" id='sideRemoteId' placeholder="아이디" onkeyup="enterkey('login')">
+								</div>
+								<div class="mb-3">
+									<input type="password" class="form-control" id='sideRemotePW' name='sideRemotePW' placeholder="비빌번호." onkeyup="enterkey('login')">
+								</div>
+								<div class="form-check form-switch">
+									<input class="form-check-input" type="checkbox" role="switch" id="autoLogin">
+									<label class="form-check-label" for="autoLogin">자동 로그인</label>
+								</div>
+								<button type="button" class="btn btn-primary" id="loginButton" onclick="signin()">로그인</button>
+								<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal" onclick='setInitSignUpModal()'>회원가입</button>
+							</div>
+						</li>
+						<li></li>
+					</ol>
 				</div>`;
 		const inputBody = document.getElementById('sideRemoteController');
 		inputBody.innerHTML = struct_div;
@@ -76,24 +76,23 @@ function callNavBar() {
 
 function setNavbar(data) {
 	if(document.getElementById('sideRemoteController')) {
-	    let navbarList = "";
+	    let struct_div = "";
 	    const navbarOutVO = data.navbaroutVO;
 	    if (navbarOutVO.length > 0) {
-	    	navbarList = "";
-	        navbarList = "<c:if test=`${not empty sessionScope.user_id}`>";
-	        navbarList +=   "<ul class='nav justify-content-center'>";
-	        for (var i = 0; i < navbarOutVO.length; i++) {
-	            navbarList += "<li class='nav-item' id='"+navbarOutVO[i].tmplt_figure+"'";
-	            navbarList += "onmouseover='overviewNavBarOpen(id)' onmouseout='overviewNavBarClose(id)'>";
-	            navbarList += "		<a class='nav_template_link' aria-current='page' href='"+/service/+ navbarOutVO[i].tmplt_address+"'>"; 
-	            navbarList += navbarOutVO[i].tmplt_id + "</a>";
-	            navbarList += "</li>";
+	    	struct_div = "<c:if test=`${not empty sessionScope.user_id}`>";
+	    	struct_div +=   "<ul class='nav justify-content-center'>";
+	        for (let i = 0; i < navbarOutVO.length; i++) {
+	        	struct_div += "<li class='nav-item' id='"+navbarOutVO[i].tmplt_figure+"'";
+	        	struct_div += "onmouseover='overviewNavBarOpen(id)' onmouseout='overviewNavBarClose(id)'>";
+	        	struct_div += "		<a class='nav_template_link' aria-current='page' href='"+/service/+ navbarOutVO[i].tmplt_address+"'>"; 
+	            struct_div += navbarOutVO[i].tmplt_id + "</a>";
+	            struct_div += "</li>";
 	        }
-	        navbarList +=   "</ul>";
-	        navbarList += "</c:if>";
+	        struct_div +=   "</ul>";
+	        struct_div += "</c:if>";
 	    }
 	    const inputBody = document.getElementById('servicesNavbar');
-	    inputBody.innerHTML = navbarList;
+	    inputBody.innerHTML = struct_div;
 	}else {
 		console.log('해당 영역없음');
 	}

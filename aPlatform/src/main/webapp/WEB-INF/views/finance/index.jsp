@@ -5,7 +5,7 @@
 <html>
 <meta charset="UTF-8">
 <title>내 손안의 금융 - aFinance</title>
-<body style="background-color: var(--myBackGround);">
+<body>
 	<div class='bodyDvi'>
 		<div class='mainPage'>
 			<%@ include file="/WEB-INF/views/finance/TopSection.jsp"%>
@@ -17,5 +17,5 @@
 </body>
 </html>
 
-<%@ include file="/WEB-INF/views/modules/sideRemoteCnt.jsp"%>
+<script type="text/javascript" src="/resources/js/service/finance.js"></script>
 <%@ include file="/WEB-INF/views/modules/sideRemoteCnt.jsp"%>

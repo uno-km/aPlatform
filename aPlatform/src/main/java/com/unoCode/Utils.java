@@ -44,7 +44,26 @@ public class Utils
 					}
 					line = buff.readLine();
 				}
-
+				break;
+			case "image" :
+				int icnt = 0;
+				String[] isub = {"_day" , "_day90" , "_day365" , "_day1095" };
+				while (line != null)
+				{
+					if(line.contains(marketURLMap.get(pharseType)) && icnt < 4)
+					{
+						outMap.put(market + isub[icnt],
+								line.split(
+										"<div class=\"graph\"><img src=\"")[1]
+												.split("\" alt=\"")[0]);
+						icnt++;
+					}
+					if(icnt == 4)
+					{
+						return outMap;
+					}
+					line = buff.readLine();
+				}
 				break;
 		}
 		return outMap;
