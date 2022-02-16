@@ -3,6 +3,7 @@ package com.unoCode;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.jsoup.Jsoup;
@@ -13,11 +14,13 @@ public class Utils
 {
 	public static Object pharsingURL(Map<String, String> marketURLMap, String market, String pharseType) throws IOException
 	{
+		if(pharseType == null) pharseType = "rankMC";
 		Document doc = Jsoup.connect(marketURLMap.get(market)).get();
-		if(pharseType.isEmpty()) pharseType = "rankMC";
+		Elements contents = doc.select(marketURLMap.get(pharseType));
+
 		HashMap<String, String> outMap = new HashMap<String, String>();
 		String[] parsingContainer;
-		Elements contents = doc.select(marketURLMap.get(pharseType));
+
 		switch (pharseType) {
 			case "index" :
 				String[] indexSub = {"_index" , "_per" , "_change" };
@@ -26,7 +29,7 @@ public class Utils
 				{
 					outMap.put(market + indexSub[i], parsingContainer[i]);
 				}
-				break;
+				return outMap;
 			case "buyer" :
 				int bcnt = 0;
 				String[] buyerSub = {"_ant" , "_org" , "_frg" };
@@ -41,7 +44,7 @@ public class Utils
 					i++;
 					bcnt++;
 				}
-				break;
+				return outMap;
 			case "image" :
 				int icnt = 0;
 				String[] isub = {"_day" , "_day90" , "_day365" , "_day1095" };
@@ -54,10 +57,11 @@ public class Utils
 						icnt++;
 					}
 				}
-				break;
+				return outMap;
 			case "rankMC" :
-				ArrayList<ArrayList<String>> outArr = new ArrayList<>();
+				Map<String, ArrayList<String>> outListMap = new LinkedHashMap<>();
 				parsingContainer = contents.text().split(" ");
+				int rankCnt = 0;
 				for (int i = 0; i < parsingContainer.length; i++)
 				{
 					ArrayList<String> innerArr = new ArrayList<>();
@@ -73,10 +77,11 @@ public class Utils
 						}
 						innerArr.add(parsingContainer[i + innerCnt]);
 					}
-					outArr.add(innerArr);
+					outListMap.put(Integer.toString(rankCnt), innerArr);
+					rankCnt++;
 					i = i + 4;
 				}
-				return outArr;
+				return outListMap;
 		}
 		return outMap;
 	}

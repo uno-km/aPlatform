@@ -22,8 +22,8 @@ public class GetURLInfo
 		return (Map<String, String>) Utils.pharsingURL(marketURLMap, url, pharseType);
 	}
 
-	public ArrayList<ArrayList<String>> getMarketRanking(Map<String, String> marketURLMap, String url) throws IOException
+	public Map<String, ArrayList<String>> getMarketRanking(Map<String, String> marketURLMap, String url) throws IOException
 	{
-		return (ArrayList<ArrayList<String>>) Utils.pharsingURL(marketURLMap, url, null);
+		return (Map<String, ArrayList<String>>) Utils.pharsingURL(marketURLMap, url, null);
 	}
 }

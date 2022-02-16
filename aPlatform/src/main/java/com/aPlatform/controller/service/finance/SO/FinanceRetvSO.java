@@ -5,18 +5,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.aPlatform.controller.service.finance.BOC.FinanceRetvBOC;
 import com.unoCode.GetURLInfo;
 
 @RestController
 @RequestMapping(value = "/service/finance")
 public class FinanceRetvSO
 {
+	@Autowired
+	FinanceRetvBOC financeRetvBOC;
 	@GetMapping(value = "/main")
 	private ModelAndView reternMainPage(Model model)
 	{
@@ -25,22 +29,12 @@ public class FinanceRetvSO
 		return modelandview;
 	}
 	@GetMapping(value = "/total")
-	public ArrayList<Map<String, String>> getFindata(Model model) throws IOException
+	public ArrayList<Map<String, String>> getTotalFindata(Model model) throws IOException
 	{
-		Map<String, String> inMap = new HashMap<String, String>();
-		GetURLInfo getUrlInfo = new GetURLInfo();
-		getUrlInfo.setMarketURLMap(inMap);
-		ArrayList<Map<String, String>> outArr = new ArrayList<Map<String, String>>();
-		outArr.add(getUrlInfo.getMarketIndex(inMap, "kospi", "index"));
-		outArr.add(getUrlInfo.getMarketIndex(inMap, "kospi", "buyer"));
-		outArr.add(getUrlInfo.getMarketIndex(inMap, "kospi", "image"));
-		outArr.add(getUrlInfo.getMarketIndex(inMap, "kosdaq", "index"));
-		outArr.add(getUrlInfo.getMarketIndex(inMap, "kosdaq", "buyer"));
-		outArr.add(getUrlInfo.getMarketIndex(inMap, "kosdaq", "image"));
-		return outArr;
+		return financeRetvBOC.setTotalFindata();
 	}
-	@GetMapping(value = "/total")
-	public ArrayList<ArrayList<String>> getRankdata(Model model) throws IOException
+	@GetMapping(value = "/rank")
+	public Map<String, ArrayList<String>> getRankdata(Model model) throws IOException
 	{
 		Map<String, String> inMap = new HashMap<String, String>();
 		GetURLInfo getUrlInfo = new GetURLInfo();
