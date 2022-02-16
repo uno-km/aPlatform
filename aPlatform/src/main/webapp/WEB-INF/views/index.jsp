@@ -12,24 +12,20 @@
 <title>내손안에 플랫폼 - aPlatForm</title>
 </head>
 <html>
-<body>
-	<!-- Masthead-->
-	<section class="features-icons bg-light text-center">
+<body style="background-color: var(- -myBackGround);">
+	<section class="features-icons text-center">
 		<div class="container position-relative">
 			<div class="container ">
 				<div class="row">
 					<div class="col-xl-2"></div>
 					<div class="col-xl-8">
 						<a href="">
-							<img src="/resources/assets/useable/logo_onlyWord.png" style="max-width: 100%; height: auto;" id='logo_onlyWord'>
+							<img src="/resources/assets/useable/logo_onlyWord_blue.png" style="max-width: 100%; height: auto;" id='logo_onlyWord'>
 						</a>
 					</div>
 					<div class="col-xl-2"></div>
 				</div>
 			</div>
-			<c:if test="${!empty user_id}">
-				<h1>gdgd</h1>
-			</c:if>
 			<div class="container" id="servicesNavbar"></div>
 			<div class="row justify-content-center">
 				<div class="col-xl-6">
@@ -47,8 +43,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- Icons Grid-->
-	<section class="features-icons bg-light text-center">
+	<section class="features-icons text-center">
 		<div class="container ">
 			<div class="row">
 				<div class="col-xl-2"></div>
