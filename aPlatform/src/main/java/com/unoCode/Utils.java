@@ -1,70 +1,82 @@
 package com.unoCode;
 
-import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
 public class Utils
 {
-	public static Map<String, String> pharsingURL(BufferedReader buff,
-			Map<String, String> marketURLMap, String market, String pharseType)
-			throws IOException
+	public static Object pharsingURL(Map<String, String> marketURLMap, String market, String pharseType) throws IOException
 	{
-		String line = buff.readLine();
+		Document doc = Jsoup.connect(marketURLMap.get(market)).get();
+		if(pharseType.isEmpty()) pharseType = "rankMC";
 		HashMap<String, String> outMap = new HashMap<String, String>();
+		String[] parsingContainer;
+		Elements contents = doc.select(marketURLMap.get(pharseType));
 		switch (pharseType) {
 			case "index" :
-				while (line != null)
+				String[] indexSub = {"_index" , "_per" , "_change" };
+				parsingContainer = contents.text().split(" ");
+				for (int i = 0; i < indexSub.length; i++)
 				{
-					if(line.contains(marketURLMap.get(pharseType)))
-					{
-						outMap.put(market + "_" + pharseType,
-								line.split(">")[1].split("<")[0]); // 지수 포인트
-						return outMap;
-					}
-					line = buff.readLine();
+					outMap.put(market + indexSub[i], parsingContainer[i]);
 				}
 				break;
 			case "buyer" :
-				int cnt = 0;
-				String[] sub = {"_ant" , "_org" , "_frg" };
-				while (line != null)
+				int bcnt = 0;
+				String[] buyerSub = {"_ant" , "_org" , "_frg" };
+				parsingContainer = contents.text().split(" ");
+				for (int i = 1; i < parsingContainer.length; i++)
 				{
-					if(line.contains(marketURLMap.get(pharseType)))
+					if(bcnt == 3)
 					{
-						outMap.put(market + "_" + pharseType + sub[cnt],
-								line.split("<dd class=\"dd\">")[1]
-										.split("<span>")[0].split("\">")[1]);
-						cnt++;
+						break;
 					}
-					if(cnt == 3)
-					{
-						return outMap;
-					}
-					line = buff.readLine();
+					outMap.put(market + buyerSub[bcnt], parsingContainer[i]);
+					i++;
+					bcnt++;
 				}
 				break;
 			case "image" :
 				int icnt = 0;
 				String[] isub = {"_day" , "_day90" , "_day365" , "_day1095" };
-				while (line != null)
+				parsingContainer = contents.toString().split("<img src=\"");
+				for (int i = 0; i < parsingContainer.length; i++)
 				{
-					if(line.contains(marketURLMap.get(pharseType)) && icnt < 4)
+					if(!parsingContainer[i].isEmpty())
 					{
-						outMap.put(market + isub[icnt],
-								line.split(
-										"<div class=\"graph\"><img src=\"")[1]
-												.split("\" alt=\"")[0]);
+						outMap.put(market + isub[icnt], parsingContainer[i].split("\" alt=")[0]);
 						icnt++;
 					}
-					if(icnt == 4)
-					{
-						return outMap;
-					}
-					line = buff.readLine();
 				}
 				break;
+			case "rankMC" :
+				ArrayList<ArrayList<String>> outArr = new ArrayList<>();
+				parsingContainer = contents.text().split(" ");
+				for (int i = 0; i < parsingContainer.length; i++)
+				{
+					ArrayList<String> innerArr = new ArrayList<>();
+					for (int innerCnt = 0; innerCnt < 5; innerCnt++)
+					{
+						if(parsingContainer[i + innerCnt].equals("보합"))
+						{
+							innerArr.add("0");
+							innerArr.add(parsingContainer[i + innerCnt]);
+							innerArr.add(parsingContainer[i + innerCnt + 1]);
+							i--;
+							break;
+						}
+						innerArr.add(parsingContainer[i + innerCnt]);
+					}
+					outArr.add(innerArr);
+					i = i + 4;
+				}
+				return outArr;
 		}
 		return outMap;
 	}

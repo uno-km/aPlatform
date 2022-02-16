@@ -25,11 +25,10 @@ public class FinanceRetvSO
 		return modelandview;
 	}
 	@GetMapping(value = "/total")
-	public ArrayList<Map<String, String>> getFindata(Model model)
-			throws IOException
+	public ArrayList<Map<String, String>> getFindata(Model model) throws IOException
 	{
-		GetURLInfo getUrlInfo = new GetURLInfo();
 		Map<String, String> inMap = new HashMap<String, String>();
+		GetURLInfo getUrlInfo = new GetURLInfo();
 		getUrlInfo.setMarketURLMap(inMap);
 		ArrayList<Map<String, String>> outArr = new ArrayList<Map<String, String>>();
 		outArr.add(getUrlInfo.getMarketIndex(inMap, "kospi", "index"));
@@ -39,5 +38,13 @@ public class FinanceRetvSO
 		outArr.add(getUrlInfo.getMarketIndex(inMap, "kosdaq", "buyer"));
 		outArr.add(getUrlInfo.getMarketIndex(inMap, "kosdaq", "image"));
 		return outArr;
+	}
+	@GetMapping(value = "/total")
+	public ArrayList<ArrayList<String>> getRankdata(Model model) throws IOException
+	{
+		Map<String, String> inMap = new HashMap<String, String>();
+		GetURLInfo getUrlInfo = new GetURLInfo();
+		getUrlInfo.setMarketURLMap(inMap);
+		return getUrlInfo.getMarketRanking(inMap, "main");
 	}
 }

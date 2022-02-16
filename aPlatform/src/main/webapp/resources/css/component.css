@@ -68,7 +68,7 @@
 .inner_title .Index{font-size: 30px;width: 60%;left:60%;float: left;text-align: center;}
 .title:HOVER {border:3px solid;box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);}
 .SecondRecInRow .inner_detail {height:75%;padding-left: 20px;align-items: center;display: flex;}
-.inner_image{width: 125%;height: 100%;padding-left: 10px;background-repeat: no-repeat;background-size: cover;border: 5px solid #0d6efd;}
+.inner_image{width: 140%;height: 100%;padding-left: 10px;background-repeat: no-repeat;background-size: cover;border: 5px solid #0d6efd;}
 .inner_image:HOVER {border:10px solid #0d6efd;box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);cursor: pointer;}
 .inner_sub_detail {display:flex;height: 100%;width: 50%;flex-direction: column;padding-left: 10px;}
 .inner_kosdaqBuyer{width: 100%;height: 12%;font-size: 17px;text-align: center;border: 1.5px solid #0d6efd;border-radius: 1rem;color: #0d6efd;margin-top: 9px;vertical-align: bottom;}
