@@ -20,6 +20,7 @@ window.addEventListener('load', function() {
 	setKosdaqBuyer();
 	setKosdaqBuyerColor();
 	setRankDataMC();
+	setRankDataMCColor();
 });
 
 function getFindata() {
@@ -73,10 +74,15 @@ function setKosdaqIndex() {
 function setKospiImage() {
 	const inputBody= document.getElementById('kospiImage');
 	inputBody.style.backgroundImage=`URL('${this.kospiImage.kospi_day}')`;
+	inputBody.style.backgroundSize="100% 100%";
+	inputBody.style.backgroundPosition="center";
+//	inputBody.innerHTML =`<img src="${this.kospiImage.kospi_day}" style = 'width:100%;heigh:100%;'>`;
 }
 function setKosdaqImage() {
 	const inputBody= document.getElementById('kosdaqImage');
 	inputBody.style.backgroundImage=`URL('${this.kosdaqImage.kosdaq_day}')`;
+	inputBody.style.backgroundSize="100% 100%";
+	inputBody.style.backgroundPosition="center";
 }
 function setKospiBuyer() {
 	let struct_div ="";
@@ -98,6 +104,7 @@ function setKospiBuyerColor() {
 	for(let i=0;i<document.getElementsByClassName('inner_kospiBuyer').length;i++) {
 		if(document.getElementsByClassName('inner_kospiBuyer')[i].innerText.includes('+')) {
 			document.getElementsByClassName('inner_kospiBuyer')[i].style.color='red';
+			document.getElementsByClassName('inner_kospiBuyer')[i].style.borderColor='red';
 		}
 	}
 }
@@ -122,6 +129,7 @@ function setKosdaqBuyerColor() {
 	for(let i=0;i<document.getElementsByClassName('inner_kosdaqBuyer').length;i++) {
 		if(document.getElementsByClassName('inner_kosdaqBuyer')[i].innerText.includes('+')) {
 			document.getElementsByClassName('inner_kosdaqBuyer')[i].style.color='red';
+			document.getElementsByClassName('inner_kosdaqBuyer')[i].style.borderColor='red';
 		}
 	}
 }
@@ -143,11 +151,26 @@ function setRankDataMC() {
 						<div class='inner_rank_lin'>${this.rankDataMC[i][3]}</div>
 						<div class='inner_rank_lin'>${this.rankDataMC[i][4]}</div>
 					</div>
-					<input type='hidden' name='${this.rankDataMC[i][2]}'>
+					<input type='hidden' name='updownChecker' value='${this.rankDataMC[i][2]}'>
 						`;
 		}	
 		document.getElementById('rankDataMCValues').innerHTML=struct_div;
 	}else {
 		console.log("해당 영억없음");
+	}
+}
+function  setRankDataMCColor() {
+	for(let i=0;i<document.getElementsByClassName('inner_rank_values').length;i++) {
+		if(document.getElementsByName('updownChecker')[i].value=='상승') {
+			document.getElementsByClassName('inner_rank_m')[i].style.color='red';
+			document.getElementsByClassName('inner_rank_m')[i].style.borderColor='red';
+			document.getElementsByClassName('inner_rank_values')[i].style.color='red';
+			document.getElementsByClassName('inner_rank_values')[i].style.borderColor='red';
+		}else if (document.getElementsByName('updownChecker')[i].value=='0'){
+			document.getElementsByClassName('inner_rank_m')[i].style.color='gray';
+			document.getElementsByClassName('inner_rank_m')[i].style.borderColor='gray';
+			document.getElementsByClassName('inner_rank_values')[i].style.color='gray';
+			document.getElementsByClassName('inner_rank_values')[i].style.borderColor='gray';
+		}
 	}
 }
