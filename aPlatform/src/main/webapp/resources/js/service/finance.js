@@ -16,7 +16,9 @@ window.addEventListener('load', function() {
 	setKospiImage();
 	setKosdaqImage();
 	setKospiBuyer();
+	setKospiBuyerColor();
 	setKosdaqBuyer();
+	setKosdaqBuyerColor();
 });
 
 function getFindata() {
@@ -78,17 +80,24 @@ function setKosdaqImage() {
 function setKospiBuyer() {
 	let struct_div ="";
 	if(this.kospiBuyer!=null) {
-		struct_div	=	`	<div class='inner_kosdaqBuyer'>개인</div>
-							<div class='inner_kosdaqBuyer'>${this.kospiBuyer.kospi_ant}</div>
-							<div class='inner_kosdaqBuyer'>기관</div>
-							<div class='inner_kosdaqBuyer'>${this.kospiBuyer.kospi_org}</div>
-							<div class='inner_kosdaqBuyer'>외국인</div>
-							<div class='inner_kosdaqBuyer'>${this.kospiBuyer.kospi_frg}</div>
+		struct_div	=	`	<div class='inner_kospiBuyer'>개인</div>
+							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_ant}</div>
+							<div class='inner_kospiBuyer'>기관</div>
+							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_org}</div>
+							<div class='inner_kospiBuyer'>외국인</div>
+							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_frg}</div>
 						`;
 		const inputBody = document.getElementById('kospiBuyer');
 		inputBody.innerHTML=struct_div;
 	}else {
         console.log("해당 영억없음");
+	}
+}
+function setKospiBuyerColor() {
+	for(let i=0;i<document.getElementsByClassName('inner_kospiBuyer').length;i++) {
+		if(document.getElementsByClassName('inner_kospiBuyer')[i].innerText.includes('+')) {
+			document.getElementsByClassName('inner_kospiBuyer')[i].style.color='red';
+		}
 	}
 }
 function setKosdaqBuyer() {
@@ -106,5 +115,12 @@ function setKosdaqBuyer() {
 		inputBody.innerHTML=struct_div;
 	}else {
 		console.log("해당 영억없음");
+	}
+}
+function setKosdaqBuyerColor() {
+	for(let i=0;i<document.getElementsByClassName('inner_kosdaqBuyer').length;i++) {
+		if(document.getElementsByClassName('inner_kosdaqBuyer')[i].innerText.includes('+')) {
+			document.getElementsByClassName('inner_kosdaqBuyer')[i].style.color='red';
+		}
 	}
 }

@@ -12,7 +12,7 @@ public class GetURLInfo
 		marketURLMap.put("kosdaq", "https://finance.naver.com/sise/sise_index.naver?code=KOSDAQ");
 		marketURLMap.put("main", "https://finance.naver.com/");
 		marketURLMap.put("rankMC", "#_topItems4");
-		marketURLMap.put("index", ".up");
+		marketURLMap.put("index", "#quotient");
 		marketURLMap.put("buyer", ".dd");
 		marketURLMap.put("image", ".graph img");
 	}
