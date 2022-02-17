@@ -19,6 +19,7 @@ window.addEventListener('load', function() {
 	setKospiBuyerColor();
 	setKosdaqBuyer();
 	setKosdaqBuyerColor();
+	setRankDataMC();
 });
 
 function getFindata() {
@@ -122,5 +123,31 @@ function setKosdaqBuyerColor() {
 		if(document.getElementsByClassName('inner_kosdaqBuyer')[i].innerText.includes('+')) {
 			document.getElementsByClassName('inner_kosdaqBuyer')[i].style.color='red';
 		}
+	}
+}
+function setRankDataMC() {
+	let struct_div ="";
+	let cntMax = Object.keys(this.rankDataMC).length;
+	if(this.rankDataMC!=null) {
+		for(let i=0;i<cntMax;i++) {
+			struct_div +=`
+					<div class="inner_rank_m">${this.rankDataMC[i][0]}</div>
+						`;
+		}
+		document.getElementById('rankDataMCName').innerHTML=struct_div;
+		struct_div =``;
+		for(let i=0;i<cntMax;i++) {
+			struct_div +=`
+					<div class='inner_rank_values'>
+						<div class='inner_rank_lin'>${this.rankDataMC[i][1]}</div>
+						<div class='inner_rank_lin'>${this.rankDataMC[i][3]}</div>
+						<div class='inner_rank_lin'>${this.rankDataMC[i][4]}</div>
+					</div>
+					<input type='hidden' name='${this.rankDataMC[i][2]}'>
+						`;
+		}	
+		document.getElementById('rankDataMCValues').innerHTML=struct_div;
+	}else {
+		console.log("해당 영억없음");
 	}
 }

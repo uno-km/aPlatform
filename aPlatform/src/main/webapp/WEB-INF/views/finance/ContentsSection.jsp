@@ -12,10 +12,17 @@
 				<div class='inner_news'></div>
 			</div>
 			<div class='inner_title'>
-				<div class='title'>
-					<span style='font-size: 20px'>시가총액상위</span>
+				<div class='title' style='text-align: center; width: 60%'>
+					<span>시가총액상위</span>
 				</div>
-				<div class='Index'></div>
+			</div>
+			<div class='inner_detail'>
+				<div class='inner_rank'>
+					<div class='inner_sub_detail' style="width: 40%;" id='rankDataMCName'></div>
+					<div class='inner_sub_detail' style="width: 60%;" id='rankDataMCValues'></div>
+					
+				</div>
+
 			</div>
 		</div>
 		<div class='SecondRecInRow' id='kospiInfo'>
@@ -45,5 +52,4 @@
 			</div>
 		</div>
 	</div>
-	<div class='marketcapitalizionRankBoard'></div>
 </section>
