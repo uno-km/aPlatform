@@ -82,6 +82,8 @@ public class Utils
 					i = i + 4;
 				}
 				return outListMap;
+			case "news" :
+				break;
 		}
 		return outMap;
 	}
