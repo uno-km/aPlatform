@@ -15,7 +15,7 @@ public class GetURLInfo
 		marketURLMap.put("index", "#quotient");
 		marketURLMap.put("buyer", ".dd");
 		marketURLMap.put("image", ".graph img");
-		marketURLMap.put("news", ".");
+		marketURLMap.put("news", "..a");
 	}
 
 	public Map<String, String> getMarketIndex(Map<String, String> marketURLMap, String url, String pharseType) throws IOException
