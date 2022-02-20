@@ -45,6 +45,9 @@
 				<div class='Index'>
 					<span id='kosdaqIndex'></span>
 				</div>
+				<div>
+					<span></span>
+				</div>
 			</div>
 			<div class='inner_detail'>
 				<div class='inner_image' id='kosdaqImage'></div>
