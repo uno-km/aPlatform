@@ -2,7 +2,6 @@ package com.aPlatform.controller.service.finance.SO;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.aPlatform.controller.service.finance.BOC.FinanceRetvBOC;
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
-import com.unoCode.GetURLInfo;
 
 @RestController
 @RequestMapping(value = "/service/finance")
@@ -38,10 +36,7 @@ public class FinanceRetvSO
 	@GetMapping(value = "/rank")
 	public Map<String, ArrayList<String>> getRankdata(Model model) throws IOException
 	{
-		Map<String, String> inMap = new HashMap<String, String>();
-		GetURLInfo getUrlInfo = new GetURLInfo();
-		getUrlInfo.setMarketURLMap(inMap);
-		return getUrlInfo.getMarketRanking(inMap, "main");
+		return financeRetvBOC.getRankFindata();
 	}
 	@GetMapping(value = "/code")
 	public List<FinanceVO> getCode(Model model) throws IOException
