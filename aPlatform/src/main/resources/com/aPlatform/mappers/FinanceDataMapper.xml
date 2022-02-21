@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aPlatform.mappers.FinanceDataMapper">
+	<select resultType="com.aPlatform.controller.service.finance.VO.FinanceVO" id="loadNavbar">
+		SELECT 
+    		CODE 			AS "fin_code"
+    		, NAME 			AS "fin_name"
+    		, EXCHANGE 		AS "fin_exchange"
+		FROM	 
+  		  SHARES_FIN_INFO
+	</select>
+</mapper>
