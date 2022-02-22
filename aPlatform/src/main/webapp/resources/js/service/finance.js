@@ -7,6 +7,7 @@ var kosdaqIndex='';
 var kosdaqBuyer='';
 var kosdaqImage='';
 var rankDataMC = '';
+var codeInfo = '';
 
 window.addEventListener('load', function() {
 	getFindata();
@@ -21,6 +22,7 @@ window.addEventListener('load', function() {
 	setKosdaqBuyerColor();
 	setRankDataMC();
 	setRankDataMCColor();
+	setSessionSharesInfo();
 });
 
 function getFindata() {
@@ -137,9 +139,9 @@ function setRankDataMC() {
 	let struct_div ="";
 	let cntMax = Object.keys(this.rankDataMC).length;
 	if(this.rankDataMC!=null) {
-		for(let i=0;i<cntMax;i++) {
+		for(let i=0;i<cntMax;i++) {// onclick='goShareInfo(this)'
 			struct_div +=`
-					<div class="inner_rank_m">${this.rankDataMC[i][0]}</div>
+					<div class="inner_rank_m" onclick='goShareInfo(this)'>${this.rankDataMC[i][0]}</div>
 						`;
 		}
 		document.getElementById('rankDataMCName').innerHTML=struct_div;
@@ -172,5 +174,48 @@ function  setRankDataMCColor() {
 			document.getElementsByClassName('inner_rank_values')[i].style.color='gray';
 			document.getElementsByClassName('inner_rank_values')[i].style.borderColor='gray';
 		}
+	}
+}
+function setSessionSharesInfo() {
+	let outData ="";
+    $.ajax({
+        type: 'GET',
+        url: '/service/finance/codeAllMap',
+        dataType: 'JSON', 
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+    		outData=data;
+        },
+        error: function () {
+            alert('통신실패!!');
+        }
+    });
+    this.codeInfo = JSON.stringify(outData);
+    let objData = JSON.stringify(outData);
+    localStorage.setItem('sharesInfo' ,objData);
+}
+
+function goShareInfo(input) {
+	let fin_name = input.innerText;
+	let sharesInfo = JSON.parse(localStorage.sharesInfo);
+	let obj = Object.keys(sharesInfo).filter(e => e.indexOf(fin_name) >-1);
+	let code = '';
+	if(obj.length==1) {
+		code = sharesInfo[fin_name];
+	} else if(obj.length>1) {
+		for(let i = 0 ; i<obj.length;i++) {
+			if(obj[i]==fin_name) {
+				code = sharesInfo[fin_name];
+			}
+		}
+		if(code=='') {
+			alert('값이 없습니다. 잠시후 재시도해주세요.');
+		}
+	}else {
+		alert('잘못된 경로입니다.');
+	}
+	if(code!='') {
+		alert(code);
 	}
 }
