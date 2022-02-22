@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,8 +40,13 @@ public class FinanceRetvSO
 		return financeRetvBOC.getRankFindata();
 	}
 	@GetMapping(value = "/code")
-	public List<FinanceVO> getCode(Model model) throws IOException
+	public List<FinanceVO> getCode(Model model, @RequestParam String name) throws IOException
 	{
-		return financeRetvBOC.getCode();
+		return financeRetvBOC.getCode(name);
+	}
+	@GetMapping(value = "/codeAllMap")
+	public Map<String, String> getCodeMap(Model model) throws IOException
+	{
+		return financeRetvBOC.getCodeMap();
 	}
 }

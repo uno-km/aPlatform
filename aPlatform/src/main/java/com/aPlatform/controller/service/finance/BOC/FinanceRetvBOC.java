@@ -44,8 +44,12 @@ public class FinanceRetvBOC
 		this.financeDataMatrix.setPageDOCMapByString("main");
 		return getUrlInfo.getMarketRanking(financeDataMatrix, "main");
 	}
-	public List<FinanceVO> getCode()
+	public List<FinanceVO> getCode(String name)
 	{
-		return financeRetvBO.getCode();
+		return financeRetvBO.getCode(name);
+	}
+	public Map<String, String> getCodeMap()
+	{
+		return financeRetvBO.getCodeMap();
 	}
 }
