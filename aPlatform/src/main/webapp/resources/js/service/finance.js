@@ -216,6 +216,6 @@ function goShareInfo(input) {
 		alert('잘못된 경로입니다.');
 	}
 	if(code!='') {
-		alert(code);
+		history.pushState({'name':fin_name,'code':code},'종목상세보기',code);
 	}
 }
