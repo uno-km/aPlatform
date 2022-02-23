@@ -216,6 +216,23 @@ function goShareInfo(input) {
 		alert('잘못된 경로입니다.');
 	}
 	if(code!='') {
+		goShareInfoDTL(code);
 		history.pushState({'name':fin_name,'code':code},'종목상세보기',code);
 	}
+}
+function goShareInfoDTL(code) {
+	const innerCode = code;
+    $.ajax({
+        type: 'GET',
+        url: `/service/finance/shareInfo?code=${innerCode}`,
+        dataType: 'JSON', 
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+    		alert("통신완료 : "+data);
+        },
+        error: function () {
+            alert('통신실패!!');
+        }
+    });
 }
