@@ -217,14 +217,13 @@ function goShareInfo(input) {
 	}
 	if(code!='') {
 		goShareInfoDTL(code);
-		history.pushState({'name':fin_name,'code':code},'종목상세보기',code);
+//		history.pushState({'name':fin_name,'code':code},'종목상세보기',code);
 	}
 }
 function goShareInfoDTL(code) {
-	const innerCode = code;
     $.ajax({
         type: 'GET',
-        url: `/service/finance/shareInfo?code=${innerCode}`,
+        url: `/service/finance/shareInfo?code=`+code,
         dataType: 'JSON', 
         async: false,
         contentType: 'application/json; charset=utf-8',
