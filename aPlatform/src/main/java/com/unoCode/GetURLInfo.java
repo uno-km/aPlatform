@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
-import com.aPlatform.controller.service.finance.BOC.FinanceDataMatrix;
+import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 @SuppressWarnings("unchecked")
 public class GetURLInfo
 {
