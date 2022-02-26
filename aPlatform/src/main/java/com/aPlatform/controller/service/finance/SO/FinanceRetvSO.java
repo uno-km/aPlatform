@@ -2,7 +2,6 @@ package com.aPlatform.controller.service.finance.SO;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +22,8 @@ public class FinanceRetvSO
 {
 	@Autowired
 	FinanceRetvBOC financeRetvBOC;
+	@Autowired
+	FinanceSearchBOC financeSearchBOC;
 	@GetMapping(value = "/main")
 	private ModelAndView reternMainPage(Model model)
 	{
@@ -51,11 +52,8 @@ public class FinanceRetvSO
 		return financeRetvBOC.getCodeMap();
 	}
 	@GetMapping(value = "/shareInfo")
-	public Map<String, String> getShareInfoDTL(Model model, @RequestParam String code) throws IOException
+	public Map<String, Map<String, String>> getShareInfoDTL(Model model, @RequestParam String code) throws IOException
 	{
-		Map<String, String> outMap = new HashMap<>();
-		outMap.put("삼성전자", code);
-		return outMap;
+		return financeSearchBOC.getInfoDTL(code);
 	}
-
 }
