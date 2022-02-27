@@ -15,7 +15,7 @@ public class FinanceSearchBOC
 	public Map<String, Map<String, String>> getInfoDTL(String code)
 	{
 		Map<String, Map<String, String>> outMap = new HashMap<String, Map<String, String>>();
-		
+		financeDetailBO.setFinanceDetail(outMap);
 		return outMap;
 	}
 }
