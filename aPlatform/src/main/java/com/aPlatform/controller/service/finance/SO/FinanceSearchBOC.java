@@ -1,22 +1,26 @@
 package com.aPlatform.controller.service.finance.SO;
 
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.aPlatform.controller.service.finance.BO.FinanceDetailBO;
+import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
+import com.aPlatform.controller.service.finance.model.GetURLInfo;
 
 public class FinanceSearchBOC
 {
 	@Autowired
 	FinanceDetailBO financeDetailBO;
 
-	public Map<String, List<String>> getInfoDTL(String code)
+	GetURLInfo getUrlInfo;
+
+	public Map<String, ArrayList<String>> getInfoDTL(String code) throws IOException
 	{
-		Map<String, List<String>> outMap = new LinkedHashMap<String, List<String>>();
-		financeDetailBO.setFinanceDetail(outMap);
-		return outMap;
+		FinanceDataMatrix financeDataMatrix = new FinanceDataMatrix(code);
+		financeDataMatrix.setPageDOCMapByString("infoDTL");
+		return getUrlInfo.getMapStringArrayList(financeDataMatrix, "infoDTL", "detail");
 	}
 }

@@ -43,7 +43,7 @@ public class FinanceRetvBOC
 	public Map<String, ArrayList<String>> getRankFindata() throws IOException
 	{
 		this.financeDataMatrix.setPageDOCMapByString("main");
-		return getUrlInfo.getMapStringArrayList(financeDataMatrix, "main");
+		return getUrlInfo.getMapStringArrayList(financeDataMatrix, "main", "rankMC");
 	}
 	public List<FinanceVO> getCode(String name)
 	{

@@ -16,10 +16,8 @@ public class FinanceURL
 {
 	public static Object pharsingURL(FinanceDataMatrix financeDataMatrix, String market, String pharseType) throws IOException
 	{
-		if(pharseType == null) pharseType = "rankMC";
 		Document doc = financeDataMatrix.getPageDOCMap().get(market);
 		Elements contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType));
-
 		HashMap<String, String> outMap = new HashMap<String, String>();
 		String[] parsingContainer;
 
@@ -86,9 +84,9 @@ public class FinanceURL
 				return outListMap;
 			case "detail" :
 				List<String> infoTitleList = contents.eachText();
+				Elements tdElements = doc.select("td");
 				infoTitleList = infoTitleList.subList(3, 19);
 				Map<String, List<String>> dtlOutMap = new LinkedHashMap<String, List<String>>();
-				Elements tdElements = doc.select("td");
 				int tdCnt = 0;
 				for (int i = 57; i < 216; i++)
 				{

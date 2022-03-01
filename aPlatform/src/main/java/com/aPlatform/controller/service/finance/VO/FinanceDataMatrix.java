@@ -48,5 +48,4 @@ public class FinanceDataMatrix
 			this.pageDOCMap.put(this.innerArr[i], Jsoup.connect(this.marketURLMap.get(this.innerArr[i])).get());
 		}
 	}
-
 }

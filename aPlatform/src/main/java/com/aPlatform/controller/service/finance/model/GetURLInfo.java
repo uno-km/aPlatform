@@ -12,8 +12,8 @@ public class GetURLInfo
 		return (Map<String, String>) FinanceURL.pharsingURL(financeDataMatrix, url, pharseType);
 	}
 
-	public Map<String, ArrayList<String>> getMapStringArrayList(FinanceDataMatrix financeDataMatrix, String url) throws IOException
+	public Map<String, ArrayList<String>> getMapStringArrayList(FinanceDataMatrix financeDataMatrix, String url, String pharseType) throws IOException
 	{
-		return (Map<String, ArrayList<String>>) FinanceURL.pharsingURL(financeDataMatrix, url, null);
+		return (Map<String, ArrayList<String>>) FinanceURL.pharsingURL(financeDataMatrix, url, pharseType);
 	}
 }
