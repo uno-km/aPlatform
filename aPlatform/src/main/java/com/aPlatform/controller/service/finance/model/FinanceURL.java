@@ -1,23 +1,23 @@
-package com.unoCode;
+package com.aPlatform.controller.service.finance.model;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-public class Utils
-{
-	public static Object pharsingURL(Map<String, String> marketURLMap, String market, String pharseType) throws IOException
-	{
-		if(pharseType == null) pharseType = "rankMC";
-		Document doc = Jsoup.connect(marketURLMap.get(market)).get();
-		Elements contents = doc.select(marketURLMap.get(pharseType));
+import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 
+public class FinanceURL
+{
+	public static Object pharsingURL(FinanceDataMatrix financeDataMatrix, String market, String pharseType) throws IOException
+	{
+		Document doc = financeDataMatrix.getPageDOCMap().get(market);
+		Elements contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType));
 		HashMap<String, String> outMap = new HashMap<String, String>();
 		String[] parsingContainer;
 
@@ -82,6 +82,27 @@ public class Utils
 					i = i + 4;
 				}
 				return outListMap;
+			case "detail" :
+				List<String> infoTitleList = contents.eachText();
+				Elements tdElements = doc.select("td");
+				infoTitleList = infoTitleList.subList(3, 19);
+				Map<String, List<String>> dtlOutMap = new LinkedHashMap<String, List<String>>();
+				int tdCnt = 0;
+				for (int i = 57; i < 216; i++)
+				{
+					List<String> innerList = new ArrayList<String>();
+					for (int j = 0; j < 10; j++)
+					{
+						innerList.add(tdElements.get(i + j).text());
+					}
+					dtlOutMap.put(infoTitleList.get(tdCnt), innerList);
+					tdCnt++;
+					i += 9;
+				}
+				return dtlOutMap;
+
+			case "news" :
+				break;
 		}
 		return outMap;
 	}
