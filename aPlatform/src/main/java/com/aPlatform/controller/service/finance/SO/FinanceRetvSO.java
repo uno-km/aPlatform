@@ -52,7 +52,7 @@ public class FinanceRetvSO
 		return financeRetvBOC.getCodeMap();
 	}
 	@GetMapping(value = "/shareInfo")
-	public Map<String, Map<String, String>> getShareInfoDTL(Model model, @RequestParam String code) throws IOException
+	public Map<String, List<String>> getShareInfoDTL(Model model, @RequestParam String code) throws IOException
 	{
 		return financeSearchBOC.getInfoDTL(code);
 	}

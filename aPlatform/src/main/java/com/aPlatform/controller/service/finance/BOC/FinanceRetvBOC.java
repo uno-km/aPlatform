@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.aPlatform.controller.service.finance.BO.FinanceRetvBO;
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
-import com.unoCode.GetURLInfo;
+import com.aPlatform.controller.service.finance.model.GetURLInfo;
 @Service
 public class FinanceRetvBOC
 {
@@ -43,7 +43,7 @@ public class FinanceRetvBOC
 	public Map<String, ArrayList<String>> getRankFindata() throws IOException
 	{
 		this.financeDataMatrix.setPageDOCMapByString("main");
-		return getUrlInfo.getMarketRanking(financeDataMatrix, "main");
+		return getUrlInfo.getMapStringArrayList(financeDataMatrix, "main");
 	}
 	public List<FinanceVO> getCode(String name)
 	{
