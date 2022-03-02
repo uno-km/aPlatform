@@ -248,7 +248,6 @@ function tmp() {
 		async: false,
 		contentType: 'application/json; charset=utf-8',
 		success: function (data) {
-		alert("통신완료 : "+data);
 		setInfoShareDetailData(data);
 	},
 		error: function () {

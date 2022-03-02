@@ -83,11 +83,12 @@ public class FinanceURL
 				}
 				return outListMap;
 			case "detail" :
-//				List<String> infoTitleList = contents.eachText();
-//				infoTitleList = infoTitleList.subList(3, 19);
+				List<String> infoTitleList = contents.eachText();
+				infoTitleList = infoTitleList.subList(3, 19);
 				Elements tdElements = doc.select("td");
 				Elements thElements = doc.select("th");
 				List<List<String>> dtlOutList = new ArrayList<List<String>>();
+				dtlOutList.add(infoTitleList);
 				int thCnt = 0;
 				List<String> monthList = new ArrayList<String>();
 				for (int i = 0; i < thElements.size(); i++)
