@@ -83,11 +83,27 @@ public class FinanceURL
 				}
 				return outListMap;
 			case "detail" :
-				List<String> infoTitleList = contents.eachText();
+//				List<String> infoTitleList = contents.eachText();
+//				infoTitleList = infoTitleList.subList(3, 19);
 				Elements tdElements = doc.select("td");
-				infoTitleList = infoTitleList.subList(3, 19);
-				Map<String, List<String>> dtlOutMap = new LinkedHashMap<String, List<String>>();
-				int tdCnt = 0;
+				Elements thElements = doc.select("th");
+				List<List<String>> dtlOutList = new ArrayList<List<String>>();
+				int thCnt = 0;
+				List<String> monthList = new ArrayList<String>();
+				for (int i = 0; i < thElements.size(); i++)
+				{
+					if(thCnt == 10)
+					{
+						break;
+					}
+					if(thElements.get(i).text().contains("."))
+					{
+						monthList.add(thElements.get(i).text());
+						thCnt++;
+					}
+				}
+				dtlOutList.add(monthList);
+				// int tdCnt = 0;
 				for (int i = 57; i < 216; i++)
 				{
 					List<String> innerList = new ArrayList<String>();
@@ -95,12 +111,12 @@ public class FinanceURL
 					{
 						innerList.add(tdElements.get(i + j).text());
 					}
-					dtlOutMap.put(infoTitleList.get(tdCnt), innerList);
-					tdCnt++;
+					// dtlOutMap.put(infoTitleList.get(tdCnt), innerList);
+					dtlOutList.add(innerList);
+					// tdCnt++;
 					i += 9;
 				}
-				return dtlOutMap;
-
+				return dtlOutList;
 			case "news" :
 				break;
 		}
