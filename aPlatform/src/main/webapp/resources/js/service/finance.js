@@ -12,8 +12,8 @@ var rankDataMC = '';
 var codeInfo = '';
 
 window.addEventListener('load', function() {
-//	setContentsSection();
-	tmp();
+	setContentsSection();
+//	tmp();
 	
 	getFindata();
 	getRankdata();
@@ -233,7 +233,8 @@ function getShareInfoDTL(code) {
         async: false,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-    		alert("통신완료 : "+data);
+		setInfoShareDetailFrame();
+		setInfoShareDetailData(data);
         },
         error: function () {
             alert('통신실패!!');
@@ -248,14 +249,11 @@ function tmp() {
 		async: false,
 		contentType: 'application/json; charset=utf-8',
 		success: function (data) {
+		setInfoShareDetailFrame();
 		setInfoShareDetailData(data);
 	},
 		error: function () {
 		alert('통신실패!!');
 	}
 	});
-}
-
-function setShareInfoDTL() {
-	
 }
