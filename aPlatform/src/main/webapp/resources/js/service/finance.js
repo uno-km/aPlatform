@@ -1,5 +1,6 @@
 ;
 document.write("<script src='/resources/js/service/fin/setContentsSection.js'></script>");
+document.write("<script src='/resources/js/service/fin/setInfoShareDetailData.js'></script>");
 var nowFinData='';
 var kospiIndex='';
 var kospiBuyer='';
@@ -12,6 +13,7 @@ var codeInfo = '';
 
 window.addEventListener('load', function() {
 //	setContentsSection();
+	tmp();
 	
 	getFindata();
 	getRankdata();
@@ -238,6 +240,23 @@ function getShareInfoDTL(code) {
         }
     });
 }
+function tmp() {
+	$.ajax({
+		type: 'GET',
+		url: `/service/finance/shareInfo?code=`+'005930',
+		dataType: 'JSON', 
+		async: false,
+		contentType: 'application/json; charset=utf-8',
+		success: function (data) {
+		alert("통신완료 : "+data);
+		setInfoShareDetailData(data);
+	},
+		error: function () {
+		alert('통신실패!!');
+	}
+	});
+}
+
 function setShareInfoDTL() {
 	
 }
