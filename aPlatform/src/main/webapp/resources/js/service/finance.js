@@ -1,4 +1,5 @@
 ;
+document.write("<script src='/resources/js/service/fin/setContentsSection.js'></script>");
 var nowFinData='';
 var kospiIndex='';
 var kospiBuyer='';
@@ -10,6 +11,8 @@ var rankDataMC = '';
 var codeInfo = '';
 
 window.addEventListener('load', function() {
+//	setContentsSection();
+	
 	getFindata();
 	getRankdata();
 	setKospiIndex();
@@ -216,11 +219,11 @@ function goShareInfo(input) {
 		alert('잘못된 경로입니다.');
 	}
 	if(code!='') {
-		goShareInfoDTL(code);
+		getShareInfoDTL(code);
 //		history.pushState({'name':fin_name,'code':code},'종목상세보기',code);
 	}
 }
-function goShareInfoDTL(code) {
+function getShareInfoDTL(code) {
     $.ajax({
         type: 'GET',
         url: `/service/finance/shareInfo?code=`+code,
@@ -234,4 +237,7 @@ function goShareInfoDTL(code) {
             alert('통신실패!!');
         }
     });
+}
+function setShareInfoDTL() {
+	
 }

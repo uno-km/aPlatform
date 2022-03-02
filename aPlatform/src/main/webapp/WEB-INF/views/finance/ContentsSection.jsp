@@ -1,58 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<section class='ContentsSection'>
-	<div class='FirstRowInSection non-drag'>
-		<div class='FirstRecInRow'>
-			<div class='inner_title'>
-				<div class='title non-drag'>
-					<span>뉴스</span>
-				</div>
-				<div class='Index'></div>
-			</div>
-			<div class='inner_detail'>
-				<div class='inner_news'></div>
-			</div>
-			<div class='inner_title'>
-				<div class='title non-drag' style='text-align: center; width: 60%'>
-					<span>시가총액상위</span>
-				</div>
-			</div>
-			<div class='inner_detail'>
-				<div class='inner_rank'>
-					<div class='inner_sub_detail' style="width: 40%;" id='rankDataMCName'></div>
-					<div class='inner_sub_detail' style="width: 60%;" id='rankDataMCValues'></div>
-					
-				</div>
+<section class='ContentsSection' id='ContentsSectionMain'>
+	<div id='ContentsSectionDTL' style='background-color: green; width: 100%;'>
+		<table class="table table-dark table-striped">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">First</th>
+					<th scope="col">Last</th>
+					<th scope="col">Handle</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">1</th>
+					<td>Mark</td>
+					<td>Otto</td>
+					<td>@mdo</td>
+				</tr>
+				<tr>
+					<th scope="row">2</th>
+					<td>Jacob</td>
+					<td>Thornton</td>
+					<td>@fat</td>
+				</tr>
+				<tr>
+					<th scope="row">3</th>
+					<td colspan="2">Larry the Bird</td>
+					<td>@twitter</td>
+				</tr>
+			</tbody>
 
-			</div>
-		</div>
-		<div class='SecondRecInRow' id='kospiInfo'>
-			<div class='inner_title'>
-				<div class='title non-drag'>
-					<span>코스피</span>
-				</div>
-				<div class='Index'>
-					<span id='kospiIndex'></span>
-				</div>
-			</div>
-			<div class='inner_detail'>
-				<div class='inner_image' id='kospiImage'></div>
-				<div class='inner_sub_detail' id='kospiBuyer'></div>
-			</div>
-			<div class='inner_title'>
-				<div class='title non-drag'>
-					<span>코스닥</span>
-				</div>
-				<div class='Index'>
-					<span id='kosdaqIndex'></span>
-				</div>
-				<div>
-					<span></span>
-				</div>
-			</div>
-			<div class='inner_detail'>
-				<div class='inner_image' id='kosdaqImage'></div>
-				<div class='inner_sub_detail' id='kosdaqBuyer'></div>
-			</div>
-		</div>
+		</table>
 	</div>
 </section>
