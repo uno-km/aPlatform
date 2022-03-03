@@ -222,7 +222,6 @@ function goShareInfo(input) {
 	}
 	if(code!='') {
 		getShareInfoDTL(code);
-//		history.pushState({'name':fin_name,'code':code},'종목상세보기',code);
 	}
 }
 function getShareInfoDTL(code) {
@@ -251,6 +250,7 @@ function tmp() {
 		success: function (data) {
 		setInfoShareDetailFrame();
 		setInfoShareDetailData(data);
+		history.pushState({'name':fin_name,'code':code},'종목상세보기',code);
 	},
 		error: function () {
 		alert('통신실패!!');
