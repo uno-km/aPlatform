@@ -24,14 +24,17 @@ function selectEmailChange(selected){
     let showSelectedValue = document.getElementById('showSelectedValue');
     switch(selected_value){
         case "naver":
+        	showSelectedValue.disabled = true;
             showSelectedValue.placeholder="naver.com";
             showSelectedValue.value="naver.com";
             break;
         case "daum":
+        	showSelectedValue.disabled = true;
             showSelectedValue.placeholder="daum.net";
             showSelectedValue.value="daum.net";
             break;
         case "google":
+        	showSelectedValue.disabled = true;
             showSelectedValue.placeholder="gmail.com";
             showSelectedValue.value="gmail.com";
             break;
