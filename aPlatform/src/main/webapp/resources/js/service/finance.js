@@ -10,8 +10,16 @@ var kosdaqBuyer='';
 var kosdaqImage='';
 var rankDataMC = '';
 var codeInfo = '';
+window.onpopstate = function(event) { 
+	history.pushState({pageNum:3, searchDt:'2019-05-07'}, null, 'main'); 
+	finPageInit();
+	window.scrollTo(0,localStorage.BeforeScroll);
+}
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
+	finPageInit()
+});
+function finPageInit() {
 	setContentsSection();
 //	tmp();
 	
@@ -28,8 +36,7 @@ window.addEventListener('load', function() {
 	setRankDataMC();
 	setRankDataMCColor();
 	setSessionSharesInfo();
-});
-
+}
 function getFindata() {
 	let outData='';
     $.ajax({
@@ -234,26 +241,17 @@ function getShareInfoDTL(code) {
         success: function (data) {
 		setInfoShareDetailFrame();
 		setInfoShareDetailData(data);
-        },
+		let fin_name = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
+		history.pushState({'name':fin_name,'code':code},'종목상세보기','main');
+		window.scrollTo(0,0);
+		localStorage.setItem('BeforeScroll',window.scrollY);
+		window.scrollY;
+    },
         error: function () {
             alert('통신실패!!');
         }
     });
 }
-function tmp() {
-	$.ajax({
-		type: 'GET',
-		url: `/service/finance/shareInfo?code=`+'005930',
-		dataType: 'JSON', 
-		async: false,
-		contentType: 'application/json; charset=utf-8',
-		success: function (data) {
-		setInfoShareDetailFrame();
-		setInfoShareDetailData(data);
-		history.pushState({'name':fin_name,'code':code},'종목상세보기',code);
-	},
-		error: function () {
-		alert('통신실패!!');
+function getKeyByValue(object, value) {
+	  return Object.keys(object).find(key => object[key] === value);
 	}
-	});
-}
