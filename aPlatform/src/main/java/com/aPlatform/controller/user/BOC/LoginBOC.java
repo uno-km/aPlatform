@@ -27,11 +27,7 @@ public class LoginBOC
 
 	public UserinfoOutVO signinUser(UserinfoVO UserinfoVO)
 	{
-		if(loginBO.checkUser(UserinfoVO))
-		{
-			return loginBO.signinUser(UserinfoVO);
-		}
-		return null;
+		return loginBO.signinUser(UserinfoVO);
 	}
 	public boolean checkDuplId(UserinfoVO UserinfoVO)
 	{

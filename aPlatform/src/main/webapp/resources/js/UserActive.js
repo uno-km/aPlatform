@@ -18,10 +18,28 @@ function enterkey(stts) {
     }
 }
 function signin() {
-	this.data = checkUser();
-	setSession(this.data);
-    callNavBar();
-    setLoginedRemoteCtrl();
+    const user_id = document.getElementById("sideRemoteId").value;
+    const user_password = document.getElementById("sideRemotePW").value;
+    const maindataLoadInVO = {
+        "user_id": user_id,
+        "user_password": user_password
+    }
+    $.ajax({
+        type: 'POST', //post 방식으로 전송
+        url: '/user/signin', //데이터를 주고받을 파일 주소
+        data: JSON.stringify(maindataLoadInVO), //위의 변수에 담긴 데이터를 전송해준다.
+        dataType: 'JSON', 
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+    		setSession(data);
+    		callNavBar();
+    		setLoginedRemoteCtrl();
+        },
+        error: function () {
+            alert('통신실패!!');
+        }
+    });
 }
 function setSession(data){
     localStorage.clear();
@@ -38,26 +56,5 @@ function logout () {
     window.location.reload();
 }
 function checkUser() {
-	let outData='';
-    const user_id = document.getElementById("sideRemoteId").value;
-    const user_password = document.getElementById("sideRemotePW").value;
-    const maindataLoadInVO = {
-        "user_id": user_id,
-        "user_password": user_password
-    }
-    $.ajax({
-        type: 'POST', //post 방식으로 전송
-        url: '/user/signin', //데이터를 주고받을 파일 주소
-        data: JSON.stringify(maindataLoadInVO), //위의 변수에 담긴 데이터를 전송해준다.
-        dataType: 'JSON', 
-        async: false,
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-    		outData=data;
-        },
-        error: function () {
-            alert('통신실패!!');
-        }
-    });
-    return outData;
+
 }

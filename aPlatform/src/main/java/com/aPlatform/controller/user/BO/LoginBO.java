@@ -49,6 +49,18 @@ public class LoginBO
 	public UserinfoOutVO signinUser(UserinfoVO UserinfoVO)
 	{
 		UserinfoOutVO outVO = userActiveMapper.getUserInfo(UserinfoVO);
+		if(Validation.isNullCheck(outVO))
+		{
+			return null;
+		}
+		if(!outVO.getUser_id().equals(UserinfoVO.getUser_id()))
+		{
+			return null;
+		}
+		if(!outVO.getUser_password().equals(UserinfoVO.getUser_password()))
+		{
+			return null;
+		}
 		return outVO;
 	}
 
