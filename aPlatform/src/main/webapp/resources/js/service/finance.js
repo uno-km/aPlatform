@@ -15,14 +15,16 @@ window.onpopstate = function(event) {
 	finPageInit();
 	window.scrollTo(0,localStorage.BeforeScroll);
 }
-
+document.getElementById('').addEventListener('click',searchShareInfo);
+function searchShareInfo(e) {
+	alert('asd');
+}
 window.addEventListener('load', function () {
 	finPageInit()
 });
 function finPageInit() {
 	setContentsSection();
 //	tmp();
-	
 	getFindata();
 	getRankdata();
 	setKospiIndex();

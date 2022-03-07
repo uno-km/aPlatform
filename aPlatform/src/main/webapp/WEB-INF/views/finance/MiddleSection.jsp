@@ -29,7 +29,7 @@
 			</div>
 			<div style='width: 2%'></div>
 			<div class='col-15'>
-				<button class="unoBnt" type="button">Button</button>
+				<button class="unoBnt" type="button" id='searchShareInfo'>검색</button>
 			</div>
 		</div>
 	</div>
