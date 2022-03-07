@@ -15,9 +15,12 @@ window.onpopstate = function(event) {
 	finPageInit();
 	window.scrollTo(0,localStorage.BeforeScroll);
 }
-document.getElementById('').addEventListener('click',searchShareInfo);
+document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
 function searchShareInfo(e) {
-	alert('asd');
+	let inputData = document.getElementById('searchShareInput').value;
+	let sharesInfo = JSON.parse(localStorage.sharesInfo);
+	let searchData = sharesInfo[inputData];
+	getShareInfoDTL(searchData);
 }
 window.addEventListener('load', function () {
 	finPageInit()

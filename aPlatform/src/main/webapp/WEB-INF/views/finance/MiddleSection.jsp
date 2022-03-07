@@ -4,7 +4,7 @@
 		<div class="unoRow">
 			<div class='col-85'>
 				<div class="input-group">
-					<input type="text" class="form-control" style='border: 2px solid #0d6efd;'>
+					<input type="text" class="form-control" id='searchShareInput' style='border: 2px solid #0d6efd;'>
 					<button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
 						<span class="visually-hidden-focusable">Toggle Dropdown</span>
 					</button>
@@ -29,7 +29,7 @@
 			</div>
 			<div style='width: 2%'></div>
 			<div class='col-15'>
-				<button class="unoBnt" type="button" id='searchShareInfo'>검색</button>
+				<button class="unoBnt" type="button" id='searchShareBtn'>검색</button>
 			</div>
 		</div>
 	</div>
