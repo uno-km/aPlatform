@@ -99,3 +99,4 @@
     font-variant: normal;    width: 100%;    margin-bottom: 1rem;color:white;vertical-align: top;background-color: #001e3c;}
 .info_detail_expect{border-right: 2px solid white;border-left: 2px solid white;}
 .info_detail_empty{background-color: beige;}
+.shareSearchInput {overflow: scroll;max-height: 500px;min-height: 0px;}

@@ -8,16 +8,7 @@
 						<span class="visually-hidden-focusable">Toggle Dropdown</span>
 					</button>
 					<input type="text" class="form-control" id='searchShareInput' style='border: 2px solid #0d6efd;'>
-					<ul class="dropdown-menu shareSearchInput" style='transform: translate3d(0px, 58px, 0px);'> 
-						<li>
-							<a class="dropdown-item" href="#">Action</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#">Another action</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</li>
+					<ul class="dropdown-menu shareSearchInput" id='searchingList'>
 					</ul>
 				</div>
 			</div>
