@@ -31,8 +31,10 @@
 #servicesNavbar{height: 40px ;font-family: 'hanna'; font-size: 25px;color: #8080ff}
 .bodyDvi{height: 1400px;margin: 0;padding-bottom: 66px;background-color: var(--myBackGround);display: flex;justify-content: space-evenly;align-items: stretch;}
 .mainPage {width: 66%;background-color: #001e3c;top: 0;display: block;position: relative;padding-bottom:66px;}
-@media screen and (max-width: 1200px) {.mainPage{width: 100%;left:0%;} .MiddleSection{position:relative;}.unoBnt{font-size: 100%;}}
-@media screen and (min-width: 1200px) {.mainPage{width: 60%;} .MiddleSection{position:sticky;}.unoBnt{font-size: 25px;}}
+@media screen and (max-width: 1200px) {.mainPage{width: 100%;left:0%;} .MiddleSection{position:relative;}.unoBnt{font-size: 100%;} 
+.shareSearchInput > li{width: 400px;}}
+@media screen and (min-width: 1200px) {.mainPage{width: 60%;} .MiddleSection{position:sticky;}.unoBnt{font-size: 25px;}
+.shareSearchInput > li{width: 700px;}}
 
 /*금융 서비스쪽*/
 .TopSection{height:250px;width:100%;background-color: black;}

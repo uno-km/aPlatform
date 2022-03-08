@@ -4,11 +4,11 @@
 		<div class="unoRow">
 			<div class='col-85'>
 				<div class="input-group">
-					<input type="text" class="form-control" id='searchShareInput' style='border: 2px solid #0d6efd;'>
-					<button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+					<button id='ext' type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
 						<span class="visually-hidden-focusable">Toggle Dropdown</span>
 					</button>
-					<ul class="dropdown-menu dropdown-menu-end">
+					<input type="text" class="form-control" id='searchShareInput' style='border: 2px solid #0d6efd;'>
+					<ul class="dropdown-menu shareSearchInput" style='transform: translate3d(0px, 58px, 0px);'> 
 						<li>
 							<a class="dropdown-item" href="#">Action</a>
 						</li>
@@ -17,12 +17,6 @@
 						</li>
 						<li>
 							<a class="dropdown-item" href="#">Something else here</a>
-						</li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<li>
-							<a class="dropdown-item" href="#">Separated link</a>
 						</li>
 					</ul>
 				</div>

@@ -16,6 +16,7 @@ window.onpopstate = function(event) {
 	window.scrollTo(0,localStorage.BeforeScroll);
 }
 document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
+document.getElementById('searchShareInput').addEventListener("keyup", displayInputValue);
 function searchShareInfo(e) {
 	let inputData = document.getElementById('searchShareInput').value;
 	let sharesInfo = JSON.parse(localStorage.sharesInfo);
@@ -25,9 +26,9 @@ function searchShareInfo(e) {
 window.addEventListener('load', function () {
 	finPageInit()
 });
+
 function finPageInit() {
 	setContentsSection();
-//	tmp();
 	getFindata();
 	getRankdata();
 	setKospiIndex();
@@ -260,3 +261,16 @@ function getShareInfoDTL(code) {
 function getKeyByValue(object, value) {
 	  return Object.keys(object).find(key => object[key] === value);
 }
+function displayInputValue(){
+	if(!(this.value==""||this.value.legnth==0)) {
+		const shareNames = JSON.parse(localStorage.sharesInfo);
+		const list = ''	;
+		Object.keys(shareNames).forEach((obj)=>{
+			if(obj.includes(this.value.toUpperCase())) {
+				console.log(obj);
+			};
+		});
+//		console.log(asd);
+//	Object.keys(qwe).includes('제노코');
+	}
+   }
