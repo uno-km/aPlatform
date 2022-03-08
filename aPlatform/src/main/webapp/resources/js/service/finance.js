@@ -16,7 +16,8 @@ window.onpopstate = function(event) {
 	window.scrollTo(0,localStorage.BeforeScroll);
 }
 document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
-document.getElementById('searchShareInput').addEventListener("keyup", displayInputValue);
+document.getElementById('searchShareInput').addEventListener("keyup", keyupShareInputValue);
+document.getElementById('searchShareInput').addEventListener("focus", focusShareInputValue);
 function searchShareInfo(e) {
 	let inputData = document.getElementById('searchShareInput').value;
 	let sharesInfo = JSON.parse(localStorage.sharesInfo);
@@ -24,6 +25,7 @@ function searchShareInfo(e) {
 	getShareInfoDTL(searchData);
 }
 function searchShareInfoSearchList(value) {
+	document.getElementById('searchingList').style = "visibility:hidden;";
 	let sharesInfo = JSON.parse(localStorage.sharesInfo);
 	let searchData = sharesInfo[value];
 	getShareInfoDTL(searchData);
@@ -101,7 +103,6 @@ function setKospiImage() {
 	inputBody.style.backgroundImage=`URL('${this.kospiImage.kospi_day}')`;
 	inputBody.style.backgroundSize="100% 100%";
 	inputBody.style.backgroundPosition="center";
-//	inputBody.innerHTML =`<img src="${this.kospiImage.kospi_day}" style = 'width:100%;heigh:100%;'>`;
 }
 function setKosdaqImage() {
 	const inputBody= document.getElementById('kosdaqImage');
@@ -117,8 +118,7 @@ function setKospiBuyer() {
 							<div class='inner_kospiBuyer'>기관</div>
 							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_org}</div>
 							<div class='inner_kospiBuyer'>외국인</div>
-							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_frg}</div>
-						`;
+							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_frg}</div>`;
 		const inputBody = document.getElementById('kospiBuyer');
 		inputBody.innerHTML=struct_div;
 	}else {
@@ -136,14 +136,12 @@ function setKospiBuyerColor() {
 function setKosdaqBuyer() {
 	let struct_div ="";
 	if(this.kosdaqBuyer!=null) {
-		struct_div	=	`
-							<div class='inner_kosdaqBuyer'>개인</div>
+		struct_div	=	`	<div class='inner_kosdaqBuyer'>개인</div>
 							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_ant}</div>
 							<div class='inner_kosdaqBuyer'>기관</div>
 							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_org}</div>
 							<div class='inner_kosdaqBuyer'>외국인</div>
-							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_frg}</div>
-						`;
+							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_frg}</div>`;
 		const inputBody = document.getElementById('kosdaqBuyer');
 		inputBody.innerHTML=struct_div;
 	}else {
@@ -266,22 +264,21 @@ function getShareInfoDTL(code) {
 function getKeyByValue(object, value) {
 	  return Object.keys(object).find(key => object[key] === value);
 }
-function displayInputValue(){
+function keyupShareInputValue(){
     if (window.event.keyCode == 13) {
     	if(document.querySelectorAll('.shareSearchInput li').length>0) {
     		searchShareInfoSearchList(document.querySelectorAll('.shareSearchInput li a')[0].text)
+    	}else {
+    		console.log('input값 없음');
     	}
+    	document.getElementById('searchingList').style = "visibility:hidden;";
+    	document.getElementById('searchShareInput').value='';
     }else {
     	if(!(this.value==""||this.value.legnth==0)) {
-    		const shareNames = JSON.parse(localStorage.sharesInfo);
-    		const list = ''	;
     		let struct_div ='';
-    		let cnt = 0;
-    		Object.keys(shareNames).forEach((obj)=>{
+    		Object.keys(JSON.parse(localStorage.sharesInfo)).forEach((obj)=>{
     			if(obj.includes(this.value.toUpperCase())) {
-    				struct_div +=	`<li>
-    						<a class="dropdown-item" onclick="searchShareInfoSearchList('${obj}')">${obj}</a>
-    						</li>`;
+    				struct_div +=	`<li><a class="dropdown-item" onclick="searchShareInfoSearchList('${obj}')">${obj}</a></li>`;
     				console.log(obj);
     				cnt++;
     			}
@@ -303,6 +300,23 @@ function displayInputValue(){
     	}
     }
 }
-//${shareNames['obj']}
-
-//<a class="dropdown-item" href="javascript:searchShareInfoSearchList(${shareNames[obj]})">${obj}</a>
+function focusShareInputValue()	{
+	if(!(this.value==""||this.value.legnth==0)) {
+		let struct_div ='';
+		Object.keys(JSON.parse(localStorage.sharesInfo)).forEach((obj)=>{
+			if(obj.includes(this.value.toUpperCase())) {
+				struct_div +=`<li><a class="dropdown-item" onclick="searchShareInfoSearchList('${obj}')">${obj}</a></li>`;
+			}
+		});
+		document.getElementById('searchingList').innerHTML = struct_div;
+    	if(document.querySelectorAll('.shareSearchInput li').length>0) {
+    		document.getElementById('ext').className = 'btn btn-outline-primary dropdown-toggle dropdown-toggle-split show';
+    		document.getElementById('searchingList').className = 'dropdown-menu shareSearchInput show';
+    		document.getElementById('searchingList').style = "position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 58px, 0px);";
+    	}else {
+    		document.getElementById('ext').className = 'btn btn-outline-primary dropdown-toggle dropdown-toggle-split';
+    		document.getElementById('searchingList').className = 'dropdown-menu shareSearchInput';
+    		document.getElementById('searchingList').style = "visibility:hidden;";
+    	}
+	}
+}
