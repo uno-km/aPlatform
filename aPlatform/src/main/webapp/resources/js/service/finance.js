@@ -250,11 +250,12 @@ function getShareInfoDTL(code) {
         success: function (data) {
 		setInfoShareDetailFrame();
 		setInfoShareDetailData(data);
-		let fin_name = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
-		history.pushState({'name':fin_name,'code':code},'종목상세보기','main');
+		let shareName = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
+		history.pushState({'name':shareName,'code':code},'종목상세보기','main');
 		window.scrollTo(0,0);
 		localStorage.setItem('BeforeScroll',window.scrollY);
 		window.scrollY;
+		document.getElementById('searchShareInput').value=shareName;
     },
         error: function () {
             alert('통신실패!!');
