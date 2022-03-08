@@ -23,6 +23,11 @@ function searchShareInfo(e) {
 	let searchData = sharesInfo[inputData];
 	getShareInfoDTL(searchData);
 }
+function searchShareInfoSearchList(value) {
+	let sharesInfo = JSON.parse(localStorage.sharesInfo);
+	let searchData = sharesInfo[value];
+	getShareInfoDTL(searchData);
+}
 window.addEventListener('load', function () {
 	finPageInit()
 });
@@ -270,25 +275,15 @@ function displayInputValue(){
 		Object.keys(shareNames).forEach((obj)=>{
 			if(obj.includes(this.value.toUpperCase())) {
 				struct_div +=	`<li>
-									<a class="dropdown-item" href="#">${obj}</a>
+						<a class="dropdown-item" onclick="searchShareInfoSearchList('${obj}')">${obj}</a>
 								</li>`;
 				console.log(obj);
 				cnt++;
 			};
 		});
-//		for(let i = 0 ; i <Object.keys(shareNames).length;i++) {
-//			if(Object.keys(shareNames)[i].includes(this.value.toUpperCase())) {
-//				struct_div +=	`<li>
-//									<a class="dropdown-item" href="#">${Object.keys(shareNames)[i]}</a>
-//								</li>`;
-//				console.log(Object.keys(shareNames)[i]);
-//				if(cnt==9) {
-//					break;
-//				}
-//				cnt++;
-//			}
-//		}
 		document.getElementById('searchingList').innerHTML = struct_div;
-//	Object.keys(qwe).includes('제노코');
 	}
 }
+//${shareNames['obj']}
+
+//<a class="dropdown-item" href="javascript:searchShareInfoSearchList(${shareNames[obj]})">${obj}</a>
