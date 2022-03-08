@@ -267,22 +267,41 @@ function getKeyByValue(object, value) {
 	  return Object.keys(object).find(key => object[key] === value);
 }
 function displayInputValue(){
-	if(!(this.value==""||this.value.legnth==0)) {
-		const shareNames = JSON.parse(localStorage.sharesInfo);
-		const list = ''	;
-		let struct_div ='';
-		let cnt = 0;
-		Object.keys(shareNames).forEach((obj)=>{
-			if(obj.includes(this.value.toUpperCase())) {
-				struct_div +=	`<li>
-						<a class="dropdown-item" onclick="searchShareInfoSearchList('${obj}')">${obj}</a>
-								</li>`;
-				console.log(obj);
-				cnt++;
-			};
-		});
-		document.getElementById('searchingList').innerHTML = struct_div;
-	}
+    if (window.event.keyCode == 13) {
+    	if(document.querySelectorAll('.shareSearchInput li').length>0) {
+    		searchShareInfoSearchList(document.querySelectorAll('.shareSearchInput li a')[0].text)
+    	}
+    }else {
+    	if(!(this.value==""||this.value.legnth==0)) {
+    		const shareNames = JSON.parse(localStorage.sharesInfo);
+    		const list = ''	;
+    		let struct_div ='';
+    		let cnt = 0;
+    		Object.keys(shareNames).forEach((obj)=>{
+    			if(obj.includes(this.value.toUpperCase())) {
+    				struct_div +=	`<li>
+    						<a class="dropdown-item" onclick="searchShareInfoSearchList('${obj}')">${obj}</a>
+    						</li>`;
+    				console.log(obj);
+    				cnt++;
+    			}
+    		});
+    		document.getElementById('searchingList').innerHTML = struct_div;
+        	if(document.querySelectorAll('.shareSearchInput li').length>0) {
+        		document.getElementById('ext').className = 'btn btn-outline-primary dropdown-toggle dropdown-toggle-split show';
+        		document.getElementById('searchingList').className = 'dropdown-menu shareSearchInput show';
+        		document.getElementById('searchingList').style = "position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 58px, 0px);";
+        	}else {
+        		document.getElementById('ext').className = 'btn btn-outline-primary dropdown-toggle dropdown-toggle-split';
+        		document.getElementById('searchingList').className = 'dropdown-menu shareSearchInput';
+        		document.getElementById('searchingList').style = "visibility:hidden;";
+        	}
+    	}else {
+    		document.getElementById('ext').className = 'btn btn-outline-primary dropdown-toggle dropdown-toggle-split';
+    		document.getElementById('searchingList').className = 'dropdown-menu shareSearchInput show';
+    		document.getElementById('searchingList').style = "visibility:hidden;";
+    	}
+    }
 }
 //${shareNames['obj']}
 

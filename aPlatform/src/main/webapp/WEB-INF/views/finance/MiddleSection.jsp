@@ -4,8 +4,8 @@
 		<div class="unoRow">
 			<div class='col-85'>
 				<div class="input-group">
-					<button id='ext' type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-						<span class="visually-hidden-focusable">Toggle Dropdown</span>
+					<button id='ext' type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="true">
+<!-- 						<span class="visually-hidden-focusable">Toggle Dropdown</span> -->
 					</button>
 					<input type="text" class="form-control" id='searchShareInput' style='border: 2px solid #0d6efd;'>
 					<ul class="dropdown-menu shareSearchInput" id='searchingList'>
