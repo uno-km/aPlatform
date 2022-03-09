@@ -11,6 +11,7 @@ var kosdaqImage='';
 var rankDataMC = '';
 var codeInfo = '';
 window.onpopstate = function(event) { 
+	document.getElementById('searchShareInput').value='';
 	history.pushState({pageNum:3, searchDt:'2019-05-07'}, null, 'main'); 
 	finPageInit();
 	window.scrollTo(0,localStorage.BeforeScroll);
@@ -18,6 +19,7 @@ window.onpopstate = function(event) {
 document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
 document.getElementById('searchShareInput').addEventListener("keyup", keyupShareInputValue);
 document.getElementById('searchShareInput').addEventListener("focus", focusShareInputValue);
+document.getElementById('searchShareInput').addEventListener("blur", onblurShareInputValue);
 function searchShareInfo(e) {
 	let inputData = document.getElementById('searchShareInput').value;
 	let sharesInfo = JSON.parse(localStorage.sharesInfo);
@@ -320,4 +322,9 @@ function focusShareInputValue()	{
     		document.getElementById('searchingList').style = "visibility:hidden;";
     	}
 	}
+}
+function onblurShareInputValue()	{
+	document.getElementById('ext').className = 'btn btn-outline-primary dropdown-toggle dropdown-toggle-split';
+	document.getElementById('searchingList').className = 'dropdown-menu shareSearchInput';
+	document.getElementById('searchingList').style = "visibility:hidden;";
 }
