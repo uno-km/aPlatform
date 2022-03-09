@@ -17,9 +17,10 @@ window.onpopstate = function(event) {
 	window.scrollTo(0,localStorage.BeforeScroll);
 }
 document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
+document.getElementById('toggleHide').addEventListener('click',toggleHide);
 document.getElementById('searchShareInput').addEventListener("keyup", keyupShareInputValue);
 document.getElementById('searchShareInput').addEventListener("focus", focusShareInputValue);
-document.getElementById('searchShareInput').addEventListener("blur", onblurShareInputValue);
+//document.getElementById('searchShareInput').addEventListener("blur", onblurShareInputValue);
 function searchShareInfo(e) {
 	let inputData = document.getElementById('searchShareInput').value;
 	let sharesInfo = JSON.parse(localStorage.sharesInfo);
@@ -304,10 +305,12 @@ function keyupShareInputValue(){
     }
 }
 function focusShareInputValue()	{
+	document.querySelector('.toggleHide').style.visibility = 'visible';
 	if(!(this.value==""||this.value.legnth==0)) {
 		let struct_div ='';
 		Object.keys(JSON.parse(localStorage.sharesInfo)).forEach((obj)=>{
 			if(obj.includes(this.value.toUpperCase())) {
+//				struct_div +=`<li><a class="dropdown-item" onclick="test()">${obj}</a></li>`;
 				struct_div +=`<li><a class="dropdown-item" onclick="searchShareInfoSearchList('${obj}')">${obj}</a></li>`;
 			}
 		});
@@ -322,6 +325,15 @@ function focusShareInputValue()	{
     		document.getElementById('searchingList').style = "visibility:hidden;";
     	}
 	}
+}
+function test()	{
+	alert('qwe');
+}
+function toggleHide()	{
+	document.getElementById('ext').className = 'btn btn-outline-primary dropdown-toggle dropdown-toggle-split';
+	document.getElementById('searchingList').className = 'dropdown-menu shareSearchInput';
+	document.getElementById('searchingList').style = "visibility:hidden;";
+	document.querySelector('.toggleHide').style.visibility = 'hidden';
 }
 function onblurShareInputValue()	{
 	document.getElementById('ext').className = 'btn btn-outline-primary dropdown-toggle dropdown-toggle-split';
