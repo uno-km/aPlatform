@@ -31,7 +31,7 @@ public class FinanceRetvBOC
 
 	public ArrayList<Map<String, String>> setTotalFindata() throws IOException
 	{
-		this.financeDataMatrix.setPageDOCMapByInnerArray();
+		this.financeDataMatrix.setPageDOC();
 		outArr.add(getUrlInfo.getMarketIndex(financeDataMatrix, "kospi", "index"));
 		outArr.add(getUrlInfo.getMarketIndex(financeDataMatrix, "kospi", "buyer"));
 		outArr.add(getUrlInfo.getMarketIndex(financeDataMatrix, "kospi", "image"));
@@ -40,10 +40,12 @@ public class FinanceRetvBOC
 		outArr.add(getUrlInfo.getMarketIndex(financeDataMatrix, "kosdaq", "image"));
 		return outArr;
 	}
-	public Map<String, ArrayList<String>> getRankFindata() throws IOException
+	public Map<String, ArrayList<String>> getRankFindata(Map<String, String> map) throws IOException
 	{
-		this.financeDataMatrix.setPageDOCMapByString("main");
-		return getUrlInfo.getMapStringArrayList(financeDataMatrix, "main", "rankMC");
+		String url = map.get("url");
+		String pharseType = map.get("pharseType");
+		this.financeDataMatrix.setPageDOC(url);
+		return getUrlInfo.getMapStringArrayList(financeDataMatrix, url, pharseType);
 	}
 	public List<FinanceVO> getCode(String name)
 	{
