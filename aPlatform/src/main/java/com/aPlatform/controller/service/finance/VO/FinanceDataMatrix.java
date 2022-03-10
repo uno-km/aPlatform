@@ -34,14 +34,14 @@ public class FinanceDataMatrix
 		this.marketURLMap.put("index", "#quotient");
 		this.marketURLMap.put("buyer", ".dd");
 		this.marketURLMap.put("image", ".graph img");
-		this.marketURLMap.put("news", "..a");
+		this.marketURLMap.put("news", ".section_strategy");
 	}
 
-	public void setPageDOCMapByString(String input) throws IOException
+	public void setPageDOC(String input) throws IOException
 	{
 		this.pageDOCMap.put(input, Jsoup.connect(this.marketURLMap.get(input)).get());
 	}
-	public void setPageDOCMapByInnerArray() throws IOException
+	public void setPageDOC() throws IOException
 	{
 		for (int i = 0; i < this.innerArr.length; i++)
 		{

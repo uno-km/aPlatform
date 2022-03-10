@@ -78,9 +78,14 @@ function getFindata() {
 }
 function getRankdata() {
 	let outData='';
+    const sendingVO = {
+            "url" : "main"
+        ,   "pharseType" : "rankMC"  
+        }
 	$.ajax({
 		type: 'GET',
-		url: '/service/finance/rank',
+		url: '/service/finance/rank?',
+		data: sendingVO,
 		dataType: 'JSON', 
 		async: false,
 		contentType: 'application/json; charset=utf-8',
@@ -244,9 +249,15 @@ function goShareInfo(input) {
 	}
 }
 function getShareInfoDTL(code) {
+    const sendingVO = {
+            "url" : "infoDTL"
+        ,   "pharseType" : "detail"  
+        ,	"code" : code
+        };
     $.ajax({
         type: 'GET',
-        url: `/service/finance/shareInfo?code=`+code,
+        url: `/service/finance/shareInfo`,
+        data: sendingVO,
         dataType: 'JSON', 
         async: false,
         contentType: 'application/json; charset=utf-8',
