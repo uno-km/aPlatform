@@ -37,9 +37,9 @@ public class FinanceRetvSO
 		return financeRetvBOC.setTotalFindata();
 	}
 	@GetMapping(value = "/rank")
-	public Map<String, ArrayList<String>> getRankdata(Model model) throws IOException
+	public Map<String, ArrayList<String>> getRankdata(@RequestParam Map<String, String> map, Model model) throws IOException
 	{
-		return financeRetvBOC.getRankFindata();
+		return financeRetvBOC.getRankFindata(map);
 	}
 	@GetMapping(value = "/code")
 	public List<FinanceVO> getCode(Model model, @RequestParam String name) throws IOException
@@ -52,8 +52,13 @@ public class FinanceRetvSO
 		return financeRetvBOC.getCodeMap();
 	}
 	@GetMapping(value = "/shareInfo")
-	public List<List<String>> getShareInfoDTL(Model model, @RequestParam String code) throws IOException
+	public List<List<String>> getShareInfoDTL(Model model, @RequestParam Map<String, String> map) throws IOException
 	{
-		return financeSearchBOC.getInfoDTL(code);
+		return financeSearchBOC.getInfoDTL(map);
+	}
+	@GetMapping(value = "/news")
+	public List<List<String>> getNews(Model model, @RequestParam Map<String, String> map) throws IOException
+	{
+		return financeSearchBOC.getInfoDTL(map);
 	}
 }
