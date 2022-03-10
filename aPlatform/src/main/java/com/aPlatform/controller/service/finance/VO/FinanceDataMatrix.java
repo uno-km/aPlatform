@@ -19,11 +19,11 @@ public class FinanceDataMatrix
 	{
 		setMarketURLMap();
 	}
-	public FinanceDataMatrix(String code)
+	public FinanceDataMatrix(Map<String, String> map)
 	{
 		setMarketURLMap();
-		marketURLMap.put("infoDTL", "https://finance.naver.com/item/main.naver?code=" + code);
-		marketURLMap.put("detail", ".h_th2");
+		marketURLMap.put(map.get("url"), "https://finance.naver.com/item/main.naver?code=" + map.get("code"));
+		marketURLMap.put(map.get("pharseType"), ".h_th2");
 	}
 	private void setMarketURLMap()
 	{

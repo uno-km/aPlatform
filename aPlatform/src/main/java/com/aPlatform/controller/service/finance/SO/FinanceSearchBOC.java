@@ -19,7 +19,7 @@ public class FinanceSearchBOC
 	public List<List<String>> getInfoDTL(Map<String, String> map) throws IOException
 	{
 		GetURLInfo getUrlInfo = new GetURLInfo();
-		FinanceDataMatrix financeDataMatrix = new FinanceDataMatrix(map.get("code"));
+		FinanceDataMatrix financeDataMatrix = new FinanceDataMatrix(map);
 		String url = map.get("url");
 		String pharseType = map.get("pharseType");
 		financeDataMatrix.setPageDOC(url);

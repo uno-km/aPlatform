@@ -16,8 +16,8 @@ window.onpopstate = function(event) {
 	finPageInit();
 	window.scrollTo(0,localStorage.BeforeScroll);
 }
-document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
 document.getElementById('toggleHide').addEventListener('click',toggleHide);
+document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
 document.getElementById('searchShareInput').addEventListener("keyup", keyupShareInputValue);
 document.getElementById('searchShareInput').addEventListener("focus", focusShareInputValue);
 //document.getElementById('searchShareInput').addEventListener("blur", onblurShareInputValue);
