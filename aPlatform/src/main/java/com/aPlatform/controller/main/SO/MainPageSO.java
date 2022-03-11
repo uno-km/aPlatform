@@ -22,15 +22,8 @@ public class MainPageSO
 	}
 
 	@RequestMapping(value = "/favicon.ico", method = RequestMethod.GET)
-	public void favicon(HttpServletRequest request, HttpServletResponse reponse)
+	public void favicon(HttpServletRequest request, HttpServletResponse reponse) throws IOException
 	{
-		try
-		{
-			reponse.sendRedirect("/resources/assets/favicon.ico");
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
+		reponse.sendRedirect("/resources/assets/favicon.ico");
 	}
 }
