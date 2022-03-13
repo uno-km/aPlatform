@@ -21,7 +21,7 @@
 		<br />
 		<div id="articlefileChange" class="drop-zone">버튼을 눌러 추가 또는 파일을 여기로 드래그하세요.</div>
 	</div>
-</div>3
+</div>
 <br />
 <br />
 <h2>드래그앤 드롭</h2>
