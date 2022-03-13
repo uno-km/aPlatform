@@ -84,10 +84,26 @@ public class FinanceURL
 				return outListMap;
 			case "detail" :
 				List<String> infoTitleList = contents.eachText();
-				Elements tdElements = doc.select("td");
 				infoTitleList = infoTitleList.subList(3, 19);
-				Map<String, List<String>> dtlOutMap = new LinkedHashMap<String, List<String>>();
-				int tdCnt = 0;
+				Elements tdElements = doc.select("td");
+				Elements thElements = doc.select("th");
+				List<List<String>> dtlOutList = new ArrayList<List<String>>();
+				dtlOutList.add(infoTitleList);
+				int thCnt = 0;
+				List<String> monthList = new ArrayList<String>();
+				for (int i = 0; i < thElements.size(); i++)
+				{
+					if(thCnt == 10)
+					{
+						break;
+					}
+					if(thElements.get(i).text().contains("."))
+					{
+						monthList.add(thElements.get(i).text());
+						thCnt++;
+					}
+				}
+				dtlOutList.add(monthList);
 				for (int i = 57; i < 216; i++)
 				{
 					List<String> innerList = new ArrayList<String>();
@@ -95,14 +111,27 @@ public class FinanceURL
 					{
 						innerList.add(tdElements.get(i + j).text());
 					}
-					dtlOutMap.put(infoTitleList.get(tdCnt), innerList);
-					tdCnt++;
+					dtlOutList.add(innerList);
 					i += 9;
 				}
-				return dtlOutMap;
-
+				return dtlOutList;
 			case "news" :
-				break;
+				Elements qwe = doc.select("a");
+				List<List<String>> newsListList = new ArrayList<List<String>>();
+				for (int i = 0; i < qwe.size(); i++)
+				{
+					String o = "<a href=\"/news/news_read.naver?mode=mainnews&";
+					if(qwe.get(i).toString().contains(o))
+					{
+						List<String> newsList = new ArrayList<String>();
+						parsingContainer = qwe.get(i).toString().split("<a href=\"");
+						newsList.add(qwe.get(i).text());
+						newsList.add(parsingContainer[1].split("\" onclick")[0]);
+						;
+						newsListList.add(newsList);
+					}
+				}
+				return newsListList;
 		}
 		return outMap;
 	}

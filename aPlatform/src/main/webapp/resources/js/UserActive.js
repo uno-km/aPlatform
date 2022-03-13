@@ -5,7 +5,7 @@ var data ='';
 
 window.addEventListener('load', function() {
     callNavBar();
-    if(!localStorage.length<1){
+    if(!(localStorage.user_auth==undefined||localStorage.user_auth==null)){
         setLoginedRemoteCtrl();
     }else{
         setRemoteCtrl();
@@ -18,27 +18,6 @@ function enterkey(stts) {
     }
 }
 function signin() {
-	this.data = checkUser();
-	setSession(this.data);
-    callNavBar();
-    setLoginedRemoteCtrl();
-}
-function setSession(data){
-    localStorage.clear();
-    localStorage.setItem('user_auth', data.user_auth);
-    localStorage.setItem('user_birth', data.user_birth );
-    localStorage.setItem('user_email',  data.user_email);
-    localStorage.setItem('user_id',  data.user_id);
-    localStorage.setItem('user_name', data.user_name);
-    localStorage.setItem('user_password',  data.user_password);
-    localStorage.setItem('user_phonenum',  data.user_phonenum);
-}
-function logout () {
-    localStorage.clear();
-    window.location.reload();
-}
-function checkUser() {
-	let outData='';
     const user_id = document.getElementById("sideRemoteId").value;
     const user_password = document.getElementById("sideRemotePW").value;
     const maindataLoadInVO = {
@@ -53,11 +32,40 @@ function checkUser() {
         async: false,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-    		outData=data;
+    		setSession(data);
+    		callNavBar();
+    		setLoginedRemoteCtrl();
         },
         error: function () {
             alert('통신실패!!');
         }
     });
-    return outData;
+}
+function setSession(data){
+	if(!(localStorage.user_auth==undefined||localStorage.user_auth==null)) {
+		removeUserSignedSession();
+	}
+	setUserSignedSession(data);
+}
+function logout () {
+	removeUserSignedSession();
+    window.location.reload();
+}
+function setUserSignedSession(data) {
+	localStorage.setItem('user_auth', data.user_auth);
+	localStorage.setItem('user_birth', data.user_birth );
+	localStorage.setItem('user_email',  data.user_email);
+	localStorage.setItem('user_id',  data.user_id);
+	localStorage.setItem('user_name', data.user_name);
+	localStorage.setItem('user_password',  data.user_password);
+	localStorage.setItem('user_phonenum',  data.user_phonenum);
+}
+function removeUserSignedSession() {
+	localStorage.removeItem('user_auth');
+	localStorage.removeItem('user_birth');
+	localStorage.removeItem('user_email');
+	localStorage.removeItem('user_id');
+	localStorage.removeItem('user_name');
+	localStorage.removeItem('user_password');
+	localStorage.removeItem('user_phonenum');
 }

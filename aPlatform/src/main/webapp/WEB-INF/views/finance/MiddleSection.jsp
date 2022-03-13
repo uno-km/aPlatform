@@ -4,32 +4,17 @@
 		<div class="unoRow">
 			<div class='col-85'>
 				<div class="input-group">
-					<input type="text" class="form-control" style='border: 2px solid #0d6efd;'>
-					<button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-						<span class="visually-hidden-focusable">Toggle Dropdown</span>
+					<button id='ext' type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="true" hidden>
+<!-- 						<span class="visually-hidden-focusable">Toggle Dropdown</span> -->
 					</button>
-					<ul class="dropdown-menu dropdown-menu-end">
-						<li>
-							<a class="dropdown-item" href="#">Action</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#">Another action</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<li>
-							<a class="dropdown-item" href="#">Separated link</a>
-						</li>
+					<input type="text" class="form-control" id='searchShareInput' style='border: 2px solid #0d6efd;'>
+					<ul class="dropdown-menu shareSearchInput" id='searchingList'>
 					</ul>
 				</div>
 			</div>
 			<div style='width: 2%'></div>
 			<div class='col-15'>
-				<button class="unoBnt" type="button">Button</button>
+				<button class="unoBnt" type="button" id='searchShareBtn'>검색</button>
 			</div>
 		</div>
 	</div>

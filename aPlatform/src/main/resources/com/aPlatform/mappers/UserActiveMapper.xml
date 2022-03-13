@@ -27,17 +27,18 @@
 	<select parameterType="com.aPlatform.controller.user.VO.UserinfoVO"
 		resultType="com.aPlatform.controller.user.VO.UserinfoOutVO" id="getUserInfo">
 		SELECT
-		USER_ID
-		, USER_PASSWORD
-		, USER_EMAIL
-		, USER_NAME
-		, USER_PHONENUM
-		, USER_AUTH
-		, USER_BIRTH
+			USER_ID
+			, USER_PASSWORD
+			, USER_EMAIL
+			, USER_NAME
+			, USER_PHONENUM
+			, USER_AUTH
+			, USER_BIRTH
 		FROM
-		USER_INFO
+			USER_INFO
 		WHERE
-		USER_ID = #{user_id}
+			USER_ID = #{user_id}
+		AND USER_PASSWORD = #{user_password}
 	</select>
 	<insert parameterType="com.aPlatform.controller.user.VO.UserinfoVO" id="signUp">
 		INSERT INTO

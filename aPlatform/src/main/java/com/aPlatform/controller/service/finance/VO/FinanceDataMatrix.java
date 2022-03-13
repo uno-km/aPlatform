@@ -19,11 +19,11 @@ public class FinanceDataMatrix
 	{
 		setMarketURLMap();
 	}
-	public FinanceDataMatrix(String code)
+	public FinanceDataMatrix(Map<String, String> map)
 	{
 		setMarketURLMap();
-		marketURLMap.put("infoDTL", "https://finance.naver.com/item/main.naver?code=" + code);
-		marketURLMap.put("detail", ".h_th2");
+		marketURLMap.put(map.get("url"), "https://finance.naver.com/item/main.naver?code=" + map.get("code"));
+		marketURLMap.put(map.get("pharseType"), ".h_th2");
 	}
 	private void setMarketURLMap()
 	{
@@ -34,14 +34,14 @@ public class FinanceDataMatrix
 		this.marketURLMap.put("index", "#quotient");
 		this.marketURLMap.put("buyer", ".dd");
 		this.marketURLMap.put("image", ".graph img");
-		this.marketURLMap.put("news", "..a");
+		this.marketURLMap.put("news", ".section_strategy");
 	}
 
-	public void setPageDOCMapByString(String input) throws IOException
+	public void setPageDOC(String input) throws IOException
 	{
 		this.pageDOCMap.put(input, Jsoup.connect(this.marketURLMap.get(input)).get());
 	}
-	public void setPageDOCMapByInnerArray() throws IOException
+	public void setPageDOC() throws IOException
 	{
 		for (int i = 0; i < this.innerArr.length; i++)
 		{

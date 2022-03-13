@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>내 손안의 금융 - aFinance</title>
 <body>
+	<div class='toggleHide' id='toggleHide'></div>
 	<div class='bodyDvi'>
 		<div class='mainPage'>
 			<%@ include file="/WEB-INF/views/finance/TopSection.jsp"%>

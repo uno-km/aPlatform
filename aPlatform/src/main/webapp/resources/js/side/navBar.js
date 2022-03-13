@@ -52,7 +52,7 @@ function setLoginedRemoteCtrl(){
 	}
 }
 function callNavBar() {
-    if(localStorage.length===0){
+    if(localStorage.user_auth==undefined||localStorage.user_auth==null){
         console.log("로그인기록없음");
     }else{
     	if(document.getElementById('servicesNavbar')) {
