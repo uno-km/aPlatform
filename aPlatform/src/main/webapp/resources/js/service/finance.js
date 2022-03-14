@@ -10,6 +10,7 @@ var kosdaqBuyer='';
 var kosdaqImage='';
 var rankDataMC = '';
 var codeInfo = '';
+var newsData = '';
 
 window.addEventListener('load', finPageInit);
 window.onpopstate = function(event) { 
@@ -42,6 +43,7 @@ function finPageInit() {
 	setContentsSection();
 	getFindata();
 	getRankdata();
+	getNewsdata();
 	setKospiIndex();
 	setKosdaqIndex();
 	setKospiImage();
@@ -53,9 +55,34 @@ function finPageInit() {
 	setRankDataMC();
 	setRankDataMCColor();
 	setSessionSharesInfo();
-	setNews();
+	setNewdata();
 }
-function setNews() {
+function checkBadandGood(data) {
+	const bad =new RegExp("(급락|하락|붕괴|↓|약보합|하회|약세)");
+	const good =  new RegExp("(급반등|급상승|상승|기대||↑|강보합|상회|강세)");
+	if(bad.test(data)) {
+		return "bad";
+	}else if(good.test(data)) {
+		return "good";
+	}
+	return ;
+}
+function setNewdata(){
+	let struct_div ="";
+	if(this.newsData!=null) {
+		for(let  i = 0; i <this.newsData.length;i++) {
+			const badgood = checkBadandGood(this.newsData[i][0]);
+			struct_div	+=	`<div class='inner_news_title ${badgood}'>
+								<a href='https://finance.naver.com/${this.newsData[i][1]}'>${this.newsData[i][0]}</a>
+							</div>`;
+		}
+		const inputBody = document.getElementsByClassName('inner_news')[0];
+		inputBody.innerHTML=struct_div;
+	}else {
+		console.log("해당 영억없음");
+	}
+}
+function getNewsdata() {
 	let outData='';
     const sendingVO = {
             "url" : "main"
@@ -76,6 +103,7 @@ function setNews() {
             alert('통신실패!!');
         }
     });
+    this.newsData = outData;
 }
 
 function getFindata() {
@@ -175,7 +203,7 @@ function setKosdaqBuyer() {
 							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_org}</div>
 							<div class='inner_kosdaqBuyer'>외국인</div>
 							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_frg}</div>`;
-		const inputBody = document.getElementById('kosdaqBuyer');
+		const inputBody = document.getElementsByClassName('inner_news')[0];
 		inputBody.innerHTML=struct_div;
 	}else {
 		console.log("해당 영억없음");
