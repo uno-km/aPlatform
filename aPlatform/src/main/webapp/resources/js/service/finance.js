@@ -10,17 +10,21 @@ var kosdaqBuyer='';
 var kosdaqImage='';
 var rankDataMC = '';
 var codeInfo = '';
+
+window.addEventListener('load', finPageInit);
 window.onpopstate = function(event) { 
 	document.getElementById('searchShareInput').value='';
 	history.pushState({pageNum:3, searchDt:'2019-05-07'}, null, 'main'); 
 	finPageInit();
 	window.scrollTo(0,localStorage.BeforeScroll);
 }
+
 document.getElementById('toggleHide').addEventListener('click',toggleHide);
 document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
 document.getElementById('searchShareInput').addEventListener("keyup", keyupShareInputValue);
 document.getElementById('searchShareInput').addEventListener("focus", focusShareInputValue);
 //document.getElementById('searchShareInput').addEventListener("blur", onblurShareInputValue);
+
 function searchShareInfo(e) {
 	let inputData = document.getElementById('searchShareInput').value;
 	let sharesInfo = JSON.parse(localStorage.sharesInfo);
@@ -33,9 +37,6 @@ function searchShareInfoSearchList(value) {
 	let searchData = sharesInfo[value];
 	getShareInfoDTL(searchData);
 }
-window.addEventListener('load', function () {
-	finPageInit()
-});
 
 function finPageInit() {
 	setContentsSection();
@@ -52,7 +53,31 @@ function finPageInit() {
 	setRankDataMC();
 	setRankDataMCColor();
 	setSessionSharesInfo();
+	setNews();
 }
+function setNews() {
+	let outData='';
+    const sendingVO = {
+            "url" : "main"
+        ,   "pharseType" : "news"  
+        }
+	$.ajax({
+		type: 'GET',
+		url: '/service/finance/news?',
+		data: sendingVO,
+        dataType: 'JSON', 
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+    		outData=data;
+    		console.log(outData);
+        },
+        error: function () {
+            alert('통신실패!!');
+        }
+    });
+}
+
 function getFindata() {
 	let outData='';
     $.ajax({

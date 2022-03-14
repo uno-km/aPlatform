@@ -126,8 +126,7 @@ public class FinanceURL
 						List<String> newsList = new ArrayList<String>();
 						parsingContainer = qwe.get(i).toString().split("<a href=\"");
 						newsList.add(qwe.get(i).text());
-						newsList.add(parsingContainer[1].split("\" onclick")[0]);
-						;
+						newsList.add(parsingContainer[1].split("\" onclick")[0].replace("&amp;", "&"));
 						newsListList.add(newsList);
 					}
 				}

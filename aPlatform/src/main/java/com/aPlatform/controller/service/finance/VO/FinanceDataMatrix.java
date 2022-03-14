@@ -22,8 +22,10 @@ public class FinanceDataMatrix
 	public FinanceDataMatrix(Map<String, String> map)
 	{
 		setMarketURLMap();
-		marketURLMap.put(map.get("url"), "https://finance.naver.com/item/main.naver?code=" + map.get("code"));
-		marketURLMap.put(map.get("pharseType"), ".h_th2");
+		if(map.containsKey("code")) {
+			marketURLMap.put(map.get("url"), "https://finance.naver.com/item/main.naver?code=" + map.get("code"));
+			marketURLMap.put(map.get("pharseType"), ".h_th2");
+		}
 	}
 	private void setMarketURLMap()
 	{
