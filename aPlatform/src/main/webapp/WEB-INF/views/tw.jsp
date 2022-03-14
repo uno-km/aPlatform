@@ -3,6 +3,8 @@
 <%@ include file="/WEB-INF/includes/common.jsp"%>
 <%@ include file="/WEB-INF/includes/header.jsp"%>
 <%@ include file="/WEB-INF/views/modules/loading.jsp"%>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <html>
 <meta charset="UTF-8">
 <title>aPlatform 웹뷰 테스트</title>
@@ -21,85 +23,13 @@
 	</div>
 </div>
 <h2>드래그앤 드롭</h2>
-<script>
-document.getElementById('input_file').addEventListener('change',clickButton);
-//드래그한 파일이 최초로 진입했을 때
-dropZone.addEventListener("dragenter", dragEventHandler);
-// 드래그한 파일이 dropZone 영역을 벗어났을 때
-dropZone.addEventListener("dragleave", dragEventHandler);
-// 드래그한 파일이 dropZone 영역에 머물러 있을 때
-dropZone.addEventListener("dragover", dragEventHandler);
-// 드래그한 파일이 드랍되었을 때
-dropZone.addEventListener("drop", function(e) {
-	dragEventHandler(e);
-	dropFiles(e);
-});
-var fileCount = 0;
-var totalCount = 10;
-var fileNum = 0;
-var dropZone = document.querySelector(".drop-zone");
-var content_files = new Array();
-
-function clickButton(e) {
-	var files = e.target.files;
-	fileCheck(files);
-}
-function dropFiles(e) {
-	var files = e.dataTransfer && e.dataTransfer.files;
-	fileCheck(files);
-}
-
-function fileCheck(files) {
-	var filesArr = Array.prototype.slice.call(files);
-	if (fileCount + filesArr.length > totalCount) {
-		alert('파일은 최대 ' + totalCount + '개까지 업로드 할 수 있습니다.');
-		return;
-	} else {
-		fileCount = fileCount + filesArr.length;
-	}
-	filesArr.forEach(function(f) {
-		var reader = new FileReader();
-		reader.onload = function(e) {
-			content_files.push(f);
-			$('#articlefileChange').append(
-					'<div id="file' + fileNum
-							+ '" onclick="fileDelete(\'file' + fileNum
-							+ '\')">' + '<font style="font-size:12px">'
-							+ f.name + '</font>' + '<div>x</div>'
-							+ '<div/>');
-			fileNum++;
-		};
-		reader.readAsDataURL(f);
-		document.getElementById('input_file').value = '';
-	});
-}
-function toggleClass(className) {
-	var list = [ "dragenter", "dragleave", "dragover", "drop" ];
-	for (var i = 0; i < list.length; i++) {
-		if (className === list[i]) {
-			dropZone.classList.add("drop-zone-" + list[i]);
-		} else {
-			dropZone.classList.remove("drop-zone-" + list[i])
-		}
-	}
-}
-
-function dragEventHandler(e) {
-	e.stopPropagation();
-	e.preventDefault();
-	toggleClass(e.type);
-}
-//파일 부분 삭제 함수
-function fileDelete(fileNum) {
-	var no = fileNum.replace(/[^0-9]/g, "");
-	content_files[no].is_delete = true;
-	document.getElementById(fileNum).remove();
-	fileCount--;
-}
-</script>
 <h1>${test}</h1>
 </body>
 </html>
+</body>
+<div id='moveEvent' style='background-color: #aaa; height: 200px; width: 400px; position: absolute; left: 0px; top: 0px; cursor: pointer; cursor: hand' onmousedown='startDrag(event, this)'>
+	<h1>하하하</h1>
+</div>
 <style>
 .drop-zone {
 	width: 500px;
@@ -153,6 +83,82 @@ function fileDelete(fileNum) {
 }
 </style>
 <script>
+	var fileCount = 0;
+	var totalCount = 10;
+	var fileNum = 0;
+	var dropZone = document.querySelector(".drop-zone");
+	var content_files = new Array();
+
+	document.getElementById('input_file').addEventListener('change',
+			clickButton);
+	//드래그한 파일이 최초로 진입했을 때
+	dropZone.addEventListener("dragenter", dragEventHandler);
+	// 드래그한 파일이 dropZone 영역을 벗어났을 때
+	dropZone.addEventListener("dragleave", dragEventHandler);
+	// 드래그한 파일이 dropZone 영역에 머물러 있을 때
+	dropZone.addEventListener("dragover", dragEventHandler);
+	// 드래그한 파일이 드랍되었을 때
+	dropZone.addEventListener("drop", function(e) {
+		dragEventHandler(e);
+		dropFiles(e);
+	});
+
+	function clickButton(e) {
+		var files = e.target.files;
+		fileCheck(files);
+	}
+	function dropFiles(e) {
+		var files = e.dataTransfer && e.dataTransfer.files;
+		fileCheck(files);
+	}
+
+	function fileCheck(files) {
+		var filesArr = Array.prototype.slice.call(files);
+		if (fileCount + filesArr.length > totalCount) {
+			alert('파일은 최대 ' + totalCount + '개까지 업로드 할 수 있습니다.');
+			return;
+		} else {
+			fileCount = fileCount + filesArr.length;
+		}
+		filesArr.forEach(function(f) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				content_files.push(f);
+				$('#articlefileChange').append(
+						'<div id="file' + fileNum
+								+ '" onclick="fileDelete(\'file' + fileNum
+								+ '\')">' + '<font style="font-size:12px">'
+								+ f.name + '</font>' + '<div>x</div>'
+								+ '<div/>');
+				fileNum++;
+			};
+			reader.readAsDataURL(f);
+			document.getElementById('input_file').value = '';
+		});
+	}
+	function toggleClass(className) {
+		var list = [ "dragenter", "dragleave", "dragover", "drop" ];
+		for (var i = 0; i < list.length; i++) {
+			if (className === list[i]) {
+				dropZone.classList.add("drop-zone-" + list[i]);
+			} else {
+				dropZone.classList.remove("drop-zone-" + list[i])
+			}
+		}
+	}
+
+	function dragEventHandler(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		toggleClass(e.type);
+	}
+	//파일 부분 삭제 함수
+	function fileDelete(fileNum) {
+		var no = fileNum.replace(/[^0-9]/g, "");
+		content_files[no].is_delete = true;
+		document.getElementById(fileNum).remove();
+		fileCount--;
+	}
 	/*폼 submit 로직 */
 	function registerAction() {
 		var form = $("form")[0];
@@ -185,5 +191,45 @@ function fileDelete(fileNum) {
 			}
 		});
 		return false;
+	}
+
+	//드래그
+	var img_L = 0;
+	var img_T = 0;
+	var targetObj;
+
+	function getLeft(o) {
+		return parseInt(o.style.left.replace('px', ''));
+	}
+	function getTop(o) {
+		return parseInt(o.style.top.replace('px', ''));
+	}
+
+	// 이미지 움직이기
+	function moveDrag(e) {
+		var e_obj = window.event ? window.event : e;
+		var dmvx = parseInt(e_obj.clientX + img_L);
+		var dmvy = parseInt(e_obj.clientY + img_T);
+		targetObj.style.left = dmvx + "px";
+		targetObj.style.top = dmvy + "px";
+		return false;
+	}
+	// 드래그 시작
+	function startDrag(e, obj) {
+		targetObj = obj;
+		var e_obj = window.event ? window.event : e;
+		img_L = getLeft(obj) - e_obj.clientX;
+		img_T = getTop(obj) - e_obj.clientY;
+
+		document.onmousemove = moveDrag;
+		document.onmouseup = stopDrag;
+		if (e_obj.preventDefault)
+			e_obj.preventDefault();
+	}
+
+	// 드래그 멈추기
+	function stopDrag() {
+		document.onmousemove = null;
+		document.onmouseup = null;
 	}
 </script>
