@@ -25,7 +25,6 @@ document.getElementById('toggleHide').addEventListener('click',toggleHide);
 document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
 document.getElementById('searchShareInput').addEventListener("keyup", keyupShareInputValue);
 document.getElementById('searchShareInput').addEventListener("focus", focusShareInputValue);
-//document.getElementById('searchShareInput').addEventListener("blur", onblurShareInputValue);
 
 function searchShareInfo(e) {
 	let inputData = document.getElementById('searchShareInput').value;
@@ -378,7 +377,6 @@ function focusShareInputValue()	{
 		let struct_div ='';
 		Object.keys(JSON.parse(localStorage.sharesInfo)).forEach((obj)=>{
 			if(obj.includes(this.value.toUpperCase())) {
-//				struct_div +=`<li><a class="dropdown-item" onclick="test()">${obj}</a></li>`;
 				struct_div +=`<li><a class="dropdown-item" onclick="searchShareInfoSearchList('${obj}')">${obj}</a></li>`;
 			}
 		});
@@ -393,9 +391,6 @@ function focusShareInputValue()	{
     		document.getElementById('searchingList').style = "visibility:hidden;";
     	}
 	}
-}
-function test()	{
-	alert('qwe');
 }
 function toggleHide()	{
 	document.getElementById('ext').className = 'btn btn-outline-primary dropdown-toggle dropdown-toggle-split';
