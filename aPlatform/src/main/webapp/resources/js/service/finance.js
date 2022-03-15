@@ -40,6 +40,7 @@ function searchShareInfoSearchList(value) {
 }
 
 function finPageInit() {
+	this.nowFinData=null;
 	setContentsSection();
 	getFindata();
 	getRankdata();

@@ -3,7 +3,7 @@
  */
 function setContentsSection() {
 	let struct_div = `
-	<div class='FirstRowInSection non-drag'>
+<div class='FirstRowInSection non-drag'>
 	<div class='FirstRecInRow'>
 		<div class='inner_title'>
 			<div class='title non-drag'>
