@@ -16,7 +16,16 @@ public class FinanceSearchBOC
 	@Autowired
 	FinanceDetailBO financeDetailBO;
 
-	public List<List<String>> getInfoDTL(Map<String, String> map) throws IOException
+	public Map<String, Object> getInfoDTL(Map<String, String> map) throws IOException
+	{
+		GetURLInfo getUrlInfo = new GetURLInfo();
+		FinanceDataMatrix financeDataMatrix = new FinanceDataMatrix(map);
+		String url = map.get("url");
+		String pharseType = map.get("pharseType");
+		financeDataMatrix.setPageDOC(url);
+		return getUrlInfo.getMapStringObject(financeDataMatrix, url, pharseType);
+	}
+	public List<List<String>> getNews(Map<String, String> map) throws IOException
 	{
 		GetURLInfo getUrlInfo = new GetURLInfo();
 		FinanceDataMatrix financeDataMatrix = new FinanceDataMatrix(map);

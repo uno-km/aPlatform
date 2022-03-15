@@ -54,7 +54,9 @@ function finPageInit() {
 	setKosdaqBuyerColor();
 	setRankDataMC();
 	setRankDataMCColor();
-	setSessionSharesInfo();
+	if(!this.localStorage.sharesInfo.length>0) {
+		setSessionSharesInfo();
+	}
 	setNewdata();
 }
 function checkBadandGood(data) {
@@ -316,7 +318,7 @@ function getShareInfoDTL(code) {
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
 		setInfoShareDetailFrame();
-		setInfoShareDetailData(data);
+		setInfoShareDetailData(data.statement);
 		let shareName = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
 		history.pushState({'name':shareName,'code':code},'종목상세보기','main');
 		window.scrollTo(0,0);

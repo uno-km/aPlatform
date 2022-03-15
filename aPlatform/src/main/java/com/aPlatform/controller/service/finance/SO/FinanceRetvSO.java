@@ -52,13 +52,13 @@ public class FinanceRetvSO
 		return financeRetvBOC.getCodeMap();
 	}
 	@GetMapping(value = "/shareInfo")
-	public List<List<String>> getShareInfoDTL(Model model, @RequestParam Map<String, String> map) throws IOException
+	public Map<String, Object> getShareInfoDTL(Model model, @RequestParam Map<String, String> map) throws IOException
 	{
 		return financeSearchBOC.getInfoDTL(map);
 	}
 	@GetMapping(value = "/news")
 	public List<List<String>> getNews(Model model, @RequestParam Map<String, String> map) throws IOException
 	{
-		return financeSearchBOC.getInfoDTL(map);
+		return financeSearchBOC.getNews(map);
 	}
 }
