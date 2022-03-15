@@ -11,6 +11,7 @@ var kosdaqImage='';
 var rankDataMC = '';
 var codeInfo = '';
 var newsData = '';
+var shareDetailInfo = '';
 
 window.addEventListener('load', finPageInit);
 window.onpopstate = function(event) { 
@@ -317,6 +318,7 @@ function getShareInfoDTL(code) {
         async: false,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
+    	shareDetailInfo = data;
 		setInfoShareDetailFrame();
 		setInfoShareDetailData(data.statement);
 		let shareName = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
