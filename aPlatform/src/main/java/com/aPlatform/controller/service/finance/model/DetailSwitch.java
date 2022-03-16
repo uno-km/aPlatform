@@ -10,7 +10,7 @@ import org.jsoup.select.Elements;
 
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 
-public class DetailSwitch implements switchInterface
+public class DetailSwitch implements UrlFactory
 {
 
 	@Override

@@ -7,7 +7,7 @@ import org.jsoup.select.Elements;
 
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 
-public class BuyerSwitch implements switchInterface
+public class BuyerSwitch implements UrlFactory
 {
 
 	@Override

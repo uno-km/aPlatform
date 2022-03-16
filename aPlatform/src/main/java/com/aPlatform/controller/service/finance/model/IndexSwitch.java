@@ -7,7 +7,7 @@ import org.jsoup.select.Elements;
 
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 
-public class IndexSwitch implements switchInterface
+public class IndexSwitch implements UrlFactory
 {
 	@Override
 	public Object excute(FinanceDataMatrix financeDataMatrix, Document doc, Elements contents, HashMap<String, String> outMap,

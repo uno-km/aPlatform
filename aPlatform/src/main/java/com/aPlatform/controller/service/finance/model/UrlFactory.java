@@ -7,7 +7,7 @@ import org.jsoup.select.Elements;
 
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 
-public interface switchInterface
+public interface UrlFactory
 {
 	public Object excute(FinanceDataMatrix financeDataMatrix, Document doc, Elements contents, HashMap<String, String> outMap,
 			String[] parsingContainer, String market, String pharseType);

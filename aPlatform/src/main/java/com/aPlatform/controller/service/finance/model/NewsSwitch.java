@@ -9,7 +9,7 @@ import org.jsoup.select.Elements;
 
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 
-public class NewsSwitch implements switchInterface
+public class NewsSwitch implements UrlFactory
 {
 
 	@Override
