@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.aPlatform.controller.service.finance.BOC.FinanceRetvBOC;
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
-
 @RestController
 @RequestMapping(value = "/service/finance")
 public class FinanceRetvSO
@@ -52,13 +51,13 @@ public class FinanceRetvSO
 		return financeRetvBOC.getCodeMap();
 	}
 	@GetMapping(value = "/shareInfo")
-	public Map<String, Object> getShareInfoDTL(Model model, @RequestParam Map<String, String> map) throws IOException
+	public Object getShareInfoDTL(Model model, @RequestParam Map<String, String> map) throws IOException
 	{
-		return financeSearchBOC.getInfoDTL(map);
+		return financeSearchBOC.getInfo(map);
 	}
 	@GetMapping(value = "/news")
-	public List<List<String>> getNews(Model model, @RequestParam Map<String, String> map) throws IOException
+	public Object getNews(Model model, @RequestParam Map<String, String> map) throws IOException
 	{
-		return financeSearchBOC.getNews(map);
+		return financeSearchBOC.getInfo(map);
 	}
 }

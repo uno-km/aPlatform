@@ -21,8 +21,8 @@ public class GetURLInfo
 	{
 		return (List<List<String>>) FinanceURL.pharsingURL(financeDataMatrix, url, pharseType);
 	}
-	public Map<String, Object> getMapStringObject(FinanceDataMatrix financeDataMatrix, String url, String pharseType) throws IOException
+	public Object getObject(FinanceDataMatrix financeDataMatrix, String url, String pharseType) throws IOException
 	{
-		return (Map<String, Object>) FinanceURL.pharsingURL(financeDataMatrix, url, pharseType);
+		return FinanceURL.pharsingURL(financeDataMatrix, url, pharseType);
 	}
 }
