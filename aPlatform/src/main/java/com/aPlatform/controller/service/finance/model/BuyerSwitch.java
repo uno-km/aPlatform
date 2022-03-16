@@ -9,7 +9,6 @@ import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 
 public class BuyerSwitch implements UrlFactory
 {
-
 	@Override
 	public Object excute(FinanceDataMatrix financeDataMatrix, Document doc, Elements contents, HashMap<String, String> outMap,
 			String[] parsingContainer, String market, String pharseType)
