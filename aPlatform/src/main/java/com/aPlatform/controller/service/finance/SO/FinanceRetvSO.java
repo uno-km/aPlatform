@@ -1,7 +1,5 @@
 package com.aPlatform.controller.service.finance.SO;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,32 +29,32 @@ public class FinanceRetvSO
 		return modelandview;
 	}
 	@GetMapping(value = "/total")
-	public ArrayList<Map<String, String>> getTotalFindata(Model model) throws IOException
+	public Object getTotalFindata(Model model) throws Exception
 	{
 		return financeRetvBOC.setTotalFindata();
 	}
 	@GetMapping(value = "/rank")
-	public Map<String, ArrayList<String>> getRankdata(@RequestParam Map<String, String> map, Model model) throws IOException
+	public Object getRankdata(@RequestParam Map<String, String> map, Model model) throws Exception
 	{
 		return financeRetvBOC.getRankFindata(map);
 	}
 	@GetMapping(value = "/code")
-	public List<FinanceVO> getCode(Model model, @RequestParam String name) throws IOException
+	public List<FinanceVO> getCode(Model model, @RequestParam String name) throws Exception
 	{
 		return financeRetvBOC.getCode(name);
 	}
 	@GetMapping(value = "/codeAllMap")
-	public Map<String, String> getCodeMap(Model model) throws IOException
+	public Map<String, String> getCodeMap(Model model) throws Exception
 	{
 		return financeRetvBOC.getCodeMap();
 	}
 	@GetMapping(value = "/shareInfo")
-	public Object getShareInfoDTL(Model model, @RequestParam Map<String, String> map) throws IOException
+	public Object getShareInfoDTL(Model model, @RequestParam Map<String, String> map) throws Exception
 	{
 		return financeSearchBOC.getInfo(map);
 	}
 	@GetMapping(value = "/news")
-	public Object getNews(Model model, @RequestParam Map<String, String> map) throws IOException
+	public Object getNews(Model model, @RequestParam Map<String, String> map) throws Exception
 	{
 		return financeSearchBOC.getInfo(map);
 	}
