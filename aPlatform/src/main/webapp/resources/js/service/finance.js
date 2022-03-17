@@ -206,7 +206,7 @@ function setKosdaqBuyer() {
 							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_org}</div>
 							<div class='inner_kosdaqBuyer'>외국인</div>
 							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_frg}</div>`;
-		const inputBody = document.getElementsByClassName('inner_news')[0];
+		const inputBody = document.getElementById('kosdaqBuyer');
 		inputBody.innerHTML=struct_div;
 	}else {
 		console.log("해당 영억없음");
