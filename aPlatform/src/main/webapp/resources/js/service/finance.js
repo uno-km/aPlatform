@@ -20,11 +20,34 @@ window.onpopstate = function(event) {
 	finPageInit();
 	window.scrollTo(0,localStorage.BeforeScroll);
 }
-
-document.getElementById('toggleHide').addEventListener('click',toggleHide);
-document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
-document.getElementById('searchShareInput').addEventListener("keyup", keyupShareInputValue);
-document.getElementById('searchShareInput').addEventListener("focus", focusShareInputValue);
+function addEvent() {
+	document.getElementById('toggleHide').addEventListener('click',toggleHide);
+	document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
+	document.getElementById('searchShareInput').addEventListener("keyup", keyupShareInputValue);
+	document.getElementById('searchShareInput').addEventListener("focus", focusShareInputValue);
+	for(let index = 0 ; index < document.getElementsByClassName('inner_chart_words').length;index++) {
+		document.getElementsByClassName('inner_chart_words')[index].addEventListener('click',changeChart);
+	};
+}
+function changeChart(e) {
+	let imgsrc = ``;
+	if(e.target.id.substring(0,e.target.id.indexOf('_'))=='kospi') {
+		imgsrc = eval(`kospiImage.${e.target.id}`);
+		const inputBody= document.getElementById('kospiImage');
+		inputBody.style.backgroundImage=`URL('${imgsrc}')`;
+		inputBody.style.backgroundSize="100% 100%";
+		inputBody.style.backgroundPosition="center";
+	}else {
+		imgsrc = eval(`kosdaqImage.${e.target.id}`);
+		const inputBody= document.getElementById('kosdaqImage');
+		inputBody.style.backgroundImage=`URL('${imgsrc}')`;
+		inputBody.style.backgroundSize="100% 100%";
+		inputBody.style.backgroundPosition="center";
+	}
+}
+function changeChartRDO(e) {
+	console.log(e);
+}
 
 function searchShareInfo(e) {
 	let inputData = document.getElementById('searchShareInput').value;
@@ -59,6 +82,7 @@ function finPageInit() {
 		setSessionSharesInfo();
 	}
 	setNewdata();
+	addEvent();
 }
 function checkBadandGood(data) {
 	const bad =new RegExp("(급락|하락|붕괴|↓|약보합|하회|약세)");
@@ -220,6 +244,7 @@ function setKosdaqBuyerColor() {
 		}
 	}
 }
+
 function setRankDataMC() {
 	let struct_div ="";
 	let cntMax = Object.keys(this.rankDataMC).length;
