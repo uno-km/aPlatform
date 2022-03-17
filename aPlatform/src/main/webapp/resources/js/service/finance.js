@@ -1,6 +1,9 @@
 ;
 document.write("<script src='/resources/js/service/fin/setContentsSection.js'></script>");
 document.write("<script src='/resources/js/service/fin/setInfoShareDetailData.js'></script>");
+document.write("<script src='/resources/js/service/fin/setMarketsInfo.js'></script>");
+document.write("<script src='/resources/js/service/fin/setRankDataMarketCurculor.js'></script>");
+
 var nowFinData='';
 var kospiIndex='';
 var kospiBuyer='';
@@ -28,22 +31,6 @@ function addEvent() {
 	for(let index = 0 ; index < document.getElementsByClassName('inner_chart_words').length;index++) {
 		document.getElementsByClassName('inner_chart_words')[index].addEventListener('click',changeChart);
 	};
-}
-function changeChart(e) {
-	let imgsrc = ``;
-	if(e.target.id.substring(0,e.target.id.indexOf('_'))=='kospi') {
-		imgsrc = eval(`kospiImage.${e.target.id}`);
-		const inputBody= document.getElementById('kospiImage');
-		inputBody.style.backgroundImage=`URL('${imgsrc}')`;
-		inputBody.style.backgroundSize="100% 100%";
-		inputBody.style.backgroundPosition="center";
-	}else {
-		imgsrc = eval(`kosdaqImage.${e.target.id}`);
-		const inputBody= document.getElementById('kosdaqImage');
-		inputBody.style.backgroundImage=`URL('${imgsrc}')`;
-		inputBody.style.backgroundSize="100% 100%";
-		inputBody.style.backgroundPosition="center";
-	}
 }
 function changeChartRDO(e) {
 	console.log(e);
@@ -133,159 +120,6 @@ function getNewsdata() {
     this.newsData = outData;
 }
 
-function getFindata() {
-	let outData='';
-    $.ajax({
-        type: 'GET',
-        url: '/service/finance/total',
-        dataType: 'JSON', 
-        async: false,
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-    		outData=data;
-        },
-        error: function () {
-            alert('통신실패!!');
-        }
-    });
-	this.kospiIndex	= outData[0].kospi_index;
-	this.kospiBuyer= outData[1];
-	this.kospiImage= outData[2];
-	this.kosdaqIndex= outData[3].kosdaq_index;
-	this.kosdaqBuyer= outData[4];
-	this.kosdaqImage= outData[5];
-    this.nowFinData = outData;
-}
-function getRankdata() {
-	let outData='';
-    const sendingVO = {
-            "url" : "main"
-        ,   "pharseType" : "rankMC"  
-        }
-	$.ajax({
-		type: 'GET',
-		url: '/service/finance/rank?',
-		data: sendingVO,
-		dataType: 'JSON', 
-		async: false,
-		contentType: 'application/json; charset=utf-8',
-		success: function (data) {
-		outData=data;
-	},
-		error: function () {
-		alert('통신실패!!');
-	}
-	});
-	this.rankDataMC =outData;
-}
-function setKospiIndex() {
-	const inputBody= document.getElementById('kospiIndex');
-	inputBody.innerText = this.kospiIndex;
-}
-function setKosdaqIndex() {
-	const inputBody= document.getElementById('kosdaqIndex');
-	inputBody.innerText = this.kosdaqIndex;
-}
-function setKospiImage() {
-	const inputBody= document.getElementById('kospiImage');
-	inputBody.style.backgroundImage=`URL('${this.kospiImage.kospi_day}')`;
-	inputBody.style.backgroundSize="100% 100%";
-	inputBody.style.backgroundPosition="center";
-}
-function setKosdaqImage() {
-	const inputBody= document.getElementById('kosdaqImage');
-	inputBody.style.backgroundImage=`URL('${this.kosdaqImage.kosdaq_day}')`;
-	inputBody.style.backgroundSize="100% 100%";
-	inputBody.style.backgroundPosition="center";
-}
-function setKospiBuyer() {
-	let struct_div ="";
-	if(this.kospiBuyer!=null) {
-		struct_div	=	`	<div class='inner_kospiBuyer'>개인</div>
-							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_ant}</div>
-							<div class='inner_kospiBuyer'>기관</div>
-							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_org}</div>
-							<div class='inner_kospiBuyer'>외국인</div>
-							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_frg}</div>`;
-		const inputBody = document.getElementById('kospiBuyer');
-		inputBody.innerHTML=struct_div;
-	}else {
-        console.log("해당 영억없음");
-	}
-}
-function setKospiBuyerColor() {
-	for(let i=0;i<document.getElementsByClassName('inner_kospiBuyer').length;i++) {
-		if(document.getElementsByClassName('inner_kospiBuyer')[i].innerText.includes('+')) {
-			document.getElementsByClassName('inner_kospiBuyer')[i].style.color='red';
-			document.getElementsByClassName('inner_kospiBuyer')[i].style.borderColor='red';
-		}
-	}
-}
-function setKosdaqBuyer() {
-	let struct_div ="";
-	if(this.kosdaqBuyer!=null) {
-		struct_div	=	`	<div class='inner_kosdaqBuyer'>개인</div>
-							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_ant}</div>
-							<div class='inner_kosdaqBuyer'>기관</div>
-							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_org}</div>
-							<div class='inner_kosdaqBuyer'>외국인</div>
-							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_frg}</div>`;
-		const inputBody = document.getElementById('kosdaqBuyer');
-		inputBody.innerHTML=struct_div;
-	}else {
-		console.log("해당 영억없음");
-	}
-}
-function setKosdaqBuyerColor() {
-	for(let i=0;i<document.getElementsByClassName('inner_kosdaqBuyer').length;i++) {
-		if(document.getElementsByClassName('inner_kosdaqBuyer')[i].innerText.includes('+')) {
-			document.getElementsByClassName('inner_kosdaqBuyer')[i].style.color='red';
-			document.getElementsByClassName('inner_kosdaqBuyer')[i].style.borderColor='red';
-		}
-	}
-}
-
-function setRankDataMC() {
-	let struct_div ="";
-	let cntMax = Object.keys(this.rankDataMC).length;
-	if(this.rankDataMC!=null) {
-		for(let i=0;i<cntMax;i++) {// onclick='goShareInfo(this)'
-			struct_div +=`
-					<div class="inner_rank_m" onclick='goShareInfo(this)'>${this.rankDataMC[i][0]}</div>
-						`;
-		}
-		document.getElementById('rankDataMCName').innerHTML=struct_div;
-		struct_div =``;
-		for(let i=0;i<cntMax;i++) {
-			struct_div +=`
-					<div class='inner_rank_values'>
-						<div class='inner_rank_lin'>${this.rankDataMC[i][1]}</div>
-						<div class='inner_rank_lin'>${this.rankDataMC[i][3]}</div>
-						<div class='inner_rank_lin'>${this.rankDataMC[i][4]}</div>
-					</div>
-					<input type='hidden' name='updownChecker' value='${this.rankDataMC[i][2]}'>
-						`;
-		}	
-		document.getElementById('rankDataMCValues').innerHTML=struct_div;
-	}else {
-		console.log("해당 영억없음");
-	}
-}
-function  setRankDataMCColor() {
-	for(let i=0;i<document.getElementsByClassName('inner_rank_values').length;i++) {
-		if(document.getElementsByName('updownChecker')[i].value=='상승') {
-			document.getElementsByClassName('inner_rank_m')[i].style.color='red';
-			document.getElementsByClassName('inner_rank_m')[i].style.borderColor='red';
-			document.getElementsByClassName('inner_rank_values')[i].style.color='red';
-			document.getElementsByClassName('inner_rank_values')[i].style.borderColor='red';
-		}else if (document.getElementsByName('updownChecker')[i].value=='0'){
-			document.getElementsByClassName('inner_rank_m')[i].style.color='gray';
-			document.getElementsByClassName('inner_rank_m')[i].style.borderColor='gray';
-			document.getElementsByClassName('inner_rank_values')[i].style.color='gray';
-			document.getElementsByClassName('inner_rank_values')[i].style.borderColor='gray';
-		}
-	}
-}
 function setSessionSharesInfo() {
 	let outData ="";
     $.ajax({
