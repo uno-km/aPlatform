@@ -1,4 +1,5 @@
 ;
+'use strict';
 document.write("<script src='/resources/js/service/fin/setContentsSection.js'></script>");
 document.write("<script src='/resources/js/service/fin/setInfoShareDetailData.js'></script>");
 document.write("<script src='/resources/js/service/fin/setMarketsInfo.js'></script>");
