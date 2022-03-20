@@ -99,7 +99,7 @@
 .info_detail_table{display: table;border-collapse: separate;text-indent: initial;white-space: normal;line-height: normal;font-weight: normal;font-size: medium;font-style: normal;color: -internal-quirk-inherit;text-align: start;border-spacing: 2px;font-variant: normal;    width: 100%;    margin-bottom: 1rem;color:white;vertical-align: top;background-color: #001e3c;}
 .info_detail_expect{border-right: 2px solid white;border-left: 2px solid white;}
 .info_detail_empty{background-color: beige;}
-.info_detail_inner {height: 18%};
+.info_detail_inner {height: 20%};
 .info_detail_chart{width: 70%;display: flex;flex-direction: column;}
 .info_detail_outer{width:30% ;}
 .ContentsSectionInfoDTL {height: 43%;background-color: white;display: flex;flex-direction: row;}

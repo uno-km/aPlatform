@@ -18,11 +18,11 @@ function setInfoShareDetailFrame() {
 						<div class='info_detail_today'></div>
 					</div>
 					<div class='info_detail_outer'>
-						<div class = 'info_detail_inner sichongList'></div>
-						<div class = 'info_detail_inner perEpsList'></div>
-						<div class = 'info_detail_inner forignList'></div>
-						<div class = 'info_detail_inner opinionList'></div>
-						<div class = 'info_detail_inner sameList'></div>
+						<div class = 'info_detail_inner sichongList' id='sichongList'></div>
+						<div class = 'info_detail_inner perEpsList' id='perEpsList'></div>
+						<div class = 'info_detail_inner forignList' id='forignList'></div>
+						<div class = 'info_detail_inner opinionList' id='opinionList'></div>
+						<div class = 'info_detail_inner sameList' id='sameList'></div>
 					</div>
 				</div>
 				<div id='ContentsSectionDTL' style='width: 100%;'>
@@ -95,17 +95,36 @@ function setInfoShareDetailData(data) {
 }
 
 function setInfoShareDetailForignList() {
-	
+	let struct_div = ``;
+	struct_div +=`${shareDetailInfo.forignList[0]} : ${shareDetailInfo.forignList[1]} ${shareDetailInfo.forignList[2]} : `;
+	struct_div +=`${shareDetailInfo.forignList[3]}`;
+	let inputBody = document.getElementById('forignList');
+	inputBody.innerHTML = struct_div;					
 }
 function setInfoShareDetailOpinionList() {
-	
+	let struct_div = ``;
+	struct_div +=`투자의견 : ${shareDetailInfo.opinionList[0]} 목표주가 : ${shareDetailInfo.opinionList[1]} 52주 최고 : ${shareDetailInfo.opinionList[2]}`;
+	struct_div +=`최저 : ${shareDetailInfo.opinionList[3]}`;
+	let inputBody = document.getElementById('opinionList');
+	inputBody.innerHTML = struct_div;					
 }
 function setInfoShareDetailPerEpsList() {
-	
+	let struct_div = ``;
+	struct_div +=`PER : ${shareDetailInfo.perEpsList[0]} EPS : ${shareDetailInfo.perEpsList[1]} 추정 PER ${shareDetailInfo.perEpsList[2]}`;
+	struct_div +=`EPS ${shareDetailInfo.perEpsList[3]} PBR : ${shareDetailInfo.perEpsList[4]} BPS : ${shareDetailInfo.perEpsList[5]}`;
+	let inputBody = document.getElementById('perEpsList');
+	inputBody.innerHTML = struct_div;					
 }
 function setInfoShareDetailSichongList() {
-	
+	let struct_div = ``;
+	struct_div +=`시가총액 : ${shareDetailInfo.sichongList[0]} 순위 : ${shareDetailInfo.sichongList[1]} ${shareDetailInfo.sichongList[2]}`;
+	struct_div +=`주식발행 수 ${shareDetailInfo.sichongList[3]} 액면가 ${shareDetailInfo.sichongList[4]}`;
+	let inputBody = document.getElementById('sichongList');
+	inputBody.innerHTML = struct_div;					
 }
 function setInfoShareDetailSameList() {
-	
+	let struct_div = ``;
+	struct_div +=`동일업종 PER : ${shareDetailInfo.sameList[0]} 동일업종 등락률 : ${shareDetailInfo.sichongList[1]}`;
+	let inputBody = document.getElementById('sameList');
+	inputBody.innerHTML = struct_div;					
 }
