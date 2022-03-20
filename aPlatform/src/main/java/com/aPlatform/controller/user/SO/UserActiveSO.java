@@ -18,7 +18,7 @@ import com.aPlatform.controller.user.VO.UserinfoVO;
 @RequestMapping(value = "/user")
 public class UserActiveSO
 {
-	@Autowired 
+	@Autowired
 	LoginBOC loginBOC;
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.POST, value = "/signup")
@@ -30,19 +30,16 @@ public class UserActiveSO
 	@RequestMapping(method = RequestMethod.GET, value = "/checkid")
 	public boolean checkDuplId(@RequestParam String user_id)
 	{
-		UserinfoVO userinfoVO = new UserinfoVO(); 
+		UserinfoVO userinfoVO = new UserinfoVO();
 		userinfoVO.setUser_id(user_id);
 		return loginBOC.checkDuplId(userinfoVO);
 	}
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.POST, value = "/signin")
-	public ResponseEntity<UserinfoOutVO> signinUser(
-			@RequestBody UserinfoVO userinfoVO)
+	public ResponseEntity<UserinfoOutVO> signinUser(@RequestBody UserinfoVO userinfoVO)
 	{
 		UserinfoOutVO outVO = new UserinfoOutVO();
 		outVO = loginBOC.signinUser(userinfoVO);
-		return outVO != null
-				? new ResponseEntity<>(outVO, HttpStatus.OK)
-				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		return outVO != null ? new ResponseEntity<>(outVO, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }
