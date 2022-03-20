@@ -179,8 +179,7 @@ function getShareInfoDTL(code) {
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
     	shareDetailInfo = data;
-		setInfoShareDetailFrame();
-		setInfoShareDetailData(data.statement);
+		setInfoShareDetail(data.statement);
 		let shareName = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
 		history.pushState({'name':shareName,'code':code},'종목상세보기','main');
 		window.scrollTo(0,0);

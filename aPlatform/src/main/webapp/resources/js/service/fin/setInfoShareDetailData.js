@@ -1,9 +1,29 @@
 /**
  * 
  */
+function setInfoShareDetail(data) {
+	setInfoShareDetailFrame();
+	setInfoShareDetailData(data);
+	setInfoShareDetailForignList();
+	setInfoShareDetailOpinionList();
+	setInfoShareDetailPerEpsList();
+	setInfoShareDetailSichongList();
+	setInfoShareDetailSameList();
+}
+
 function setInfoShareDetailFrame() {
 		let struct_div = `
 				<div class='ContentsSectionInfoDTL' id='ContentsSectionInfoDTL'>
+					<div class='info_detail_chart'>
+						<div class='info_detail_today'></div>
+					</div>
+					<div class='info_detail_outer'>
+						<div class = 'info_detail_inner sichongList'></div>
+						<div class = 'info_detail_inner perEpsList'></div>
+						<div class = 'info_detail_inner forignList'></div>
+						<div class = 'info_detail_inner opinionList'></div>
+						<div class = 'info_detail_inner sameList'></div>
+					</div>
 				</div>
 				<div id='ContentsSectionDTL' style='width: 100%;'>
 					<table class="table table-dark table-hover" style='background-color: #394a5c00;'>
@@ -72,4 +92,20 @@ function setInfoShareDetailData(data) {
 	}
 	inputBody = document.getElementById('infoShareDetailData');
 	inputBody.innerHTML = struct_div;
+}
+
+function setInfoShareDetailForignList() {
+	
+}
+function setInfoShareDetailOpinionList() {
+	
+}
+function setInfoShareDetailPerEpsList() {
+	
+}
+function setInfoShareDetailSichongList() {
+	
+}
+function setInfoShareDetailSameList() {
+	
 }
