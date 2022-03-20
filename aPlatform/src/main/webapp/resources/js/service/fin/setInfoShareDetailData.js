@@ -3,6 +3,8 @@
  */
 function setInfoShareDetailFrame() {
 		let struct_div = `
+				<div class='ContentsSectionInfoDTL' id='ContentsSectionInfoDTL'>
+				</div>
 				<div id='ContentsSectionDTL' style='width: 100%;'>
 					<table class="table table-dark table-hover" style='background-color: #394a5c00;'>
 						<thead>
