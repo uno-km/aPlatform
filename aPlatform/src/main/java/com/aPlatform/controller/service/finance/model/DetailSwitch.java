@@ -81,7 +81,7 @@ public class DetailSwitch implements UrlFactory
 		}
 		for (int i = 0; i < candleArr.length; i++)
 		{
-			String candleChart = "https://ssl.pstatic.net/imgfinance/chart/item/area/" + candleArr[i] + "/"
+			String candleChart = "https://ssl.pstatic.net/imgfinance/chart/item/candle/" + candleArr[i] + "/"
 					+ financeDataMatrix.getMarketURLMap().get("code") + ".png?sidcode=1647343521521";
 			chartCandleList.add(candleChart);
 		}

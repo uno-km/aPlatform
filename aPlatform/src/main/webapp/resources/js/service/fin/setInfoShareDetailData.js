@@ -10,6 +10,10 @@ function setInfoShareDetail(data) {
 	setInfoShareDetailSichongList();
 	setInfoShareDetailSameList();
 	setInfoShareToday();
+	setInfoShareAreaChart();
+	for(let i = 0 ; i < document.getElementsByClassName('info_detail_chart_words').length;i++) {
+		document.getElementsByClassName('info_detail_chart_words')[i].addEventListener('click',setInfoShareAreaChart);
+	};
 }
 
 function setInfoShareDetailFrame() {
@@ -17,6 +21,20 @@ function setInfoShareDetailFrame() {
 				<div class='ContentsSectionInfoDTL' id='ContentsSectionInfoDTL'>
 					<div class='info_detail_leftarea'>
 						<div class='info_detail_today' id='detailToday'></div>
+						<div class='info_detail_chartSelector' id='chartSelecter'>
+							<div class=''>영역차트</div>
+							<div class='info_detail_chart_words'id='area_day'>1일</div>
+							<div class='info_detail_chart_words'id='area_week'>1주일</div>
+							<div class='info_detail_chart_words'id='area_month'>1개월</div>
+							<div class='info_detail_chart_words'id='area_year'>1년</div>
+							<div class='info_detail_chart_words'id='area_year3'>3년</div>
+							<div class='info_detail_chart_words'id='area_year5'>5년</div>
+							<div class='info_detail_chart_words'id='area_year10'>10년</div>
+							<div class=''>캔들차트</div>
+							<div class='info_detail_chart_words'id='candle_day'>1일</div>
+							<div class='info_detail_chart_words'id='candle_week'>1주일</div>
+							<div class='info_detail_chart_words'id='candle_month'>1개월</div>
+						</div>
 						<div class='info_detail_chart' id='detailChart'></div>
 					</div>
 					<div class='info_detail_outer'>
@@ -135,4 +153,36 @@ function setInfoShareToday() {
 	struct_div +=`${shareDetailInfo.today[0]} ${shareDetailInfo.today[1]} ${shareDetailInfo.today[2]} ${shareDetailInfo.today[3]}`;
 	let inputBody = document.getElementById('detailToday');
 	inputBody.innerHTML = struct_div;	
+}
+function setInfoShareAreaChart(e) {
+	if(e==null) { //기본값
+		let imgsrc = ``;
+		imgsrc = shareDetailInfo.areaChart[0];
+		const inputBody= document.getElementById('detailChart');
+		inputBody.style.backgroundImage=`URL('${imgsrc}')`;
+		inputBody.style.backgroundSize="100% 100%";
+		inputBody.style.backgroundPosition="center";
+	}else {
+		if(e.target.id.substring(0,e.target.id.indexOf('_'))=='area'){
+			for(let i = 0 ; i<shareDetailInfo.areaChart.length;i++  ) {
+				if(shareDetailInfo.areaChart[i].includes(e.target.id.substring(e.target.id.indexOf('_')+1))) {
+					imgsrc = shareDetailInfo.areaChart[i];
+					const inputBody= document.getElementById('detailChart');
+					inputBody.style.backgroundImage=`URL('${imgsrc}')`;
+					inputBody.style.backgroundSize="100% 100%";
+					inputBody.style.backgroundPosition="center";
+				}
+			}
+		}else {
+			for(let i = 0 ; i<shareDetailInfo.candleChart.length;i++) {
+				if(shareDetailInfo.candleChart[i].includes(e.target.id.substring(e.target.id.indexOf('_')+1))) {
+					imgsrc = shareDetailInfo.candleChart[i];
+					const inputBody= document.getElementById('detailChart');
+					inputBody.style.backgroundImage=`URL('${imgsrc}')`;
+					inputBody.style.backgroundSize="100% 100%";
+					inputBody.style.backgroundPosition="center";
+				}
+			}
+		}
+	}
 }

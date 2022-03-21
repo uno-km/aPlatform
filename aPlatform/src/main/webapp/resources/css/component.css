@@ -74,7 +74,7 @@
 .inner_news_title{width: 100%;height: 12%;border-radius: 1rem;margin-top: 10px;padding-left: 3px;}
 .bad a{color: #0d6efd;}
 .good a{color: red;}
-.inner_chart_selecter{height: 30px;display: flex;flex-direction: row;flex-wrap: nowrap;justify-content: space-evenly;align-items: center;}
+.inner_chart_selecter{height: 3%;display: flex;flex-direction: row;flex-wrap: nowrap;justify-content: space-evenly;align-items: center;}
 
 .inner_chart_words_checked{font-size: 13px;background-color:#0d6efd;cursor: pointer;;text-align: center;border: 2.5px solid #0d6efd;border-radius: 0.5rem;color: #fff;margin-top: 0px;vertical-align: bottom;}
 .inner_chart_words_checked:HOVER{background-color: var(--myBackGround);;cursor: pointer;color:#0d6efd;}
@@ -91,7 +91,6 @@
 .inner_rank_values {width: 100%;height: 12%;font-size: 17px;text-align: center;border: 1.5px solid #0d6efd;border-radius: 1rem;color: #0d6efd;margin-top: 9px;vertical-align: bottom;display: flex; justify-content:space-evenly;}
 .inner_rank_m {width: 100%;height: 12%;font-size: 17px;text-align: center;border: 1.5px solid #0d6efd;border-radius: 1rem;color: #0d6efd;margin-top: 9px;vertical-align: bottom;}
 .inner_rank_m:HOVER {font-size: 18px;border: 2px solid #0d6efd;cursor: pointer;}
-.inner_rank_lin {}
 #ContentsSectionDTL > table > thead > tr > td {font-size:14px;text-align: center;vertical-align: middle;}
 #ContentsSectionDTL > table > tbody > tr > td {font-size:14px;text-align: center;vertical-align: middle;}
 #ContentsSectionDTL > table > tbody > tr > th {font-size:13px;text-align: center;vertical-align: middle;}
@@ -102,7 +101,10 @@
 .info_detail_inner {height: 20%;}
 .info_detail_leftarea{width: 70%;display: flex;flex-direction: column;}
 .info_detail_today{height: 20%;}
-.info_detail_chart{height: 90%;}
+.info_detail_chart{height: 80%;}
+.info_detail_chartSelector{height: 10%;display: flex;flex-direction: row;flex-wrap: nowrap;justify-content: space-evenly;align-items: center;}
+.info_detail_chart_words{font-size: 13px;text-align: center;border: 2.5px solid #0d6efd;border-radius: 0.5rem;color: #0d6efd;margin-top: 0px;vertical-align: bottom;}
+.info_detail_chart_words:HOVER{background-color:#0d6efd;cursor: pointer;color:#fff;}
 .info_detail_outer{width:30% ;}
 .ContentsSectionInfoDTL {height: 43%;background-color: white;display: flex;flex-direction: row;}
 .shareSearchInput {overflow: scroll;max-height: 500px;min-height: 0px;}
