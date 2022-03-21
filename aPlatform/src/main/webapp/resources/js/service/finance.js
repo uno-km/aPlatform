@@ -16,6 +16,8 @@ var rankDataMC = '';
 var codeInfo = '';
 var newsData = '';
 var shareDetailInfo = '';
+var isCtrl = false;
+
 
 window.addEventListener('load', finPageInit);
 window.onpopstate = function(event) { 
@@ -29,25 +31,8 @@ function addEvent() {
 	document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
 	document.getElementById('searchShareInput').addEventListener("keyup", keyupShareInputValue);
 	document.getElementById('searchShareInput').addEventListener("focus", focusShareInputValue);
-	for(let index = 0 ; index < document.getElementsByClassName('inner_chart_words').length;index++) {
-		document.getElementsByClassName('inner_chart_words')[index].addEventListener('click',changeChart);
-	};
-}
-function changeChartRDO(e) {
-	console.log(e);
-}
-
-function searchShareInfo(e) {
-	let inputData = document.getElementById('searchShareInput').value;
-	let sharesInfo = JSON.parse(localStorage.sharesInfo);
-	let searchData = sharesInfo[inputData];
-	getShareInfoDTL(searchData);
-}
-function searchShareInfoSearchList(value) {
-	document.getElementById('searchingList').style = "visibility:hidden;";
-	let sharesInfo = JSON.parse(localStorage.sharesInfo);
-	let searchData = sharesInfo[value];
-	getShareInfoDTL(searchData);
+	document.addEventListener('keydown',function(e){if(e.which==17) isCtrl=true;if(e.which==89 && isCtrl ==true) alert('zz');});
+	for(let index = 0 ; index < document.getElementsByClassName('inner_chart_words').length;index++) {document.getElementsByClassName('inner_chart_words')[index].addEventListener('click',changeChart);};
 }
 
 function finPageInit() {
@@ -72,6 +57,29 @@ function finPageInit() {
 	setNewdata();
 	addEvent();
 }
+//document.onkeydown = function(e){
+//	if(e.which==17) isCtrl=true;
+//	if(e.which==89 && isCtrl ==true) {
+//	}
+//}
+
+function changeChartRDO(e) {
+	console.log(e);
+}
+
+function searchShareInfo(e) {
+	let inputData = document.getElementById('searchShareInput').value;
+	let sharesInfo = JSON.parse(localStorage.sharesInfo);
+	let searchData = sharesInfo[inputData];
+	getShareInfoDTL(searchData);
+}
+function searchShareInfoSearchList(value) {
+	document.getElementById('searchingList').style = "visibility:hidden;";
+	let sharesInfo = JSON.parse(localStorage.sharesInfo);
+	let searchData = sharesInfo[value];
+	getShareInfoDTL(searchData);
+}
+
 function checkBadandGood(data) {
 	const bad =new RegExp("(급락|하락|붕괴|↓|약보합|하회|약세)");
 	const good =  new RegExp("(급반등|급상승|상승|기대||↑|강보합|상회|강세)");
