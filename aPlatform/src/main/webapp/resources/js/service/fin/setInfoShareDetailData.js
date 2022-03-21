@@ -9,13 +9,15 @@ function setInfoShareDetail(data) {
 	setInfoShareDetailPerEpsList();
 	setInfoShareDetailSichongList();
 	setInfoShareDetailSameList();
+	setInfoShareToday();
 }
 
 function setInfoShareDetailFrame() {
 		let struct_div = `
 				<div class='ContentsSectionInfoDTL' id='ContentsSectionInfoDTL'>
-					<div class='info_detail_chart'>
-						<div class='info_detail_today'></div>
+					<div class='info_detail_leftarea'>
+						<div class='info_detail_today' id='detailToday'></div>
+						<div class='info_detail_chart' id='detailChart'></div>
 					</div>
 					<div class='info_detail_outer'>
 						<div class = 'info_detail_inner sichongList' id='sichongList'></div>
@@ -127,4 +129,10 @@ function setInfoShareDetailSameList() {
 	struct_div +=`동일업종 PER : ${shareDetailInfo.sameList[0]} 동일업종 등락률 : ${shareDetailInfo.sichongList[1]}`;
 	let inputBody = document.getElementById('sameList');
 	inputBody.innerHTML = struct_div;					
+}
+function setInfoShareToday() {
+	let struct_div = ``;
+	struct_div +=`${shareDetailInfo.today[0]} ${shareDetailInfo.today[1]} ${shareDetailInfo.today[2]} ${shareDetailInfo.today[3]}`;
+	let inputBody = document.getElementById('detailToday');
+	inputBody.innerHTML = struct_div;	
 }
