@@ -23,7 +23,7 @@ function setInfoShareDetailFrame() {
 						<div class='info_detail_today' id='detailToday'>
 						</div>
 						<div class='info_detail_chartSelector' id='chartSelecter'>
-							<div class=''>영역차트</div>
+							<div class='' style ='color: #0d6efd'>영역차트</div>
 							<div class='info_detail_chart_words'id='area_day'>1일</div>
 							<div class='info_detail_chart_words'id='area_week'>1주일</div>
 							<div class='info_detail_chart_words'id='area_month'>1개월</div>
@@ -31,7 +31,7 @@ function setInfoShareDetailFrame() {
 							<div class='info_detail_chart_words'id='area_year3'>3년</div>
 							<div class='info_detail_chart_words'id='area_year5'>5년</div>
 							<div class='info_detail_chart_words'id='area_year10'>10년</div>
-							<div class=''>캔들차트</div>
+							<div class='' style ='color: #0d6efd'>캔들차트</div>
 							<div class='info_detail_chart_words'id='candle_day'>1일</div>
 							<div class='info_detail_chart_words'id='candle_week'>1주일</div>
 							<div class='info_detail_chart_words'id='candle_month'>1개월</div>
@@ -152,25 +152,25 @@ function setInfoShareDetailSameList() {
 function setInfoShareToday() {
 	let struct_div = ``;
 	if(shareDetailInfo.today[1]=='상승') {
-		document.getElementById('detailChart').className ='info_detail_chart up'
+		document.getElementById('detailChart').className ='info_detail_chart up';
 		struct_div +=`
 				<div class='info_detail_today_contents up' id='todayCost'>${shareDetailInfo.today[0]}원</div>
 				<div class='info_detail_today_contents up' id='todayGapCash'>+${shareDetailInfo.today[2]}원</div>
 				<div class='info_detail_today_contents up' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
 				`;
 	}else if(shareDetailInfo.today[1]=='하락') {
-		document.getElementById('detailChart').className ='info_detail_chart down'
+		document.getElementById('detailChart').className ='info_detail_chart down';
 		struct_div +=`
 				<div class='info_detail_today_contents down' id='todayCost'>${shareDetailInfo.today[0]}</div>
 				<div class='info_detail_today_contents down' id='todayGapCash'>-${shareDetailInfo.today[2]}원</div>
 				<div class='info_detail_today_contents down' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
 				`;
 	}else {
-		document.getElementById('detailChart').className ='info_detail_chart none'
+		document.getElementById('detailChart').className ='info_detail_chart noneUno';
 		struct_div +=`
-				<div class='info_detail_today_contents none' id='todayCost'>${shareDetailInfo.today[0]}원</div>
-				<div class='info_detail_today_contents none' id='todayGapCash'>-</div>
-				<div class='info_detail_today_contents none' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
+				<div class='info_detail_today_contents noneUno' id='todayCost'>${shareDetailInfo.today[0]}원</div>
+				<div class='info_detail_today_contents noneUno' id='todayGapCash'>-</div>
+				<div class='info_detail_today_contents noneUno' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
 				`;
 	}
 	let inputBody = document.getElementById('detailToday');
