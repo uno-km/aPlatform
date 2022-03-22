@@ -20,7 +20,8 @@ function setInfoShareDetailFrame() {
 		let struct_div = `
 				<div class='ContentsSectionInfoDTL' id='ContentsSectionInfoDTL'>
 					<div class='info_detail_leftarea'>
-						<div class='info_detail_today' id='detailToday'></div>
+						<div class='info_detail_today' id='detailToday'>
+						</div>
 						<div class='info_detail_chartSelector' id='chartSelecter'>
 							<div class=''>영역차트</div>
 							<div class='info_detail_chart_words'id='area_day'>1일</div>
@@ -150,7 +151,25 @@ function setInfoShareDetailSameList() {
 }
 function setInfoShareToday() {
 	let struct_div = ``;
-	struct_div +=`${shareDetailInfo.today[0]} ${shareDetailInfo.today[1]} ${shareDetailInfo.today[2]} ${shareDetailInfo.today[3]}`;
+	if(shareDetailInfo.today[1]=='상승') {
+		struct_div +=`
+				<div class='info_detail_today_contents up' id='todayCost'>${shareDetailInfo.today[0]}원</div>
+				<div class='info_detail_today_contents up' id='todayGapCash'>+${shareDetailInfo.today[2]}원</div>
+				<div class='info_detail_today_contents up' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
+				`;
+	}else if(shareDetailInfo.today[1]=='하락') {
+		struct_div +=`
+				<div class='info_detail_today_contents down' id='todayCost'>${shareDetailInfo.today[0]}</div>
+				<div class='info_detail_today_contents down' id='todayGapCash'>-${shareDetailInfo.today[2]}원</div>
+				<div class='info_detail_today_contents down' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
+				`;
+	}else {
+		struct_div +=`
+				<div class='info_detail_today_contents' id='todayCost'>${shareDetailInfo.today[0]}원</div>
+				<div class='info_detail_today_contents' id='todayGapCash'>-</div>
+				<div class='info_detail_today_contents' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
+				`;
+	}
 	let inputBody = document.getElementById('detailToday');
 	inputBody.innerHTML = struct_div;	
 }
