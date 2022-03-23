@@ -39,11 +39,11 @@ function setInfoShareDetailFrame() {
 						<div class='info_detail_chart' id='detailChart'></div>
 					</div>
 					<div class='info_detail_outer'>
-						<div class = 'info_detail_inner sichongList' id='sichongList'></div>
-						<div class = 'info_detail_inner perEpsList' id='perEpsList'></div>
-						<div class = 'info_detail_inner forignList' id='forignList'></div>
-						<div class = 'info_detail_inner opinionList' id='opinionList'></div>
-						<div class = 'info_detail_inner sameList' id='sameList'></div>
+						<div class = 'info_detail_inner' id='sichongList'></div>
+						<div class = 'info_detail_inner' id='perEpsList'></div>
+						<div class = 'info_detail_inner' id='forignList'></div>
+						<div class = 'info_detail_inner' id='opinionList'></div>
+						<div class = 'info_detail_inner' id='sameList'></div>
 					</div>
 				</div>
 				<div id='ContentsSectionDTL' style='width: 100%;'>
@@ -117,35 +117,39 @@ function setInfoShareDetailData(data) {
 
 function setInfoShareDetailForignList() {
 	let struct_div = ``;
-	struct_div +=`${shareDetailInfo.forignList[0]} : ${shareDetailInfo.forignList[1]} ${shareDetailInfo.forignList[2]} : `;
-	struct_div +=`${shareDetailInfo.forignList[3]}`;
+	struct_div +=`${shareDetailInfo.forignList[0]} : ${shareDetailInfo.forignList[1]} <br>
+				${shareDetailInfo.forignList[2]} : ${shareDetailInfo.forignList[3]}`;
 	let inputBody = document.getElementById('forignList');
 	inputBody.innerHTML = struct_div;					
 }
 function setInfoShareDetailOpinionList() {
 	let struct_div = ``;
-	struct_div +=`투자의견 : ${shareDetailInfo.opinionList[0]} 목표주가 : ${shareDetailInfo.opinionList[1]} 52주 최고 : ${shareDetailInfo.opinionList[2]}`;
-	struct_div +=`최저 : ${shareDetailInfo.opinionList[3]}`;
+	struct_div +=`투자의견 : ${shareDetailInfo.opinionList[0]} <br>
+				목표주가 : ${shareDetailInfo.opinionList[1]} <br>
+				52주 최고 : ${shareDetailInfo.opinionList[2]}	최저 : ${shareDetailInfo.opinionList[3]}`;
 	let inputBody = document.getElementById('opinionList');
 	inputBody.innerHTML = struct_div;					
 }
 function setInfoShareDetailPerEpsList() {
 	let struct_div = ``;
-	struct_div +=`PER : ${shareDetailInfo.perEpsList[0]} EPS : ${shareDetailInfo.perEpsList[1]} 추정 PER ${shareDetailInfo.perEpsList[2]}`;
-	struct_div +=`EPS ${shareDetailInfo.perEpsList[3]} PBR : ${shareDetailInfo.perEpsList[4]} BPS : ${shareDetailInfo.perEpsList[5]}`;
+	struct_div +=	`PER : ${shareDetailInfo.perEpsList[0]} EPS : ${shareDetailInfo.perEpsList[1]} <br>
+					추정 PER ${shareDetailInfo.perEpsList[2]} EPS ${shareDetailInfo.perEpsList[3]} <br>
+					PBR : ${shareDetailInfo.perEpsList[4]} BPS : ${shareDetailInfo.perEpsList[5]}`;
 	let inputBody = document.getElementById('perEpsList');
 	inputBody.innerHTML = struct_div;					
 }
 function setInfoShareDetailSichongList() {
 	let struct_div = ``;
-	struct_div +=`시가총액 : ${shareDetailInfo.sichongList[0]} 순위 : ${shareDetailInfo.sichongList[1]} ${shareDetailInfo.sichongList[2]}`;
-	struct_div +=`주식발행 수 ${shareDetailInfo.sichongList[3]} 액면가 ${shareDetailInfo.sichongList[4]}`;
+	struct_div +=`<strong>시가총액</strong> : ${shareDetailInfo.sichongList[0]} <br> 순위 : ${shareDetailInfo.sichongList[1]} ${shareDetailInfo.sichongList[2]}  <br>
+				주식발행 수 : ${shareDetailInfo.sichongList[3]}
+				<!-- 액면가 ${shareDetailInfo.sichongList[4]} -->`;
 	let inputBody = document.getElementById('sichongList');
 	inputBody.innerHTML = struct_div;					
 }
 function setInfoShareDetailSameList() {
 	let struct_div = ``;
-	struct_div +=`동일업종 PER : ${shareDetailInfo.sameList[0]} 동일업종 등락률 : ${shareDetailInfo.sichongList[1]}`;
+	struct_div +=`동일업종 PER : ${shareDetailInfo.sameList[0]} <br>
+				동일업종 등락률 : ${shareDetailInfo.sameList[1]}`;
 	let inputBody = document.getElementById('sameList');
 	inputBody.innerHTML = struct_div;					
 }
@@ -158,6 +162,9 @@ function setInfoShareToday() {
 				<div class='info_detail_today_contents up' id='todayGapCash'>+${shareDetailInfo.today[2]}원</div>
 				<div class='info_detail_today_contents up' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
 				`;
+		for(let i = 0 ; i < document.getElementsByClassName('info_detail_inner').length ; i++) {
+			document.getElementsByClassName('info_detail_inner')[i].className = 'info_detail_inner up';
+		}
 	}else if(shareDetailInfo.today[1]=='하락') {
 		document.getElementById('detailChart').className ='info_detail_chart down';
 		struct_div +=`
@@ -165,6 +172,9 @@ function setInfoShareToday() {
 				<div class='info_detail_today_contents down' id='todayGapCash'>-${shareDetailInfo.today[2]}원</div>
 				<div class='info_detail_today_contents down' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
 				`;
+		for(let i = 0 ; i < document.getElementsByClassName('info_detail_inner').length ; i++) {
+			document.getElementsByClassName('info_detail_inner')[i].className = 'info_detail_inner down';
+		}
 	}else {
 		document.getElementById('detailChart').className ='info_detail_chart noneUno';
 		struct_div +=`
@@ -172,6 +182,9 @@ function setInfoShareToday() {
 				<div class='info_detail_today_contents noneUno' id='todayGapCash'>-</div>
 				<div class='info_detail_today_contents noneUno' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
 				`;
+		for(let i = 0 ; i < document.getElementsByClassName('info_detail_inner').length ; i++) {
+			document.getElementsByClassName('info_detail_inner')[i].className = 'info_detail_inner noneUno';
+		}
 	}
 	let inputBody = document.getElementById('detailToday');
 	inputBody.innerHTML = struct_div;	

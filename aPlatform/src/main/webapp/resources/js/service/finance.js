@@ -16,8 +16,6 @@ var rankDataMC = '';
 var codeInfo = '';
 var newsData = '';
 var shareDetailInfo = '';
-var isCtrl = false;
-
 
 window.addEventListener('load', finPageInit);
 window.onpopstate = function(event) { 
@@ -57,11 +55,6 @@ function finPageInit() {
 	setNewdata();
 	addEvent();
 }
-//document.onkeydown = function(e){
-//	if(e.which==17) isCtrl=true;
-//	if(e.which==89 && isCtrl ==true) {
-//	}
-//}
 
 function changeChartRDO(e) {
 	console.log(e);
@@ -82,7 +75,7 @@ function searchShareInfoSearchList(value) {
 
 function checkBadandGood(data) {
 	const bad =new RegExp("(급락|하락|붕괴|↓|약보합|하회|약세)");
-	const good =  new RegExp("(급반등|급상승|상승|기대||↑|강보합|상회|강세)");
+	const good =  new RegExp("(급반등|반등|급상승|상승|기대|회복|↑|강보합|상회|강세)");
 	if(bad.test(data)) {
 		return "bad";
 	}else if(good.test(data)) {
