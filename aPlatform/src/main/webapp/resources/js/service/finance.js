@@ -56,10 +56,6 @@ function finPageInit() {
 	addEvent();
 }
 
-function changeChartRDO(e) {
-	console.log(e);
-}
-
 function searchShareInfo(e) {
 	let inputData = document.getElementById('searchShareInput').value;
 	let sharesInfo = JSON.parse(localStorage.sharesInfo);
@@ -113,7 +109,6 @@ function getNewsdata() {
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
     		outData=data;
-    		console.log(outData);
         },
         error: function () {
             alert('통신실패!!');
@@ -211,7 +206,6 @@ function keyupShareInputValue(){
     		Object.keys(JSON.parse(localStorage.sharesInfo)).forEach((obj)=>{
     			if(obj.includes(this.value.toUpperCase())) {
     				struct_div +=	`<li><a class="dropdown-item" onclick="searchShareInfoSearchList('${obj}')">${obj}</a></li>`;
-    				console.log(obj);
     				cnt++;
     			}
     		});
