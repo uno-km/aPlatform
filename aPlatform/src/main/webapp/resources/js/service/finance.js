@@ -142,7 +142,7 @@ function setSessionSharesInfo() {
 	let outData ="";
     $.ajax({
         type: 'GET',
-        url: '/service/finance/codeAllMap',
+        url: '/service/finance/codeAllMap', 
         dataType: 'JSON', 
         async: false,
         contentType: 'application/json; charset=utf-8',
