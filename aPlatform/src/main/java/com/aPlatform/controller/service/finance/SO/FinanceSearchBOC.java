@@ -1,7 +1,5 @@
 package com.aPlatform.controller.service.finance.SO;
 
-import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +14,13 @@ public class FinanceSearchBOC
 	@Autowired
 	FinanceDetailBO financeDetailBO;
 
-	public List<List<String>> getInfoDTL(Map<String, String> map) throws IOException
+	public Object getInfo(Map<String, String> map) throws Exception
 	{
 		GetURLInfo getUrlInfo = new GetURLInfo();
 		FinanceDataMatrix financeDataMatrix = new FinanceDataMatrix(map);
 		String url = map.get("url");
 		String pharseType = map.get("pharseType");
 		financeDataMatrix.setPageDOC(url);
-		return getUrlInfo.getListArrayList(financeDataMatrix, url, pharseType);
+		return getUrlInfo.getUrlInfoObject(financeDataMatrix, url, pharseType);
 	}
 }

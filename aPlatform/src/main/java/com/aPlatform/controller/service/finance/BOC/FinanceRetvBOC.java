@@ -1,6 +1,5 @@
 package com.aPlatform.controller.service.finance.BOC;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -22,30 +21,31 @@ public class FinanceRetvBOC
 	GetURLInfo getUrlInfo;
 	FinanceDataMatrix financeDataMatrix;
 
-	private FinanceRetvBOC() throws IOException
+	private FinanceRetvBOC() throws Exception
 	{
 		this.outArr = new ArrayList<Map<String, String>>();
 		this.getUrlInfo = new GetURLInfo();
 		this.financeDataMatrix = new FinanceDataMatrix();
 	}
 
-	public ArrayList<Map<String, String>> setTotalFindata() throws IOException
+	@SuppressWarnings("unchecked")
+	public Object setTotalFindata() throws Exception
 	{
 		this.financeDataMatrix.setPageDOC();
-		outArr.add(getUrlInfo.getMarketIndex(financeDataMatrix, "kospi", "index"));
-		outArr.add(getUrlInfo.getMarketIndex(financeDataMatrix, "kospi", "buyer"));
-		outArr.add(getUrlInfo.getMarketIndex(financeDataMatrix, "kospi", "image"));
-		outArr.add(getUrlInfo.getMarketIndex(financeDataMatrix, "kosdaq", "index"));
-		outArr.add(getUrlInfo.getMarketIndex(financeDataMatrix, "kosdaq", "buyer"));
-		outArr.add(getUrlInfo.getMarketIndex(financeDataMatrix, "kosdaq", "image"));
+		outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kospi", "index"));
+		outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kospi", "buyer"));
+		outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kospi", "image"));
+		outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kosdaq", "index"));
+		outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kosdaq", "buyer"));
+		outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kosdaq", "image"));
 		return outArr;
 	}
-	public Map<String, ArrayList<String>> getRankFindata(Map<String, String> map) throws IOException
+	public Object getRankFindata(Map<String, String> map) throws Exception
 	{
 		String url = map.get("url");
 		String pharseType = map.get("pharseType");
 		this.financeDataMatrix.setPageDOC(url);
-		return getUrlInfo.getMapStringArrayList(financeDataMatrix, url, pharseType);
+		return getUrlInfo.getUrlInfoObject(financeDataMatrix, url, pharseType);
 	}
 	public List<FinanceVO> getCode(String name)
 	{
