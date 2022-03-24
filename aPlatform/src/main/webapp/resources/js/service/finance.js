@@ -49,7 +49,7 @@ function finPageInit() {
 	setKosdaqBuyerColor();
 	setRankDataMC();
 	setRankDataMCColor();
-	if(!this.localStorage.sharesInfo.length>0) {
+	if(this.localStorage.sharesInfo==null||this.localStorage.sharesInfo=='undefined') {
 		setSessionSharesInfo();
 	}
 	setNewdata();
@@ -100,21 +100,42 @@ function getNewsdata() {
             "url" : "main"
         ,   "pharseType" : "news"  
         }
+    callAjax('get','/service/finance/news?',sendingVO,false,'outData=data;','this.newsData = outData;');
+}
+
+function callAjax(method, url, inVO, yn, trt, after){
 	$.ajax({
-		type: 'GET',
-		url: '/service/finance/news?',
-		data: sendingVO,
+		type: method,
+		url: url,
+		data: inVO,
         dataType: 'JSON', 
-        async: false,
+        async: yn,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-    		outData=data;
+			eval(trt);
         },
         error: function () {
             alert('통신실패!!');
         }
     });
-    this.newsData = outData;
+	eval(after);
+}
+function getDataAjax(method, url, inVO, yn, trt){
+	$.ajax({
+		type: method,
+		url: url,
+		data: inVO,
+		dataType: 'JSON', 
+		async: yn,
+		contentType: 'application/json; charset=utf-8',
+		success: function (data) {
+		return data;
+	},
+		error: function () {
+		alert('통신실패!!');
+		return null;
+	}
+	});
 }
 
 function setSessionSharesInfo() {
