@@ -1,7 +1,8 @@
-package com.aPlatform.controller.service.cafe;
+package com.aPlatform.controller.service.cafe.SO;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,16 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.aPlatform.controller.service.cafe.BO.CafeRetvBOC;
+
 @RestController
 @RequestMapping(value = "/service/cafe")
 public class CafeRetvSO
 {
+	@Autowired
+	CafeRetvBOC cafeRetvBOC;
+
 	@GetMapping(value = "/main")
 	private ModelAndView reternMainPage(Model model)
 	{
-		ModelAndView modelandview = new ModelAndView();
-		modelandview.setViewName("finance/index");
-		return modelandview;
+		return cafeRetvBOC.reternMainPage();
 	}
 	@PostMapping(value = "get")
 	private Map<String, Object> get(@RequestBody Map<String, Object> innerMap)
