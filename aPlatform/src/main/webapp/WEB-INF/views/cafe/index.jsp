@@ -100,9 +100,9 @@
 		httpRequest.open('GET', '/service/cafe/getData',true);
 		/* Response Type을 Json으로 사전 정의 */
 		httpRequest.responseType = "json";
-		httpRequest.setRequestHeader('Content-Type', 'application/json');
+// 		httpRequest.setRequestHeader('Content-Type', 'application/json');
 		/* 정의된 서버에 요청을 전송 */
-		httpRequest.send(JSON.stringify(indata));
+		httpRequest.send(indata);
 	}
 	function get(){  
 		var data = document.getElementById('getText').value;
@@ -110,41 +110,38 @@
         type: 'GET', //post 방식으로 전송
         url: '/service/cafe/get?data='+data, //데이터를 주고받을 파일 주소
         dataType: 'JSON', 
-//         async: false,
+        async: false,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
         	console.log(data);
-//     		setSession(data);
-//     		callNavBar();
-//     		setLoginedRemoteCtrl();
         },
         error: function () {
             alert('통신실패!!');
         }
     });
 // 		console.log('포스트');
-// 		var httpRequest;
+		var httpRequest;
 		
-// 		httpRequest = new XMLHttpRequest();
-// 		httpRequest.onreadystatechange = () => {
-// 			if (httpRequest.readyState === XMLHttpRequest.DONE) {
-// 				if (httpRequest.status === 200) {
-// 					var result = httpRequest.response;
-// 						alert('통신완료');
-// // 					    this.codeInfo = JSON.stringify(result);
-// // 					    let objData = JSON.stringify(result);
-// // 					    localStorage.setItem('sharesInfo' ,result);
-// 					} else {
-// 						alert('Request Error!');
-// 					}
-// 			    }
-// 		};
-// 		/* Get 방식으로 name 파라미터와 함께 요청 */
-// 		httpRequest.open('GET', '/service/cafe/get?data='+data,true);
-// 		/* Response Type을 Json으로 사전 정의 */
-// 		httpRequest.responseType = "json";
-// 		/* 정의된 서버에 요청을 전송 */
-// 		httpRequest.send();
+		httpRequest = new XMLHttpRequest();
+		httpRequest.onreadystatechange = () => {
+			if (httpRequest.readyState === XMLHttpRequest.DONE) {
+				if (httpRequest.status === 200) {
+					var result = httpRequest.response;
+						alert('통신완료');
+// 					    this.codeInfo = JSON.stringify(result);
+// 					    let objData = JSON.stringify(result);
+// 					    localStorage.setItem('sharesInfo' ,result);
+					} else {
+						alert('Request Error!');
+					}
+			    }
+		};
+		/* Get 방식으로 name 파라미터와 함께 요청 */
+		httpRequest.open('GET', '/service/cafe/get?data='+data,true);
+		/* Response Type을 Json으로 사전 정의 */
+		httpRequest.responseType = "json";
+		/* 정의된 서버에 요청을 전송 */
+		httpRequest.send();
 	}
 	window.onload = function() {
 		var httpRequest;
