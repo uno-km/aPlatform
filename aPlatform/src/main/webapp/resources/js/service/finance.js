@@ -145,21 +145,23 @@ function callAjax(method, url, inVO, yn, trt, after){
 	eval(after);
 }
 function getDataAjax(method, url, inVO, yn, trt){
-	$.ajax({
-		type: method,
-		url: url,
-		data: inVO,
-		dataType: 'JSON', 
-		async: yn,
-		contentType: 'application/json; charset=utf-8',
-		success: function (data) {
-		return data;
-	},
-		error: function () {
-		alert('통신실패!!');
-		return null;
+	if(method=='GET'||method=="get") {
+		$.ajax({
+			type: method,
+			url: url,
+			data: inVO,
+			dataType: 'JSON', 
+			async: yn,
+			contentType: 'application/json; charset=utf-8',
+			success: function (data) {
+			return data;
+		},
+			error: function () {
+			alert('통신실패!!');
+			return null;
+		}
+		});
 	}
-	});
 }
 
 function setSessionSharesInfo() {
