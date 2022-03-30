@@ -6,8 +6,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,9 +24,7 @@ public class FinanceRetvSO
 	@GetMapping(value = "/main")
 	private ModelAndView reternMainPage(Model model)
 	{
-		ModelAndView modelandview = new ModelAndView();
-		modelandview.setViewName("finance/index");
-		return modelandview;
+		return financeRetvBOC.reternMainPage();
 	}
 	@GetMapping(value = "/total")
 	public Object getTotalFindata(Model model) throws Exception
@@ -59,11 +55,5 @@ public class FinanceRetvSO
 	public Object getNews(Model model, @RequestParam Map<String, String> map) throws Exception
 	{
 		return financeSearchBOC.getInfo(map);
-	}
-	@PostMapping(value = "/test")
-	public Object test(@RequestBody FinanceVO financeVO) throws Exception
-	{
-		String a = financeVO.getFin_code();
-		return new String("test");
 	}
 }

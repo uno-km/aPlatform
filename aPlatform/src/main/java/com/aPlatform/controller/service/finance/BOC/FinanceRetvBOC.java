@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.aPlatform.controller.service.finance.BO.FinanceRetvBO;
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
@@ -28,6 +29,12 @@ public class FinanceRetvBOC
 		this.financeDataMatrix = new FinanceDataMatrix();
 	}
 
+	public ModelAndView reternMainPage()
+	{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("finance/index");
+		return mv;
+	}
 	@SuppressWarnings("unchecked")
 	public Object setTotalFindata() throws Exception
 	{
