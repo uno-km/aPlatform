@@ -66,7 +66,7 @@ function checkBadandGood(data) {
 	}else if(good.test(data)) {
 		return "good";
 	}
-	return ;
+	return;
 }
 function setNewdata(){
 	let struct_div ="";
