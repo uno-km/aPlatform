@@ -34,50 +34,15 @@ function addEvent() {
 }
 
 function finPageInit() {
-	connectAjax();
-	this.nowFinData=null;
+	nowFinData=null;
 	setContentsSection();
-	getFindata();
-	getRankdata();
-	getNewsdata();
-	setKospiIndex();
-	setKosdaqIndex();
-	setKospiImage();
-	setKosdaqImage();
-	setKospiBuyer();
-	setKospiBuyerColor();
-	setKosdaqBuyer();
-	setKosdaqBuyerColor();
-	setRankDataMC();
-	setRankDataMCColor();
+	getFindata();//데이터를 가져오고 콜백으로 최초 우측페이지를 그려준다.
+	getRankdata();//순위데이터를 가져오고 콜백으로 최초 랭크를 그려준다.
+	getNewsdata();//뉴스데이터를 가져오고 콜백으로 최초 뉴스를 그려준다.
 	if(this.localStorage.sharesInfo==null||this.localStorage.sharesInfo=='undefined') {
 		setSessionSharesInfo();
 	}
-	setNewdata();
 	addEvent();
-}
-function connectAjax(){
-//	var httpRequest;
-//	httpRequest = new XMLHttpRequest();
-//	httpRequest.onreadystatechange = () => {
-//	/* readyState가 Done이고 응답 값이 200일 때, 받아온 response로 name과 age를 그려줌 */
-//		if (httpRequest.readyState === XMLHttpRequest.DONE) {
-//			if (httpRequest.status === 200) {
-//				var result = httpRequest.response;
-//				    this.codeInfo = JSON.stringify(result);
-//				    let objData = JSON.stringify(result);
-//				    localStorage.setItem('sharesInfo' ,result);
-//				} else {
-//					alert('Request Error!');
-//				}
-//		    }
-//	};
-//	/* Get 방식으로 name 파라미터와 함께 요청 */
-//	httpRequest.open('GET', '/service/finance/codeAllMap',true);
-//	/* Response Type을 Json으로 사전 정의 */
-//	httpRequest.responseType = "json";
-//	/* 정의된 서버에 요청을 전송 */
-//	httpRequest.send();
 }
 
 function searchShareInfo(e) {
@@ -101,7 +66,7 @@ function checkBadandGood(data) {
 	}else if(good.test(data)) {
 		return "good";
 	}
-	return ;
+	return;
 }
 function setNewdata(){
 	let struct_div ="";
@@ -124,25 +89,22 @@ function getNewsdata() {
         ,   "pharseType" : "news"  
         }
 	let outData='';
-    callAjax('get','/service/finance/news?',sendingVO,false,'outData=data;','this.newsData = outData;');
-}
-
-function callAjax(method, url, inVO, yn, trt, after){
 	$.ajax({
-		type: method,
-		url: url,
-		data: inVO,
+		type: 'GET',
+		url: '/service/finance/news?',
+		data: sendingVO,
         dataType: 'JSON', 
-        async: yn,
+        async: true,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-			eval(trt);
+			outData=data;
+			newsData = outData;
+			setNewdata();
         },
         error: function () {
             alert('통신실패!!');
         }
     });
-	eval(after);
 }
 function getDataAjax(method, url, inVO, yn, trt){
 	if(method=='GET'||method=="get") {

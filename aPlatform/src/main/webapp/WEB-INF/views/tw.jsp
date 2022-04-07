@@ -30,7 +30,61 @@
 <div id='moveEvent' style='background-color: #aaa; height: 200px; width: 400px; position: absolute; left: 0px; top: 0px; cursor: pointer; cursor: hand' onmousedown='startDrag(event, this)'>
 	<h1>하하하</h1>
 </div>
+<label class="switch-button"> 
+<input type="checkbox" /> <span class="onoff-switch"></span>
+</label>
 <style>
+.switch-button {
+	position: relative;
+	display: inline-block;
+	width: 55px;
+	height: 30px;
+}
+
+.switch-button input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.onoff-switch {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 20px;
+	background-color: #ccc;
+	box-shadow: inset 1px 5px 1px #999;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+.onoff-switch:before {
+	position: absolute;
+	content: "";
+	height: 22px;
+	width: 22px;
+	left: 4px;
+	bottom: 4px;
+	background-color: #fff;
+	-webkit-transition: .5s;
+	transition: .4s;
+	border-radius: 20px;
+}
+
+.switch-button input:checked+.onoff-switch {
+	background-color: #F2D522;
+	box-shadow: inset 1px 5px 1px #E3AE56;
+}
+
+.switch-button input:checked+.onoff-switch:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+
 .drop-zone {
 	width: 500px;
 	height: 500px;

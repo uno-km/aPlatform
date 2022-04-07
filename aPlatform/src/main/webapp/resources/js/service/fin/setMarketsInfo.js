@@ -7,24 +7,34 @@ function getFindata() {
         type: 'GET',
         url: '/service/finance/total',
         dataType: 'JSON', 
-        async: false,
+        async: true,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
     		outData=data;
+    		kospiIndex	= outData[0].kospi_index;
+    		kospiBuyer= outData[1];
+    		kospiImage= outData[2];
+    		kosdaqIndex= outData[3].kosdaq_index;
+    		kosdaqBuyer= outData[4];
+    		kosdaqImage= outData[5];
+    		nowFinData = outData;
+    		firstSetMarketsInfo();
         },
         error: function () {
             alert('통신실패!!');
         }
     });
-	this.kospiIndex	= outData[0].kospi_index;
-	this.kospiBuyer= outData[1];
-	this.kospiImage= outData[2];
-	this.kosdaqIndex= outData[3].kosdaq_index;
-	this.kosdaqBuyer= outData[4];
-	this.kosdaqImage= outData[5];
-    this.nowFinData = outData;
 }
-
+function firstSetMarketsInfo() {
+	setKospiIndex();
+	setKosdaqIndex();
+	setKospiImage();
+	setKosdaqImage();
+	setKospiBuyer();
+	setKospiBuyerColor();
+	setKosdaqBuyer();
+	setKosdaqBuyerColor();
+}
 function setKospiIndex() {
 	const inputBody= document.getElementById('kospiIndex');
 	inputBody.innerText = this.kospiIndex;
