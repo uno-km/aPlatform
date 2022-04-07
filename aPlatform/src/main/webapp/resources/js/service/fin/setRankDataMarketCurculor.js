@@ -17,12 +17,14 @@ function getRankdata() {
 		contentType: 'application/json; charset=utf-8',
 		success: function (data) {
 		outData=data;
+		rankDataMC =outData;
+		setRankDataMC();
+		setRankDataMCColor();
 	},
 		error: function () {
 		alert('통신실패!!');
 	}
 	});
-	this.rankDataMC =outData;
 }
 function setRankDataMC() {
 	let struct_div ="";

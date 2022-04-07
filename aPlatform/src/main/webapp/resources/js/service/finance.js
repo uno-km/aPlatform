@@ -34,18 +34,14 @@ function addEvent() {
 }
 
 function finPageInit() {
-	this.nowFinData=null;
+	nowFinData=null;
 	setContentsSection();
-	getFindata();
-	getRankdata();
-	getNewsdata();
-	
-	setRankDataMC();
-	setRankDataMCColor();
+	getFindata();//데이터를 가져오고 콜백으로 최초 우측페이지를 그려준다.
+	getRankdata();//순위데이터를 가져오고 콜백으로 최초 랭크를 그려준다.
+	getNewsdata();//뉴스데이터를 가져오고 콜백으로 최초 뉴스를 그려준다.
 	if(this.localStorage.sharesInfo==null||this.localStorage.sharesInfo=='undefined') {
 		setSessionSharesInfo();
 	}
-	setNewdata();
 	addEvent();
 }
 
@@ -93,25 +89,22 @@ function getNewsdata() {
         ,   "pharseType" : "news"  
         }
 	let outData='';
-    callAjax('get','/service/finance/news?',sendingVO,false,'outData=data;','this.newsData = outData;');
-}
-
-function callAjax(method, url, inVO, yn, trt, after){
 	$.ajax({
-		type: method,
-		url: url,
-		data: inVO,
+		type: 'GET',
+		url: '/service/finance/news?',
+		data: sendingVO,
         dataType: 'JSON', 
-        async: yn,
+        async: true,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-			eval(trt);
+			outData=data;
+			newsData = outData;
+			setNewdata();
         },
         error: function () {
             alert('통신실패!!');
         }
     });
-	eval(after);
 }
 function getDataAjax(method, url, inVO, yn, trt){
 	if(method=='GET'||method=="get") {
