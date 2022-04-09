@@ -17,7 +17,7 @@ function setInfoShareDetail(data) {
 }
 
 function setInfoShareDetailFrame() {
-		let struct_div = `
+	document.getElementById('ContentsSectionMain').innerHTML = `
 				<div class='ContentsSectionInfoDTL' id='ContentsSectionInfoDTL'>
 					<div class='info_detail_leftarea'>
 						<div class='info_detail_today' id='detailToday'>
@@ -61,8 +61,6 @@ function setInfoShareDetailFrame() {
 						</tbody>
 					</table>
 				</div>`;
-	inputBody = document.getElementById('ContentsSectionMain');
-	inputBody.innerHTML = struct_div;
 }
 
 function setInfoShareDetailData(data) {
