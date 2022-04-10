@@ -82,16 +82,14 @@ function changeButtonClass(e) {
 	document.getElementById(`${e.target.id}`).setAttribute('class','inner_chart_words_checked');
 }
 function setKospiBuyer() {
-	let struct_div ="";
 	if(this.kospiBuyer!=null) {
-		struct_div	=	`	<div class='inner_kospiBuyer'>개인</div>
+		document.getElementById('kospiBuyer').innerHTML =`
+							<div class='inner_kospiBuyer'>개인</div>
 							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_ant}</div>
 							<div class='inner_kospiBuyer'>기관</div>
 							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_org}</div>
 							<div class='inner_kospiBuyer'>외국인</div>
 							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_frg}</div>`;
-		const inputBody = document.getElementById('kospiBuyer');
-		inputBody.innerHTML=struct_div;
 	}else {
         console.log("해당 영억없음");
 	}
@@ -105,16 +103,14 @@ function setKospiBuyerColor() {
 	}
 }
 function setKosdaqBuyer() {
-	let struct_div ="";
 	if(this.kosdaqBuyer!=null) {
-		struct_div	=	`	<div class='inner_kosdaqBuyer'>개인</div>
+		document.getElementById('kosdaqBuyer').innerHTML = `
+							<div class='inner_kosdaqBuyer'>개인</div>
 							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_ant}</div>
 							<div class='inner_kosdaqBuyer'>기관</div>
 							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_org}</div>
 							<div class='inner_kosdaqBuyer'>외국인</div>
 							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_frg}</div>`;
-		const inputBody = document.getElementById('kosdaqBuyer');
-		inputBody.innerHTML=struct_div;
 	}else {
 		console.log("해당 영억없음");
 	}

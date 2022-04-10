@@ -17,7 +17,7 @@ function setInfoShareDetail(data) {
 }
 
 function setInfoShareDetailFrame() {
-		let struct_div = `
+	document.getElementById('ContentsSectionMain').innerHTML = `
 				<div class='ContentsSectionInfoDTL' id='ContentsSectionInfoDTL'>
 					<div class='info_detail_leftarea'>
 						<div class='info_detail_today' id='detailToday'>
@@ -61,8 +61,6 @@ function setInfoShareDetailFrame() {
 						</tbody>
 					</table>
 				</div>`;
-	inputBody = document.getElementById('ContentsSectionMain');
-	inputBody.innerHTML = struct_div;
 }
 
 function setInfoShareDetailData(data) {
@@ -116,48 +114,38 @@ function setInfoShareDetailData(data) {
 }
 
 function setInfoShareDetailForignList() {
-	let struct_div = ``;
-	struct_div +=`${shareDetailInfo.forignList[0]} : ${shareDetailInfo.forignList[1]} <br>
+	document.getElementById('forignList').innerHTML = `
+				${shareDetailInfo.forignList[0]} : ${shareDetailInfo.forignList[1]} <br>
 				${shareDetailInfo.forignList[2]} : ${shareDetailInfo.forignList[3]}`;
-	let inputBody = document.getElementById('forignList');
-	inputBody.innerHTML = struct_div;					
 }
 function setInfoShareDetailOpinionList() {
-	let struct_div = ``;
-	struct_div +=`투자의견 : ${shareDetailInfo.opinionList[0]} <br>
+	document.getElementById('opinionList').innerHTML = `
+				투자의견 : ${shareDetailInfo.opinionList[0]} <br>
 				목표주가 : ${shareDetailInfo.opinionList[1]} <br>
 				52주 최고 : ${shareDetailInfo.opinionList[2]}	최저 : ${shareDetailInfo.opinionList[3]}`;
-	let inputBody = document.getElementById('opinionList');
-	inputBody.innerHTML = struct_div;					
 }
 function setInfoShareDetailPerEpsList() {
-	let struct_div = ``;
-	struct_div +=	`PER : ${shareDetailInfo.perEpsList[0]} EPS : ${shareDetailInfo.perEpsList[1]} <br>
+	document.getElementById('perEpsList').innerHTML =`
+					PER : ${shareDetailInfo.perEpsList[0]} EPS : ${shareDetailInfo.perEpsList[1]} <br>
 					추정 PER ${shareDetailInfo.perEpsList[2]} EPS ${shareDetailInfo.perEpsList[3]} <br>
 					PBR : ${shareDetailInfo.perEpsList[4]} BPS : ${shareDetailInfo.perEpsList[5]}`;
-	let inputBody = document.getElementById('perEpsList');
-	inputBody.innerHTML = struct_div;					
 }
 function setInfoShareDetailSichongList() {
-	let struct_div = ``;
-	struct_div +=`<strong>시가총액</strong> : ${shareDetailInfo.sichongList[0]} <br> 순위 : ${shareDetailInfo.sichongList[1]} ${shareDetailInfo.sichongList[2]}  <br>
+	document.getElementById('sichongList').innerHTML = `
+				<strong>시가총액</strong> : ${shareDetailInfo.sichongList[0]} <br> 순위 : ${shareDetailInfo.sichongList[1]} ${shareDetailInfo.sichongList[2]}  <br>
 				주식발행 수 : ${shareDetailInfo.sichongList[3]}
 				<!-- 액면가 ${shareDetailInfo.sichongList[4]} -->`;
-	let inputBody = document.getElementById('sichongList');
-	inputBody.innerHTML = struct_div;					
 }
 function setInfoShareDetailSameList() {
-	let struct_div = ``;
-	struct_div +=`동일업종 PER : ${shareDetailInfo.sameList[0]} <br>
+	document.getElementById('sameList').innerHTML = `
+				동일업종 PER : ${shareDetailInfo.sameList[0]} <br>
 				동일업종 등락률 : ${shareDetailInfo.sameList[1]}`;
-	let inputBody = document.getElementById('sameList');
-	inputBody.innerHTML = struct_div;					
 }
 function setInfoShareToday() {
 	let struct_div = ``;
 	if(shareDetailInfo.today[1]=='상승') {
 		document.getElementById('detailChart').className ='info_detail_chart up';
-		struct_div +=`
+		document.getElementById('detailToday').innerHTML = `
 				<div class='info_detail_today_contents up' id='todayCost'>${shareDetailInfo.today[0]}원</div>
 				<div class='info_detail_today_contents up' id='todayGapCash'>+${shareDetailInfo.today[2]}원</div>
 				<div class='info_detail_today_contents up' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
@@ -167,7 +155,7 @@ function setInfoShareToday() {
 		}
 	}else if(shareDetailInfo.today[1]=='하락') {
 		document.getElementById('detailChart').className ='info_detail_chart down';
-		struct_div +=`
+		document.getElementById('detailToday').innerHTML = `
 				<div class='info_detail_today_contents down' id='todayCost'>${shareDetailInfo.today[0]}</div>
 				<div class='info_detail_today_contents down' id='todayGapCash'>-${shareDetailInfo.today[2]}원</div>
 				<div class='info_detail_today_contents down' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
@@ -177,7 +165,7 @@ function setInfoShareToday() {
 		}
 	}else {
 		document.getElementById('detailChart').className ='info_detail_chart noneUno';
-		struct_div +=`
+		document.getElementById('detailToday').innerHTML = `
 				<div class='info_detail_today_contents noneUno' id='todayCost'>${shareDetailInfo.today[0]}원</div>
 				<div class='info_detail_today_contents noneUno' id='todayGapCash'>-</div>
 				<div class='info_detail_today_contents noneUno' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
@@ -186,8 +174,6 @@ function setInfoShareToday() {
 			document.getElementsByClassName('info_detail_inner')[i].className = 'info_detail_inner noneUno';
 		}
 	}
-	let inputBody = document.getElementById('detailToday');
-	inputBody.innerHTML = struct_div;	
 }
 function setInfoShareAreaChart(e) {
 	if(e==null) { //기본값

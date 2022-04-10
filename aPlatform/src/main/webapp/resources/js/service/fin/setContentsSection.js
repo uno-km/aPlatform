@@ -1,9 +1,7 @@
 /** 최초 finance의 메인화면을 나타내는 js이다.
- * 
  */
 function setContentsSection() {
-	document.querySelector('#ContentsSectionMain').innerHTML=
-			`
+	document.getElementById('ContentsSectionMain').innerHTML=`
 			<div class='FirstRowInSection non-drag'>
 				<div class='FirstRecInRow'>
 					<div class='inner_title'>

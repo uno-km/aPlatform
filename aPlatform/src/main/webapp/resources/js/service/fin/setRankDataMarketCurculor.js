@@ -13,7 +13,7 @@ function getRankdata() {
 		url: '/service/finance/rank?',
 		data: sendingVO,
 		dataType: 'JSON', 
-		async: false,
+		async: true,
 		contentType: 'application/json; charset=utf-8',
 		success: function (data) {
 		outData=data;
