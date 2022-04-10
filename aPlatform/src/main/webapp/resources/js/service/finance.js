@@ -31,6 +31,21 @@ function addEvent() {
 	document.getElementById('searchShareInput').addEventListener("focus", focusShareInputValue);
 	document.addEventListener('keydown',function(e){if(e.which==17) isCtrl=true;if(e.which==89 && isCtrl ==true) alert('zz');});
 	for(let index = 0 ; index < document.getElementsByClassName('inner_chart_words').length;index++) {document.getElementsByClassName('inner_chart_words')[index].addEventListener('click',changeChart);};
+	for(let i = 0 ; i<document.querySelectorAll('.inner_title').length;i++) {
+		document.getElementsByClassName('inner_title')[i].addEventListener('click',refreshInfo);
+	}
+}
+function refreshInfo(e){
+	switch(e.target.innerText) {
+		case "뉴스" :
+			break;
+		case "코스피" :
+			break;
+		case "코스닥" : 
+			break;
+		case "시가총액상위" : 
+			break;
+	}
 }
 
 function finPageInit() {

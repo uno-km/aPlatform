@@ -4,7 +4,7 @@ function setContentsSection() {
 			<div class='FirstRowInSection non-drag'>
 				<div class='FirstRecInRow'>
 					<div class='inner_title'>
-						<div class='title non-drag'>
+						<div class='title non-drag' data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
 							<span>뉴스</span>
 						</div>
 						<div class='Index'></div>

@@ -20,8 +20,7 @@ public class MaindataLoadSO
 {
 	@Autowired
 	MaindataLoadBOC maindataLoadDAO;
-	@PostMapping(value = "/navbar", produces = {
-			MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(value = "/navbar", produces = {MediaType.APPLICATION_JSON_VALUE })
 	public MainDataLoadOutVO serviceList(@RequestBody Map<String, String> param)
 	{
 		return maindataLoadDAO.loadNavbar(param);

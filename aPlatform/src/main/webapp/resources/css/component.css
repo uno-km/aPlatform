@@ -65,7 +65,7 @@
 .ContentsSection .SecondRowInSection{display:flex;height:100%;width:100%;top:0%;left:0%;background-color: red;float: left;}
 .FirstRecInRow {height:100%;flex : 0 0 auto;width:50%;background-color: var(--myBackGround);}
 .SecondRecInRow {height:100%;flex : 0 0 auto;width:50%;left:50%;background-color: var(--myBackGround);}
-.inner_title {height: 55px;padding-left: 5%;padding-top: 4px;text-align: center;color: #0d6efd;}
+.inner_title {height: 55px;padding-left: 5%;padding-top: 4px;text-align: center;color: #0d6efd;cursor: pointer;}
 .inner_title .title{font-size: 25px;width: 40%;float: left;border: 2px solid;border-radius: 2rem;}
 .inner_title .Index{font-size: 25px;width: 60%;left:60%;float: left;text-align: center;}
 .title:HOVER {border:3px solid;box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);}
