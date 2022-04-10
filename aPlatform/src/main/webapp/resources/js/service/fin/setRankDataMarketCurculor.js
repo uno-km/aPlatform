@@ -1,7 +1,6 @@
 /**
  * 
  */
-
 function getRankdata() {
 	let outData='';
     const sendingVO = {

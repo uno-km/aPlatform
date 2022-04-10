@@ -1,6 +1,3 @@
-/**
- * 
- */
 function setInfoShareDetail(data) {
 	setInfoShareDetailFrame();
 	setInfoShareDetailData(data);

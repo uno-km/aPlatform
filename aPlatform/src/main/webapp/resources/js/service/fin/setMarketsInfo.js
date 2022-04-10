@@ -1,6 +1,4 @@
-/**
- * 
- */
+/*최초 메인메이지를 보여주는 화면*/
 function getFindata() {
 	let outData='';
     $.ajax({
