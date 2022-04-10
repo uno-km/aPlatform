@@ -119,7 +119,7 @@ function setInfoShareDetailForignList() {
 				${shareDetailInfo.forignList[2]} : ${shareDetailInfo.forignList[3]}`;
 }
 function setInfoShareDetailOpinionList() {
-	document.getElementById('opinionList').innerHTML = `;
+	document.getElementById('opinionList').innerHTML = `
 				투자의견 : ${shareDetailInfo.opinionList[0]} <br>
 				목표주가 : ${shareDetailInfo.opinionList[1]} <br>
 				52주 최고 : ${shareDetailInfo.opinionList[2]}	최저 : ${shareDetailInfo.opinionList[3]}`;

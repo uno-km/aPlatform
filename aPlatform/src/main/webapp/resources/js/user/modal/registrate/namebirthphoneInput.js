@@ -1,6 +1,6 @@
 ;
 function setSignUpModal_NameBirthPhoneInput(){
-    let struct_div = `  
+	document.getElementById('signUpModalBody').innerHTML = `  
     <div class="form-floating mb-3">
         <input type="name" class="form-control" id="inputUserName" onkeyup="checkName()">
         <label for="inputUserName">이름을 입력해주세요.</label>
@@ -16,15 +16,13 @@ function setSignUpModal_NameBirthPhoneInput(){
     <input type="hidden" id="signUpModalNameCheck" value='false' />
     <input type="hidden" id="signUpModalBirthCheck" value='false' />
     `;
-    const inputBody = document.getElementById('signUpModalBody');
-    inputBody.innerHTML = struct_div;
 }
 function checkDuplicataionId() {
 	const inputtedId = document.getElementById("inputtedId");
 	$.ajax({
 		type : 'GET',
 		url : '/user/checkid?user_id=' + inputtedId.value,
-		async : false,
+		async : true,
 		dataType : 'json',
 		contentType : 'application/json; charset=utf-8',
 		success : function(data) {
