@@ -1,7 +1,7 @@
 ;
 function setRemoteCtrl(){
 	if(document.getElementById('sideRemoteController')) {
-		let struct_div = `
+		document.getElementById('sideRemoteController').innerHTML = `
 				<div class="sideRemote_line">
 					<ol class="list-unstyled mb-0">
 						<li>
@@ -23,15 +23,13 @@ function setRemoteCtrl(){
 						<li></li>
 					</ol>
 				</div>`;
-		const inputBody = document.getElementById('sideRemoteController');
-		inputBody.innerHTML = struct_div;
 	}else {
 		console.log('해당 영역없음');
 	}
 }
 function setLoginedRemoteCtrl(){
 	if(document.getElementById('sideRemoteController')) {
-	    let struct_div = `
+		document.getElementById('sideRemoteController').innerHTML = `
 	    <div class="sideRemote_line">
 	        <ol class="list-unstyled mb-0">
 	            <li>
@@ -45,8 +43,6 @@ function setLoginedRemoteCtrl(){
 	            <li></li>
 	        </ol>
 	    </div>`;
-	    const inputBody = document.getElementById('sideRemoteController');
-	    inputBody.innerHTML = struct_div;
 	}else {
 		console.log('해당 영역없음');
 	}
@@ -63,7 +59,7 @@ function callNavBar() {
                 url: '/dataload/navbar',
                 data: JSON.stringify(navbaroutVO),
                 dataType: 'JSON', 
-                async : false,
+                async : true,
                 contentType: 'application/json; charset=utf-8',
                 success:  function (data) {setNavbar(data);},
                 error: function () {alert('통신실패!!');}
@@ -111,7 +107,6 @@ function overviewNavBarClose(tmplt) {
 }
 
 function fillOverviewWindow(tmplt) {
-	
 	let overViewWindow = "<h1>"+tmplt+"</h1>";
     const inputBody = document.getElementById('floadOverViewNavBar');
     inputBody.innerHTML = overViewWindow;
