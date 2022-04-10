@@ -1,6 +1,6 @@
 ;
 function setSignUpModal_IdPasswordCheck(){
-let struct_div = `  
+	document.getElementById('signUpModalBody').innerHTML = `  
         <div class="input-group mb-3">
             <div class="input-group mb-3">
                 <input type="hidden" id="checkDuplTest" value="false" />
@@ -52,15 +52,13 @@ let struct_div = `
         <div id='result' hidden='true' />
     </div>
 `;
-const inputBody = document.getElementById('signUpModalBody');
-inputBody.innerHTML = struct_div;
 }
 function checkDuplicataionId() {
     const inputtedId = document.getElementById("inputtedId");
     $.ajax({
         type : 'GET',
         url : '/user/checkid?user_id=' + inputtedId.value,
-        async : false,
+        async : true,
         dataType : 'json',
         contentType : 'application/json; charset=utf-8',
         success : function(data) {
