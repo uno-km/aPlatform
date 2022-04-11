@@ -1,9 +1,9 @@
 /*최초 메인메이지를 보여주는 화면*/
-function getFindata() {
+function getFindata(marketType) {
 	let outData='';
     $.ajax({
         type: 'GET',
-        url: '/service/finance/total',
+        url: `/service/finance/market/${marketType}`,
         dataType: 'JSON', 
         async: true,
         contentType: 'application/json; charset=utf-8',
