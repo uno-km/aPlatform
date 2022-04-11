@@ -43,8 +43,12 @@ function refreshInfo(e){
 			getNewsdata();
 			break;
 		case "코스피" :
+			console.log('코스피 새로고침');
+			getFindata('kospi');
 			break;
 		case "코스닥" : 
+			console.log('코스닥 새로고침');
+			getFindata('kosdaq');
 			break;
 		case "시가총액상위" : 
 			console.log('시가총액상위 새로고침');
@@ -56,7 +60,7 @@ function refreshInfo(e){
 function finPageInit() {
 	nowFinData=null;
 	setContentsSection();
-	getFindata();//데이터를 가져오고 콜백으로 최초 우측페이지를 그려준다.
+	getFindata('total');//데이터를 가져오고 콜백으로 최초 우측페이지를 그려준다.
 	getRankdata();//순위데이터를 가져오고 콜백으로 최초 랭크를 그려준다.
 	getNewsdata();//뉴스데이터를 가져오고 콜백으로 최초 뉴스를 그려준다.
 	if(this.localStorage.sharesInfo==null||this.localStorage.sharesInfo=='undefined') {
