@@ -29,31 +29,6 @@ public class FinanceRetvBOC
 		this.financeDataMatrix = new FinanceDataMatrix();
 	}
 
-	public ModelAndView reternMainPage()
-	{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("finance/index");
-		return mv;
-	}
-	@SuppressWarnings("unchecked")
-	public Object setTotalFindata() throws Exception
-	{
-		this.financeDataMatrix.setPageDOC();
-		outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kospi", "index"));
-		outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kospi", "buyer"));
-		outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kospi", "image"));
-		outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kosdaq", "index"));
-		outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kosdaq", "buyer"));
-		outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kosdaq", "image"));
-		return outArr;
-	}
-	public Object getRankFindata(Map<String, String> map) throws Exception
-	{
-		String url = map.get("url");
-		String pharseType = map.get("pharseType");
-		this.financeDataMatrix.setPageDOC(url);
-		return getUrlInfo.getUrlInfoObject(financeDataMatrix, url, pharseType);
-	}
 	public List<FinanceVO> getCode(String name)
 	{
 		return financeRetvBO.getCode(name);
@@ -61,5 +36,40 @@ public class FinanceRetvBOC
 	public Map<String, String> getCodeMap()
 	{
 		return financeRetvBO.getCodeMap();
+	}
+	public ModelAndView reternMainPage()
+	{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("finance/index");
+		return mv;
+	}
+	@SuppressWarnings("unchecked")
+	public Object setTotalFindata(String marketType) throws Exception
+	{
+		this.financeDataMatrix.setPageDOC();
+		if(marketType.equalsIgnoreCase("total"))
+		{
+			outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kospi", "index"));
+			outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kospi", "buyer"));
+			outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kospi", "image"));
+			outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kosdaq", "index"));
+			outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kosdaq", "buyer"));
+			outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kosdaq", "image"));
+			return outArr;
+		}
+		if(marketType.equalsIgnoreCase("kosqi"))
+		{
+			outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kospi", "index"));
+			outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kospi", "buyer"));
+			outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kospi", "image"));
+			return outArr;
+		}
+		else
+		{
+			outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kosdaq", "index"));
+			outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kosdaq", "buyer"));
+			outArr.add((Map<String, String>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kosdaq", "image"));
+			return outArr;
+		}
 	}
 }
