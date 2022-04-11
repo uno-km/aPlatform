@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,15 +27,15 @@ public class FinanceRetvSO
 	{
 		return financeRetvBOC.reternMainPage();
 	}
-	@GetMapping(value = "/total")
-	public Object getTotalFindata(Model model) throws Exception
+	@GetMapping(value = "/market/{marketType}")
+	public Object getTotalFindata(Model model, @PathVariable String marketType) throws Exception
 	{
-		return financeRetvBOC.setTotalFindata();
+		return financeRetvBOC.setTotalFindata(marketType);
 	}
 	@GetMapping(value = "/rank")
 	public Object getRankdata(@RequestParam Map<String, String> map, Model model) throws Exception
 	{
-		return financeRetvBOC.getRankFindata(map);
+		return financeSearchBOC.getInfo(map);
 	}
 	@GetMapping(value = "/code")
 	public List<FinanceVO> getCode(Model model, @RequestParam String name) throws Exception
