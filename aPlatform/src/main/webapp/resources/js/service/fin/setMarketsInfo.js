@@ -3,7 +3,7 @@ function getFindata(marketType) {
 	let outData='';
     $.ajax({
         type: 'GET',
-        url: `/service/finance/market/${marketType}`,
+        url: `/service/finance/${marketType}`,
         dataType: 'JSON', 
         async: true,
         contentType: 'application/json; charset=utf-8',
