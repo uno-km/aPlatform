@@ -9,14 +9,4 @@
 		FROM	 
   		  SHARES_FIN_INFO
 	</select>
-	<select resultType="com.aPlatform.controller.service.finance.VO.FinanceVO" parameterType="String" id="getCode">
-		SELECT 
-    		CODE 			AS "fin_code"
-    		, NAME 			AS "fin_name"
-    		, EXCHANGE 		AS "fin_exchange"
-		FROM	 
-  		  SHARES_FIN_INFO
-  		WHERE
-  		 	NAME			= #{value} 
-	</select>
 </mapper>
