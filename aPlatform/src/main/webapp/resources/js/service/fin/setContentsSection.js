@@ -1,11 +1,10 @@
-/** 최초 finance의 메인화면을 나타내는 js이다.
- */
+/* 최초 finance의 메인화면을 나타내는 js이다.*/
 function setContentsSection() {
 	document.getElementById('ContentsSectionMain').innerHTML=`
 			<div class='FirstRowInSection non-drag'>
 				<div class='FirstRecInRow'>
 					<div class='inner_title'>
-						<div class='title non-drag'>
+						<div class='title non-drag' data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
 							<span>뉴스</span>
 						</div>
 						<div class='Index'></div>

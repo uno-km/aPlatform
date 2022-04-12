@@ -6,9 +6,11 @@ import java.util.Map;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.stereotype.Service;
 
 import lombok.Data;
 
+@Service
 @Data
 public class FinanceDataMatrix
 {
@@ -19,13 +21,14 @@ public class FinanceDataMatrix
 	{
 		setMarketURLMap();
 	}
-	public FinanceDataMatrix(Map<String, String> map)
+	public void setSearchUrlPharseType(Map<String, String> map)
 	{
 		setMarketURLMap();
-		if(map.containsKey("code")) {
+		if(map.containsKey("code"))
+		{
 			marketURLMap.put(map.get("url"), "https://finance.naver.com/item/main.naver?code=" + map.get("code"));
 			marketURLMap.put(map.get("pharseType"), ".h_th2");
-			marketURLMap.put("code",map.get("code"));
+			marketURLMap.put("code", map.get("code"));
 		}
 	}
 	private void setMarketURLMap()

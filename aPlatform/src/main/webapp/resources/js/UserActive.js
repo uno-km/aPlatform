@@ -29,7 +29,7 @@ function signin() {
         url: '/user/signin', //데이터를 주고받을 파일 주소
         data: JSON.stringify(maindataLoadInVO), //위의 변수에 담긴 데이터를 전송해준다.
         dataType: 'JSON', 
-        async: false,
+        async: true,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
     		setSession(data);

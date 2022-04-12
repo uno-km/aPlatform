@@ -9,6 +9,5 @@ import com.aPlatform.controller.service.finance.VO.FinanceVO;
 @Mapper
 public interface FinanceDataMapper
 {
-	public List<FinanceVO> getCode(String name);
 	public List<FinanceVO> getAllCode();
 }
