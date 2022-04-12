@@ -15,10 +15,7 @@ public class FinanceRetvBO
 {
 	@Autowired
 	FinanceDataMapper financeDataMapper;
-	public List<FinanceVO> getCode(String name)
-	{
-		return financeDataMapper.getCode(name);
-	}
+
 	public Map<String, String> getCodeMap()
 	{
 		Map<String, String> outMap = new HashMap<>();
