@@ -1,27 +1,43 @@
 /*최초 메인메이지를 보여주는 화면*/
 function getFindata(marketType) {
 	let outData='';
-    $.ajax({
-        type: 'GET',
-        url: `/service/finance/${marketType}`,
-        dataType: 'JSON', 
-        async: true,
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-    		outData=data;
-    		kospiIndex	= outData[0].kospi_index;
-    		kospiBuyer= outData[1];
-    		kospiImage= outData[2];
-    		kosdaqIndex= outData[3].kosdaq_index;
-    		kosdaqBuyer= outData[4];
-    		kosdaqImage= outData[5];
-    		nowFinData = outData;
-    		firstSetMarketsInfo();
-        },
-        error: function () {
-            alert('통신실패!!');
-        }
-    });
+	switch(marketType) {
+		case "kospi":
+		    AJAX('GET' ,`/service/finance/${marketType}` ,null ,true ,setKospiData ,null);
+			break;
+		case "kosdaq" :
+		    AJAX('GET' ,`/service/finance/${marketType}` ,null ,true ,setKosdaqData ,null);
+			break;
+		case "total" :
+		    AJAX('GET' ,`/service/finance/${marketType}` ,null ,true ,setTotalData ,null);
+			break;
+	}
+	function setKospiData(outData) {
+		kospiIndex	= outData[0].kospi_index;
+		kospiBuyer= outData[1];
+		kospiImage= outData[2];
+		setKospiIndex();
+		setKospiImage();
+		setKosdaqImage();
+	}
+	function setKosdaqData(outData) {
+		kosdaqIndex= outData[0].kosdaq_index;
+		kosdaqBuyer= outData[1];
+		kosdaqImage= outData[2];
+		setKosdaqIndex();
+		setKospiImage();
+		setKosdaqImage();
+	}
+	function setTotalData(outData) {
+		kospiIndex	= outData[0].kospi_index;
+		kospiBuyer= outData[1];
+		kospiImage= outData[2];
+		kosdaqIndex= outData[3].kosdaq_index;
+		kosdaqBuyer= outData[4];
+		kosdaqImage= outData[5];
+		nowFinData = outData;
+		firstSetMarketsInfo();
+	}
 }
 function firstSetMarketsInfo() {
 	setKospiIndex();

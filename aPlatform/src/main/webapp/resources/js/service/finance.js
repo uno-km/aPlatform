@@ -87,3 +87,21 @@ function setSessionSharesInfo() {
     let objData = JSON.stringify(outData);
     localStorage.setItem('sharesInfo' ,objData);
 }
+
+function AJAX(type ,url ,data ,async ,fn1 ,fn2) {
+	$.ajax({
+        type: `${type}`,
+        url: `${url}`,
+        data : `${data}`,
+        dataType: 'JSON', 
+        async: `${async}`,
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+        	fn1(data)
+        },
+        error: function () {
+            alert('통신실패!!');
+        }
+    });
+	fn2
+}

@@ -252,7 +252,7 @@ function getShareInfoDTL(code) {
         url: `/service/finance/shareInfo`,
         data: sendingVO,
         dataType: 'JSON', 
-        async: false,
+        async: true,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
     	shareDetailInfo = data;
@@ -261,7 +261,6 @@ function getShareInfoDTL(code) {
 		history.pushState({'name':shareName,'code':code},'종목상세보기','main');
 		window.scrollTo(0,0);
 		localStorage.setItem('BeforeScroll',window.scrollY);
-		window.scrollY;
 		document.getElementById('searchShareInput').value=shareName;
     },
         error: function () {

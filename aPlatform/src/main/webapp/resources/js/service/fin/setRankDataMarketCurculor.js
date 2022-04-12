@@ -2,7 +2,6 @@
  * 
  */
 function getRankdata() {
-	let outData='';
     const sendingVO = {
             "url" : "main"
         ,   "pharseType" : "rankMC"  
@@ -15,8 +14,7 @@ function getRankdata() {
 		async: true,
 		contentType: 'application/json; charset=utf-8',
 		success: function (data) {
-		outData=data;
-		rankDataMC =outData;
+		rankDataMC =data;
 		setRankDataMC();
 		setRankDataMCColor();
 	},
