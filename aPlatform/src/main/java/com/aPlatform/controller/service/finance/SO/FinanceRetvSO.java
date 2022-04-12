@@ -31,15 +31,10 @@ public class FinanceRetvSO
 	{
 		return financeRetvBOC.getCodeMap();
 	}
-	@GetMapping(value = "/market/{marketType}")
-	public Object getTotalFindata(Model model, @PathVariable String marketType) throws Exception
-	{
-		return financeRetvBOC.setTotalFindata(marketType);
-	}
 	@GetMapping(value = "/{dataform}")
 	public Object getData(@PathVariable String dataform, @RequestParam Map<String, String> map) throws Exception
 	{
 		System.out.println("Client required " + dataform + " data...");
-		return financeSearchBOC.getInfo(map);
+		return financeSearchBOC.getInfo(dataform, map);
 	}
 }
