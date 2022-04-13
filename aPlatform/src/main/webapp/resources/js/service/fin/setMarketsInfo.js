@@ -18,15 +18,17 @@ function getFindata(marketType) {
 		kospiImage= outData[2];
 		setKospiIndex();
 		setKospiImage();
-		setKosdaqImage();
+		setKospiBuyer();
+		setKospiBuyerColor();
 	}
 	function setKosdaqData(outData) {
 		kosdaqIndex= outData[0].kosdaq_index;
 		kosdaqBuyer= outData[1];
 		kosdaqImage= outData[2];
 		setKosdaqIndex();
-		setKospiImage();
 		setKosdaqImage();
+		setKosdaqBuyer();
+		setKosdaqBuyerColor();
 	}
 	function setTotalData(outData) {
 		kospiIndex	= outData[0].kospi_index;
