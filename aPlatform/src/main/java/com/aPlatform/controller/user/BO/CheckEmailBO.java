@@ -31,21 +31,17 @@ public class CheckEmailBO
 		prop.put("mail.smtp.ssl.enable", "true");
 		prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 		int random = (int) (Math.random() * 89999999) + 10000000;
-		Session session = Session.getDefaultInstance(prop,
-				new javax.mail.Authenticator() {
-					protected PasswordAuthentication getPasswordAuthentication()
-					{
-						return new PasswordAuthentication(
-								resMap.get("OPER_MAIL"),
-								resMap.get("OPER_PASSWORD"));
-					}
-				});
+		Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication()
+			{
+				return new PasswordAuthentication(resMap.get("OPER_MAIL"), resMap.get("OPER_PASSWORD"));
+			}
+		});
 		try
 		{
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(resMap.get("OPER_MAIL")));
-			message.addRecipient(Message.RecipientType.TO,
-					new InternetAddress(inMap.get("user_email")));
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(inMap.get("user_email")));
 			message.setSubject(resMap.get("MAIL_TITLE")); // 메일 제목을 입력
 			message.setText(resMap.get("MAIL_TXT") + " \n " + random); // 메일 내용을 입력
 			Transport.send(message); //// 전송

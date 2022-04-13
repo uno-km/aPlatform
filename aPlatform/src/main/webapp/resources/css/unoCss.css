@@ -1,34 +1,18 @@
 @charset "UTF-8";
 
 @media screen and (max-width: 1200px) {
-	#sideRemoteController {
-		display: none;
-	}
-	#size_header {
-		display: flex;
-	}
+	.sideRemoteController {display: none;}
+	.toggleHeader {display: flex; }
 }
 
 @media screen and (min-width: 1200px) {
-	#sideRemoteController {
-		display: compact;
-		height: 0%;
-		width: 17%;
-		color: #333;
-		font-size: 12px;
-		position: fixed;
-		z-index: 999;
-		top: 35%;
-		left: 80%;
-		-webkit-box-shadow: 0 1px 2px 0 #777;
-		box-shadow: 0 1px 2px 0 #777;
-		background-color: #ccc;
-	}
-	#size_header {
-		display: none;
-	}
+	.sideRemoteController {display: inline;}
+	.toggleHeader{display: none;}
 }
-
+#toggleMenuOnOff{display: none;}
+#toggleMenuOnOff:CHECKED ~ .toggleHeader{height: 400px;}
+.toggleHeader{position:sticky; height: 60px;width: 100%;background-color: #292929;z-index: 10;top:0;}
+.toggleHeader > label > i{font-size: 4rem;color: #b5b5b5;}
 #loading_window {
 	overflow: hidden;
 	position: fixed;
@@ -42,7 +26,6 @@
 
 #loading {
 	overflow: hidden;
-	/* 	visibility: view; */
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -52,3 +35,5 @@
 	position: absolute;
 	visibility: view;
 }
+footer {width: 100%;position: relative ;bottom: 0;left: 0;padding-top: 1.2rem;height:66px;}
+footer.footerUno {background-color: rgb(0, 30, 60);}

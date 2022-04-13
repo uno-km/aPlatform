@@ -1,95 +1,289 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>aPlatform 웹뷰 테스트</title>
-</head>
-<body>
-	<h1>테스트화면입니다.</h1>
-	<div id="testWebView">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="form-floating mb-3">
-						<input type="name" class="form-control" id="inputUserName"
-							onkeyup="checkName()">
-						<label for="inputUserName">이름을 입력해주세요.</label>
-					</div>
-					<div class="form-floating mb-3">
-						<input type="number" class="form-control" id="inputUserBirth"
-							oninput="checkBirth(this, 6)">
-						<label for="inputUserBirth">생년월일을 입력해주세요. (YYDDMM)</label>
-					</div>
-					<div class="form-floating mb-3">
-						<input type="tel" class="form-control" id="floatingInput">
-						<label for="floatingInput">전화번호를 입력해주세요. (선택)</label>
-					</div>
-					<input type="hidden" id="signUpModalNameCheck" value='false' />
-					<input type="hidden" id="signUpModalBirthCheck" value='false' />
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
-<script>
-	function checkDuplicataionId() {
-		const inputtedId = document.getElementById("inputtedId");
-		$.ajax({
-			type : 'GET',
-			url : '/user/checkid?user_id=' + inputtedId.value,
-			async : false,
-			dataType : 'json',
-			contentType : 'application/json; charset=utf-8',
-			success : function(data) {
-				judgeDuplicataion(data);
-			},
-			error : function() {
-				alert('통신실패!!');
-			}
-		});
-	}
-	function checkName() {
-		const pattern1 = /[0-9]/; // 숫자
-		const pattern2 = /[~!@#$%^&*()_+|<>?:{}]/; // 특수문자
-		const inputUserName = document.getElementById('inputUserName');
-		const signUpModalNameCheck = document
-				.getElementById('signUpModalNameCheck');
-		if (pattern1.test(inputUserName.value)) {
-			inputUserName.className = 'form-control is-invalid';
-			signUpModalNameCheck.value = 'false';
-		} else {
-			if (pattern2.test(inputUserName.value)) {
-				inputUserName.className = 'form-control is-invalid';
-				signUpModalNameCheck.value = 'false';
-			} else {
-				if (inputUserName.value.length >= '2') {
-					inputUserName.className = 'form-control is-valid';
-					signUpModalNameCheck.value = 'true';
-				} else {
-					inputUserName.className = 'form-control';
-					signUpModalNameCheck.value = 'false';
-				}
-			}
-		}
-	}
-	function checkBirth(inputUserBirth, maxlength) {
-		const signUpModalBirthCheck = document
-				.getElementById('signUpModalBirthCheck');
-		if (inputUserBirth.value.length == maxlength) {
-			inputUserBirth.className = 'form-control is-valid';
-		} else {
-			inputUserBirth.className = 'form-control';
-			signUpModalBirthCheck.value = 'false';
-		} 
-		if (inputUserBirth.value.length > maxlength) {
-			inputUserBirth.value = inputUserBirth.value.substr(0, maxlength);
-
-		}
-	}
-</script>
 <%@ include file="/WEB-INF/includes/common.jsp"%>
 <%@ include file="/WEB-INF/includes/header.jsp"%>
 <%@ include file="/WEB-INF/views/modules/loading.jsp"%>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<html>
+<meta charset="UTF-8">
+<title>aPlatform 웹뷰 테스트</title>
+<h1>테스트화면입니다.</h1>
+<div class="container">
+	<h2>파일업로드</h2>
+	<div class="filebox">
+		<label for="input_file">업로드</label>
+		<input type="file" id="input_file" class="upload-hidden" multiple="multiple">
+	</div>
+	<span style="font-size: 10px; color: gray;">※첨부파일은 최대 10개까지 등록이 가능합니다.</span>
+	<div class="data_file_txt" id="data_file_txt" style="margin: 40px;">
+		<span>첨부 파일</span>
+		<br />
+		<div id="articlefileChange" class="drop-zone">버튼을 눌러 추가 또는 파일을 여기로 드래그하세요.</div>
+	</div>
+</div>
+<h2>드래그앤 드롭</h2>
+<h1>${test}</h1>
+</body>
+</html>
+</body>
+<div id='moveEvent' style='background-color: #aaa; height: 200px; width: 400px; position: absolute; left: 0px; top: 0px; cursor: pointer; cursor: hand' onmousedown='startDrag(event, this)'>
+	<h1>하하하</h1>
+</div>
+<label class="switch-button"> 
+<input type="checkbox" /> <span class="onoff-switch"></span>
+</label>
+<style>
+.switch-button {
+	position: relative;
+	display: inline-block;
+	width: 55px;
+	height: 30px;
+}
+
+.switch-button input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.onoff-switch {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 20px;
+	background-color: #ccc;
+	box-shadow: inset 1px 5px 1px #999;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+.onoff-switch:before {
+	position: absolute;
+	content: "";
+	height: 22px;
+	width: 22px;
+	left: 4px;
+	bottom: 4px;
+	background-color: #fff;
+	-webkit-transition: .5s;
+	transition: .4s;
+	border-radius: 20px;
+}
+
+.switch-button input:checked+.onoff-switch {
+	background-color: #F2D522;
+	box-shadow: inset 1px 5px 1px #E3AE56;
+}
+
+.switch-button input:checked+.onoff-switch:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+
+.drop-zone {
+	width: 500px;
+	height: 500px;
+	background-color: azure
+}
+
+.drop-zone-dragenter, .drop-zone-dragover {
+	border: 10px solid blue;
+}
+
+.filebox label {
+	display: inline-block;
+	padding: .5em .75em;
+	color: #999;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #fdfdfd;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+}
+
+.filebox input[type="file"] { /* 파일 필드 숨기기 */
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+/* named upload */
+.filebox .upload-name {
+	display: inline-block;
+	padding: .5em .75em; /* label의 패딩값과 일치 */
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #f5f5f5;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+}
+</style>
+<script>
+	var fileCount = 0;
+	var totalCount = 10;
+	var fileNum = 0;
+	var dropZone = document.querySelector(".drop-zone");
+	var content_files = new Array();
+
+	document.getElementById('input_file').addEventListener('change',
+			clickButton);
+	//드래그한 파일이 최초로 진입했을 때
+	dropZone.addEventListener("dragenter", dragEventHandler);
+	// 드래그한 파일이 dropZone 영역을 벗어났을 때
+	dropZone.addEventListener("dragleave", dragEventHandler);
+	// 드래그한 파일이 dropZone 영역에 머물러 있을 때
+	dropZone.addEventListener("dragover", dragEventHandler);
+	// 드래그한 파일이 드랍되었을 때
+	dropZone.addEventListener("drop", function(e) {
+		dragEventHandler(e);
+		dropFiles(e);
+	});
+
+	function clickButton(e) {
+		var files = e.target.files;
+		fileCheck(files);
+	}
+	function dropFiles(e) {
+		var files = e.dataTransfer && e.dataTransfer.files;
+		fileCheck(files);
+	}
+
+	function fileCheck(files) {
+		var filesArr = Array.prototype.slice.call(files);
+		if (fileCount + filesArr.length > totalCount) {
+			alert('파일은 최대 ' + totalCount + '개까지 업로드 할 수 있습니다.');
+			return;
+		} else {
+			fileCount = fileCount + filesArr.length;
+		}
+		filesArr.forEach(function(f) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				content_files.push(f);
+				$('#articlefileChange').append(
+						'<div id="file' + fileNum
+								+ '" onclick="fileDelete(\'file' + fileNum
+								+ '\')">' + '<font style="font-size:12px">'
+								+ f.name + '</font>' + '<div>x</div>'
+								+ '<div/>');
+				fileNum++;
+			};
+			reader.readAsDataURL(f);
+			document.getElementById('input_file').value = '';
+		});
+	}
+	function toggleClass(className) {
+		var list = [ "dragenter", "dragleave", "dragover", "drop" ];
+		for (var i = 0; i < list.length; i++) {
+			if (className === list[i]) {
+				dropZone.classList.add("drop-zone-" + list[i]);
+			} else {
+				dropZone.classList.remove("drop-zone-" + list[i])
+			}
+		}
+	}
+
+	function dragEventHandler(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		toggleClass(e.type);
+	}
+	//파일 부분 삭제 함수
+	function fileDelete(fileNum) {
+		var no = fileNum.replace(/[^0-9]/g, "");
+		content_files[no].is_delete = true;
+		document.getElementById(fileNum).remove();
+		fileCount--;
+	}
+	/*폼 submit 로직 */
+	function registerAction() {
+		var form = $("form")[0];
+		var formData = new FormData(form);
+		for (var x = 0; x < content_files.length; x++) {
+			// 삭제 안한것만 담아 준다. 
+			if (!content_files[x].is_delete) {
+				formData.append("article_file", content_files[x]);
+			}
+		}
+		/*
+		 * 파일업로드 multiple ajax처리
+		 */
+		$.ajax({
+			type : "POST",
+			enctype : "multipart/form-data",
+			url : "/file-upload",
+			data : formData,
+			processData : false,
+			contentType : false,
+			success : function(data) {
+				if (JSON.parse(data)['result'] == "OK") {
+					alert("파일업로드 성공");
+				} else
+					alert("서버내 오류로 처리가 지연되고있습니다. 잠시 후 다시 시도해주세요");
+			},
+			error : function(xhr, status, error) {
+				alert("서버오류로 지연되고있습니다. 잠시 후 다시 시도해주시기 바랍니다.");
+				return false;
+			}
+		});
+		return false;
+	}
+
+	//드래그
+	var img_L = 0;
+	var img_T = 0;
+	var targetObj;
+
+	function getLeft(o) {
+		return parseInt(o.style.left.replace('px', ''));
+	}
+	function getTop(o) {
+		return parseInt(o.style.top.replace('px', ''));
+	}
+
+	// 이미지 움직이기
+	function moveDrag(e) {
+		var e_obj = window.event ? window.event : e;
+		var dmvx = parseInt(e_obj.clientX + img_L);
+		var dmvy = parseInt(e_obj.clientY + img_T);
+		targetObj.style.left = dmvx + "px";
+		targetObj.style.top = dmvy + "px";
+		return false;
+	}
+	// 드래그 시작
+	function startDrag(e, obj) {
+		targetObj = obj;
+		var e_obj = window.event ? window.event : e;
+		img_L = getLeft(obj) - e_obj.clientX;
+		img_T = getTop(obj) - e_obj.clientY;
+
+		document.onmousemove = moveDrag;
+		document.onmouseup = stopDrag;
+		if (e_obj.preventDefault)
+			e_obj.preventDefault();
+	}
+
+	// 드래그 멈추기
+	function stopDrag() {
+		document.onmousemove = null;
+		document.onmouseup = null;
+	}
+</script>

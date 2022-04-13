@@ -1,26 +1,25 @@
 ;
 function setSignUpModal_checkPage(){
-    let struct_div = `  <div class="form-check">
+	document.getElementById('signUpModalBody').innerHTML = `
+						<div class="form-check">
                             <input class="form-check-input" type="checkbox" value="all" id="signUpModal_consetrate_all" onClick="selectAll(this)" name="signUpCheckBox">
-                            <label class="form-check-label" for="flexCheckDefault"> 전체 동의 </label>
+                            <label class="form-check-label" for="signUpModal_consetrate_all"> 전체 동의 </label>
                         </div>
                         <div class="alert alert-warning" role="alert">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="accept1" name="signUpCheckBox" id="signUpcheckBox1">
-                                <label class="form-check-label" for="flexCheckDefault">약관에 동의합니다. </label>
+                                <label class="form-check-label" for="signUpcheckBox1">약관에 동의합니다. </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="accept2" name="signUpCheckBox" id="signUpcheckBox2">
-                                <label class="form-check-label" for="flexCheckDefault">약관에 동의합니다. </label>
+                                <label class="form-check-label" for="signUpcheckBox2">약관에 동의합니다. </label>
                             </div>
                         </div>`;
-const inputBody = document.getElementById('signUpModalBody');
-inputBody.innerHTML = struct_div;
 }
-function selectAll(selectAll){
+function selectAll(all){
     const checkAll = document.getElementsByName('signUpCheckBox');
     checkAll.forEach((checkbox) => {
-        checkbox.checked = selectAll.checked;        
+        checkbox.checked = all.checked;        
     });
 }
 function checkCheckBox(){

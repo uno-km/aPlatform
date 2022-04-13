@@ -5,17 +5,22 @@
 
 	<select resultType="com.aPlatform.controller.main.VO.NavbarVO" id="loadNavbar">
 		SELECT
-			SVC_TEMPLIT_ID 			tmplt_id
-			, SVC_TEMPLIT_SEQ		tmplt_seq
-			, SVC_TEMPLIT_FIGURE	tmplt_figure
-			, SVC_TEMPLIT_DES		tmplt_des
-			, SVC_TEMPLIT_STTUS		tmplt_sttus
-			, SVC_TEMPLIT_USER_ID	user_id
+			DTL.SVC_TEMPLIT_USER_ID 		user_id 
+			, DTL.SVC_TEMPLIT_ID			tmplt_id
+			, DTL.SVC_TEMPLIT_SEQ			tmplt_seq
+			, DTL.SVC_TEMPLIT_FIGURE		tmplt_figure
+			, DTL.SVC_TEMPLIT_DES			tmplt_des
+			, DTL.SVC_TEMPLIT_STTUS			tmplt_sttus
+			, LIST.SVC_ADDRESS				tmplt_address			
+			, LIST.SVC_AUTH					tmplt_auth				
 		FROM
-			SVC_TEMPLIT_LIST_DTL
+			SVC_TEMPLIT_LIST_DTL			DTL
+			, SVC_TEMPLIT_LIST  	    	LIST
 		WHERE
-			SVC_TEMPLIT_USER_ID = #{user_id}
+			DTL.SVC_TEMPLIT_USER_ID 		= #{user_id}
+			AND DTL.SVC_TEMPLIT_STTUS 		= 'V'					
+			AND DTL.SVC_TEMPLIT_ID			= LIST.SVC_TEMPLIT_ID 	
 		ORDER BY
-			SVC_TEMPLIT_SEQ ASC
+			DTL.SVC_TEMPLIT_SEQ ASC
 	</select>
 </mapper>

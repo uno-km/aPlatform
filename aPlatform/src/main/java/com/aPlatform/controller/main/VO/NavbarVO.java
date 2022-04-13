@@ -11,4 +11,6 @@ public class NavbarVO
 	String tmplt_des;
 	String tmplt_sttus;
 	String user_id;
+	String tmplt_address;
+	String tmplt_auth;
 }

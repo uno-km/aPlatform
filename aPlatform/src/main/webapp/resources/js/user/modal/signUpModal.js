@@ -50,14 +50,9 @@ function signUpModalNextBnt(){
     };
 }
 function buttonChange(){
-    let button_div 	= 
-    `<button type		=	"button" 
-    class				=	"btn btn-primary"
-    data-bs-dismiss		=	"modal"
-    id					=	"signUpModalNextBnt"
-    onclick 			=	"signUpModalNextBnt()">다음</button>`
-    const inputDiv 		=	 document.getElementById('buttonChange');
-    inputDiv.innerHTML 	=	 button_div;
+	document.getElementById('buttonChange').innerHTML=` 
+			<button type="button" class	= "btn btn-primary" data-bs-dismiss	= "modal" 
+			id = "signUpModalNextBnt" onclick = "signUpModalNextBnt()">다음</button>`
 }
 function setInitSignUpModal(){
     document.getElementById('signUpModal').style.display='block';
@@ -87,11 +82,11 @@ function signUp(){
         "user_auth" : '100'
     }
     $.ajax({
-        type: 'POST', //post 방식으로 전송
-        url: '/user/signup', //데이터를 주고받을 파일 주소
-        data: JSON.stringify(maindataLoadInVO), //위의 변수에 담긴 데이터를 전송해준다.
+        type: 'POST',
+        url: '/user/signup',
+        data: JSON.stringify(maindataLoadInVO),
         dataType: 'JSON', 
-        async : false,
+        async : true,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {  
             if(data){
