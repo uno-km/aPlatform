@@ -16,6 +16,7 @@ public class NewsSwitch implements UrlFactory
 	public Object excute(FinanceDataMatrix financeDataMatrix, Document doc, Elements contents, HashMap<String, String> outMap,
 			String[] parsingContainer, String market, String pharseType)
 	{
+		contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType));
 		Elements aTag = doc.select("a");
 		List<List<String>> newsListList = new ArrayList<List<String>>();
 		for (int i = 0; i < aTag.size(); i++)
