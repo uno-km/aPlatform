@@ -19,6 +19,7 @@ public class KosdaqSwitch implements UrlFactory
 	{
 		contents = doc.select(financeDataMatrix.getMarketURLMap().get("index"));
 		ArrayList<Map<String, String>> kosdaqArr = new ArrayList<Map<String, String>>();
+
 		/* 하루 움직임 동향 */
 		String[] indexSub = {"_index" , "_per" , "_change" };
 		parsingContainer = contents.text().split(" ");
@@ -28,6 +29,7 @@ public class KosdaqSwitch implements UrlFactory
 		}
 		kosdaqArr.add((Map<String, String>) outMap.clone());
 		outMap.clear();
+
 		/* 매매주체 */
 		contents = doc.select(financeDataMatrix.getMarketURLMap().get("buyer"));
 		int bcnt = 0;
@@ -45,6 +47,7 @@ public class KosdaqSwitch implements UrlFactory
 		}
 		kosdaqArr.add((Map<String, String>) outMap.clone());
 		outMap.clear();
+
 		/* 차트 이미지 */
 		contents = doc.select(financeDataMatrix.getMarketURLMap().get("image"));
 		int icnt = 0;
