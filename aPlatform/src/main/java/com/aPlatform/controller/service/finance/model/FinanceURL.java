@@ -13,7 +13,7 @@ public class FinanceURL
 	public static Object pharsingURL(FinanceDataMatrix financeDataMatrix, String market, String pharseType) throws Exception
 	{
 		Document doc = financeDataMatrix.getPageDOCMap().get(market);
-		Elements contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType));
+		Elements contents = null;
 		HashMap<String, String> outMap = new HashMap<String, String>();
 		String[] parsingContainer = {};
 
