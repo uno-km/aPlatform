@@ -7,15 +7,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.aPlatform.controller.service.finance.BO.FinanceDetailBO;
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 import com.aPlatform.controller.service.finance.model.GetURLInfo;
 @Service
 @SuppressWarnings("unchecked")
 public class FinanceSearchBOC
 {
-	@Autowired
-	FinanceDetailBO financeDetailBO;
 	@Autowired
 	GetURLInfo getUrlInfo;
 	@Autowired
