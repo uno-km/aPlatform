@@ -23,7 +23,7 @@ public class FinanceDataMatrix
 	}
 	public void setSearchUrlPharseType(Map<String, String> map)
 	{
-		setMarketURLMap();
+//		setMarketURLMap();
 		if(map.containsKey("code"))
 		{
 			marketURLMap.put(map.get("url"), "https://finance.naver.com/item/main.naver?code=" + map.get("code"));
