@@ -20,4 +20,15 @@
 		    AND SERVICE_ID		= 'FIN'
 		    AND SUB_CONTENT		= 'url'
 	</select>
+	<select resultType="com.aPlatform.controller.service.finance.VO.FinanceVO" id="getMappingPharse">
+		SELECT 
+		    SUB_CUL_1			AS "finType"
+		    , SUB_CUL_2			AS "finUrl"
+		FROM
+		    COM_CD_BAS
+		WHERE
+		    GROUP_ID = '20'
+		    AND SERVICE_ID		= 'FIN'
+		    AND SUB_CONTENT		= 'pharse'
+	</select>
 </mapper>

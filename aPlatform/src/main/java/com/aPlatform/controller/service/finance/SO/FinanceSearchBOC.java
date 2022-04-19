@@ -22,12 +22,15 @@ public class FinanceSearchBOC
 	{
 		switch (dataform) {
 			case "kospi" :/* 코스피 */
+				this.financeDataMatrix.setMarketURLMap();
 				this.financeDataMatrix.setPageDOC(dataform);
 				return getUrlInfo.getUrlInfoObject(financeDataMatrix, dataform, dataform);
 			case "kosdaq" :/* 코스닥 */
+				this.financeDataMatrix.setMarketURLMap();
 				this.financeDataMatrix.setPageDOC(dataform);
 				return getUrlInfo.getUrlInfoObject(financeDataMatrix, dataform, dataform);
 			case "total" : /* 전부 */
+				this.financeDataMatrix.setMarketURLMap();
 				this.financeDataMatrix.setPageDOC();
 				ArrayList<Map<String, String>> totalArr = new ArrayList<Map<String, String>>();
 				totalArr.addAll((Collection<? extends Map<String, String>>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kospi", "kospi"));

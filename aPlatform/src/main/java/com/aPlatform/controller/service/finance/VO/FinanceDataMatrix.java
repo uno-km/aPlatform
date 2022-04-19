@@ -33,17 +33,19 @@ public class FinanceDataMatrix
 			marketURLMap.put("code", map.get("code"));
 		}
 	}
-	private void setMarketURLMap()
+	public void setMarketURLMap()
 	{
 		/* 나중에 이부분 매퍼를 돌려서 서버시작과 동시에 호출시킬수 있도록 하기 */
-		List<Map<String, String>> mappingUrl = financeDataMapper.getMappingUrl();
-		for (Map<String, String> innerUrl : mappingUrl)
+		List<FinanceVO> mappingUrl = financeDataMapper.getMappingUrl();
+		List<FinanceVO> mappingPharse = financeDataMapper.getMappingPharse();
+		for (FinanceVO innerUrl : mappingUrl)
 		{
-			this.marketURLMap.putAll(innerUrl);
+			this.marketURLMap.put(innerUrl.getFinType(), innerUrl.getFinUrl());
 		}
-		this.marketURLMap.put("kospi", "https://finance.naver.com/sise/sise_index.naver?code=KOSPI");
-		this.marketURLMap.put("kosdaq", "https://finance.naver.com/sise/sise_index.naver?code=KOSDAQ");
-		this.marketURLMap.put("main", "https://finance.naver.com/");
+		for (FinanceVO innerUrl : mappingPharse)
+		{
+			this.marketURLMap.put(innerUrl.getFinType(), innerUrl.getFinPharse());
+		}
 		this.marketURLMap.put("rankMC", "#_topItems4");
 		this.marketURLMap.put("index", "#quotient");
 		this.marketURLMap.put("buyer", ".dd");
