@@ -19,6 +19,7 @@ public class DetailSwitch implements UrlFactory
 	{
 		Map<String, Object> outMapList = new HashMap<>();
 		List<List<String>> dtlOutList = new ArrayList<List<String>>();
+		contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType));
 		List<String> infoTitleList = contents.eachText().subList(3, 19);
 		List<String> monthList = new ArrayList<String>();
 		Elements tdElements = doc.select("td");

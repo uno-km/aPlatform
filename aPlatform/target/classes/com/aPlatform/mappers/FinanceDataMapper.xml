@@ -23,7 +23,7 @@
 	<select resultType="com.aPlatform.controller.service.finance.VO.FinanceVO" id="getMappingPharse">
 		SELECT 
 		    SUB_CUL_1			AS "finType"
-		    , SUB_CUL_2			AS "finUrl"
+		    , SUB_CUL_2			AS "finPharse"
 		FROM
 		    COM_CD_BAS
 		WHERE

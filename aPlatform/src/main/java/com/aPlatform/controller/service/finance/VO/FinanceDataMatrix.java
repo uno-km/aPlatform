@@ -39,18 +39,14 @@ public class FinanceDataMatrix
 		List<FinanceVO> mappingUrl = financeDataMapper.getMappingUrl();
 		List<FinanceVO> mappingPharse = financeDataMapper.getMappingPharse();
 		for (FinanceVO innerUrl : mappingUrl)
-		{
 			this.marketURLMap.put(innerUrl.getFinType(), innerUrl.getFinUrl());
-		}
 		for (FinanceVO innerUrl : mappingPharse)
-		{
 			this.marketURLMap.put(innerUrl.getFinType(), innerUrl.getFinPharse());
-		}
-		this.marketURLMap.put("rankMC", "#_topItems4");
-		this.marketURLMap.put("index", "#quotient");
-		this.marketURLMap.put("buyer", ".dd");
-		this.marketURLMap.put("image", ".graph img");
-		this.marketURLMap.put("news", ".section_strategy");
+		// this.marketURLMap.put("rankMC", "#_topItems4");
+		// this.marketURLMap.put("index", "#quotient");
+		// this.marketURLMap.put("buyer", ".dd");
+		// this.marketURLMap.put("image", ".graph img");
+		// this.marketURLMap.put("news", ".section_strategy");
 	}
 
 	public void setPageDOC(String input) throws IOException
