@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aPlatform.controller.service.finance.BO.FinanceRetvBO;
+import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 @Service
 public class FinanceRetvBOC
 {
@@ -19,6 +20,7 @@ public class FinanceRetvBOC
 	}
 	public ModelAndView reternMainPage()
 	{
+		FinanceDataMatrix.getInstance();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("finance/index");
 		return mv;

@@ -15,7 +15,6 @@ public class FinanceSearchBOC
 {
 	@Autowired
 	GetURLInfo getUrlInfo;
-	@Autowired
 	FinanceDataMatrix financeDataMatrix;
 
 	public Object getInfo(final String dataform, Map<String, String> map) throws Exception
@@ -39,7 +38,7 @@ public class FinanceSearchBOC
 			default :
 				String url = map.get("url");
 				String pharseType = map.get("pharseType");
-				this.financeDataMatrix.setSearchUrlPharseType(map);
+				this.financeDataMatrix.setMarketURLMap(map);
 				this.financeDataMatrix.setPageDOC(url);
 				return getUrlInfo.getUrlInfoObject(this.financeDataMatrix, url, pharseType);
 		}

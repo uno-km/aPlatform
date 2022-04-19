@@ -5,27 +5,40 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.SqlSession;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.aPlatform.mappers.FinanceDataMapper;
 
 import lombok.Data;
 
-@Service
 @Data
 public class FinanceDataMatrix
 {
-	@Autowired
-	private FinanceDataMapper financeDataMapper;
+	private static FinanceDataMatrix financeDataMatrix = new FinanceDataMatrix();
+	private FinanceDataMatrix()
+	{
+	}
+	public static synchronized FinanceDataMatrix getInstance()
+	{
+		if(financeDataMatrix == null)
+		{
+			financeDataMatrix = new FinanceDataMatrix();
+		}
+		return financeDataMatrix;
+	}
+
 	private Map<String, Document> pageDOCMap = new HashMap<String, Document>();;
 	private Map<String, String> marketURLMap = new HashMap<String, String>();
 	private String[] innerArr = {"kospi" , "kosdaq" };
-	public void setSearchUrlPharseType(Map<String, String> map)
+	@Autowired
+	private FinanceDataMapper financeDataMapper;
+
+	public void setMarketURLMap(Map<String, String> map)
 	{
-		setMarketURLMap();
+		// setMarketURLMap();
 		if(map.containsKey("code"))
 		{
 			marketURLMap.put(map.get("url"), "https://finance.naver.com/item/main.naver?code=" + map.get("code"));
