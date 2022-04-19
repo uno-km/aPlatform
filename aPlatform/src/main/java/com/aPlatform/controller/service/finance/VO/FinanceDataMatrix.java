@@ -23,10 +23,6 @@ public class FinanceDataMatrix
 	private Map<String, Document> pageDOCMap = new HashMap<String, Document>();;
 	private Map<String, String> marketURLMap = new HashMap<String, String>();
 	private String[] innerArr = {"kospi" , "kosdaq" };
-	public FinanceDataMatrix()
-	{
-		setMarketURLMap();
-	}
 	public void setSearchUrlPharseType(Map<String, String> map)
 	{
 		setMarketURLMap();
