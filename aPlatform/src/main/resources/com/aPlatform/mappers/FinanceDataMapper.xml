@@ -18,6 +18,6 @@
 		WHERE
 		    GROUP_ID = '20'
 		    AND SERVICE_ID = 'FIN'
-		    AND SUB_CONTENT = 'URL'
+		    AND SUB_CONTENT = 'url'
 	</select>
 </mapper>
