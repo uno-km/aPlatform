@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aPlatform.mappers.FinanceDataMapper;
@@ -32,6 +33,7 @@ public class FinanceDataMatrix
 	private Map<String, Document> pageDOCMap = new HashMap<String, Document>();;
 	private Map<String, String> marketURLMap = new HashMap<String, String>();
 	private String[] innerArr = {"kospi" , "kosdaq" };
+	@Autowired
 	private FinanceDataMapper financeDataMapper;
 
 	public void setMarketURLMap(Map<String, String> map)
