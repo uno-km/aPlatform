@@ -8,11 +8,13 @@ import java.util.Map;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aPlatform.mappers.FinanceDataMapper;
 
 import lombok.Data;
 
+@Service
 @Data
 public class FinanceDataMatrix
 {

@@ -15,7 +15,7 @@ public class FinanceSearchBOC
 {
 	@Autowired
 	GetURLInfo getUrlInfo;
-	
+	@Autowired
 	FinanceDataMatrix financeDataMatrix;
 
 	public Object getInfo(final String dataform, Map<String, String> map) throws Exception
