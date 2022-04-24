@@ -16,9 +16,7 @@ public class IndexSwitch implements UrlFactory
 		String[] indexSub = {"_index" , "_per" , "_change" };
 		parsingContainer = contents.text().split(" ");
 		for (int i = 0; i < indexSub.length; i++)
-		{
 			outMap.put(market + indexSub[i], parsingContainer[i]);
-		}
 		return outMap;
 	}
 }

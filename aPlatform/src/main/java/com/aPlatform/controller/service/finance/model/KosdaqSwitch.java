@@ -24,9 +24,7 @@ public class KosdaqSwitch implements UrlFactory
 		String[] indexSub = {"_index" , "_per" , "_change" };
 		parsingContainer = contents.text().split(" ");
 		for (int i = 0; i < indexSub.length; i++)
-		{
 			outMap.put(market + indexSub[i], parsingContainer[i]);
-		}
 		kosdaqArr.add((Map<String, String>) outMap.clone());
 		outMap.clear();
 
@@ -38,29 +36,24 @@ public class KosdaqSwitch implements UrlFactory
 		for (int i = 1; i < parsingContainer.length; i++)
 		{
 			if(bcnt == 3)
-			{
 				break;
-			}
 			outMap.put(market + buyerSub[bcnt], parsingContainer[i]);
 			i++;
 			bcnt++;
 		}
 		kosdaqArr.add((Map<String, String>) outMap.clone());
 		outMap.clear();
-
 		/* 차트 이미지 */
 		contents = doc.select(financeDataMatrix.getMarketURLMap().get("image"));
 		int icnt = 0;
 		String[] isub = {"_day" , "_day90" , "_day365" , "_day1095" };
 		parsingContainer = contents.toString().split("<img src=\"");
 		for (int i = 0; i < parsingContainer.length; i++)
-		{
 			if(!parsingContainer[i].isEmpty())
 			{
 				outMap.put(market + isub[icnt], parsingContainer[i].split("\" alt=")[0]);
 				icnt++;
 			}
-		}
 		kosdaqArr.add((Map<String, String>) outMap.clone());
 		return kosdaqArr;
 	}

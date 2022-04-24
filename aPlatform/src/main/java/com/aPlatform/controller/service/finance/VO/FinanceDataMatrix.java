@@ -36,9 +36,9 @@ public class FinanceDataMatrix
 	public void setMarketURLMap()
 	{
 		List<FinanceVO> mappingUrl = financeDataMapper.getMappingUrl();
-		List<FinanceVO> mappingPharse = financeDataMapper.getMappingPharse();
 		for (FinanceVO innerUrl : mappingUrl)
 			this.marketURLMap.put(innerUrl.getFinType(), innerUrl.getFinUrl());
+		List<FinanceVO> mappingPharse = financeDataMapper.getMappingPharse();
 		for (FinanceVO innerUrl : mappingPharse)
 			this.marketURLMap.put(innerUrl.getFinType(), innerUrl.getFinPharse());
 	}

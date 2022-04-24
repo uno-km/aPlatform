@@ -28,10 +28,7 @@ public class DetailSwitch implements UrlFactory
 		int thCnt = 0;
 		for (int i = 0; i < thElements.size(); i++)
 		{
-			if(thCnt == 10)
-			{
-				break;
-			}
+			if(thCnt == 10) break;
 			if(thElements.get(i).text().contains("."))
 			{
 				monthList.add(thElements.get(i).text());
@@ -43,9 +40,7 @@ public class DetailSwitch implements UrlFactory
 		{
 			List<String> innerList = new ArrayList<String>();
 			for (int j = 0; j < 10; j++)
-			{
 				innerList.add(tdElements.get(i + j).text());
-			}
 			dtlOutList.add(innerList);
 			i += 9;
 		}
@@ -64,13 +59,9 @@ public class DetailSwitch implements UrlFactory
 		infoTodayList.add(no_exday.text().split("l")[0].split(" ")[1]);
 		infoTodayList.add(no_exday.text().split("l")[0].split(" ")[2]);
 		if(no_exday.text().split("l")[0].split(" ")[1].equals("보합"))
-		{
 			infoTodayList.add(no_exday.text().split("l")[1].split(" ")[1]);
-		}
 		else
-		{
 			infoTodayList.add(no_exday.text().split("l")[1].split(" ")[1] + no_exday.text().split("l")[1].split(" ")[2]);
-		}
 		outMapList.put("today", infoTodayList);
 		String[] areaArr = {"day" , "week" , "month3" , "year" , "year3" , "year5" , "year10" };
 		String[] candleArr = {"day" , "week" , "month" };
@@ -134,5 +125,4 @@ public class DetailSwitch implements UrlFactory
 		outMapList.put("sameList", sameList);
 		return outMapList;
 	}
-
 }
