@@ -19,7 +19,6 @@ public class FinanceRetvBOC
 	}
 	public ModelAndView reternMainPage()
 	{
-//		FinanceDataMatrix.getInstance();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("finance/index");
 		return mv;
