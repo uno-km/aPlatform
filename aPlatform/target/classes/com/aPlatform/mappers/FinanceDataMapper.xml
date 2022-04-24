@@ -4,19 +4,31 @@
 <mapper namespace="com.aPlatform.mappers.FinanceDataMapper">
 	<select resultType="com.aPlatform.controller.service.finance.VO.FinanceVO" id="getAllCode">
 		SELECT 
-    		CODE 			AS "fin_code"
-    		, NAME 			AS "fin_name"
+    		CODE 				AS "finCode"
+    		, NAME 				AS "finName"
 		FROM	 
   		  SHARES_FIN_INFO
 	</select>
-	<select resultType="com.aPlatform.controller.service.finance.VO.FinanceVO" parameterType="String" id="getCode">
+	<select resultType="com.aPlatform.controller.service.finance.VO.FinanceVO" id="getMappingUrl">
 		SELECT 
-    		CODE 			AS "fin_code"
-    		, NAME 			AS "fin_name"
-    		, EXCHANGE 		AS "fin_exchange"
-		FROM	 
-  		  SHARES_FIN_INFO
-  		WHERE
-  		 	NAME			= #{value} 
+		    SUB_CUL_1			AS "finType"
+		    , SUB_CUL_2			AS "finUrl"
+		FROM
+		    COM_CD_BAS
+		WHERE
+		    GROUP_ID = '20'
+		    AND SERVICE_ID		= 'FIN'
+		    AND SUB_CONTENT		= 'url'
+	</select>
+	<select resultType="com.aPlatform.controller.service.finance.VO.FinanceVO" id="getMappingPharse">
+		SELECT 
+		    SUB_CUL_1			AS "finType"
+		    , SUB_CUL_2			AS "finPharse"
+		FROM
+		    COM_CD_BAS
+		WHERE
+		    GROUP_ID = '20'
+		    AND SERVICE_ID		= 'FIN'
+		    AND SUB_CONTENT		= 'pharse'
 	</select>
 </mapper>

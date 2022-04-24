@@ -1,6 +1,7 @@
 ;
 function setSignUpModal_checkPage(){
-    let struct_div = `  <div class="form-check">
+	document.getElementById('signUpModalBody').innerHTML = `
+						<div class="form-check">
                             <input class="form-check-input" type="checkbox" value="all" id="signUpModal_consetrate_all" onClick="selectAll(this)" name="signUpCheckBox">
                             <label class="form-check-label" for="signUpModal_consetrate_all"> 전체 동의 </label>
                         </div>
@@ -14,8 +15,6 @@ function setSignUpModal_checkPage(){
                                 <label class="form-check-label" for="signUpcheckBox2">약관에 동의합니다. </label>
                             </div>
                         </div>`;
-const inputBody = document.getElementById('signUpModalBody');
-inputBody.innerHTML = struct_div;
 }
 function selectAll(all){
     const checkAll = document.getElementsByName('signUpCheckBox');

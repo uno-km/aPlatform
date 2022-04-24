@@ -18,6 +18,7 @@ public class RankSwitch implements UrlFactory
 			String[] parsingContainer, String market, String pharseType)
 
 	{
+		contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType));
 		Map<String, ArrayList<String>> outListMap = new LinkedHashMap<>();
 		parsingContainer = contents.text().split(" ");
 		int rankCnt = 0;

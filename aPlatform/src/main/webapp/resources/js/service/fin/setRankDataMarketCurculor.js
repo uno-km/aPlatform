@@ -1,9 +1,7 @@
 /**
  * 
  */
-
 function getRankdata() {
-	let outData='';
     const sendingVO = {
             "url" : "main"
         ,   "pharseType" : "rankMC"  
@@ -13,16 +11,17 @@ function getRankdata() {
 		url: '/service/finance/rank?',
 		data: sendingVO,
 		dataType: 'JSON', 
-		async: false,
+		async: true,
 		contentType: 'application/json; charset=utf-8',
 		success: function (data) {
-		outData=data;
+		rankDataMC =data;
+		setRankDataMC();
+		setRankDataMCColor();
 	},
 		error: function () {
 		alert('통신실패!!');
 	}
 	});
-	this.rankDataMC =outData;
 }
 function setRankDataMC() {
 	let struct_div ="";

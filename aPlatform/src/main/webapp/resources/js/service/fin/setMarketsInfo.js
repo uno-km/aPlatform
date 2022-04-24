@@ -1,30 +1,56 @@
-/**
- * 
- */
-function getFindata() {
+/*최초 메인메이지를 보여주는 화면*/
+function getFindata(marketType) {
 	let outData='';
-    $.ajax({
-        type: 'GET',
-        url: '/service/finance/total',
-        dataType: 'JSON', 
-        async: false,
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-    		outData=data;
-        },
-        error: function () {
-            alert('통신실패!!');
-        }
-    });
-	this.kospiIndex	= outData[0].kospi_index;
-	this.kospiBuyer= outData[1];
-	this.kospiImage= outData[2];
-	this.kosdaqIndex= outData[3].kosdaq_index;
-	this.kosdaqBuyer= outData[4];
-	this.kosdaqImage= outData[5];
-    this.nowFinData = outData;
+	switch(marketType) {
+		case "kospi":
+		    AJAX('GET' ,`/service/finance/${marketType}` ,null ,true ,setKospiData ,null);
+			break;
+		case "kosdaq" :
+		    AJAX('GET' ,`/service/finance/${marketType}` ,null ,true ,setKosdaqData ,null);
+			break;
+		case "total" :
+		    AJAX('GET' ,`/service/finance/${marketType}` ,null ,true ,setTotalData ,null);
+			break;
+	}
+	function setKospiData(outData) {
+		kospiIndex	= outData[0].kospi_index;
+		kospiBuyer= outData[1];
+		kospiImage= outData[2];
+		setKospiIndex();
+		setKospiImage();
+		setKospiBuyer();
+		setKospiBuyerColor();
+	}
+	function setKosdaqData(outData) {
+		kosdaqIndex= outData[0].kosdaq_index;
+		kosdaqBuyer= outData[1];
+		kosdaqImage= outData[2];
+		setKosdaqIndex();
+		setKosdaqImage();
+		setKosdaqBuyer();
+		setKosdaqBuyerColor();
+	}
+	function setTotalData(outData) {
+		kospiIndex	= outData[0].kospi_index;
+		kospiBuyer= outData[1];
+		kospiImage= outData[2];
+		kosdaqIndex= outData[3].kosdaq_index;
+		kosdaqBuyer= outData[4];
+		kosdaqImage= outData[5];
+		nowFinData = outData;
+		firstSetMarketsInfo();
+	}
 }
-
+function firstSetMarketsInfo() {
+	setKospiIndex();
+	setKosdaqIndex();
+	setKospiImage();
+	setKosdaqImage();
+	setKospiBuyer();
+	setKospiBuyerColor();
+	setKosdaqBuyer();
+	setKosdaqBuyerColor();
+}
 function setKospiIndex() {
 	const inputBody= document.getElementById('kospiIndex');
 	inputBody.innerText = this.kospiIndex;
@@ -72,16 +98,14 @@ function changeButtonClass(e) {
 	document.getElementById(`${e.target.id}`).setAttribute('class','inner_chart_words_checked');
 }
 function setKospiBuyer() {
-	let struct_div ="";
 	if(this.kospiBuyer!=null) {
-		struct_div	=	`	<div class='inner_kospiBuyer'>개인</div>
+		document.getElementById('kospiBuyer').innerHTML =`
+							<div class='inner_kospiBuyer'>개인</div>
 							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_ant}</div>
 							<div class='inner_kospiBuyer'>기관</div>
 							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_org}</div>
 							<div class='inner_kospiBuyer'>외국인</div>
 							<div class='inner_kospiBuyer'>${this.kospiBuyer.kospi_frg}</div>`;
-		const inputBody = document.getElementById('kospiBuyer');
-		inputBody.innerHTML=struct_div;
 	}else {
         console.log("해당 영억없음");
 	}
@@ -95,16 +119,14 @@ function setKospiBuyerColor() {
 	}
 }
 function setKosdaqBuyer() {
-	let struct_div ="";
 	if(this.kosdaqBuyer!=null) {
-		struct_div	=	`	<div class='inner_kosdaqBuyer'>개인</div>
+		document.getElementById('kosdaqBuyer').innerHTML = `
+							<div class='inner_kosdaqBuyer'>개인</div>
 							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_ant}</div>
 							<div class='inner_kosdaqBuyer'>기관</div>
 							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_org}</div>
 							<div class='inner_kosdaqBuyer'>외국인</div>
 							<div class='inner_kosdaqBuyer'>${this.kosdaqBuyer.kosdaq_frg}</div>`;
-		const inputBody = document.getElementById('kosdaqBuyer');
-		inputBody.innerHTML=struct_div;
 	}else {
 		console.log("해당 영억없음");
 	}

@@ -13,7 +13,7 @@ public class FinanceURL
 	public static Object pharsingURL(FinanceDataMatrix financeDataMatrix, String market, String pharseType) throws Exception
 	{
 		Document doc = financeDataMatrix.getPageDOCMap().get(market);
-		Elements contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType));
+		Elements contents = null;
 		HashMap<String, String> outMap = new HashMap<String, String>();
 		String[] parsingContainer = {};
 
@@ -21,11 +21,11 @@ public class FinanceURL
 		{
 			if(pharseType.equalsIgnoreCase(str.toString()))
 			{
-				Class<?> testClass = Class.forName(str.getValue());
-				Object newObj = testClass.newInstance();
-				Method method = testClass.getDeclaredMethod("excute", FinanceDataMatrix.class, Document.class, Elements.class, HashMap.class,
+				Class<?> excuteClass = Class.forName(str.getValue());
+				Object newInstanceObj = excuteClass.newInstance();
+				Method excuteMethod = excuteClass.getDeclaredMethod("excute", FinanceDataMatrix.class, Document.class, Elements.class, HashMap.class,
 						String[].class, String.class, String.class);
-				return method.invoke(newObj, financeDataMatrix, doc, contents, outMap, parsingContainer, market, pharseType);
+				return excuteMethod.invoke(newInstanceObj, financeDataMatrix, doc, contents, outMap, parsingContainer, market, pharseType);
 			}
 		}
 		return outMap;

@@ -1,6 +1,7 @@
 ;
 function setSignUpModal_EmailIdCheck(){
-    let struct_div = `  <div class="input-group mb-3">
+	document.getElementById('signUpModalBody').innerHTML = `
+						<div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="이메일" aria-label="Username" id="signupModalInputtedUserEmail">
                             <span class="input-group-text">@</span>
                             <input type="text" class="form-control" placeholder="naver.com" id="showSelectedValue" value ="naver.com" aria-label="Username" disabled='true' />
@@ -16,8 +17,6 @@ function setSignUpModal_EmailIdCheck(){
                         </div>
                         <div id='checkEmailConfirm' ></div>
                         `;
-const inputBody = document.getElementById('signUpModalBody');
-inputBody.innerHTML = struct_div;
 }
 function selectEmailChange(selected){
     const selected_value = selected[selected.selectedIndex].value;
@@ -74,7 +73,8 @@ function checkEmail(){
     }
 }
 function checkEmailForValidate(){
-    let struct_div = `  <hr/>
+	document.getElementById('checkEmailConfirm').innerHTML = `
+							<hr/>
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-8">
@@ -92,8 +92,6 @@ function checkEmailForValidate(){
                                 </div>
                             </div>
                         `;
-    const inputBody = document.getElementById('checkEmailConfirm');
-    inputBody.innerHTML = struct_div;
 }
 function checkRandom(){
     const testAreaVal = document.getElementById('textAreaForCheckRandom').value;
@@ -136,9 +134,9 @@ function sendEmailForCheckValidation(user_email) {
     $.ajax({
         type: 'GET',
         url: '/user/checkEmail',
-        async: false,
+        async: true,
         data : sendingVO,
-        dataType: 'JSON', 
+        dataType: 'JSON',
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
             setRandom(data);

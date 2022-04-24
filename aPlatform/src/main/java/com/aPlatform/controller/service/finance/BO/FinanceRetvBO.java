@@ -15,17 +15,14 @@ public class FinanceRetvBO
 {
 	@Autowired
 	FinanceDataMapper financeDataMapper;
-	public List<FinanceVO> getCode(String name)
-	{
-		return financeDataMapper.getCode(name);
-	}
+
 	public Map<String, String> getCodeMap()
 	{
 		Map<String, String> outMap = new HashMap<>();
 		List<FinanceVO> inList = financeDataMapper.getAllCode();
 		for (int i = 0; i < inList.size(); i++)
 		{
-			outMap.put(inList.get(i).getFin_name(), inList.get(i).getFin_code());
+			outMap.put(inList.get(i).getFinName(), inList.get(i).getFinCode());
 		}
 		return outMap;
 	}
