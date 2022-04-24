@@ -10,5 +10,4 @@ public class FinanceVO
 	private String finType;
 	private String finUrl;
 	private String finPharse;
-	// private String fin_exchange;
 }
