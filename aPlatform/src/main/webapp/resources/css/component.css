@@ -113,3 +113,7 @@
 .ContentsSectionInfoDTL {height: 43%;display: flex;flex-direction: row;}
 .shareSearchInput {overflow: scroll;max-height: 500px;min-height: 0px;}
 .toggleHide {display: block;width: 100%;height: 100%;visibility: hidden;position: fixed;z-index: 2;}
+.inner_oil_exchange{display: flex;flex-direction: row;flex-wrap: nowrap;}
+.inner_arrow{height: 211px;width: 20%;align-items: center;display: flex;justify-content: center;}
+.inner_middle_detail{height: 211px;width: 60%;}
+.inner_arrow_font{color: white;border: 3px solid white;width: 30px;height: 30px;text-align: center;border-radius: 1rem;font-size: 15px;cursor: pointer;}

@@ -71,7 +71,7 @@ function setContentsSection() {
 					<div id='SecondRecInRow_3'>
 						<div class='inner_title'>
 							<div class='title non-drag'>
-								<span>유가/환율</span>
+								<span>유가/환율/금</span>
 							</div>
 							<div class='Index'>
 								<span id='kosdaqIndex'></span>
@@ -80,11 +80,17 @@ function setContentsSection() {
 								<span></span>
 							</div>
 						</div>
-						<div class='inner_left_arrow'>
-						</div>
-						<div class='inner_middle_detail'>
-						</div>
-						<div class='inner_right_arrow'>
+						<div class='inner_oil_exchange'>
+							<div class='inner_arrow'>
+								<div class='inner_arrow_font'><
+								</div>
+							</div>
+							<div class='inner_middle_detail'>
+							</div>
+							<div class='inner_arrow'>
+								<div class='inner_arrow_font'>>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
