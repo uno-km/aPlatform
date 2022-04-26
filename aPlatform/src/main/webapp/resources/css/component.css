@@ -68,6 +68,8 @@
 .inner_title {height: 55px;padding-left: 5%;padding-top: 4px;text-align: center;color: #0d6efd;cursor: pointer;}
 .inner_title .title{font-size: 25px;width: 40%;float: left;border: 2px solid;border-radius: 2rem;}
 .inner_title .Index{font-size: 25px;width: 60%;left:60%;float: left;text-align: center;}
+.inner_title .inner_etc_binder{display: flex;flex-wrap: nowrap;justify-content: space-evenly;}
+.inner_title .inner_etc_binder .etc{font-size: 25px;width: 20%;float: left;border: 2px solid;border-radius: 2rem;}
 .title:HOVER {border:3px solid;box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);}
 .FirstRecInRow .inner_news {border: 10px solid #0d6efd;margin-bottom: 20px;height: 264px;align-items: center;display: flex;flex-direction: column;font-size: 10px;}
 .SecondRecInRow .inner_detail {margin-bottom: 20px;height: 237px;padding-left: 20px;align-items: flex-end;display: flex;}
@@ -113,7 +115,7 @@
 .ContentsSectionInfoDTL {height: 43%;display: flex;flex-direction: row;}
 .shareSearchInput {overflow: scroll;max-height: 500px;min-height: 0px;}
 .toggleHide {display: block;width: 100%;height: 100%;visibility: hidden;position: fixed;z-index: 2;}
-.inner_oil_exchange{display: flex;flex-direction: row;flex-wrap: nowrap;}
-.inner_arrow{height: 211px;width: 20%;align-items: center;display: flex;justify-content: center;}
-.inner_middle_detail{height: 211px;width: 60%;}
+.inner_oil_exchange{padding-left: 5%;display: flex;flex-direction: row;flex-wrap: nowrap;}
+.inner_arrow{height: 211px;width: 10%;align-items: center;display: flex;justify-content: center;}
+.inner_middle_detail{height: 211px;width: 80%;}
 .inner_arrow_font{color: white;border: 3px solid white;width: 30px;height: 30px;text-align: center;border-radius: 1rem;font-size: 15px;cursor: pointer;}
