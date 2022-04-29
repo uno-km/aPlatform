@@ -15,32 +15,28 @@ public class EtcIndexSwitch implements UrlFactory
 	@Override
 	public Object excute(FinanceDataMatrix financeDataMatrix, Document doc, Elements contents, HashMap<String, String> outMap,
 			String[] parsingContainer, String market, String pharseType)
-
 	{
-		contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType));
-		Map<String, ArrayList<String>> outListMap = new LinkedHashMap<>();
-		parsingContainer = contents.text().split(" ");
-		int rankCnt = 0;
-		for (int i = 0; i < parsingContainer.length; i++)
-		{
-			ArrayList<String> innerArr = new ArrayList<>();
-			for (int innerCnt = 0; innerCnt < 5; innerCnt++)
-			{
-				if(parsingContainer[i + innerCnt].equals("보합"))
-				{
-					innerArr.add("0");
-					innerArr.add(parsingContainer[i + innerCnt]);
-					innerArr.add(parsingContainer[i + innerCnt + 1]);
-					i--;
-					break;
-				}
-				innerArr.add(parsingContainer[i + innerCnt]);
-			}
-			outListMap.put(Integer.toString(rankCnt), innerArr);
-			rankCnt++;
-			i = i + 4;
-		}
+		HashMap<String, ArrayList<String>> outListMap = new HashMap<>();
+		ArrayList<String> exChangeList = new ArrayList<String>();
+		ArrayList<String> interestList = new ArrayList<String>();
+		ArrayList<String> oilList = new ArrayList<String>();
+		ArrayList<String> elementsList = new ArrayList<String>();
+		String[] Exc = contents.select("table").get(0).select("tbody").text().split(" ");
+		for (String input : Exc)
+			if(!input.contains("(")) exChangeList.add(input);
+		outListMap.put("exChange", exChangeList);
+		String[] Interest = contents.select("table").get(2).select("tbody").text().split(" ");
+		for (String input : Interest)
+			interestList.add(input);
+		outListMap.put("interest", interestList);
+		String[] Oil = contents.select("table").get(3).select("tbody").text().split(" ");
+		for (String input : Oil)
+			oilList.add(input);
+		outListMap.put("oil", oilList);
+		String[] Elements = contents.select("table").get(5).select("tbody").text().split(" ");
+		for (String input : Elements)
+			elementsList.add(input);
+		outListMap.put("elements", elementsList);
 		return outListMap;
 	}
-
 }

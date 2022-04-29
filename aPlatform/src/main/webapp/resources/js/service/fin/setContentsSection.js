@@ -80,6 +80,9 @@ function setContentsSection() {
 								<div class='etc non-drag'>
 									<span>유가</span>
 								</div>
+								<div class='etc non-drag'>
+									<span>원자재</span>
+								</div>
 							</div>
 						</div>
 						<div class='inner_oil_exchange'>
