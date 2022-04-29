@@ -5,6 +5,7 @@ document.write("<script src='/resources/js/service/fin/setInfoShareDetailData.js
 document.write("<script src='/resources/js/service/fin/setMarketsInfo.js'></script>");
 document.write("<script src='/resources/js/service/fin/setRankDataMarketCurculor.js'></script>");
 document.write("<script src='/resources/js/service/fin/setNewsData.js'></script>");
+document.write("<script src='/resources/js/service/fin/setOilInterestExchange.js'></script>");
 
 var nowFinData='';
 var kospiIndex='';
@@ -63,6 +64,7 @@ function finPageInit() {
 	getFindata('total');//데이터를 가져오고 콜백으로 최초 우측페이지를 그려준다.
 	getRankdata();//순위데이터를 가져오고 콜백으로 최초 랭크를 그려준다.
 	getNewsdata();//뉴스데이터를 가져오고 콜백으로 최초 뉴스를 그려준다.
+//	getOilInterestExchange('total');
 	if(this.localStorage.sharesInfo==null||this.localStorage.sharesInfo=='undefined') {
 		setSessionSharesInfo();
 	}

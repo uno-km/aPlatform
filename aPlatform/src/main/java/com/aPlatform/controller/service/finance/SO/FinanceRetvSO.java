@@ -23,6 +23,7 @@ public class FinanceRetvSO
 	FinanceSearchBOC financeSearchBOC;
 	@GetMapping(value = "/main")
 	private ModelAndView reternMainPage(Model model)
+	// private String reternMainPage(Model model)
 	{
 		return financeRetvBOC.reternMainPage();
 	}

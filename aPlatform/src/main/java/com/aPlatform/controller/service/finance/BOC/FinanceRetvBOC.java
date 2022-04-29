@@ -17,6 +17,10 @@ public class FinanceRetvBOC
 	{
 		return financeRetvBO.getCodeMap();
 	}
+	// public String reternMainPage()
+	// {
+	// return "/finance/index";
+	// }
 	public ModelAndView reternMainPage()
 	{
 		ModelAndView mv = new ModelAndView();
