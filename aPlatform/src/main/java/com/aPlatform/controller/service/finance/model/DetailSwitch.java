@@ -112,7 +112,6 @@ public class DetailSwitch implements UrlFactory
 		opinionList.add(opinon.text().split("l")[4].replace(" ", ""));
 		outMapList.put("opinionList", opinionList);
 		Elements perEps = doc.select(".per_table");
-		Elements same = doc.select(".gray");
 		perEpsList.add(perEps.eachText().get(0).split("합니다.")[1].split("l")[0]);
 		perEpsList.add(perEps.eachText().get(0).split("합니다.")[1].split("l")[1].split(" ")[1]);
 		perEpsList.add(perEps.eachText().get(0).split("합니다.")[3].split("l")[0]);
@@ -120,6 +119,7 @@ public class DetailSwitch implements UrlFactory
 		perEpsList.add(perEps.eachText().get(0).split("합니다.")[4].split("l")[0]);
 		perEpsList.add(perEps.eachText().get(0).split("합니다.")[4].split("l")[1].split(" ")[1]);
 		outMapList.put("perEpsList", perEpsList);
+		Elements same = doc.select(".gray");
 		sameList.add(same.eachText().get(1).split(" ")[4]);
 		sameList.add(same.eachText().get(1).split(" ")[7]);
 		outMapList.put("sameList", sameList);
