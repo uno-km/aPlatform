@@ -1,11 +1,10 @@
 /**
  * 
  */
-function getOilInterestExchange(value) {
+function getOilInterestExchange() {
     const sendingVO = {
-            "url" : "etcIndex"
-        ,   "pharseType" : ""
-        ,	"value" : `${value}`
+            "url" : "main"
+        ,   "pharseType" : "etcIndex"
         }
 	$.ajax({
 		type: 'GET',
@@ -15,7 +14,7 @@ function getOilInterestExchange(value) {
 		async: true,
 		contentType: 'application/json; charset=utf-8',
 		success: function (data) {
-		
+		console.log(data);
 	},
 		error: function () {
 		alert('통신실패!!');
