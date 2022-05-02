@@ -90,7 +90,7 @@ function setContentsSection() {
 								<div class='inner_arrow_font'><
 								</div>
 							</div>
-							<div class='inner_middle_detail'>
+							<div class='inner_middle_detail' id = 'exChange'>
 							</div>
 							<div class='inner_arrow'>
 								<div class='inner_arrow_font'>>

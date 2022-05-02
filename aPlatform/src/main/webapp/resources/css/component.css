@@ -91,3 +91,4 @@
 .inner_arrow{height: 211px;width: 10%;align-items: center;display: flex;justify-content: center;}
 .inner_middle_detail{height: 211px;width: 80%;}
 .inner_arrow_font{color: #0d6efd;font-weight:bolder;border: 3px solid #0d6efd;width: 30px;height: 30px;text-align: center;border-radius: 1rem;font-size: 15px;cursor: pointer;}
+.inner_etcIndex{width: 100%;height: 12%;font-size: 17px;text-align: center;border: 1.5px solid #0d6efd;border-radius: 1rem;color: #0d6efd;margin-top: 9px;vertical-align: bottom;display: flex;justify-content: space-evenly;}}
