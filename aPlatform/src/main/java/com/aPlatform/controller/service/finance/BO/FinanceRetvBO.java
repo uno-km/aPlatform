@@ -26,4 +26,8 @@ public class FinanceRetvBO
 		}
 		return outMap;
 	}
+	public List<String> getURLList()
+	{
+		return null;
+	}
 }

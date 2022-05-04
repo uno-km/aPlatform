@@ -20,7 +20,7 @@ public class FinanceSearchBOC
 
 	public Object getInfo(final String dataform, Map<String, String> map) throws Exception
 	{
-		;
+		
 		switch (dataform) {
 			case "kospi" :/* 코스피 */
 				this.financeDataMatrix.setMarketURLMap();
