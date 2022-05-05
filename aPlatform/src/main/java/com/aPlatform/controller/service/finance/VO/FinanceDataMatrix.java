@@ -50,7 +50,7 @@ public class FinanceDataMatrix
 	}
 	public void setPageDOC() throws IOException
 	{
-		for (int i = 0; i < this.innerArr.length; i++)
-			this.pageDOCMap.put(this.innerArr[i], Jsoup.connect(this.marketURLMap.get(this.innerArr[i])).get());
+		for (String str : this.innerArr)
+			this.pageDOCMap.put(str, Jsoup.connect(this.marketURLMap.get(str)).get());
 	}
 }
