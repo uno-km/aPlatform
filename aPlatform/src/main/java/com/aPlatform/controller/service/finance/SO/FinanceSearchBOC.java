@@ -18,9 +18,9 @@ public class FinanceSearchBOC
 	@Autowired
 	FinanceDataMatrix financeDataMatrix;
 
-	public Object getInfo(final String dataform, Map<String, String> map) throws Exception
+	public Object getInfo(final String dataform, final Map<String, String> map) throws Exception
 	{
-		
+
 		switch (dataform) {
 			case "kospi" :/* 코스피 */
 				this.financeDataMatrix.setMarketURLMap();
@@ -37,6 +37,8 @@ public class FinanceSearchBOC
 				totalArr.addAll((Collection<? extends Map<String, String>>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kospi", "kospi"));
 				totalArr.addAll((Collection<? extends Map<String, String>>) getUrlInfo.getUrlInfoObject(financeDataMatrix, "kosdaq", "kosdaq"));
 				return totalArr;
+			case "all" : /* 지수제외 모든 데이터 */
+				return getUrlInfo.getUrlInfoAllObject(this.financeDataMatrix, map);
 			default :
 				String url = map.get("url");
 				String pharseType = map.get("pharseType");
