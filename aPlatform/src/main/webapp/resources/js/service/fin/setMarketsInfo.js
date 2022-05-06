@@ -1,11 +1,16 @@
 /*최초 메인메이지를 보여주는 화면*/
 function getFindata(marketType) {
 	let outData='';
+	let sendingVO ='';
 	switch(marketType) {
 		case "kospi":
-		    AJAX('GET' ,`/service/finance/${marketType}` ,null ,true ,setKospiData ,null);
+		    sendingVO = {"url" : "kospi"
+		        	,   "pharseType" : "kospi"};
+		    AJAX('GET' ,`/service/finance/${marketType}` ,sendingVO ,true ,setKospiData ,null);
 			break;
 		case "kosdaq" :
+			sendingVO = {"url" : "kosdaq"
+				,   "pharseType" : "kosdaq"};
 		    AJAX('GET' ,`/service/finance/${marketType}` ,null ,true ,setKosdaqData ,null);
 			break;
 		case "total" :

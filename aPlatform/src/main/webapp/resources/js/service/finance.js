@@ -94,7 +94,7 @@ function AJAX(type ,url ,data ,async ,fn1 ,fn2) {
 	$.ajax({
         type: `${type}`,
         url: `${url}`,
-        data : `${data}`,
+        data : data,
         dataType: 'JSON', 
         async: `${async}`,
         contentType: 'application/json; charset=utf-8',
