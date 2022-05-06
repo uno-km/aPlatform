@@ -36,21 +36,24 @@ public class FinanceDataMatrix
 	}
 	public void setMarketURLMap()
 	{
-		List<FinanceVO> mappingUrl = financeDataMapper.getMappingUrl();
-		for (FinanceVO innerUrl : mappingUrl)
-			this.marketURLMap.put(innerUrl.getFinType(), innerUrl.getFinUrl());
-		List<FinanceVO> mappingPharse = financeDataMapper.getMappingPharse();
-		for (FinanceVO innerUrl : mappingPharse)
-			this.marketURLMap.put(innerUrl.getFinType(), innerUrl.getFinPharse());
+		if(this.marketURLMap.isEmpty())
+		{
+			List<FinanceVO> mappingUrl = financeDataMapper.getMappingUrl();
+			for (FinanceVO innerUrl : mappingUrl)
+				this.marketURLMap.put(innerUrl.getFinType(), innerUrl.getFinUrl());
+			List<FinanceVO> mappingPharse = financeDataMapper.getMappingPharse();
+			for (FinanceVO innerUrl : mappingPharse)
+				this.marketURLMap.put(innerUrl.getFinType(), innerUrl.getFinPharse());
+		}
 	}
 
 	public void setPageDOC(String input) throws IOException
 	{
-		this.pageDOCMap.put(input, Jsoup.connect(this.marketURLMap.get(input)).get());
+		if(!this.pageDOCMap.containsKey(input)) this.pageDOCMap.put(input, Jsoup.connect(this.marketURLMap.get(input)).get());
 	}
 	public void setPageDOC() throws IOException
 	{
 		for (String str : this.innerArr)
-			this.pageDOCMap.put(str, Jsoup.connect(this.marketURLMap.get(str)).get());
+			if(!this.pageDOCMap.containsKey(str)) this.pageDOCMap.put(str, Jsoup.connect(this.marketURLMap.get(str)).get());
 	}
 }
