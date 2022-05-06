@@ -22,7 +22,7 @@ public class GetURLInfo
 		for (UrlMileStone urls : urlArr)
 		{
 			outMapKeys.add(urls.name());
-			// outMap.put("Str", FinanceURL.pharsingURL(financeDataMatrix, url, pharseType));
+			// outMap.put(urls.name(), FinanceURL.pharsingURL(financeDataMatrix, urls.name(), pharseType));
 		}
 		for (int i = 0; i < urlArr.length; i++)
 		{
