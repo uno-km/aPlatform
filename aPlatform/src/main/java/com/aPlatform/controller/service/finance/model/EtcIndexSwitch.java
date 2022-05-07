@@ -2,8 +2,6 @@ package com.aPlatform.controller.service.finance.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -21,6 +19,8 @@ public class EtcIndexSwitch implements UrlFactory
 		ArrayList<String> interestList = new ArrayList<String>();
 		ArrayList<String> oilList = new ArrayList<String>();
 		ArrayList<String> elementsList = new ArrayList<String>();
+		
+		contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType));
 		String[] Exc = contents.select("table").get(0).select("tbody").text().split(" ");
 		for (String input : Exc)
 			if(!input.contains("(")) exChangeList.add(input);

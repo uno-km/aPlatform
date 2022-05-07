@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aPlatform.controller.service.finance.BOC.FinanceRetvBOC;
+import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 
 @RestController
 @RequestMapping(value = "/service/finance")
@@ -21,6 +22,8 @@ public class FinanceRetvSO
 	FinanceRetvBOC financeRetvBOC;
 	@Autowired
 	FinanceSearchBOC financeSearchBOC;
+	@Autowired
+	FinanceDataMatrix financeDataMatrix;
 	@GetMapping(value = "/main")
 	private ModelAndView reternMainPage(Model model)
 	// private String reternMainPage(Model model)
@@ -36,6 +39,6 @@ public class FinanceRetvSO
 	public Object getData(@PathVariable String dataform, @RequestParam Map<String, String> map) throws Exception
 	{
 		System.out.println("Client required " + dataform + " data...");
-		return financeSearchBOC.getInfo(dataform, map);
+		return financeSearchBOC.getInfo(financeDataMatrix, dataform, map);
 	}
 }

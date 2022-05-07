@@ -64,7 +64,7 @@ function finPageInit() {
 	getFindata('total');//데이터를 가져오고 콜백으로 최초 우측페이지를 그려준다.
 	getRankdata();//순위데이터를 가져오고 콜백으로 최초 랭크를 그려준다.
 	getNewsdata();//뉴스데이터를 가져오고 콜백으로 최초 뉴스를 그려준다.
-//	getOilInterestExchange('total');
+	getOilInterestExchange();
 	if(this.localStorage.sharesInfo==null||this.localStorage.sharesInfo=='undefined') {
 		setSessionSharesInfo();
 	}
@@ -94,7 +94,7 @@ function AJAX(type ,url ,data ,async ,fn1 ,fn2) {
 	$.ajax({
         type: `${type}`,
         url: `${url}`,
-        data : `${data}`,
+        data : data,
         dataType: 'JSON', 
         async: `${async}`,
         contentType: 'application/json; charset=utf-8',

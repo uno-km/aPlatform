@@ -20,10 +20,12 @@ public class FinanceRetvBO
 	{
 		Map<String, String> outMap = new HashMap<>();
 		List<FinanceVO> inList = financeDataMapper.getAllCode();
-		for (int i = 0; i < inList.size(); i++)
-		{
-			outMap.put(inList.get(i).getFinName(), inList.get(i).getFinCode());
-		}
+		for (FinanceVO finVO : inList)
+			outMap.put(finVO.getFinName(), finVO.getFinCode());
 		return outMap;
+	}
+	public List<String> getURLList()
+	{
+		return null;
 	}
 }
