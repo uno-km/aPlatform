@@ -24,14 +24,14 @@ public class FinanceDataMatrix
 	private Map<String, String> marketURLMap = new HashMap<String, String>();
 	private String[] innerArr = {"kospi" , "kosdaq" };
 
-	public void setMarketURLMap(Map<String, String> map)
+	public void setMarketURLMap(Map<String, Object> map)
 	{
 		setMarketURLMap();
 		if(map.containsKey("code"))
 		{
-			marketURLMap.put(map.get("url"), "https://finance.naver.com/item/main.naver?code=" + map.get("code"));
-			marketURLMap.put(map.get("pharseType"), ".h_th2");
-			marketURLMap.put("code", map.get("code"));
+			marketURLMap.put((String) map.get("url"), "https://finance.naver.com/item/main.naver?code=" + map.get("code"));
+			marketURLMap.put((String) map.get("pharseType"), ".h_th2");
+			marketURLMap.put("code", (String) map.get("code"));
 		}
 	}
 	public void setMarketURLMap()
