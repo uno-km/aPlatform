@@ -36,7 +36,7 @@ public class FinanceRetvSO
 		return financeRetvBOC.getCodeMap();
 	}
 	@GetMapping(value = "/{dataform}")
-	public Object getData(@PathVariable String dataform, @RequestParam Map<String, String> map) throws Exception
+	public Object getData(@PathVariable String dataform, @RequestParam Map<String, Object> map) throws Exception
 	{
 		System.out.println("Client required " + dataform + " data...");
 		return financeSearchBOC.getInfo(financeDataMatrix, dataform, map);
