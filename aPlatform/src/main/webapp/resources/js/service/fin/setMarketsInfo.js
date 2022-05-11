@@ -17,15 +17,6 @@ function getFindata(marketType) {
 		    AJAX('GET' ,`/service/finance/${marketType}` ,null ,true ,setTotalData ,null);
 			break;
 	}
-	function setKospiData(outData) {
-		kospiIndex	= outData[0].kospi_index;
-		kospiBuyer= outData[1];
-		kospiImage= outData[2];
-		setKospiIndex();
-		setKospiImage();
-		setKospiBuyer();
-		setKospiBuyerColor();
-	}
 	function setKosdaqData(outData) {
 		kosdaqIndex= outData[0].kosdaq_index;
 		kosdaqBuyer= outData[1];
