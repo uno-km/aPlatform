@@ -65,7 +65,27 @@ function refreshInfo(e){
 			break;
 	}
 }
-
+function getSendingData() {
+    const reqJson = {
+            "url" : "main"
+        ,   "pharseType" : "news"  
+        }
+	let httpRequest =  new XMLHttpRequest();
+    httpRequest.onreadystatechange = () => {
+	    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+		      if (httpRequest.status === 200) {
+		    	let result = httpRequest.response;
+		    	console.log(result);
+		      } else {
+		        alert('request에 뭔가 문제가 있어요.');
+		      }
+		}
+    };
+    httpRequest.open('POST', '/service/finance/getSendingData', true);
+    httpRequest.responseType = "json";
+    httpRequest.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+    httpRequest.send(JSON.stringify(reqJson));
+}
 function finPageInit() {
 	nowFinData=null;
 	setContentsSection();
@@ -77,6 +97,7 @@ function finPageInit() {
 		setSessionSharesInfo();
 	}
 	addEvent();
+//	getSendingData();
 }
 function setSessionSharesInfo() {
 	let outData ="";
@@ -98,13 +119,13 @@ function setSessionSharesInfo() {
     localStorage.setItem('sharesInfo' ,objData);
 }
 
-function AJAX(type ,url ,data ,async ,fn1 ,fn2) {
+function AJAX(TYPE_,URL_,DATA_,ASYNC_,fn1 ,fn2) {
 	$.ajax({
-        type: `${type}`,
-        url: `${url}`,
-        data : data,
+        type: TYPE_,
+        url: URL_,
+        data : DATA_,
         dataType: 'JSON', 
-        async: `${async}`,
+        async: ASYNC_,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
         	fn1(data)
