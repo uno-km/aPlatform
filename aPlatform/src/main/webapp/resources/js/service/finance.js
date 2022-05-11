@@ -1,12 +1,13 @@
 ;
 'use strict';
+/*삽입될 JS파일들*/
 document.write("<script src='/resources/js/service/fin/setContentsSection.js'></script>");
 document.write("<script src='/resources/js/service/fin/setInfoShareDetailData.js'></script>");
 document.write("<script src='/resources/js/service/fin/setMarketsInfo.js'></script>");
 document.write("<script src='/resources/js/service/fin/setRankDataMarketCurculor.js'></script>");
 document.write("<script src='/resources/js/service/fin/setNewsData.js'></script>");
 document.write("<script src='/resources/js/service/fin/setOilInterestExchange.js'></script>");
-
+/*데이터 전역변수*/
 var nowFinData='';
 var kospiIndex='';
 var kospiBuyer='';
@@ -17,8 +18,14 @@ var kosdaqImage='';
 var rankDataMC = '';
 var codeInfo = '';
 var newsData = '';
+/*서버input값 전역변수*/
+var kospiSendingVO ='';
+var kosdaqSendingVO='';
 var shareDetailInfo = '';
-
+var newsDataSendingVO ='';
+var etcIndexSendingVO ='';
+var rankDataSendingVO ='';
+/*윈도우 이벤트 삽입*/
 window.addEventListener('load', finPageInit);
 window.onpopstate = function(event) { 
 	document.getElementById('searchShareInput').value='';
@@ -26,6 +33,7 @@ window.onpopstate = function(event) {
 	finPageInit();
 	window.scrollTo(0,localStorage.BeforeScroll);
 }
+/*각 엘리먼트별 이벤트 삽입*/
 function addEvent() {
 	document.getElementById('toggleHide').addEventListener('click',toggleHide);
 	document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
