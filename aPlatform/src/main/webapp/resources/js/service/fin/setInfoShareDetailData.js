@@ -60,15 +60,19 @@ function setInfoShareDetailFrame() {
 }
 
 function searchShareInfo(e) {
-	let inputData = document.getElementById('searchShareInput').value;
-	let sharesInfo = JSON.parse(localStorage.sharesInfo);
-	let searchData = sharesInfo[inputData];
-	getShareInfoDTL(searchData);
+	let inputData = document.getElementById('searchShareInput').value.replace(/(\s*)/g, "");
+	if(inputData.length>0||inputData!="") {
+		let sharesInfo = JSON.parse(localStorage.sharesInfo);
+		let searchData = sharesInfo[inputData];
+		if(searchData == undefined || searchData == null) 
+			searchData = sharesInfo["삼성전자"];
+		getShareInfoDTL(searchData);
+	}
 }
 function searchShareInfoSearchList(value) {
 	document.getElementById('searchingList').style = "visibility:hidden;";
 	let sharesInfo = JSON.parse(localStorage.sharesInfo);
-	let searchData = sharesInfo[value];
+	let searchData = sharesInfo[value].replace(/(\s*)/g, "");
 	getShareInfoDTL(searchData);
 }
 
@@ -273,8 +277,9 @@ function getKeyByValue(object, value) {
 }
 function keyupShareInputValue(){
     if (window.event.keyCode == 13) {
-    	if(document.querySelectorAll('.shareSearchInput li').length>0) {
-    		searchShareInfoSearchList(document.querySelectorAll('.shareSearchInput li a')[0].text)
+    	if(document.getElementById('searchShareInput').value>0||document.getElementById('searchShareInput').value!="") {
+//    		searchShareInfoSearchList(document.querySelectorAll('.shareSearchInput li a')[0].text)
+    		searchShareInfo();
     	}else {
     		console.log('input값 없음');
     	}
