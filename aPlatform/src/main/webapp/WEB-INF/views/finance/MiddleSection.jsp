@@ -14,7 +14,7 @@
 			</div>
 			<div style='width: 2%'></div>
 			<div class='col-15'>
-				<button class="unoBnt" type="button" id='searchShareBtn'>검색</button>
+				<button class="unoBnt unoBnt-bigBnt" type="button" id='searchShareBtn'>검색</button>
 			</div>
 		</div>
 	</div>

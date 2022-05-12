@@ -16,8 +16,7 @@
 .mainPage {width: 66%;background-color: #001e3c;top: 0;display: block;position: relative;padding-bottom:66px;}
 @media screen and (max-width: 1200px) {.mainPage{width: 100%;left:0%;} .MiddleSection{position:relative;}.unoBnt{font-size: 100%;} 
 .shareSearchInput > li{width: 400px;}} 
-@media screen and (min-width: 1200px) {.mainPage{width: 60%;} .MiddleSection{position:sticky;}.unoBnt{font-size: 25px;}
-.shareSearchInput > li{width: 700px;}}
+@media screen and (min-width: 1200px) {.mainPage{width: 60%;} .MiddleSection{position:sticky;}
 
 /*금융 서비스쪽*/
 .TopSection{height:250px;width:100%;background-color: black;}
@@ -29,7 +28,9 @@
 .textInput {padding-top: 1.5rem;padding-left: 1rem;padding-right: 1rem;height: 70%;}
 .MiddleSection .textInput .col-85{flex : 0 0 auto;width: 85%;}
 .MiddleSection .textInput .col-15{flex : 0 0 auto;width: 13%;}
-.unoBnt {color: #fff;background-color: #0d6efd;border-color: #0d6efd;height: 100%;width: 100%;border-radius: 1.5rem;}
+.unoBnt {color: #fff;background-color: #0d6efd;border-color: #0d6efd;border-radius: 1.5rem;}
+.unoBnt-bigBnt {height: 100%;width: 100%;font-size: 25px;}
+.unoBnt-middleBnt{height: 80%;width: 95%;font-size: 17px;}
 .unoBnt:hover {color: #fff;background-color: #0b5ed7;border-color: #0a58ca;}
 .unoBnt:focus {color: #fff;background-color: #0b5ed7;border-color: #0a58ca;box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);}
 .non-drag{-ms-user-select: none;-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;}
