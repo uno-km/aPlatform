@@ -37,7 +37,7 @@ public class FinanceRetvBO
 		return null;
 	}
 	// public synchronized ResponseEntity<String> excelInsert(final MultipartFile uploadFile)
-	@Transactional(rollbackFor = Exception.class, isolation = Isolation.SERIALIZABLE, propagation = Propagation.NEVER)
+	// @Transactional(rollbackFor = Exception.class, isolation = Isolation.SERIALIZABLE, propagation = Propagation.NEVER)
 	public synchronized ResponseEntity<String> excelInsert()
 	{
 		try
@@ -54,11 +54,9 @@ public class FinanceRetvBO
 			}
 			// List<FinanceVO> innerList = this.excelData.callExcel(uploadFile);
 			List<FinanceVO> innerList = this.excelData.callExcel();
-			for (int i = 0; i < innerList.size(); i++)
-			{
+			for (FinanceVO finVO : innerList)
 				/* 종목을 하나씩 삽입한다. */
-				this.financeDataMapper.insertSharesInfo(innerList.get(i));
-			}
+				this.financeDataMapper.insertSharesInfo(finVO);
 			/* 성공하면 200 응답. */
 			return new ResponseEntity<String>("200", HttpStatus.OK);
 		}

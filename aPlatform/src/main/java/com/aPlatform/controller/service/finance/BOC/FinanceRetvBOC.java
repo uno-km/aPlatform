@@ -29,7 +29,7 @@ public class FinanceRetvBOC
 	}
 
 	// public ResponseEntity<String> execlDataFileInsert(final MultipartFile uploadFile)
-	@Transactional(rollbackFor = Exception.class, isolation = Isolation.SERIALIZABLE, propagation = Propagation.NEVER)
+	// @Transactional(rollbackFor = Exception.class, isolation = Isolation.SERIALIZABLE, propagation = Propagation.NEVER)
 	public ResponseEntity<String> execlDataFileInsert()
 	{
 		// return this.financeRetvBO.excelInsert(uploadFile);
