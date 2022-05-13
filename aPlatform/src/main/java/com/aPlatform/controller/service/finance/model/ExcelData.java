@@ -10,7 +10,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
 
@@ -18,16 +17,16 @@ import com.aPlatform.controller.service.finance.VO.FinanceVO;
 @Service
 public class ExcelData
 {
-	public List<FinanceVO> callExcel(final MultipartFile uploadFile) throws Exception
+	// public List<FinanceVO> callExcel(final MultipartFile uploadFile) throws Exception
+	public List<FinanceVO> callExcel() throws Exception
 	{
-		String path = System.getProperty("user.dir");
-		String filename = "\\src\\data_4008_20220511.xlsx"; // 파일명 설정
-		return this.readExcel(path, filename);
+		String filename = "C:\\Users\\zhfld\\git\\aPlatform\\aPlatform\\src\\main\\java\\com\\data_4008_20220511.xlsx"; // 파일명 설정
+		return this.readExcel(filename);
 	}
-	private List<FinanceVO> readExcel(String path, String filename) throws Exception
+	private List<FinanceVO> readExcel(String filename) throws Exception
 	{
 		List<FinanceVO> outList = new ArrayList<FinanceVO>();
-		FileInputStream file = new FileInputStream(path + filename);
+		FileInputStream file = new FileInputStream(filename);
 		XSSFWorkbook workbook = new XSSFWorkbook(file);
 		// HSSFWorkbook workbook = new HSSFWorkbook(file);
 		NumberFormat f = NumberFormat.getInstance();
@@ -76,7 +75,7 @@ public class ExcelData
 								inVO.setFinName(value);
 								break;
 							case 6 :
-								inVO.setExchage(value);
+								inVO.setExchange(value);
 								;
 								break;
 						}
