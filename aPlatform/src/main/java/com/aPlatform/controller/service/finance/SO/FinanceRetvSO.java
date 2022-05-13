@@ -35,9 +35,10 @@ public class FinanceRetvSO
 
 	@PutMapping(value = "/excel")
 	@Transactional(rollbackFor = Exception.class, isolation = Isolation.SERIALIZABLE, propagation = Propagation.NEVER)
-	private ResponseEntity<String> execlDataFileInsert(final MultipartFile uploadFile)
+	private ResponseEntity<String> execlDataFileInsert()
+	// private ResponseEntity<String> execlDataFileInsert(final MultipartFile uploadFile)
 	{
-		return this.financeRetvBOC.execlDataFileInsert(uploadFile);
+		return this.financeRetvBOC.execlDataFileInsert();
 	}
 	@GetMapping(value = "/main")
 	private ModelAndView reternMainPage(Model model)

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
 import com.aPlatform.controller.service.finance.model.ExcelData;
@@ -34,7 +33,8 @@ public class FinanceRetvBO
 	{
 		return null;
 	}
-	public synchronized ResponseEntity<String> excelInsert(final MultipartFile uploadFile)
+//	public synchronized ResponseEntity<String> excelInsert(final MultipartFile uploadFile)
+	public synchronized ResponseEntity<String> excelInsert()
 	{
 		try
 		{
@@ -49,7 +49,8 @@ public class FinanceRetvBO
 				return new ResponseEntity<String>("500", HttpStatus.OK);
 			}
 
-			List<FinanceVO> innerList = this.excelData.callExcel(uploadFile);
+			// List<FinanceVO> innerList = this.excelData.callExcel(uploadFile);
+			List<FinanceVO> innerList = this.excelData.callExcel();
 			for (int i = 0; i < innerList.size(); i++)
 			{
 				/* 종목을 하나씩 삽입한다. */

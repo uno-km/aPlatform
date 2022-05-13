@@ -6,23 +6,23 @@
 	<select resultType="int" parameterType="com.aPlatform.controller.user.VO.UserinfoVO"
 		id="checkDuplicationId">
 		SELECT
-		COUNT(*)
+			COUNT(*)
 		FROM
-		USER_INFO
+			USER_INFO
 		WHERE
-		USER_ID = #{user_id}
+			USER_ID = #{user_id}
 	</select>
 	<select resultType="com.aPlatform.controller.user.VO.UserinfoVO" id="loadAllUserInfo">
 		SELECT
-		USER_ID
-		, USER_PASSWORD
-		, USER_EMAIL
-		, USER_NAME
-		, USER_PHONENUM
-		, USER_AUTH
-		, USER_BIRTH
+			USER_ID
+			, USER_PASSWORD
+			, USER_EMAIL
+			, USER_NAME
+			, USER_PHONENUM
+			, USER_AUTH
+			, USER_BIRTH
 		FROM
-		USER_INFO
+			USER_INFO
 	</select>
 	<select parameterType="com.aPlatform.controller.user.VO.UserinfoVO"
 		resultType="com.aPlatform.controller.user.VO.UserinfoOutVO" id="getUserInfo">
@@ -42,25 +42,25 @@
 	</select>
 	<insert parameterType="com.aPlatform.controller.user.VO.UserinfoVO" id="signUp">
 		INSERT INTO
-		USER_INFO
-		(
-		USER_ID
-		, USER_PASSWORD
-		, USER_EMAIL
-		, USER_NAME
-		, USER_PHONENUM
-		, USER_AUTH
-		, USER_BIRTH
-		)
-		VALUES
-		(
-		#{user_id}
-		, #{user_password}
-		, #{user_email}
-		, #{user_name}
-		, #{user_phonenum}
-		, #{user_auth}
-		, #{user_birth}
-		)
+			USER_INFO
+			(
+				USER_ID
+				, USER_PASSWORD
+				, USER_EMAIL
+				, USER_NAME
+				, USER_PHONENUM
+				, USER_AUTH
+				, USER_BIRTH
+			)
+			VALUES
+			(
+				#{user_id}
+				, #{user_password}
+				, #{user_email}
+				, #{user_name}
+				, #{user_phonenum}
+				, #{user_auth}
+				, #{user_birth}
+			)
 	</insert>
 </mapper>
