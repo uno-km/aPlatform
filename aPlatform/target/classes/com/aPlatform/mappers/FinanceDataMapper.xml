@@ -31,4 +31,5 @@
 		    AND SERVICE_ID		= 'FIN'
 		    AND SUB_CONTENT		= 'pharse'
 	</select>
+	<insert id="insertSharesInfo" parameterType=""></insert>
 </mapper>
