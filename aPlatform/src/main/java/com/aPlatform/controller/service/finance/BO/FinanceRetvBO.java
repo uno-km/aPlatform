@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
 import com.aPlatform.controller.service.finance.model.ExcelData;
@@ -33,7 +36,8 @@ public class FinanceRetvBO
 	{
 		return null;
 	}
-//	public synchronized ResponseEntity<String> excelInsert(final MultipartFile uploadFile)
+	// public synchronized ResponseEntity<String> excelInsert(final MultipartFile uploadFile)
+	@Transactional(rollbackFor = Exception.class, isolation = Isolation.SERIALIZABLE, propagation = Propagation.NEVER)
 	public synchronized ResponseEntity<String> excelInsert()
 	{
 		try
@@ -48,7 +52,6 @@ public class FinanceRetvBO
 				/* 해당 에러 발생히 웹단으로 500 에러메세지 응답 */
 				return new ResponseEntity<String>("500", HttpStatus.OK);
 			}
-
 			// List<FinanceVO> innerList = this.excelData.callExcel(uploadFile);
 			List<FinanceVO> innerList = this.excelData.callExcel();
 			for (int i = 0; i < innerList.size(); i++)
