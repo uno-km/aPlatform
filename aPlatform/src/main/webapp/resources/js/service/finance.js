@@ -6,7 +6,7 @@ document.write("<script src='/resources/js/service/fin/setInfoShareDetailData.js
 document.write("<script src='/resources/js/service/fin/setMarketsInfo.js'></script>");
 document.write("<script src='/resources/js/service/fin/setRankDataMarketCurculor.js'></script>");
 document.write("<script src='/resources/js/service/fin/setNewsData.js'></script>");
-document.write("<script src='/resources/js/service/fin/setOilInterestExchange.js'></script>");
+document.write("<script src='/resources/js/service/fin/setOil/ InterestExchange.js'></script>");
 /*데이터 전역변수*/
 var nowFinData='';
 var kospiIndex='';
