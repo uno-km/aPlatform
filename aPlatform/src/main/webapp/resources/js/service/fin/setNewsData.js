@@ -20,22 +20,11 @@ function getNewsdata() {
         ,   "pharseType" : "news"  
         }
 	let outData='';
-	$.ajax({
-		type: 'GET',
-		url: '/service/finance/news?',
-		data: sendingVO,
-        dataType: 'JSON', 
-        async: true,
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-			outData=data;
-			newsData = outData;
-			setNewdata();
-        },
-        error: function () {
-            alert('통신실패!!');
-        }
-    });
+    AJAX('GET','/service/finance/news?',sendingVO,true,function (data) {
+		outData=data;
+		newsData = outData;
+		setNewdata();
+    },null);
 }
 function checkBadandGood(data) {
 	const bad =new RegExp("(급락|하락|붕괴|↓|약보합|하회|약세)");

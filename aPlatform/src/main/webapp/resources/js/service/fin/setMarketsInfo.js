@@ -11,7 +11,7 @@ function getFindata(marketType) {
 		case "kosdaq" :
 			sendingVO = {"url" : "kosdaq"
 				,   "pharseType" : "kosdaq"};
-		    AJAX('GET' ,`/service/finance/${marketType}` ,null ,true ,setKosdaqData ,null);
+		    AJAX('GET' ,`/service/finance/${marketType}` ,sendingVO ,true ,setKosdaqData ,null);
 			break;
 		case "total" :
 		    AJAX('GET' ,`/service/finance/${marketType}` ,null ,true ,setTotalData ,null);

@@ -13,7 +13,7 @@ public class GetURLInfo
 	{
 		return FinanceURL.pharsingURL(financeDataMatrix, url, pharseType);
 	}
-	public Object getUrlInfoAllObject(final FinanceDataMatrix financeDataMatrix, final Map<String, String> map) throws Exception
+	public Object getUrlInfoAllObject(final FinanceDataMatrix financeDataMatrix, final Map<String, Object> map) throws Exception
 	{
 		// 여기에 맵을 다루는 로직을 만든다
 		UrlMileStone[] urlArr = UrlMileStone.values();

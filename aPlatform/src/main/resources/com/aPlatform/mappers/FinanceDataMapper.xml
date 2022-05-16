@@ -31,4 +31,22 @@
 		    AND SERVICE_ID		= 'FIN'
 		    AND SUB_CONTENT		= 'pharse'
 	</select>
+	<insert id="insertSharesInfo" parameterType="com.aPlatform.controller.service.finance.VO.FinanceVO">
+		INSERT INTO
+			SHARES_FIN_INFO
+			(
+				CODE
+				, NAME
+				, EXCHANGE
+			)
+			VALUES
+			(
+				#{finCode}
+				, #{finName}
+				, #{exchange}
+			)
+	</insert>
+	<delete id="deleteAllDataInShareTable">
+		DELETE FROM SHARES_FIN_INFO
+	</delete>
 </mapper>

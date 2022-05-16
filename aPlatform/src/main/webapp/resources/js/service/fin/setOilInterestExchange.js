@@ -4,21 +4,10 @@ function getOilInterestExchange() {
             "url" : "main"
         ,   "pharseType" : "etcIndex"
         }
-	$.ajax({
-		type: 'GET',
-		url: '/service/finance/etcIndex?',
-		data: sendingVO,
-		dataType: 'JSON', 
-		async: true,
-		contentType: 'application/json; charset=utf-8',
-		success: function (data) {
+    AJAX('GET','/service/finance/etcIndex?',sendingVO,true,function(data){
 		console.log(data);
-		setExchange(data)
-	},
-		error: function () {
-		alert('통신실패!!');
-	}
-	});
+		setExchange(data);
+    },null);
 }
 function setExchange(data){
 	let struct_div = ``;

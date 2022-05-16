@@ -16,7 +16,7 @@ public class FinanceSearchBOC
 	@Autowired
 	GetURLInfo getUrlInfo;
 
-	public Object getInfo(FinanceDataMatrix financeDataMatrix, final String dataform, final Map<String, String> map) throws Exception
+	public Object getInfo(FinanceDataMatrix financeDataMatrix, final String dataform, final Map<String, Object> map) throws Exception
 	{
 
 		switch (dataform) {
@@ -30,8 +30,8 @@ public class FinanceSearchBOC
 			case "all" : /* 지수제외 모든 데이터 */
 				return getUrlInfo.getUrlInfoAllObject(financeDataMatrix, map);
 			default :
-				String url = map.get("url");
-				String pharseType = map.get("pharseType");
+				String url = (String) map.get("url");
+				String pharseType = (String) map.get("pharseType");
 				financeDataMatrix.setMarketURLMap(map);
 				financeDataMatrix.setPageDOC(url);
 				return getUrlInfo.getUrlInfoObject(financeDataMatrix, url, pharseType);

@@ -1,12 +1,14 @@
 ;
 'use strict';
+/*삽입될 JS파일들*/
 document.write("<script src='/resources/js/service/fin/setContentsSection.js'></script>");
 document.write("<script src='/resources/js/service/fin/setInfoShareDetailData.js'></script>");
 document.write("<script src='/resources/js/service/fin/setMarketsInfo.js'></script>");
 document.write("<script src='/resources/js/service/fin/setRankDataMarketCurculor.js'></script>");
 document.write("<script src='/resources/js/service/fin/setNewsData.js'></script>");
 document.write("<script src='/resources/js/service/fin/setOilInterestExchange.js'></script>");
-
+document.write("<script src='/resources/js/service/fin/setUserInterestStocks.js'></script>");
+/*데이터 전역변수*/
 var nowFinData='';
 var kospiIndex='';
 var kospiBuyer='';
@@ -17,8 +19,14 @@ var kosdaqImage='';
 var rankDataMC = '';
 var codeInfo = '';
 var newsData = '';
+/*서버input값 전역변수*/
+var kospiSendingVO ='';
+var kosdaqSendingVO='';
 var shareDetailInfo = '';
-
+var newsDataSendingVO ='';
+var etcIndexSendingVO ='';
+var rankDataSendingVO ='';
+/*윈도우 이벤트 삽입*/
 window.addEventListener('load', finPageInit);
 window.onpopstate = function(event) { 
 	document.getElementById('searchShareInput').value='';
@@ -26,6 +34,7 @@ window.onpopstate = function(event) {
 	finPageInit();
 	window.scrollTo(0,localStorage.BeforeScroll);
 }
+/*각 엘리먼트별 이벤트 삽입*/
 function addEvent() {
 	document.getElementById('toggleHide').addEventListener('click',toggleHide);
 	document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
@@ -57,7 +66,27 @@ function refreshInfo(e){
 			break;
 	}
 }
-
+function getSendingData() {
+    const reqJson = {
+            "url" : "main"
+        ,   "pharseType" : "news"  
+        }
+	let httpRequest =  new XMLHttpRequest();
+    httpRequest.onreadystatechange = () => {
+	    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+		      if (httpRequest.status === 200) {
+		    	let result = httpRequest.response;
+		    	console.log(result);
+		      } else {
+		        alert('request에 뭔가 문제가 있어요.');
+		      }
+		}
+    };
+    httpRequest.open('POST', '/service/finance/getSendingData', true);
+    httpRequest.responseType = "json";
+    httpRequest.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+    httpRequest.send(JSON.stringify(reqJson));
+}
 function finPageInit() {
 	nowFinData=null;
 	setContentsSection();
@@ -68,7 +97,9 @@ function finPageInit() {
 	if(this.localStorage.sharesInfo==null||this.localStorage.sharesInfo=='undefined') {
 		setSessionSharesInfo();
 	}
+	setInterestStockBnt();
 	addEvent();
+//	getSendingData();
 }
 function setSessionSharesInfo() {
 	let outData ="";
@@ -90,20 +121,40 @@ function setSessionSharesInfo() {
     localStorage.setItem('sharesInfo' ,objData);
 }
 
-function AJAX(type ,url ,data ,async ,fn1 ,fn2) {
+function AJAX(TYPE_,URL_,DATA_,ASYNC_,fn1 ,fn2) {
+	let inTYPE_ = TYPE_;
+	let inURL_ = URL_;
+	let inDATA_ = DATA_;
+	let inASYNC_ = ASYNC_;
+	if(inTYPE_==null || inTYPE_ ==undefined) {
+		TYPE_="GET"
+	}
+	if(inURL_==null || inURL_==undefined) {
+		inURL_ = "error/404"
+	}
+	if(inDATA_==null || inDATA_==undefined) {
+		inDATA_ = null;
+	}
+	if(inASYNC_==null || inASYNC_==undefined) {
+		inASYNC_ = false;
+	}
 	$.ajax({
-        type: `${type}`,
-        url: `${url}`,
-        data : data,
+        type: inTYPE_,
+        url: inURL_,
+        data : inDATA_,
         dataType: 'JSON', 
-        async: `${async}`,
+        async: inASYNC_,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-        	fn1(data)
+			if(fn1!=null||fn1!=undefined) {
+				fn1(data)
+			}
         },
         error: function () {
             alert('통신실패!!');
         }
     });
-	fn2
+	if(fn2!=null||fn2!=undefined) {
+		infn2
+	}
 }

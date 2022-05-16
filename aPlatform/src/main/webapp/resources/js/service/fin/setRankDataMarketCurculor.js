@@ -6,22 +6,11 @@ function getRankdata() {
             "url" : "main"
         ,   "pharseType" : "rankMC"  
         }
-	$.ajax({
-		type: 'GET',
-		url: '/service/finance/rank?',
-		data: sendingVO,
-		dataType: 'JSON', 
-		async: true,
-		contentType: 'application/json; charset=utf-8',
-		success: function (data) {
+    AJAX('GET','/service/finance/rank?',sendingVO,true,function (data) {
 		rankDataMC =data;
 		setRankDataMC();
 		setRankDataMCColor();
-	},
-		error: function () {
-		alert('통신실패!!');
-	}
-	});
+	},null);
 }
 function setRankDataMC() {
 	let struct_div ="";
