@@ -6,7 +6,8 @@ document.write("<script src='/resources/js/service/fin/setInfoShareDetailData.js
 document.write("<script src='/resources/js/service/fin/setMarketsInfo.js'></script>");
 document.write("<script src='/resources/js/service/fin/setRankDataMarketCurculor.js'></script>");
 document.write("<script src='/resources/js/service/fin/setNewsData.js'></script>");
-document.write("<script src='/resources/js/service/fin/setOil/ InterestExchange.js'></script>");
+document.write("<script src='/resources/js/service/fin/setOilInterestExchange.js'></script>");
+document.write("<script src='/resources/js/service/fin/setUserInterestStocks.js'></script>");
 /*데이터 전역변수*/
 var nowFinData='';
 var kospiIndex='';
@@ -96,6 +97,7 @@ function finPageInit() {
 	if(this.localStorage.sharesInfo==null||this.localStorage.sharesInfo=='undefined') {
 		setSessionSharesInfo();
 	}
+	setInterestStockBnt();
 	addEvent();
 //	getSendingData();
 }

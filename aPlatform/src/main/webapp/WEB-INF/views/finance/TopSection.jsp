@@ -6,9 +6,7 @@
 	<div>
 		<div class='ShortView' style="display: flex; align-items: center;">
 			<div id="userInterest" style="width: 86%;"></div>
-			<div id="getStockItems" style="width: 14%;">
-				<button class="unoBnt unoBnt-middleBnt" type="button" id="">관심종목추가</button>
-			</div>
+			<div id="getStockItems" style="width: 14%;"></div>
 		</div>
 	</div>
 	<a href='#'>내 손안의 금융 - aFinance </a>
