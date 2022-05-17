@@ -30,7 +30,7 @@ function fn_uploaExcel() {
 }
 function setPOPupOption(inUrl, inName, inSetSizeOption, inSetWebOption){
 	const sizeOptionList = ["width","height","top","left"];
-	const webOptionList = ["location","scrollbars","tollbar","menubar","status","fullscreen","resizeable"];];
+	const webOptionList = ["location","scrollbars","tollbar","menubar","status","fullscreen","resizeable"];
 	const url = inUrl;
 	const name = inName;
 	let option = "";
