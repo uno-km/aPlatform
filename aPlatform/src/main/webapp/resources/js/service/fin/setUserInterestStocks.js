@@ -12,9 +12,7 @@ function setInterestStockBnt(){
 			innerStruck.innerHTML = `
 			<button class="unoBnt unoBnt-middleBnt" type="button" id="uploadExcelFile">종목최신화</button>
 			`;
-			document.getElementById('uploadExcelFile').addEventListener('clcik', function(){
-				document.getElementById('excelFileUpload').click;
-			});
+			document.getElementById('uploadExcelFile').addEventListener('clcik', setPOPupOption);
 			break;
 		default :
 			innerStruckinnerHTML = `
@@ -22,4 +20,10 @@ function setInterestStockBnt(){
 			`;
 			break;
 	}
+}
+function setPOPupOption(){
+    var url = "finance/excelUploadPOP";
+    var name = "종목최신화 엑셀 업로드 팝업";
+    var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+    window.open(url, name, option);
 }
