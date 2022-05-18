@@ -7,6 +7,7 @@
 <html>
 <body class='finPopup'>
 	<title>엑셀파일을 업로드 해주세요.</title>
+	<input type="file" id="excelFileUpload" style="visibility: hidden; display: none;">
 	<div style="display: flex; width: inherit; height: inherit; flex-direction: column; flex-wrap: nowrap; align-items: center;">
 		<div class="title non-drag">
 			<span style="color: white; font-size: 25px;">종목최신화</span>
