@@ -8,8 +8,8 @@ function setEvents() {
 	document.getElementById('uploadExcel').addEventListener('click',function(){
 		document.getElementById('excelFileUpload').click();
 	});
-	document.getElementById('excelFileUpload').addEventListener('change',function(){
-		alert('qwe');
+	document.getElementById('excelFileUpload').addEventListener('change',function(e){
+		alert(e);
 	});
 }
 
