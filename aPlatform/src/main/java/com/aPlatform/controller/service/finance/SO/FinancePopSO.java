@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,32 +34,16 @@ public class FinancePopSO
 	FinanceDataMatrix financeDataMatrix;
 
 	@PutMapping(value = "/excel")
-	@Transactional(rollbackFor = Exception.class, isolation = Isolation.SERIALIZABLE, propagation = Propagation.NEVER)
+	@Transactional(rollbackFor = Exception.class, isolation = Isolation.DEFAULT)
 	private ResponseEntity<String> execlDataFileInsert()
-	// private ResponseEntity<String> execlDataFileInsert(final MultipartFile uploadFile)
 	{
 		return this.financeRetvBOC.execlDataFileInsert();
 	}
-	@GetMapping(value = "/main")
-	private ModelAndView reternMainPage(Model model)
-	// private String reternMainPage(Model model)
+	@PutMapping(value = "/excelUpload")
+	@Transactional(rollbackFor = Exception.class, isolation = Isolation.DEFAULT)
+	private ResponseEntity<String> excelFileUpload()
 	{
-		return financeRetvBOC.reternMainPage();
+		return this.financeRetvBOC.execlDataFileInsert();
 	}
-	@GetMapping(value = "/codeAllMap")
-	public Map<String, String> getCodeMap(Model model) throws Exception
-	{
-		return financeRetvBOC.getCodeMap();
-	}
-	@PostMapping(value = "/getSendingData")
-	public Map<String, String> getSendingData(@RequestBody final Map<String, Object> inputMap) throws Exception
-	{
-		return financeRetvBOC.getCodeMap();
-	}
-	@GetMapping(value = "/{dataform}")
-	public Object getData(@PathVariable final String dataform, @RequestParam Map<String, Object> map) throws Exception
-	{
-		System.out.println("Client required " + dataform + " data...");
-		return financeSearchBOC.getInfo(financeDataMatrix, dataform, map);
-	}
+
 }
