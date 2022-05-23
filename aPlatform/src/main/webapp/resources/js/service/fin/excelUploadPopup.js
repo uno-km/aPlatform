@@ -1,0 +1,51 @@
+;
+let regex = new RegExp("(.*?)\.(xlsx|xlsm|xlsb|xltx|xltm|xls|xlt|xls|xml|xlam|xla|xlw|xlr|csv)$");
+let maxSize = 5242880*4; //20MB
+let formData = new FormData();
+
+window.addEventListener('load',excelPopupInit);
+var File = '';
+function excelPopupInit() {
+	setEvents();
+}
+function setEvents() {
+	document.getElementById('attatchExcel').addEventListener('click',function(){
+		document.getElementById('excelFileUpload').click();
+	});
+	document.getElementById('uploadExcel').addEventListener('click',function(e){
+		uploadExcelFiles;
+	});
+	document.getElementById('excelFileUpload').addEventListener('change',function(e){
+		fileAttatchEvent(e);
+	});
+	
+}
+
+function fileAttatchEvent(e) {
+	const file = e.target.files[0];
+	this.formData.append('file', file);
+}
+
+function checkExtension(fileName, fileSize) {
+	if (fileSize >= maxSize) {
+		alert("파일 사이즈 초과");
+		return false;
+	}
+	if (!regex.test(fileName)) {
+		alert("엑셀파일만 업로드해주세요!.");
+		return false;
+	}
+	return true;
+}
+function uploadExcelFiles() {
+	$.ajax({
+		url : '/service/finance/excelUpload',
+		processData : false,
+		contentType : false,
+		data : formData,
+		type : 'POST',
+		dataType : 'json',
+		success : function(result) {
+		}
+	}); //$.ajax
+}
