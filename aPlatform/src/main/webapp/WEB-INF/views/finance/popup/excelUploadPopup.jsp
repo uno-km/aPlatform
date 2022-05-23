@@ -14,7 +14,8 @@
 		</div>
 		<div>
 			<input type="text" disabled class="form-control" id='searchShareInput' style='border: 2px solid #0d6efd; width: 80%;'>
-			<button class="unoBnt" type="button" id='uploadExcel'>검색</button>
+			<button class="unoBnt" type="button" id='attatchExcel'>파일찾기</button>
+			<button class="unoBnt" type="button" id='uploadExcel'>업로드</button>
 		</div>
 	</div>
 </body>

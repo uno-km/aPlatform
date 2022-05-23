@@ -1,6 +1,7 @@
 ;
-let regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
-let maxSize = 5242880; //5MB
+let regex = new RegExp("(.*?)\.(xlsx|xlsm|xlsb|xltx|xltm|xls|xlt|xls|xml|xlam|xla|xlw|xlr|csv)$");
+let maxSize = 5242880*4; //20MB
+let formData = new FormData();
 
 window.addEventListener('load',excelPopupInit);
 var File = '';
@@ -8,16 +9,21 @@ function excelPopupInit() {
 	setEvents();
 }
 function setEvents() {
-	document.getElementById('uploadExcel').addEventListener('click',function(){
+	document.getElementById('attatchExcel').addEventListener('click',function(){
 		document.getElementById('excelFileUpload').click();
 	});
-	document.getElementById('excelFileUpload').addEventListener('change',function(e){
-		 fileAttatchEvent(e);
+	document.getElementById('uploadExcel').addEventListener('click',function(e){
+		uploadExcelFiles;
 	});
+	document.getElementById('excelFileUpload').addEventListener('change',function(e){
+		fileAttatchEvent(e);
+	});
+	
 }
 
 function fileAttatchEvent(e) {
-	
+	const file = e.target.files[0];
+	this.formData.append('file', file);
 }
 
 function checkExtension(fileName, fileSize) {
@@ -25,34 +31,21 @@ function checkExtension(fileName, fileSize) {
 		alert("파일 사이즈 초과");
 		return false;
 	}
-	if (regex.test(fileName)) {
-		alert("해당 종류의 파일은 업로드할 수 없습니다.");
+	if (!regex.test(fileName)) {
+		alert("엑셀파일만 업로드해주세요!.");
 		return false;
 	}
 	return true;
 }
-$("#uploadBtn").on("click", function(e) {
-	var formData = new FormData();
-	var formData = new FormData();
-	var inputFile = $("input[name='uploadFile']");
-	var files = inputFile[0].files;
-	for (var i = 0; i < files.length; i++) {
-		if (!checkExtension(files[i].name, files[i].size)) {
-			return false;
-		}
-		formData.append("uploadFile", files[i]);
-	}
+function uploadExcelFiles() {
 	$.ajax({
-		url : '/uploadAjaxAction',
+		url : '/service/finance/excelUpload',
 		processData : false,
 		contentType : false,
 		data : formData,
 		type : 'POST',
 		dataType : 'json',
 		success : function(result) {
-			console.log(result);
-			showUploadedFile(result);
-			$(".uploadDiv").html(cloneObj.html());
 		}
 	}); //$.ajax
-});
+}
