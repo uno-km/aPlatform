@@ -31,9 +31,8 @@ public class FinancePopSO
 	}
 	@PostMapping(value = "/excelDataSave")
 	@Transactional(rollbackFor = Exception.class, isolation = Isolation.SERIALIZABLE, propagation = Propagation.NEVER)
-	private ResponseEntity<String> excelDataSave()
+	private ResponseEntity<String> excelDataSave(@RequestPart final MultipartFile file)
 	{
-		return this.financeRetvBOC.uploadExeclDataFile();
+		return this.financeRetvBOC.uploadExeclDataFile(file);
 	}
-
 }

@@ -1,6 +1,6 @@
 package com.aPlatform.controller.service.finance.model;
 
-import java.io.FileInputStream;
+import java.io.File;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +18,15 @@ import com.aPlatform.controller.service.finance.VO.FinanceVO;
 public class ExcelData
 {
 	// public List<FinanceVO> callExcel(final MultipartFile uploadFile) throws Exception
-	public List<FinanceVO> callExcel() throws Exception
+	public List<FinanceVO> callExcel(File file) throws Exception
 	{
-		String filename = "C:\\Users\\zhfld\\git\\aPlatform\\aPlatform\\src\\main\\java\\com\\data_4008_20220511.xlsx"; // 파일명 설정
-		return this.readExcel(filename);
+		// String filename = "C:\\Users\\zhfld\\git\\aPlatform\\aPlatform\\src\\main\\java\\com\\data_4008_20220511.xlsx"; // 파일명 설정
+		return this.readExcel(file);
 	}
-	private List<FinanceVO> readExcel(String filename) throws Exception
+	private List<FinanceVO> readExcel(File file) throws Exception
 	{
 		List<FinanceVO> outList = new ArrayList<FinanceVO>();
-		FileInputStream file = new FileInputStream(filename);
+		// FileInputStream file = new FileInputStream(filename);
 		XSSFWorkbook workbook = new XSSFWorkbook(file);
 		// HSSFWorkbook workbook = new HSSFWorkbook(file);
 		NumberFormat f = NumberFormat.getInstance();
