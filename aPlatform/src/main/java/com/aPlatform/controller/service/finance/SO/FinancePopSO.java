@@ -25,7 +25,7 @@ public class FinancePopSO
 
 	@PostMapping(value = "/excelUpload", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@Transactional(rollbackFor = Exception.class, isolation = Isolation.DEFAULT)
-	private ResponseEntity<String> excelFileUpload(@RequestPart final MultipartFile file)
+	private ResponseEntity<String> excelFileUpload(@RequestPart final MultipartFile file) throws Exception
 	{
 		return this.financeRetvBOC.execlDataFileInsert(file);
 	}
