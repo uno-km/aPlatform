@@ -1,5 +1,6 @@
 package com.aPlatform.controller.service.finance.BOC;
 
+import java.io.IOException;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class FinanceRetvBOC
 		return this.financeRetvBO.getCodeMap();
 	}
 
-	public ResponseEntity<String> execlDataFileInsert(final MultipartFile file)
+	public ResponseEntity<String> execlDataFileInsert(final MultipartFile file) throws Exception
 	{
 		return this.fileUploadBO.uploadExcel(file);
 	}
