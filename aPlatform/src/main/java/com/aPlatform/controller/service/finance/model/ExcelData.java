@@ -21,10 +21,6 @@ public class ExcelData
 	public List<FinanceVO> callExcel(File file) throws Exception
 	{
 		// String filename = "C:\\Users\\zhfld\\git\\aPlatform\\aPlatform\\src\\main\\java\\com\\data_4008_20220511.xlsx"; // 파일명 설정
-		return this.readExcel(file);
-	}
-	private List<FinanceVO> readExcel(File file) throws Exception
-	{
 		List<FinanceVO> outList = new ArrayList<FinanceVO>();
 		// FileInputStream file = new FileInputStream(filename);
 		XSSFWorkbook workbook = new XSSFWorkbook(file);
