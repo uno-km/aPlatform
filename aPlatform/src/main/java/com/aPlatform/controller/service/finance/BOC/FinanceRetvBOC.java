@@ -31,7 +31,7 @@ public class FinanceRetvBOC
 
 	public ResponseEntity<String> execlDataFileInsert(final MultipartFile file) throws Exception
 	{
-		return this.fileUploadBO.uploadExcel(file);
+		return this.fileUploadBO.uploadExcelData(file);
 	}
 	public ResponseEntity<String> uploadExeclDataFile(final MultipartFile file)
 	{

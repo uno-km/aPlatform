@@ -20,8 +20,6 @@ public class FinancePopSO
 {
 	@Autowired
 	FinanceRetvBOC financeRetvBOC;
-	@Autowired
-	FinanceSearchBOC financeSearchBOC;
 
 	@PostMapping(value = "/excelUpload", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@Transactional(rollbackFor = Exception.class, isolation = Isolation.DEFAULT)
