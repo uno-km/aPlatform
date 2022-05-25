@@ -1,16 +1,21 @@
 package com.aPlatform.controller.file.SO;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-@RestController
-@RequestMapping(value = "/common/file")
+import com.aPlatform.controller.service.finance.model.ExcelData;
+import com.aPlatform.utils.FileUnoUtils;
+
+@Service
 public class FileUploadBO
 {
-	@RequestMapping(value = "/uploadFile")
-	private ModelAndView returnPopupExcelUpload()
+	@Autowired
+	ExcelData ExcelData;
+	public ResponseEntity<String> uploadExcelData(final MultipartFile file) throws Exception
 	{
+		this.ExcelData.callExcel(FileUnoUtils.multipartFileToFile(file));
 		return null;
 	}
 }
