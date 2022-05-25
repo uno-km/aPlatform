@@ -13,7 +13,7 @@ public class FileUploadBO
 {
 	@Autowired
 	ExcelData ExcelData;
-	public ResponseEntity<String> uploadExcel(final MultipartFile file) throws Exception
+	public ResponseEntity<String> uploadExcelData(final MultipartFile file) throws Exception
 	{
 		this.ExcelData.callExcel(FileUnoUtils.multipartFileToFile(file));
 		return null;
