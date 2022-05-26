@@ -22,15 +22,9 @@ public class FinancePopSO
 	FinanceRetvBOC financeRetvBOC;
 
 	@PostMapping(value = "/excelUpload", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	@Transactional(rollbackFor = Exception.class, isolation = Isolation.DEFAULT)
+	@Transactional(rollbackFor = Exception.class, isolation = Isolation.SERIALIZABLE, propagation = Propagation.NEVER)
 	private ResponseEntity<String> excelFileUpload(@RequestPart final MultipartFile file) throws Exception
 	{
 		return this.financeRetvBOC.execlDataFileInsert(file);
-	}
-	@PostMapping(value = "/excelDataSave")
-	@Transactional(rollbackFor = Exception.class, isolation = Isolation.SERIALIZABLE, propagation = Propagation.NEVER)
-	private ResponseEntity<String> excelDataSave(@RequestPart final MultipartFile file)
-	{
-		return this.financeRetvBOC.uploadExeclDataFile(file);
 	}
 }
