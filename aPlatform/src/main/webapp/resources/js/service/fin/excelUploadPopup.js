@@ -24,6 +24,7 @@ function setEvents() {
 function fileAttatchEvent(e) {
 	const file = e.target.files[0];
 	if(checkExtension(file)) {
+		document.getElementById('searchShareInput').value=file.name;
 		formData.append('file', file);
 	}
 }
@@ -50,27 +51,7 @@ function uploadExcelFiles() {
 		success : function(result) {
 			switch(result) {
 				case "200" : 
-					saveExcelFiles();
-					break;
-				case "404" :
-					alert('저장 실패, 운영자에게 문의 주세요');
-					break;
-				case "400" :
-					alert('업로드하는 파일값이 잘못 되었습니다. 다시한번 시도해 주세요');
-					break;
-			}
-		}
-	}); //$.ajax
-}
-function saveExcelFiles() {
-	$.ajax({
-		url : '/service/finance/excelDataSave',
-		type : 'POST',
-		dataType : 'json',
-		success : function(result) {
-			switch(result) {
-				case "200" : 
-					alert('저장 성공');
+					alert('저장 성공!');
 					break;
 				case "404" :
 					alert('저장 실패, 운영자에게 문의 주세요');
