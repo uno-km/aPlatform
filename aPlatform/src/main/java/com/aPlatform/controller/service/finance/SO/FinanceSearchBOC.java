@@ -18,7 +18,8 @@ public class FinanceSearchBOC
 
 	public Object getInfo(FinanceDataMatrix financeDataMatrix, final String dataform, final Map<String, Object> map) throws Exception
 	{
-
+		String url = "";
+		String pharseType ="";
 		switch (dataform) {
 			case "total" : /* 코스피 코스닥 전부 */
 				financeDataMatrix.setMarketURLMap();
@@ -29,9 +30,17 @@ public class FinanceSearchBOC
 				return totalArr;
 			case "all" : /* 지수제외 모든 데이터 */
 				return getUrlInfo.getUrlInfoAllObject(financeDataMatrix, map);
+			case "shareInfo" :
+				url = (String) map.get("url");
+				pharseType = (String) map.get("pharseType");
+				financeDataMatrix.setMarketURLMap(map);
+				financeDataMatrix.setPageDOC(url);
+				Object outData=getUrlInfo.getUrlInfoObject(financeDataMatrix, url, pharseType);
+				financeDataMatrix.clearMatrix();
+				return outData;
 			default :
-				String url = (String) map.get("url");
-				String pharseType = (String) map.get("pharseType");
+				url = (String) map.get("url");
+				pharseType = (String) map.get("pharseType");
 				financeDataMatrix.setMarketURLMap(map);
 				financeDataMatrix.setPageDOC(url);
 				return getUrlInfo.getUrlInfoObject(financeDataMatrix, url, pharseType);
