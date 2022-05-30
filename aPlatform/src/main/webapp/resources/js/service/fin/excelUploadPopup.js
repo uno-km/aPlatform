@@ -52,6 +52,7 @@ function uploadExcelFiles() {
 			switch(result) {
 				case "200" : 
 					alert('저장 성공!');
+					window.close();
 					break;
 				case "404" :
 					alert('저장 실패, 운영자에게 문의 주세요');
