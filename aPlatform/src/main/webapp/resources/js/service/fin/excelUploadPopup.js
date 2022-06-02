@@ -1,4 +1,6 @@
 ;
+document.write("<script src='/resources/js/service/fin/commonFin.js'></script>");
+;
 let regex = new RegExp("(.*?)\.(xlsx|xlsm|xlsb|xltx|xltm|xls|xlt|xls|xml|xlam|xla|xlw|xlr|csv)$");
 let maxSize = 5242880*4; //20MB
 let formData = new FormData();
@@ -50,14 +52,15 @@ function uploadExcelFiles() {
 		dataType : 'json',
 		success : function(result) {
 			switch(result) {
-				case "200" : 
+				case 200 : 
 					alert('저장 성공!');
+					setSessionSharesInfo();
 					window.close();
 					break;
-				case "404" :
+				case 404 :
 					alert('저장 실패, 운영자에게 문의 주세요');
 					break;
-				case "400" :
+				case 400 :
 					alert('업로드하는 파일값이 잘못 되었습니다. 다시한번 시도해 주세요');
 					break;
 			}
