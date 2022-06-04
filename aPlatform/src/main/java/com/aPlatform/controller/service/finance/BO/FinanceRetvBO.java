@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.aPlatform.controller.common.model.ResultDTO;
+import com.aPlatform.controller.common.model.commonOutVO;
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
 import com.aPlatform.controller.service.finance.model.ExcelData;
 import com.aPlatform.mappers.FinanceDataMapper;
@@ -31,12 +31,12 @@ public class FinanceRetvBO
 			outMap.put(finVO.getFinName(), finVO.getFinCode());
 		return outMap;
 	}
-	public List<String> getURLList()
+
+	public synchronized commonOutVO excelInsert(final MultipartFile file)
 	{
-		return null;
-	}
-	public synchronized ResponseEntity<String> excelInsert(final MultipartFile file)
-	{
+		commonOutVO commonoutVO = new commonOutVO();
+		ResultDTO result = new ResultDTO();
+		commonoutVO.setResultDTO(result);
 		try
 		{
 			try
@@ -47,20 +47,27 @@ public class FinanceRetvBO
 			catch (Exception e)
 			{
 				/* 해당 에러 발생히 웹단으로 500 에러메세지 응답 */
-				return new ResponseEntity<String>("500", HttpStatus.OK);
+				commonoutVO.setError(e.getMessage());
+				result.setCode("500");
+				result.setMessage("알수없는 오류가 발생했습니다. 관리자에게 문의하세요");
+				return commonoutVO;
 			}
-			// List<FinanceVO> innerList = this.excelData.callExcel(uploadFile);
 			List<FinanceVO> innerList = this.excelData.callExcel(FileUnoUtils.multipartFileToFile(file));
 			for (FinanceVO finVO : innerList)
 				/* 종목을 하나씩 삽입한다. */
 				this.financeDataMapper.insertSharesInfo(finVO);
 			/* 성공하면 200 응답. */
-			return new ResponseEntity<String>("200", HttpStatus.OK);
+			result.setCode("200");
+			result.setMessage("새로운 주식종목등록이 완료되었습니다.");
+			return commonoutVO;
 		}
 		catch (Exception e)
 		{
 			/* 중간에러발생시 400 응답. */
-			return new ResponseEntity<String>("400", HttpStatus.OK);
+			commonoutVO.setError(e.getMessage());
+			result.setCode("500");
+			result.setMessage("알수없는 오류가 발생했습니다. 관리자에게 문의하세요.");
+			return commonoutVO;
 		}
 	}
 }
