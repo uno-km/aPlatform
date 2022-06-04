@@ -15,7 +15,7 @@
 				<button class="unoBnt unoBnt-bigBnt" type="button" id='searchShareBtn'>검색</button>
 			</div>
 			<div style='width: 1%'></div>
-			<div class='col-10'>
+			<div class='col-10' >
 				<button class="unoBnt unoBnt-bigBnt" type="button" id='getPDFFile'>PDF</button>
 			</div>
 		</div>
