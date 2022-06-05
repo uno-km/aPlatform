@@ -50,18 +50,16 @@ function uploadExcelFiles() {
 		data : formData,
 		type : 'POST',
 		dataType : 'json',
-		success : function(result) {
-			switch(result) {
-				case 200 : 
-					alert('저장 성공!');
+		success : function(res) {
+			switch(res.resultDTO.code) {
+				case "200" : 
+					alert(res.resultDTO.message);
 					setSessionSharesInfo();
 					window.close();
 					break;
-				case 404 :
-					alert('저장 실패, 운영자에게 문의 주세요');
-					break;
-				case 400 :
-					alert('업로드하는 파일값이 잘못 되었습니다. 다시한번 시도해 주세요');
+				case '500' :
+					alert(res.resultDTO.message);
+					console.log(res.error);
 					break;
 			}
 		}
