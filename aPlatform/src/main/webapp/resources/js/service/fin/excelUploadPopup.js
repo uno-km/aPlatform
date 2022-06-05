@@ -44,13 +44,21 @@ function checkExtension(file) {
 }
 function uploadExcelFiles() {
 	$.ajax({
-		url : '/service/finance/excelUpload',
-		processData : false,
-		contentType : false,
-		data : formData,
-		type : 'POST',
-		dataType : 'json',
-		success : function(res) {
+		url : '/service/finance/excelUpload'
+		,processData : false
+		,contentType : false
+		,data : formData
+		,type : 'POST'
+		,dataType : 'json'
+		,beforeSend: function() {
+	        //마우스 커서를 로딩 중 커서로 변경
+	        $('html').css("cursor", "wait");
+	    }
+	    ,complete: function() {
+	        //마우스 커서를 원래대로 돌린다
+	        $('html').css("cursor", "auto");
+	    }
+		,success : function(res) {
 			switch(res.resultDTO.code) {
 				case "200" : 
 					alert(res.resultDTO.message);
