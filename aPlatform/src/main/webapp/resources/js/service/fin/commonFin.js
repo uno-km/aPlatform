@@ -1,3 +1,6 @@
+document.write("<script src='/resources/lib/html2canvas.js'></script>");
+document.write("<script src='/resources/lib/jspdf.min.js'></script>");
+//^^PDF생성 라이브러리 파일
 /**
  * 
  */
