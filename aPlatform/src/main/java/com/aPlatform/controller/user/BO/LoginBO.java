@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aPlatform.controller.common.model.CommonOutVO;
+import com.aPlatform.controller.common.model.ResultDTO;
 import com.aPlatform.controller.user.VO.UserinfoOutVO;
 import com.aPlatform.controller.user.VO.UserinfoVO;
 import com.aPlatform.mappers.UserActiveMapper;
@@ -46,22 +48,40 @@ public class LoginBO
 		return true;
 	}
 
-	public UserinfoOutVO signinUser(UserinfoVO UserinfoVO)
+	public CommonOutVO signinUser(UserinfoVO UserinfoVO)
 	{
-		UserinfoOutVO outVO = userActiveMapper.getUserInfo(UserinfoVO);
-		if(Validation.isNullCheck(outVO))
+		CommonOutVO commonoutVO = new CommonOutVO();
+		ResultDTO result = new ResultDTO();
+		commonoutVO.setResultDTO(result);
+		try
 		{
-			return null;
+			UserinfoOutVO outVO = userActiveMapper.getUserInfo(UserinfoVO);
+			result.setCode("200");
+			result.setMessage("로그인 성공!");
+			if(Validation.isNullCheck(outVO))
+			{
+				result.setCode("500");
+				result.setMessage("입력하신 정보가 없습니다! 다시 시도해주세요!");
+			}
+			if(!outVO.getUser_id().equals(UserinfoVO.getUser_id()))
+			{
+				result.setCode("500");
+				result.setMessage("입력하신 아이디정보가 없습니다! 다시 시도해주세요!");
+			}
+			if(!outVO.getUser_password().equals(UserinfoVO.getUser_password()))
+			{
+				result.setCode("500");
+				result.setMessage("입력하신 정보가 없습니다! 다시 시도해주세요!");
+			}
+			commonoutVO.setReturnResultDTO(outVO);
 		}
-		if(!outVO.getUser_id().equals(UserinfoVO.getUser_id()))
+		catch (Exception e)
 		{
-			return null;
+			result.setCode("500");
+			result.setMessage("입력하신 정보가 없습니다! 다시 시도해주세요!");
+			commonoutVO.setError(e.getMessage());
 		}
-		if(!outVO.getUser_password().equals(UserinfoVO.getUser_password()))
-		{
-			return null;
-		}
-		return outVO;
+		return commonoutVO;
 	}
 
 	public boolean checkDuplId(UserinfoVO UserinfoVO)

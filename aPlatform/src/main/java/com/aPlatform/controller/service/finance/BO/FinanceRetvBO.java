@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.aPlatform.controller.common.model.CommonOutVO;
 import com.aPlatform.controller.common.model.ResultDTO;
-import com.aPlatform.controller.common.model.commonOutVO;
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
 import com.aPlatform.controller.service.finance.model.ExcelData;
 import com.aPlatform.mappers.FinanceDataMapper;
@@ -32,9 +32,9 @@ public class FinanceRetvBO
 		return outMap;
 	}
 
-	public synchronized commonOutVO excelInsert(final MultipartFile file)
+	public synchronized CommonOutVO excelInsert(final MultipartFile file)
 	{
-		commonOutVO commonoutVO = new commonOutVO();
+		CommonOutVO commonoutVO = new CommonOutVO();
 		ResultDTO result = new ResultDTO();
 		commonoutVO.setResultDTO(result);
 		try

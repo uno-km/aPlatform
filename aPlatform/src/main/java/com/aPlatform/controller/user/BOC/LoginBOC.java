@@ -3,8 +3,8 @@ package com.aPlatform.controller.user.BOC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aPlatform.controller.common.model.CommonOutVO;
 import com.aPlatform.controller.user.BO.LoginBO;
-import com.aPlatform.controller.user.VO.UserinfoOutVO;
 import com.aPlatform.controller.user.VO.UserinfoVO;
 import com.unoCode.Validation;
 
@@ -25,7 +25,7 @@ public class LoginBOC
 		return loginBO.registerUser(UserinfoVO);
 	}
 
-	public UserinfoOutVO signinUser(UserinfoVO UserinfoVO)
+	public CommonOutVO signinUser(UserinfoVO UserinfoVO)
 	{
 		return loginBO.signinUser(UserinfoVO);
 	}
