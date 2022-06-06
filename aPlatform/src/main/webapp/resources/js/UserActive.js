@@ -35,6 +35,7 @@ function signin() {
     		setSession(data);
     		callNavBar();
     		setLoginedRemoteCtrl();
+    	    window.location.reload();
         },
         error: function () {
             alert('통신실패!!');
