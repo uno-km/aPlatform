@@ -23,7 +23,7 @@ function signin() {
     const maindataLoadInVO = {
         "user_id": user_id,
         "user_password": user_password
-    }
+    };
     $.ajax({
         type: 'POST', //post 방식으로 전송
         url: '/user/signin', //데이터를 주고받을 파일 주소
@@ -31,14 +31,22 @@ function signin() {
         dataType: 'JSON', 
         async: true,
         contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-    		setSession(data);
-    		callNavBar();
-    		setLoginedRemoteCtrl();
-    	    window.location.reload();
+        success: function(res) {
+    		switch(res.resultDTO.code) {
+    			case "200" :
+    				setSession(res.returnResultDTO);
+					callNavBar();
+					setLoginedRemoteCtrl();
+					window.location.reload();
+    				break;
+    			case "500" : 
+    				console.log(res.error);
+    				alert(res.resultDTO.message);
+    				break;
+    		}
         },
-        error: function () {
-            alert('통신실패!!');
+        error: function(res) {
+            alert('통신에러!');
         }
     });
 }
