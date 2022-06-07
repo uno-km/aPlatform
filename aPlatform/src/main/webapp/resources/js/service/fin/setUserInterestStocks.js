@@ -71,5 +71,6 @@ function setPOPupOption(inUrl, inName, inSetSizeOption, inSetWebOption){
     window.open(url, name, option);
 }
 function addUserInterestStocks() {
-	alert('');
+	let searchVal = document.getElementById('searchShareInput').value;
+	alert(searchVal);
 }
