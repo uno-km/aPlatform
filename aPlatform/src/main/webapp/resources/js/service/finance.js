@@ -130,3 +130,11 @@ function getPDFFile() {
 	    doc.save('file-name.pdf');
 	});
 }
+
+var cssRule		= 	"font-size:2em;"
+var cssLogo1 	=	"color:#EEEEEE;" +"font-size: 60px;" +"font-weight: bold;" 
+					+"letter-space:-1px;" +"font-family:Tahoma,Arial,sans-serif";
+if(window.console!=undefined){
+	setTimeout(console.log.bind(console,"%caFinance", cssLogo1),0);
+	setTimeout(console.log.bind(console,"%c 내 손안의 금융",cssRule),0);
+}
