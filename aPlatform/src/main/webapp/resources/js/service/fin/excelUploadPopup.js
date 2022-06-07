@@ -1,4 +1,6 @@
 ;
+document.write("<script src='/resources/js/service/fin/commonFin.js'></script>");
+;
 let regex = new RegExp("(.*?)\.(xlsx|xlsm|xlsb|xltx|xltm|xls|xlt|xls|xml|xlam|xla|xlw|xlr|csv)$");
 let maxSize = 5242880*4; //20MB
 let formData = new FormData();
@@ -42,22 +44,30 @@ function checkExtension(file) {
 }
 function uploadExcelFiles() {
 	$.ajax({
-		url : '/service/finance/excelUpload',
-		processData : false,
-		contentType : false,
-		data : formData,
-		type : 'POST',
-		dataType : 'json',
-		success : function(result) {
-			switch(result) {
+		url : '/service/finance/excelUpload'
+		,processData : false
+		,contentType : false
+		,data : formData
+		,type : 'POST'
+		,dataType : 'json'
+		,beforeSend: function() {
+	        //마우스 커서를 로딩 중 커서로 변경
+	        $('html').css("cursor", "wait");
+	    }
+	    ,complete: function() {
+	        //마우스 커서를 원래대로 돌린다
+	        $('html').css("cursor", "auto");
+	    }
+		,success : function(res) {
+			switch(res.resultDTO.code) {
 				case "200" : 
-					alert('저장 성공!');
+					alert(res.resultDTO.message);
+					setSessionSharesInfo();
+					window.close();
 					break;
-				case "404" :
-					alert('저장 실패, 운영자에게 문의 주세요');
-					break;
-				case "400" :
-					alert('업로드하는 파일값이 잘못 되었습니다. 다시한번 시도해 주세요');
+				case '500' :
+					alert(res.resultDTO.message);
+					console.log(res.error);
 					break;
 			}
 		}

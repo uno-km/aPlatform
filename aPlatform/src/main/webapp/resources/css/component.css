@@ -27,7 +27,9 @@
 .MiddleSection .form-control:FOCUS{background-color: var(--myBackGround);color: white;}
 .textInput {padding-top: 1.5rem;padding-left: 1rem;padding-right: 1rem;height: 70%;}
 .MiddleSection .textInput .col-85{flex : 0 0 auto;width: 85%;}
-.MiddleSection .textInput .col-15{flex : 0 0 auto;width: 13%;}
+.MiddleSection .textInput .col-75{flex : 0 0 auto;width: 75%;}
+.MiddleSection .textInput .col-15{flex : 0 0 auto;width: 15%;}
+.MiddleSection .textInput .col-10{flex : 0 0 auto;width: 8%;}
 .unoBnt {color: #fff;background-color: #0d6efd;border-color: #0d6efd;border-radius: 1.5rem;}
 .unoBnt-bigBnt {height: 100%;width: 100%;font-size: 25px;}
 .unoBnt-middleBnt{height: 80%;width: 95%;font-size: 17px;}

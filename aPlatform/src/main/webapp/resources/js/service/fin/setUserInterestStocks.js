@@ -7,15 +7,23 @@ function setInterestStockBnt(){
 			innerStruck.innerHTML = `
 			<button class="unoBnt unoBnt-middleBnt" type="button" id="addInterestStocks">관심종목추가</button>
 			`;
+			document.getElementById('addInterestStocks').addEventListener('click',addUserInterestStocks);
+			break;
+		case "101" :
+			innerStruck.innerHTML = `
+			<button class="unoBnt unoBnt-middleBnt" type="button" id="addInterestStocks">관심종목추가</button>
+			`;
+			document.getElementById('addInterestStocks').addEventListener('click',addUserInterestStocks);
 			break;
 		case 'ROLE_MEMBER' :
 			innerStruck.innerHTML = `
-			<button class="unoBnt unoBnt-middleBnt" type="button" id="uploadExcelFile" onclick="fn_uploaExcel()">종목최신화</button>
+			<button class="unoBnt unoBnt-middleBnt" type="button" id="uploadExcelFile">종목최신화</button>
 			`;
+			document.getElementById('uploadExcelFile').addEventListener('click',fn_uploaExcel);
 			break;
 		default :
-			innerStruckinnerHTML = `
-			<button class="unoBnt unoBnt-middleBnt" type="button" id="topSectionLogin">로그인</button>
+			innerStruck.innerHTML = `
+			<button class="unoBnt unoBnt-middleBnt" type="button" id="topSectionLogin">로그인 이용 바람</button>
 			`;
 			break;
 	}
@@ -61,4 +69,7 @@ function setPOPupOption(inUrl, inName, inSetSizeOption, inSetWebOption){
     	}
     }
     window.open(url, name, option);
+}
+function addUserInterestStocks() {
+	alert('');
 }

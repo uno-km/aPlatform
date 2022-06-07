@@ -27,9 +27,13 @@ public class FinanceRetvSO
 
 	@GetMapping(value = "/main")
 	private ModelAndView reternMainPage(Model model)
-	// private String reternMainPage(Model model)
 	{
 		return financeRetvBOC.reternMainPage();
+	}
+	@GetMapping(value = "/codeAllMap")
+	private Map<String, String> getCodeMap()
+	{
+		return this.financeRetvBOC.getCodeMap();
 	}
 	@GetMapping(value = "/excelUploadPopup")
 	private ModelAndView returnPopupExcelUpload()
@@ -39,7 +43,7 @@ public class FinanceRetvSO
 		return mv;
 	}
 	@GetMapping(value = "/{dataform}")
-	public Object getData(@PathVariable final String dataform, @RequestParam Map<String, Object> map) throws Exception
+	private Object getData(@PathVariable final String dataform, @RequestParam Map<String, Object> map) throws Exception
 	{
 		System.out.println("Client required " + dataform + " data...");
 		return financeSearchBOC.getInfo(financeDataMatrix, dataform, map);

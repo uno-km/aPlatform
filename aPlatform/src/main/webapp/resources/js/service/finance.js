@@ -8,6 +8,7 @@ document.write("<script src='/resources/js/service/fin/setRankDataMarketCurculor
 document.write("<script src='/resources/js/service/fin/setNewsData.js'></script>");
 document.write("<script src='/resources/js/service/fin/setOilInterestExchange.js'></script>");
 document.write("<script src='/resources/js/service/fin/setUserInterestStocks.js'></script>");
+document.write("<script src='/resources/js/service/fin/commonFin.js'></script>");
 /*데이터 전역변수*/
 var nowFinData='';
 var kospiIndex='';
@@ -40,11 +41,13 @@ function addEvent() {
 	document.getElementById('searchShareBtn').addEventListener('click',searchShareInfo);
 	document.getElementById('searchShareInput').addEventListener("keyup", keyupShareInputValue);
 	document.getElementById('searchShareInput').addEventListener("focus", focusShareInputValue);
+	document.getElementById('getPDFFile').addEventListener("click", getPDFFile);
 	document.addEventListener('keydown',function(e){if(e.which==17) isCtrl=true;if(e.which==89 && isCtrl ==true) alert('zz');});
 	for(let index = 0 ; index < document.getElementsByClassName('inner_chart_words').length;index++) {document.getElementsByClassName('inner_chart_words')[index].addEventListener('click',changeChart);};
 	for(let i = 0 ; i<document.querySelectorAll('.inner_title').length;i++) {
 		document.getElementsByClassName('inner_title')[i].addEventListener('click',refreshInfo);
 	}
+	
 }
 function refreshInfo(e){
 	switch(e.target.innerText) {
@@ -101,60 +104,29 @@ function finPageInit() {
 	addEvent();
 //	getSendingData();
 }
-function setSessionSharesInfo() {
-	let outData ="";
-    $.ajax({
-        type: 'GET',
-        url: '/service/finance/codeAllMap', 
-        dataType: 'JSON', 
-        async: false,
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-    		outData=data;
-        },
-        error: function () {
-            alert('통신실패!!');
-        }
-    });
-    this.codeInfo = JSON.stringify(outData);
-    let objData = JSON.stringify(outData);
-    localStorage.setItem('sharesInfo' ,objData);
-}
-
-function AJAX(TYPE_,URL_,DATA_,ASYNC_,fn1 ,fn2) {
-	let inTYPE_ = TYPE_;
-	let inURL_ = URL_;
-	let inDATA_ = DATA_;
-	let inASYNC_ = ASYNC_;
-	if(inTYPE_==null || inTYPE_ ==undefined) {
-		TYPE_="GET"
-	}
-	if(inURL_==null || inURL_==undefined) {
-		inURL_ = "error/404"
-	}
-	if(inDATA_==null || inDATA_==undefined) {
-		inDATA_ = null;
-	}
-	if(inASYNC_==null || inASYNC_==undefined) {
-		inASYNC_ = false;
-	}
-	$.ajax({
-        type: inTYPE_,
-        url: inURL_,
-        data : inDATA_,
-        dataType: 'JSON', 
-        async: inASYNC_,
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-			if(fn1!=null||fn1!=undefined) {
-				fn1(data)
-			}
-        },
-        error: function () {
-            alert('통신실패!!');
-        }
-    });
-	if(fn2!=null||fn2!=undefined) {
-		infn2
-	}
+//pdf 파일 만드는 버튼 이벤튼
+function getPDFFile() {
+	html2canvas($('#ContentsSectionMain')[0]).then(function(canvas) { //저장 영역 div id
+	    // 캔버스를 이미지로 변환
+	    let imgData = canvas.toDataURL('image/png');
+	    let imgWidth = 200; // 이미지 가로 길이(mm) / A4 기준 210mm
+	    let pageHeight = imgWidth * 1.414;  // 출력 페이지 세로 길이 계산 A4 기준
+	    let imgHeight = canvas.height * imgWidth / canvas.width;
+	    let heightLeft = imgHeight;
+	    let margin = 10; // 출력 페이지 여백설정
+	    let doc = new jsPDF('p', 'mm');
+	    let position = 0;
+	    // 첫 페이지 출력
+	    doc.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
+	    heightLeft -= pageHeight;
+	    // 한 페이지 이상일 경우 루프 돌면서 출력
+	    while (heightLeft >= 20) {
+	        position = heightLeft - imgHeight;
+	        doc.addPage();
+	        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+	        heightLeft -= pageHeight;
+	    }
+	    // 파일 저장
+	    doc.save('file-name.pdf');
+	});
 }
