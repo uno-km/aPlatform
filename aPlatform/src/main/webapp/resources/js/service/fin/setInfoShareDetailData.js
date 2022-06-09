@@ -1,3 +1,5 @@
+;
+var curSearchShareName = "";
 function setInfoShareDetail(data) {
 	setInfoShareDetailFrame();
 	setInfoShareDetailData(data);
@@ -162,6 +164,7 @@ function setInfoShareToday() {
 	if(shareDetailInfo.today[1]=='하락') curStts='down';
 	document.getElementById('detailChart').className = `info_detail_chart ${curStts}`;
 	document.getElementById('detailToday').innerHTML = `
+			<div class='info_detail_today_contents ${curStts}' id='shareName'>${curSearchShareName}</div>
 			<div class='info_detail_today_contents ${curStts}' id='todayCost'>${shareDetailInfo.today[0]}원</div>
 			<div class='info_detail_today_contents ${curStts}' id='todayGapCash'>+${shareDetailInfo.today[2]}원</div>
 			<div class='info_detail_today_contents ${curStts}' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
@@ -238,14 +241,15 @@ function getShareInfoDTL(code) {
         async: false,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-    	shareDetailInfo = data;
-		setInfoShareDetail(data.statement);
-		let shareName = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
-		history.pushState({'name':shareName,'code':code},'종목상세보기','main');
-		window.scrollTo(0,0);
-		localStorage.setItem('BeforeScroll',window.scrollY);
-		document.getElementById('searchShareInput').value=shareName;
-    },
+	    	shareDetailInfo = data;
+			let shareName = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
+			curSearchShareName = shareName;
+			setInfoShareDetail(data.statement);
+			history.pushState({'name':shareName,'code':code},'종목상세보기','main');
+			window.scrollTo(0,0);
+			localStorage.setItem('BeforeScroll',window.scrollY);
+			document.getElementById('searchShareInput').value=shareName;
+	    },
         error: function () {
             alert('통신실패!!');
         }

@@ -71,6 +71,12 @@ function setPOPupOption(inUrl, inName, inSetSizeOption, inSetWebOption){
     window.open(url, name, option);
 }
 function addUserInterestStocks() {
-	let searchVal = document.getElementById('searchShareInput').value;
-	alert(searchVal);
+	if(curSearchShareName.length>0||curSearchShareName!="") {
+		let sharesInfo = JSON.parse(localStorage.sharesInfo);
+		let searchData = sharesInfo[curSearchShareName];
+		if(searchData == undefined || searchData == null) {
+			
+		}
+		alert(searchData);
+	}
 }
