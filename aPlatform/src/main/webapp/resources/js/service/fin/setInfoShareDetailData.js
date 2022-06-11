@@ -10,9 +10,8 @@ function setInfoShareDetail(data) {
 	setInfoShareDetailSameList();
 	setInfoShareToday();
 	setInfoShareAreaChart();
-	for(let i = 0 ; i < document.getElementsByClassName('info_detail_chart_words').length;i++) {
+	for(let i = 0 ; i < document.getElementsByClassName('info_detail_chart_words').length;i++) 
 		document.getElementsByClassName('info_detail_chart_words')[i].addEventListener('click',setInfoShareAreaChart);
-	};
 }
 function setInfoShareDetailFrame() {
 	document.getElementById('ContentsSectionMain').innerHTML = `

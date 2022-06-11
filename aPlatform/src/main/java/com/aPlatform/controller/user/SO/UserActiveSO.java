@@ -38,12 +38,4 @@ public class UserActiveSO
 	{
 		return loginBOC.signinUser(userinfoVO);
 	}
-	// @ResponseBody
-	// @RequestMapping(method = RequestMethod.POST, value = "/signin")
-	// public ResponseEntity<UserinfoOutVO> signinUser(@RequestBody UserinfoVO userinfoVO)
-	// {
-	// UserinfoOutVO outVO = new UserinfoOutVO();
-	// outVO = loginBOC.signinUser(userinfoVO);
-	// return outVO != null ? new ResponseEntity<>(outVO, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-	// }
 }

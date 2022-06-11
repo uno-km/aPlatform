@@ -13,18 +13,14 @@ import org.springframework.stereotype.Service;
 
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
 
-@SuppressWarnings("resource")
 @Service
+@SuppressWarnings("resource")
 public class ExcelData
 {
-	// public List<FinanceVO> callExcel(final MultipartFile uploadFile) throws Exception
 	public List<FinanceVO> callExcel(File file) throws Exception
 	{
-		// String filename = "C:\\Users\\zhfld\\git\\aPlatform\\aPlatform\\src\\main\\java\\com\\data_4008_20220511.xlsx"; // 파일명 설정
 		List<FinanceVO> outList = new ArrayList<FinanceVO>();
-		// FileInputStream file = new FileInputStream(filename);
 		XSSFWorkbook workbook = new XSSFWorkbook(file);
-		// HSSFWorkbook workbook = new HSSFWorkbook(file);
 		NumberFormat f = NumberFormat.getInstance();
 		f.setGroupingUsed(false); // 지수로 안나오게 설정
 		// 시트 갯수

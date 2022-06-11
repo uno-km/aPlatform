@@ -89,10 +89,12 @@ function signUp(){
         async : true,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {  
-            if(data){
+            if(data)
+            {
                 alert("회원가입에 성공했습니다.");
             }
-            else{
+            else
+            {
                 alert("실패..");
             }
         },
