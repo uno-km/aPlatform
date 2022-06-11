@@ -13,16 +13,22 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import com.aPlatform.controller.common.model.CommonOutVO;
+import com.aPlatform.controller.common.model.ResultDTO;
 import com.aPlatform.mappers.OperEmailMapper;
 @Service
 public class CheckEmailBO
 {
 	@Autowired
 	OperEmailMapper operEmailMapper;
-	public String gmailSend(Map<String, String> inMap)
+	public CommonOutVO gmailSend(Map<String, String> inMap)
 	{
+		CommonOutVO commonoutVO = new CommonOutVO();
+		ResultDTO result = new ResultDTO();
+		commonoutVO.setResultDTO(result);
 		Map<String, String> resMap = operEmailMapper.getOperationMail(inMap);
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -45,17 +51,21 @@ public class CheckEmailBO
 			message.setSubject(resMap.get("MAIL_TITLE")); // 메일 제목을 입력
 			message.setText(resMap.get("MAIL_TXT") + " \n " + random); // 메일 내용을 입력
 			Transport.send(message); //// 전송
-			return Integer.toString(random);
+			result.setCode("200");
+			commonoutVO.setReturnResultDTO(random);
 		}
 		catch (AddressException e)
 		{
-			e.printStackTrace();
-			return "AE";
+			commonoutVO.setError(e.getMessage());
+			result.setMessage("알수 없는 오류가 발생했습니다. 관리자에게 문의하세요");
+			result.setCode("404");
 		}
 		catch (MessagingException e)
 		{
-			e.printStackTrace();
-			return "ME";
+			commonoutVO.setError(e.getMessage());
+			result.setMessage("알수 없는 오류가 발생했습니다. 관리자에게 문의하세요");
+			result.setCode("400");
 		}
+		return commonoutVO;
 	}
 }
