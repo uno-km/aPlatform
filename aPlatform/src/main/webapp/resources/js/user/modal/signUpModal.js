@@ -89,7 +89,7 @@ function signUp(){
         async : true,
         contentType: 'application/json; charset=utf-8',
         success: function (res) {
-    		console.log(resultDTO.code);
+    		console.log(res.resultDTO.code);
     		alert(res.resultDTO.message);
     	},
         error: function () {

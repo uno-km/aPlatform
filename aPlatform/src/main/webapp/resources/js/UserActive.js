@@ -5,24 +5,17 @@ var data ='';
 
 window.addEventListener('load', function() {
     callNavBar();
-    if(!(localStorage.user_auth==undefined||localStorage.user_auth==null)){
-        setLoginedRemoteCtrl();
-    }else{
-        setRemoteCtrl();
-    }
+    if(!(localStorage.user_auth==undefined||localStorage.user_auth==null)) setLoginedRemoteCtrl();
+    else setRemoteCtrl();
 });
 
 function enterkey(stts) {
-    if (window.event.keyCode == 13) {
-        if(stts=="login")signin();
-    }
+    if (window.event.keyCode == 13) if(stts=="login") signin();
 }
 function signin() {
-    const user_id = document.getElementById("sideRemoteId").value;
-    const user_password = document.getElementById("sideRemotePW").value;
     const maindataLoadInVO = {
-        "user_id": user_id,
-        "user_password": user_password
+        "user_id": document.getElementById("sideRemoteId").value
+        ,"user_password": document.getElementById("sideRemotePW").value
     };
     $.ajax({
         type: 'POST', //post 방식으로 전송
@@ -51,9 +44,7 @@ function signin() {
     });
 }
 function setSession(data){
-	if(!(localStorage.user_auth==undefined||localStorage.user_auth==null)) {
-		removeUserSignedSession();
-	}
+	if(!(localStorage.user_auth==undefined||localStorage.user_auth==null)) removeUserSignedSession();
 	setUserSignedSession(data);
 }
 function logout () {
