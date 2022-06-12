@@ -139,7 +139,20 @@ function sendEmailForCheckValidation(user_email) {
         dataType: 'JSON',
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-            setRandom(data);
+    		switch(data.resultDTO.code) {
+    			case "200" :
+
+    	            setRandom(data);
+    				break;
+    			case "400" :
+    				console.log(data.error);
+    				alert(data.resultDTO.message);
+    				break;
+    			case "404" :
+    				console.log(data.error);
+    				alert(data.resultDTO.message);
+    				break;
+    		}
         },
         error: function () {
             alert('통신실패!!');
@@ -147,5 +160,5 @@ function sendEmailForCheckValidation(user_email) {
     });
 }
 function setRandom(data){
-    this.getRandom = data;
+    this.getRandom = data.returnResultDTO;
 }
