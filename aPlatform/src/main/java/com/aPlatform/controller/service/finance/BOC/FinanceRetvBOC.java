@@ -32,4 +32,10 @@ public class FinanceRetvBOC
 	{
 		return this.fileUploadBO.uploadExcelData(file);
 	}
+	public CommonOutVO insertUserInterestShare(final Map<String, Object> param)
+	{
+		CommonOutVO commonOutVO = new CommonOutVO();
+		financeRetvBO.insertUserInterestShare(commonOutVO, param);
+		return commonOutVO;
+	}
 }

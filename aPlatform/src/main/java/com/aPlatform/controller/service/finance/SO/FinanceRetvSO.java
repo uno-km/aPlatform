@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.aPlatform.controller.common.model.CommonOutVO;
 import com.aPlatform.controller.service.finance.BOC.FinanceRetvBOC;
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 
@@ -47,5 +49,11 @@ public class FinanceRetvSO
 	{
 		System.out.println("Client required " + dataform + " data...");
 		return financeSearchBOC.getInfo(financeDataMatrix, dataform, map);
+	}
+	@PostMapping(value = "/addUserInterest")
+	private CommonOutVO insertUserInterestShare(@RequestParam Map<String, Object> param)
+	{
+		System.out.println("Client required insertUserInterestShare data...");
+		return financeRetvBOC.insertUserInterestShare(param);
 	}
 }
