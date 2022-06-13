@@ -48,8 +48,7 @@ public class FinanceRetvBO
 			{
 				/* 해당 에러 발생히 웹단으로 500 에러메세지 응답 */
 				commonoutVO.setError(e.getMessage());
-				result.setCode("500");
-				result.setMessage("알수없는 오류가 발생했습니다. 관리자에게 문의하세요");
+				result.setCodeMessage("500", "알수없는 오류가 발생했습니다. 관리자에게 문의하세요.");
 				return commonoutVO;
 			}
 			List<FinanceVO> innerList = this.excelData.callExcel(FileUnoUtils.multipartFileToFile(file));
@@ -57,16 +56,14 @@ public class FinanceRetvBO
 				/* 종목을 하나씩 삽입한다. */
 				this.financeDataMapper.insertSharesInfo(finVO);
 			/* 성공하면 200 응답. */
-			result.setCode("200");
-			result.setMessage("새로운 주식종목등록이 완료되었습니다.");
+			result.setCodeMessage("200", "새로운 주식종목등록이 완료되었습니다.");
 			return commonoutVO;
 		}
 		catch (Exception e)
 		{
-			/* 중간에러발생시 400 응답. */
+			/* 중간에러발생시 500 응답. */
 			commonoutVO.setError(e.getMessage());
-			result.setCode("500");
-			result.setMessage("알수없는 오류가 발생했습니다. 관리자에게 문의하세요.");
+			result.setCodeMessage("500", "알수없는 오류가 발생했습니다. 관리자에게 문의하세요.");
 			return commonoutVO;
 		}
 	}
