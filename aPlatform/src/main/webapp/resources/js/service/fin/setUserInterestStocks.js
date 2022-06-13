@@ -81,7 +81,7 @@ function addUserInterestStocks() {
 				userId : localStorage.user_id
 				, shareId : searchData
 		};
-		AJAX("POST","/service/finance/addUserInterest",sendingVO, true, ,null);
+		AJAX("POST","/service/finance/addUserInterest",sendingVO, true,null ,null);
 		console.log(sendingVO);
 	}
 }
