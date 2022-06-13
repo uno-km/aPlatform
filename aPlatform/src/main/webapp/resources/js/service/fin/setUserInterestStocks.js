@@ -81,7 +81,16 @@ function addUserInterestStocks() {
 				userId : localStorage.user_id
 				, shareId : searchData
 		};
-		AJAX("POST","/service/finance/addUserInterest",sendingVO, true,null ,null);
-		console.log(sendingVO);
+		$.ajax({
+            type:'POST',
+            url: "/service/finance/addUserInterest",
+            data: JSON.stringify(sendingVO),
+            dataType: 'JSON', 
+            async : true,
+            contentType: 'application/json; charset=utf-8',
+            success:  function (data) {console.log(data);},
+            error: function () {alert('통신실패!!');}
+        });
+		
 	}
 }
