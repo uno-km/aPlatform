@@ -49,6 +49,6 @@
 	<delete id="deleteAllDataInShareTable">
 		DELETE FROM SHARES_FIN_INFO
 	</delete>
-	<insert>
-	</insert>
+<!-- 	<insert> -->
+<!-- 	</insert> -->
 </mapper>

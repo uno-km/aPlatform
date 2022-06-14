@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.aPlatform.controller.common.model.CommonOutVO;
 import com.aPlatform.controller.file.SO.FileUploadBO;
 import com.aPlatform.controller.service.finance.BO.FinanceRetvBO;
+import com.aPlatform.controller.service.finance.VO.FinanceVO;
 @Service
 public class FinanceRetvBOC
 {
@@ -32,10 +33,11 @@ public class FinanceRetvBOC
 	{
 		return this.fileUploadBO.uploadExcelData(file);
 	}
-	public CommonOutVO insertUserInterestShare(final Map<String, Object> param)
+	public CommonOutVO insertUserInterestShare(final Map<String, String> param)
 	{
 		CommonOutVO commonOutVO = new CommonOutVO();
-		financeRetvBO.insertUserInterestShare(commonOutVO, param);
+		FinanceVO finVO = new FinanceVO(param);
+		financeRetvBO.insertUserInterestShare(commonOutVO, finVO);
 		return commonOutVO;
 	}
 }

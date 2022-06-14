@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -54,7 +53,7 @@ public class FinanceRetvSO
 		return financeSearchBOC.getInfo(financeDataMatrix, dataform, map);
 	}
 	@PostMapping(value = "/addUserInterest", produces = {MediaType.APPLICATION_JSON_VALUE })
-	private CommonOutVO insertUserInterestShare(@RequestBody Map<String, Object> param)
+	private CommonOutVO insertUserInterestShare(@RequestBody Map<String, String> param)
 	{
 		System.out.println("Client required insertUserInterestShare data...");
 		return financeRetvBOC.insertUserInterestShare(param);

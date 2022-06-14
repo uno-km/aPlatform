@@ -79,7 +79,7 @@ function addUserInterestStocks() {
 		}
 		let sendingVO = {
 				userId : localStorage.user_id
-				, shareId : searchData
+				, finCode : searchData
 		};
 		$.ajax({
             type:'POST',
