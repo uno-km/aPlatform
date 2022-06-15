@@ -63,8 +63,8 @@
 			DELETE FROM SHARES_FIN_INFO
 		]]>
 	</delete>
-	<insert id="insertUserInterest"
-		parameterType="com.aPlatform.controller.service.finance.VO.FinanceVO">
+	<!-- <insert id="insertUserInterest" parameterType="com.aPlatform.controller.service.finance.VO.FinanceVO"> -->
+	<insert id="insertUserInterest" parameterType="map">
 		 <![CDATA[
 		 	INSERT INTO
 		 		SHARES_USER_INTEREST_DTL

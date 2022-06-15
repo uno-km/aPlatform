@@ -1,6 +1,7 @@
 package com.aPlatform.mappers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -20,5 +21,6 @@ public interface FinanceDataMapper
 	/* 기존 전종목 모두 삭제 */
 	abstract public void deleteAllDataInShareTable();
 	/* 기존 전종목 모두 삭제 */
-	abstract public void insertUserInterest(final FinanceVO inVO);
+	// abstract public void insertUserInterest(final FinanceVO inVO);
+	abstract public void insertUserInterest(final Map<String, String> param);
 }

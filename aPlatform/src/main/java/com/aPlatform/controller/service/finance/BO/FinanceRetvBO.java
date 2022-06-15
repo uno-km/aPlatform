@@ -68,14 +68,14 @@ public class FinanceRetvBO
 		}
 	}
 
-	public void insertUserInterestShare(CommonOutVO commonOutVO, FinanceVO financeVO)
+	// public void insertUserInterestShare(CommonOutVO commonOutVO, FinanceVO financeVO)
+	public void insertUserInterestShare(CommonOutVO commonOutVO, final Map<String, String> param)
 	{
 		ResultDTO result = new ResultDTO();
 		try
 		{
-			this.financeDataMapper.insertUserInterest(financeVO);
+			this.financeDataMapper.insertUserInterest(param);
 			result.setCodeMessage("200", "관심종목 저장이 완료되었습니다.");
-			commonOutVO.setReturnResultDTO(financeVO);
 		}
 		catch (Exception e)
 		{
