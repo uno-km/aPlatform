@@ -73,6 +73,7 @@ public class FinanceRetvBO
 		ResultDTO result = new ResultDTO();
 		try
 		{
+			this.financeDataMapper.insertUserInterest(financeVO);
 			result.setCodeMessage("200", "관심종목 저장이 완료되었습니다.");
 			commonOutVO.setReturnResultDTO(financeVO);
 		}
