@@ -80,6 +80,9 @@ function addUserInterestStocks() {
 		let sendingVO = {
 				userId : localStorage.user_id
 				, finCode : searchData
+				, finName : curSearchShareName
+				, excange : shareDetailInfo.sichongList[1]
+				, interestYn : 'Y'
 		};
 		$.ajax({
             type:'POST',

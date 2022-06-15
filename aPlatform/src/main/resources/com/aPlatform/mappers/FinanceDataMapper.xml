@@ -21,8 +21,7 @@
 				COM_CD_BAS
 			WHERE
 				GROUP_ID 		= '20'
-				AND
-				SERVICE_ID 		= 'FIN'
+				AND SERVICE_ID 		= 'FIN'
 				AND SUB_CONTENT = 'url'
 		   ]]>
 	</select>
@@ -33,11 +32,10 @@
 				SUB_CUL_1 		AS "finType"
 				, SUB_CUL_2 	AS "finPharse"
 			FROM
-				M_CD_BAS
+				COM_CD_BAS
 			WHERE
-				OUP_ID = '20'
-			AND
-				SERVICE_ID = 'FIN'
+				GROUP_ID = '20'
+				AND SERVICE_ID = 'FIN'
 				AND SUB_CONTENT = 'pharse'
 		]]>
 	</select>

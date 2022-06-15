@@ -36,7 +36,12 @@ public class FinanceRetvBOC
 	public CommonOutVO insertUserInterestShare(final Map<String, String> param)
 	{
 		CommonOutVO commonOutVO = new CommonOutVO();
-		FinanceVO finVO = new FinanceVO(param);
+		FinanceVO finVO = new FinanceVO();
+		finVO.setExchange(param.get("exchange"));
+		finVO.setFinCode(param.get("finCode"));
+		finVO.setFinName(param.get("finName"));
+		finVO.setUserId(param.get("userId"));
+		finVO.setInterestYn(param.get("interestYn"));
 		financeRetvBO.insertUserInterestShare(commonOutVO, finVO);
 		return commonOutVO;
 	}
