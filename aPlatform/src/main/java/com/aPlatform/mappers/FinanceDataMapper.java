@@ -16,7 +16,9 @@ public interface FinanceDataMapper
 	/* html을 파싱할 각 인자들을 가져온다 */
 	abstract public List<FinanceVO> getMappingPharse();
 	/* 종목최진화 / 단건저장 */
-	abstract public void insertSharesInfo(FinanceVO inVO);
+	abstract public void insertSharesInfo(final FinanceVO inVO);
 	/* 기존 전종목 모두 삭제 */
 	abstract public void deleteAllDataInShareTable();
+	/* 기존 전종목 모두 삭제 */
+	abstract public void insertUserInterest(final FinanceVO inVO);
 }
