@@ -91,7 +91,9 @@ function addUserInterestStocks() {
             dataType: 'JSON', 
             async : true,
             contentType: 'application/json; charset=utf-8',
-            success:  function (data) {console.log(data);},
+            success:  function (data) {
+			document.location.reload();
+		},
             error: function () {alert('통신실패!!');}
         });
 		
