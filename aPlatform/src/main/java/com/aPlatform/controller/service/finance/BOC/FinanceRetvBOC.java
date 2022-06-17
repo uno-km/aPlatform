@@ -42,8 +42,12 @@ public class FinanceRetvBOC
 		finVO.setFinName(param.get("finName"));
 		finVO.setUserId(param.get("userId"));
 		finVO.setInterestYn(param.get("interestYn"));
-//		financeRetvBO.insertUserInterestShare(commonOutVO, finVO);
+		// financeRetvBO.insertUserInterestShare(commonOutVO, finVO);
 		financeRetvBO.insertUserInterestShare(commonOutVO, param);
 		return commonOutVO;
+	}
+	public Map<String, String> getUserInterestShares()
+	{
+		
 	}
 }

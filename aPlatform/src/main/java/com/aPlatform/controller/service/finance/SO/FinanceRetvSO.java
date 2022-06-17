@@ -34,6 +34,12 @@ public class FinanceRetvSO
 	{
 		return financeRetvBOC.reternMainPage();
 	}
+	@PostMapping(value = "/main")
+	private Map<String, String> getUserInterestShares()
+	{
+		
+		return null;
+	}
 	@GetMapping(value = "/codeAllMap")
 	private Map<String, String> getCodeMap()
 	{
