@@ -15,9 +15,9 @@ import com.aPlatform.controller.service.finance.VO.FinanceVO;
 public class FinanceRetvBOC
 {
 	@Autowired
-	FinanceRetvBO financeRetvBO;
+	private FinanceRetvBO financeRetvBO;
 	@Autowired
-	FileUploadBO fileUploadBO;
+	private FileUploadBO fileUploadBO;
 
 	public ModelAndView reternMainPage()
 	{
@@ -48,6 +48,6 @@ public class FinanceRetvBOC
 	}
 	public Map<String, String> getUserInterestShares()
 	{
-		
+		return this.financeRetvBO.getUserInterestShares();
 	}
 }

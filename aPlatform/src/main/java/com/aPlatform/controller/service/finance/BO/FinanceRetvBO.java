@@ -19,9 +19,9 @@ import com.aPlatform.utils.FileUnoUtils;
 public class FinanceRetvBO
 {
 	@Autowired
-	FinanceDataMapper financeDataMapper;
+	private FinanceDataMapper financeDataMapper;
 	@Autowired
-	ExcelData excelData;
+	private ExcelData excelData;
 
 	public Map<String, String> getCodeMap()
 	{
