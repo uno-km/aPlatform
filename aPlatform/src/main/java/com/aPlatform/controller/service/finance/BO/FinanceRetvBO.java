@@ -35,7 +35,7 @@ public class FinanceRetvBO
 	public synchronized CommonOutVO excelInsert(final MultipartFile file)
 	{
 		CommonOutVO commonoutVO = new CommonOutVO();
-		ResultDTO result = new ResultDTO();
+		ResultDTO result = new ResultDTO();  
 		commonoutVO.setResultDTO(result);
 		try
 		{
