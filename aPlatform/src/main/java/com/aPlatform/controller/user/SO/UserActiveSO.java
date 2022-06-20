@@ -1,5 +1,6 @@
 package com.aPlatform.controller.user.SO;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,11 @@ public class UserActiveSO
 	public CommonOutVO signinUser(@RequestBody UserinfoVO userinfoVO, HttpServletResponse response)
 	{
 		return loginBOC.signinUser(userinfoVO);
+	}
+	@ResponseBody
+	@RequestMapping(method = RequestMethod.POST, value = "/logout")
+	public CommonOutVO logout(HttpServletResponse response, HttpServletRequest request)
+	{
+		return null;
 	}
 }
