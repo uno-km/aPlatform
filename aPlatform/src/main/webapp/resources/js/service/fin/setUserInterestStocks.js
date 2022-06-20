@@ -1,4 +1,11 @@
 ;
+function setInterest() {
+	setInterestStockBnt();
+	setInterestList();
+}
+function setInterestList(){
+	
+}
 function setInterestStockBnt(){
 	const auth = localStorage.user_auth;
 	let innerStruck = document.getElementById('getStockItems');
@@ -74,9 +81,7 @@ function addUserInterestStocks() {
 	if(curSearchShareName.length>0||curSearchShareName!="") {
 		let sharesInfo = JSON.parse(localStorage.sharesInfo);
 		let searchData = sharesInfo[curSearchShareName];
-		if(searchData == undefined || searchData == null) {
-			
-		}
+		if(searchData == undefined || searchData == null) {}
 		let sendingVO = {
 				userId : localStorage.user_id
 				, finCode : searchData
@@ -96,6 +101,5 @@ function addUserInterestStocks() {
 		},
             error: function () {alert('통신실패!!');}
         });
-		
 	}
 }

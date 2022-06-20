@@ -1,5 +1,7 @@
 package com.aPlatform.controller.user.SO;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,7 +36,7 @@ public class UserActiveSO
 	}
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.POST, value = "/signin")
-	public CommonOutVO signinUser(@RequestBody UserinfoVO userinfoVO)
+	public CommonOutVO signinUser(@RequestBody UserinfoVO userinfoVO, HttpServletResponse response)
 	{
 		return loginBOC.signinUser(userinfoVO);
 	}
