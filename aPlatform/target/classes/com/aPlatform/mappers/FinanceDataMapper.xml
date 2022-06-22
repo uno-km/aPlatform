@@ -39,6 +39,21 @@
 				AND SUB_CONTENT = 'pharse'
 		]]>
 	</select>
+	<select parameterType="string"
+	resultType="com.aPlatform.controller.service.finance.VO.FinanceVO"
+		id="getUserInterest">
+		<![CDATA[
+			SELECT 
+				FIN_CODE
+				,FIN_NAME
+				,FIN_EXCHANGE 
+			FROM  
+				SHARES_USER_INTEREST_DTL 
+			WHERE 
+				SYS_TGT_USERID	=	#{userId}
+				AND INTEREST_YN	=	'Y'
+		]]>
+	</select>
 	<insert id="insertSharesInfo"
 		parameterType="com.aPlatform.controller.service.finance.VO.FinanceVO">
 		<![CDATA[
@@ -52,15 +67,16 @@
 			VALUES
 				(
 				#{finCode}
-				, #{finName}
-				,
-				#{exchange}
+				,#{finName}
+				,#{exchange}
 				)
 		   ]]>
 	</insert>
 	<delete id="deleteAllDataInShareTable">
 		<![CDATA[
-			DELETE FROM SHARES_FIN_INFO
+			DELETE 
+			FROM 
+				SHARES_FIN_INFO
 		]]>
 	</delete>
 	<!-- <insert id="insertUserInterest" parameterType="com.aPlatform.controller.service.finance.VO.FinanceVO"> -->
@@ -71,13 +87,13 @@
 		 		(
 		 		FIN_CODE
 				, FIN_NAME
-				, EXCHANGE
-				, TGT_USER_ID
-				, CREAT_DT
-				, CHAG_DT
+				, FIN_EXCHANGE
+				, SYS_TGT_USERID
+				, SYS_CREAT_DT
+				, SYS_CHAG_DT
 				, INTEREST_YN
 				, CTG_CUL_NM
-				, COLUMN9
+				, FIN_REGI_USERID
 				, COLUMN10
 				, COLUMN11
 				, COLUMN12 
@@ -91,8 +107,8 @@
 		 		, SYSDATE
 		 		, SYSDATE
 		 		, #{interestYn}
-		 		, 'def'
-		 		, null
+		 		, #{ctgCulNm}
+		 		, #{userId}
 		 		, null
 		 		, null
 		 		, null

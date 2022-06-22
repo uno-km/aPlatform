@@ -4,7 +4,6 @@ import lombok.Data;
 @Data
 public class FinanceVO
 {
-	private String[] finArr = {"finCode" , "finName" , "exchange" , "finType" , "finUrl" , "finPharse" , "userId" , "interestYn" };
 	/* 종목 분류 */
 	private String finCode;// 6자리 종목코드
 	private String finName;// 종목명
@@ -16,4 +15,5 @@ public class FinanceVO
 	/* 사용자 옵션 */
 	private String userId;
 	private String interestYn;
+	private String ctgCulNm;
 }
