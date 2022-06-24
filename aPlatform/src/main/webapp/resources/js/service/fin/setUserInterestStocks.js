@@ -3,8 +3,22 @@ function setInterest() {
 	setInterestStockBnt();
 	setInterestList();
 }
-function setInterestList(){
-	
+function getInterestList(){
+	if(localStorage.user_id!=undefined || localStorage.user_id.length!=0) {
+		const userId = localStorage.user_id;
+		$.ajax({
+			type:'POST',
+			url: "/service/finance/getUserInterest",
+			data: userId,
+			dataType: 'JSON', 
+			async : true,
+			contentType: 'application/json; charset=utf-8',
+			success:  function (data) {
+			document.location.reload();
+		},
+			error: function () {alert('통신실패!!');}
+		});
+	}
 }
 function setInterestStockBnt(){
 	const auth = localStorage.user_auth;

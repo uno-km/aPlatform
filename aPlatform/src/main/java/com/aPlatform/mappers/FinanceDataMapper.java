@@ -23,5 +23,6 @@ public interface FinanceDataMapper
 	/* 기존 전종목 모두 삭제 */
 	// abstract public void insertUserInterest(final FinanceVO inVO);
 	abstract public void insertUserInterest(final Map<String, String> param);
+	
 	abstract public List<FinanceVO> getUserInterest(final String userId);
 }

@@ -63,4 +63,9 @@ public class FinanceRetvSO
 		System.out.println("Client required insertUserInterestShare data...");
 		return this.financeRetvBOC.insertUserInterestShare(param);
 	}
+	@PostMapping(value = "/getUserInterest")
+	private CommonOutVO getUserInterestShare(@RequestBody Map<String, String> param)
+	{
+		return this.financeRetvBOC.insertUserInterestShare(param);
+	}
 }
