@@ -1,7 +1,6 @@
 package com.aPlatform.controller.service.finance.VO;
 
 import lombok.Data;
-
 @Data
 public class FinanceVO
 {
@@ -13,4 +12,8 @@ public class FinanceVO
 	private String finType;
 	private String finUrl;
 	private String finPharse;
+	/* 사용자 옵션 */
+	private String userId;
+	private String interestYn;
+	private String ctgCulNm;
 }

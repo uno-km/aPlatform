@@ -1,4 +1,25 @@
 ;
+function setInterest() {
+	setInterestStockBnt();
+	setInterestList();
+}
+function getInterestList(){
+	if(localStorage.user_id!=undefined || localStorage.user_id.length!=0) {
+		const userId = localStorage.user_id;
+		$.ajax({
+			type:'POST',
+			url: "/service/finance/getUserInterest",
+			data: userId,
+			dataType: 'JSON', 
+			async : true,
+			contentType: 'application/json; charset=utf-8',
+			success:  function (data) {
+			document.location.reload();
+		},
+			error: function () {alert('통신실패!!');}
+		});
+	}
+}
 function setInterestStockBnt(){
 	const auth = localStorage.user_auth;
 	let innerStruck = document.getElementById('getStockItems');
@@ -71,5 +92,28 @@ function setPOPupOption(inUrl, inName, inSetSizeOption, inSetWebOption){
     window.open(url, name, option);
 }
 function addUserInterestStocks() {
-	alert('');
+	if(curSearchShareName.length>0||curSearchShareName!="") {
+		let sharesInfo = JSON.parse(localStorage.sharesInfo);
+		let searchData = sharesInfo[curSearchShareName];
+		if(searchData == undefined || searchData == null) {}
+		let sendingVO = {
+				userId : localStorage.user_id
+				, finCode : searchData
+				, finName : curSearchShareName
+				, excange : shareDetailInfo.sichongList[1]
+				, interestYn : 'Y'
+		};
+		$.ajax({
+            type:'POST',
+            url: "/service/finance/addUserInterest",
+            data: JSON.stringify(sendingVO),
+            dataType: 'JSON', 
+            async : true,
+            contentType: 'application/json; charset=utf-8',
+            success:  function (data) {
+			document.location.reload();
+		},
+            error: function () {alert('통신실패!!');}
+        });
+	}
 }

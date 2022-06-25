@@ -6,13 +6,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aPlatform.controller.common.model.CommonOutVO;
 import com.aPlatform.controller.user.BO.CheckEmailBO;
 @Service
 public class OperMailBOC
 {
 	@Autowired
 	CheckEmailBO checkEmailBO;
-	public String sendMailSetting(Map<String, Object> param)
+	public CommonOutVO sendMailSetting(Map<String, Object> param)
 	{
 		Map<String, String> inMap = new HashMap<String, String>();
 		inMap.put("mail_sbst", (String) param.get("mail_sbst"));

@@ -88,14 +88,10 @@ function signUp(){
         dataType: 'JSON', 
         async : true,
         contentType: 'application/json; charset=utf-8',
-        success: function (data) {  
-            if(data){
-                alert("회원가입에 성공했습니다.");
-            }
-            else{
-                alert("실패..");
-            }
-        },
+        success: function (res) {
+    		console.log(res.resultDTO.code);
+    		alert(res.resultDTO.message);
+    	},
         error: function () {
             alert('통신실패!!');
         }

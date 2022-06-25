@@ -19,33 +19,24 @@ public class LoginBO
 	@Autowired
 	UserActiveMapper userActiveMapper;
 
-	public boolean registerUser(UserinfoVO UserinfoVO)
+	public CommonOutVO registerUser(UserinfoVO UserinfoVO)
 	{
+		CommonOutVO commonoutVO = new CommonOutVO();
+		ResultDTO result = new ResultDTO();
+		commonoutVO.setResultDTO(result);
 		UserinfoOutVO tempVO = userActiveMapper.getUserInfo(UserinfoVO);
 		if(Validation.isNullCheck(tempVO))
 		{
 			userActiveMapper.signUp(UserinfoVO);
-			return true;
+			result.setCode("200");
+			result.setMessage("회원가입이 정상적으로 완료되었습니다.");
 		}
-		return false;
-	}
-
-	public boolean checkUser(UserinfoVO UserinfoVO)
-	{
-		UserinfoOutVO tempVO = userActiveMapper.getUserInfo(UserinfoVO);
-		if(Validation.isNullCheck(tempVO))
+		else
 		{
-			return false;
+			result.setCode("500");
+			result.setMessage("알 수 없는 오류가 발생했습니다. 아이디와 비밀번호를 확인해 주세요.");
 		}
-		if(!tempVO.getUser_id().equals(UserinfoVO.getUser_id()))
-		{
-			return false;
-		}
-		if(!tempVO.getUser_password().equals(UserinfoVO.getUser_password()))
-		{
-			return false;
-		}
-		return true;
+		return commonoutVO;
 	}
 
 	public CommonOutVO signinUser(UserinfoVO UserinfoVO)
@@ -84,16 +75,25 @@ public class LoginBO
 		return commonoutVO;
 	}
 
-	public boolean checkDuplId(UserinfoVO UserinfoVO)
+	public CommonOutVO checkDuplId(UserinfoVO UserinfoVO)
 	{
+		CommonOutVO commonoutVO = new CommonOutVO();
+		ResultDTO result = new ResultDTO();
+		commonoutVO.setResultDTO(result);
 		List<UserinfoVO> list = new ArrayList<UserinfoVO>();
 		list = userActiveMapper.loadAllUserInfo();
 		System.out.println(list.toString());
 		if(userActiveMapper.checkDuplicationId(UserinfoVO) == 0)
 		{
-			return true;
+			result.setCode("200");
+			result.setMessage("사용하실 수 있는 아이디입니다.");
 		}
-		return false;
+		else
+		{
+			result.setCode("500");
+			result.setMessage("사용하실 수 없는 아이디입니다.\n사유 : 중복");
+		}
+		return commonoutVO;
 	}
 
 }

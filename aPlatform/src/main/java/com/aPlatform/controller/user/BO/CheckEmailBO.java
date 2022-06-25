@@ -7,7 +7,6 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
-import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -15,21 +14,31 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aPlatform.controller.common.model.CommonOutVO;
+import com.aPlatform.controller.common.model.ResultDTO;
 import com.aPlatform.mappers.OperEmailMapper;
 @Service
 public class CheckEmailBO
 {
 	@Autowired
 	OperEmailMapper operEmailMapper;
-	public String gmailSend(Map<String, String> inMap)
+	public CommonOutVO gmailSend(Map<String, String> inMap)
 	{
+		CommonOutVO commonoutVO = new CommonOutVO();
+		ResultDTO result = new ResultDTO();
+		commonoutVO.setResultDTO(result);
 		Map<String, String> resMap = operEmailMapper.getOperationMail(inMap);
 		Properties prop = new Properties();
-		prop.put("mail.smtp.host", "smtp.gmail.com");
-		prop.put("mail.smtp.port", 465);
+		prop.put("mail.smtp.host", "smtp.naver.com");
+		prop.put("mail.smtp.port", 587);
 		prop.put("mail.smtp.auth", "true");
 		prop.put("mail.smtp.ssl.enable", "true");
-		prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+		prop.put("mail.smtp.ssl.trust", "smtp.naver.com");
+		// prop.put("mail.smtp.host", "smtp.gmail.com");
+		// prop.put("mail.smtp.port", 465);
+		// prop.put("mail.smtp.auth", "true");
+		// prop.put("mail.smtp.ssl.enable", "true");
+		// prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 		int random = (int) (Math.random() * 89999999) + 10000000;
 		Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication()
@@ -44,18 +53,24 @@ public class CheckEmailBO
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(inMap.get("user_email")));
 			message.setSubject(resMap.get("MAIL_TITLE")); // 메일 제목을 입력
 			message.setText(resMap.get("MAIL_TXT") + " \n " + random); // 메일 내용을 입력
-			Transport.send(message); //// 전송
-			return Integer.toString(random);
+			/* 22.06.12 현재 네이버, 구글 메일링이 중단됨 */
+			// Transport.send(message); //// 전송
+			result.setCode("200");
+			result.setMessage("성공적으로 메일이 보내졌습니다. 첨부된 번호를 입력해주세요");
+			commonoutVO.setReturnResultDTO(random);
 		}
 		catch (AddressException e)
 		{
-			e.printStackTrace();
-			return "AE";
+			commonoutVO.setError(e.getMessage());
+			result.setMessage("알수 없는 오류가 발생했습니다. 관리자에게 문의하세요");
+			result.setCode("404");
 		}
 		catch (MessagingException e)
 		{
-			e.printStackTrace();
-			return "ME";
+			commonoutVO.setError(e.getMessage());
+			result.setMessage("알수 없는 오류가 발생했습니다. 관리자에게 문의하세요");
+			result.setCode("400");
 		}
+		return commonoutVO;
 	}
 }

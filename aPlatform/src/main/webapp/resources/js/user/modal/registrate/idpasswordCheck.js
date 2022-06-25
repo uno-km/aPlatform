@@ -61,30 +61,33 @@ function checkDuplicataionId() {
         async : true,
         dataType : 'json',
         contentType : 'application/json; charset=utf-8',
-        success : function(data) {
-            judgeDuplicataion(data);
+        success : function(res) {
+    		judgeDuplicataion(res);
         },
         error : function() {
             alert('통신실패!!');
         }
     });
 }
-function judgeDuplicataion(data) {
+function judgeDuplicataion(res) {
     const inputtedId = document.getElementById("inputtedId");
     if (null == inputtedId.value || inputtedId.value.length == 0) {
         document.getElementById('checkDuplTest').value = 'false';
         alert('아이디를 입력해주세요.');
         inputtedId.className = 'form-control is-invalid';
     } else {
-        if (data == true) {
-            document.getElementById('checkDuplTest').value = 'true';
-            alert('사용가능한 아이디입니다.');
-            inputtedId.className = 'form-control is-valid';
-        } else {
-            document.getElementById('checkDuplTest').value = 'false';
-            alert('중복된 아이디입니다.');
-            inputtedId.className = 'form-control is-invalid';
-        }
+    	switch(res.resultDTO.code) {
+			case "200" :
+				document.getElementById('checkDuplTest').value = 'true';
+				alert(res.resultDTO.message);
+				inputtedId.className = 'form-control is-valid';
+				break;
+			case "500" :
+				document.getElementById('checkDuplTest').value = 'false';
+				alert(res.resultDTO.message);
+				inputtedId.className = 'form-control is-invalid';
+				break;
+		}
     }
 }
 function printName() {

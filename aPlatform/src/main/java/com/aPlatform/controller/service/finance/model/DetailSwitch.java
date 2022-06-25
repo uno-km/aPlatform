@@ -94,9 +94,8 @@ public class DetailSwitch implements UrlFactory
 			sichongList.add(sichong.eachText().get(3).split(" ")[2] + sichong.eachText().get(3).split(" ")[3]);
 			sichongList.add(sichong.eachText().get(3).split(" ")[5]);
 			sichongList.add(sichong.eachText().get(3).split(" ")[6]);
+			sichongList.add(sichong.eachText().get(3).split(" ")[7]);
 			sichongList.add(sichong.eachText().get(3).split(" ")[8]);
-			sichongList.add(sichong.eachText().get(3).split(" ")[10]);
-			sichongList.add(sichong.eachText().get(3).split(" ")[12]);
 		}
 		outMapList.put("sichongList", sichongList);
 		Elements forign = doc.select(".lwidth");

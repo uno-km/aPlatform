@@ -3,50 +3,116 @@
 
 <mapper namespace="com.aPlatform.mappers.FinanceDataMapper">
 	<select resultType="com.aPlatform.controller.service.finance.VO.FinanceVO" id="getAllCode">
-		SELECT 
-    		CODE 				AS "finCode"
-    		, NAME 				AS "finName"
-		FROM	 
-  		  SHARES_FIN_INFO
+		<![CDATA[
+			SELECT
+				CODE 		AS "finCode"
+				, NAME 		AS "finName"
+			FROM
+				SHARES_FIN_INFO
+		   ]]>
 	</select>
-	<select resultType="com.aPlatform.controller.service.finance.VO.FinanceVO" id="getMappingUrl">
-		SELECT 
-		    SUB_CUL_1			AS "finType"
-		    , SUB_CUL_2			AS "finUrl"
-		FROM
-		    COM_CD_BAS
-		WHERE
-		    GROUP_ID = '20'
-		    AND SERVICE_ID		= 'FIN'
-		    AND SUB_CONTENT		= 'url'
+	<select resultType="com.aPlatform.controller.service.finance.VO.FinanceVO"
+		id="getMappingUrl">
+		<![CDATA[
+			SELECT
+				SUB_CUL_1 		AS "finType"
+				, SUB_CUL_2 	AS "finUrl"
+			FROM
+				COM_CD_BAS
+			WHERE
+				GROUP_ID 		= '20'
+				AND SERVICE_ID 		= 'FIN'
+				AND SUB_CONTENT = 'url'
+		   ]]>
 	</select>
-	<select resultType="com.aPlatform.controller.service.finance.VO.FinanceVO" id="getMappingPharse">
-		SELECT 
-		    SUB_CUL_1			AS "finType"
-		    , SUB_CUL_2			AS "finPharse"
-		FROM
-		    COM_CD_BAS
-		WHERE
-		    GROUP_ID = '20'
-		    AND SERVICE_ID		= 'FIN'
-		    AND SUB_CONTENT		= 'pharse'
+	<select resultType="com.aPlatform.controller.service.finance.VO.FinanceVO"
+		id="getMappingPharse">
+		<![CDATA[
+			SELECT
+				SUB_CUL_1 		AS "finType"
+				, SUB_CUL_2 	AS "finPharse"
+			FROM
+				COM_CD_BAS
+			WHERE
+				GROUP_ID = '20'
+				AND SERVICE_ID = 'FIN'
+				AND SUB_CONTENT = 'pharse'
+		]]>
 	</select>
-	<insert id="insertSharesInfo" parameterType="com.aPlatform.controller.service.finance.VO.FinanceVO">
-		INSERT INTO
-			SHARES_FIN_INFO
-			(
+	<select parameterType="string"
+	resultType="com.aPlatform.controller.service.finance.VO.FinanceVO"
+		id="getUserInterest">
+		<![CDATA[
+			SELECT 
+				FIN_CODE
+				,FIN_NAME
+				,FIN_EXCHANGE 
+			FROM  
+				SHARES_USER_INTEREST_DTL 
+			WHERE 
+				SYS_TGT_USERID	=	#{userId}
+				AND INTEREST_YN	=	'Y'
+		]]>
+	</select>
+	<insert id="insertSharesInfo"
+		parameterType="com.aPlatform.controller.service.finance.VO.FinanceVO">
+		<![CDATA[
+			INSERT INTO
+				SHARES_FIN_INFO
+				(
 				CODE
 				, NAME
 				, EXCHANGE
-			)
+				)
 			VALUES
-			(
+				(
 				#{finCode}
-				, #{finName}
-				, #{exchange}
-			)
+				,#{finName}
+				,#{exchange}
+				)
+		   ]]>
 	</insert>
 	<delete id="deleteAllDataInShareTable">
-		DELETE FROM SHARES_FIN_INFO
+		<![CDATA[
+			DELETE 
+			FROM 
+				SHARES_FIN_INFO
+		]]>
 	</delete>
+	<!-- <insert id="insertUserInterest" parameterType="com.aPlatform.controller.service.finance.VO.FinanceVO"> -->
+	<insert id="insertUserInterest" parameterType="map">
+		 <![CDATA[
+		 	INSERT INTO
+		 		SHARES_USER_INTEREST_DTL
+		 		(
+		 		FIN_CODE
+				, FIN_NAME
+				, FIN_EXCHANGE
+				, SYS_TGT_USERID
+				, SYS_CREAT_DT
+				, SYS_CHAG_DT
+				, INTEREST_YN
+				, CTG_CUL_NM
+				, FIN_REGI_USERID
+				, COLUMN10
+				, COLUMN11
+				, COLUMN12 
+		 		)
+		 	VALUES
+		 		(
+		 		#{finCode}
+		 		, #{finName}
+		 		, #{exchange}
+		 		, #{userId}
+		 		, SYSDATE
+		 		, SYSDATE
+		 		, #{interestYn}
+		 		, #{ctgCulNm}
+		 		, #{userId}
+		 		, null
+		 		, null
+		 		, null
+		 		)
+		 ]]>
+	</insert>
 </mapper>

@@ -1,3 +1,5 @@
+;
+var curSearchShareName = "";
 function setInfoShareDetail(data) {
 	setInfoShareDetailFrame();
 	setInfoShareDetailData(data);
@@ -8,9 +10,8 @@ function setInfoShareDetail(data) {
 	setInfoShareDetailSameList();
 	setInfoShareToday();
 	setInfoShareAreaChart();
-	for(let i = 0 ; i < document.getElementsByClassName('info_detail_chart_words').length;i++) {
+	for(let i = 0 ; i < document.getElementsByClassName('info_detail_chart_words').length;i++) 
 		document.getElementsByClassName('info_detail_chart_words')[i].addEventListener('click',setInfoShareAreaChart);
-	};
 }
 function setInfoShareDetailFrame() {
 	document.getElementById('ContentsSectionMain').innerHTML = `
@@ -157,68 +158,48 @@ function setInfoShareDetailSameList() {
 }
 function setInfoShareToday() {
 	let struct_div = ``;
-	if(shareDetailInfo.today[1]=='상승') {
-		document.getElementById('detailChart').className ='info_detail_chart up';
-		document.getElementById('detailToday').innerHTML = `
-				<div class='info_detail_today_contents up' id='todayCost'>${shareDetailInfo.today[0]}원</div>
-				<div class='info_detail_today_contents up' id='todayGapCash'>+${shareDetailInfo.today[2]}원</div>
-				<div class='info_detail_today_contents up' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
-				`;
-		for(let i = 0 ; i < document.getElementsByClassName('info_detail_inner').length ; i++) {
-			document.getElementsByClassName('info_detail_inner')[i].className = 'info_detail_inner up';
-		}
-	}else if(shareDetailInfo.today[1]=='하락') {
-		document.getElementById('detailChart').className ='info_detail_chart down';
-		document.getElementById('detailToday').innerHTML = `
-				<div class='info_detail_today_contents down' id='todayCost'>${shareDetailInfo.today[0]}</div>
-				<div class='info_detail_today_contents down' id='todayGapCash'>-${shareDetailInfo.today[2]}원</div>
-				<div class='info_detail_today_contents down' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
-				`;
-		for(let i = 0 ; i < document.getElementsByClassName('info_detail_inner').length ; i++) {
-			document.getElementsByClassName('info_detail_inner')[i].className = 'info_detail_inner down';
-		}
-	}else {
-		document.getElementById('detailChart').className ='info_detail_chart noneUno';
-		document.getElementById('detailToday').innerHTML = `
-				<div class='info_detail_today_contents noneUno' id='todayCost'>${shareDetailInfo.today[0]}원</div>
-				<div class='info_detail_today_contents noneUno' id='todayGapCash'>-</div>
-				<div class='info_detail_today_contents noneUno' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
-				`;
-		for(let i = 0 ; i < document.getElementsByClassName('info_detail_inner').length ; i++) {
-			document.getElementsByClassName('info_detail_inner')[i].className = 'info_detail_inner noneUno';
-		}
+	let curStts = 'noneUno';
+	if(shareDetailInfo.today[1]=='상승') curStts='up';
+	if(shareDetailInfo.today[1]=='하락') curStts='down';
+	document.getElementById('detailChart').className = `info_detail_chart ${curStts}`;
+	document.getElementById('detailToday').innerHTML = `
+			<div class='info_detail_today_contents ${curStts}' id='shareName'>${curSearchShareName}</div>
+			<div class='info_detail_today_contents ${curStts}' id='todayCost'>${shareDetailInfo.today[0]}원</div>
+			<div class='info_detail_today_contents ${curStts}' id='todayGapCash'>+${shareDetailInfo.today[2]}원</div>
+			<div class='info_detail_today_contents ${curStts}' id='todayGapPer'>${shareDetailInfo.today[3]}%</div>
+			`;
+	for(let i = 0 ; i < document.getElementsByClassName('info_detail_inner').length ; i++) {
+		document.getElementsByClassName('info_detail_inner')[i].className = `info_detail_inner ${curStts}`;
 	}
+
 }
 function setInfoShareAreaChart(e) {
 	if(e==null) { //기본값
 		let imgsrc = ``;
 		imgsrc = shareDetailInfo.areaChart[0];
-		const inputBody= document.getElementById('detailChart');
-		inputBody.style.backgroundImage=`URL('${imgsrc}')`;
-		inputBody.style.backgroundSize="100% 100%";
-		inputBody.style.backgroundPosition="center";
+		inPutBody(imgsrc);
 	}else {
 		if(e.target.id.substring(0,e.target.id.indexOf('_'))=='area'){
 			for(let i = 0 ; i<shareDetailInfo.areaChart.length;i++  ) {
 				if(shareDetailInfo.areaChart[i].includes(e.target.id.substring(e.target.id.indexOf('_')+1))) {
 					imgsrc = shareDetailInfo.areaChart[i];
-					const inputBody= document.getElementById('detailChart');
-					inputBody.style.backgroundImage=`URL('${imgsrc}')`;
-					inputBody.style.backgroundSize="100% 100%";
-					inputBody.style.backgroundPosition="center";
+					inPutBody(imgsrc);
 				}
 			}
 		}else {
 			for(let i = 0 ; i<shareDetailInfo.candleChart.length;i++) {
 				if(shareDetailInfo.candleChart[i].includes(e.target.id.substring(e.target.id.indexOf('_')+1))) {
 					imgsrc = shareDetailInfo.candleChart[i];
-					const inputBody= document.getElementById('detailChart');
-					inputBody.style.backgroundImage=`URL('${imgsrc}')`;
-					inputBody.style.backgroundSize="100% 100%";
-					inputBody.style.backgroundPosition="center";
+					inPutBody(imgsrc);
 				}
 			}
 		}
+	}
+	function inPutBody(imgsrc) {
+		const inputBody= document.getElementById('detailChart');
+		inputBody.style.backgroundImage=`URL('${imgsrc}')`;
+		inputBody.style.backgroundSize="100% 100%";
+		inputBody.style.backgroundPosition="center";
 	}
 }
 
@@ -256,17 +237,18 @@ function getShareInfoDTL(code) {
         url: `/service/finance/shareInfo`,
         data: sendingVO,
         dataType: 'JSON', 
-        async: true,
+        async: false,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-    	shareDetailInfo = data;
-		setInfoShareDetail(data.statement);
-		let shareName = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
-		history.pushState({'name':shareName,'code':code},'종목상세보기','main');
-		window.scrollTo(0,0);
-		localStorage.setItem('BeforeScroll',window.scrollY);
-		document.getElementById('searchShareInput').value=shareName;
-    },
+	    	shareDetailInfo = data;
+			let shareName = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
+			curSearchShareName = shareName;
+			setInfoShareDetail(data.statement);
+			history.pushState({'name':shareName,'code':code},'종목상세보기','main');
+			window.scrollTo(0,0);
+			localStorage.setItem('BeforeScroll',window.scrollY);
+			document.getElementById('searchShareInput').value=shareName;
+	    },
         error: function () {
             alert('통신실패!!');
         }
@@ -278,7 +260,6 @@ function getKeyByValue(object, value) {
 function keyupShareInputValue(){
     if (window.event.keyCode == 13) {
     	if(document.getElementById('searchShareInput').value>0||document.getElementById('searchShareInput').value!="") {
-//    		searchShareInfoSearchList(document.querySelectorAll('.shareSearchInput li a')[0].text)
     		searchShareInfo();
     	}else {
     		console.log('input값 없음');
@@ -333,9 +314,7 @@ function focusShareInputValue()	{
 	}
 }
 function toggleHide()	{
-	document.getElementById('ext').className = 'btn btn-outline-primary dropdown-toggle dropdown-toggle-split';
-	document.getElementById('searchingList').className = 'dropdown-menu shareSearchInput';
-	document.getElementById('searchingList').style = "visibility:hidden;";
+	onblurShareInputValue();
 	document.querySelector('.toggleHide').style.visibility = 'hidden';
 }
 function onblurShareInputValue()	{

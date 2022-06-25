@@ -13,6 +13,7 @@
  		   OPE_MAIL_DTL
 		WHERE
  		   MAIL_SBST			=	#{mail_sbst}
- 		   AND   MAIL_SEND_TIME	=	#{mail_send_time}
+ 		   AND MAIL_SEND_TIME	=	#{mail_send_time}
+ 		   AND USEYN 			=	'Y'
  	</select>
 </mapper>

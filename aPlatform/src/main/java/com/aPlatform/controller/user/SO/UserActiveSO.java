@@ -1,5 +1,8 @@
 package com.aPlatform.controller.user.SO;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,13 +23,13 @@ public class UserActiveSO
 	LoginBOC loginBOC;
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.POST, value = "/signup")
-	public boolean register(@RequestBody UserinfoVO userinfoVO)
+	public CommonOutVO register(@RequestBody UserinfoVO userinfoVO)
 	{
 		return loginBOC.registerUser(userinfoVO);
 	}
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.GET, value = "/checkid")
-	public boolean checkDuplId(@RequestParam String user_id)
+	public CommonOutVO checkDuplId(@RequestParam String user_id)
 	{
 		UserinfoVO userinfoVO = new UserinfoVO();
 		userinfoVO.setUser_id(user_id);
@@ -34,16 +37,14 @@ public class UserActiveSO
 	}
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.POST, value = "/signin")
-	public CommonOutVO signinUser(@RequestBody UserinfoVO userinfoVO)
+	public CommonOutVO signinUser(@RequestBody UserinfoVO userinfoVO, HttpServletResponse response)
 	{
 		return loginBOC.signinUser(userinfoVO);
 	}
-	// @ResponseBody
-	// @RequestMapping(method = RequestMethod.POST, value = "/signin")
-	// public ResponseEntity<UserinfoOutVO> signinUser(@RequestBody UserinfoVO userinfoVO)
-	// {
-	// UserinfoOutVO outVO = new UserinfoOutVO();
-	// outVO = loginBOC.signinUser(userinfoVO);
-	// return outVO != null ? new ResponseEntity<>(outVO, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-	// }
+	@ResponseBody
+	@RequestMapping(method = RequestMethod.POST, value = "/logout")
+	public CommonOutVO logout(HttpServletResponse response, HttpServletRequest request)
+	{
+		return null;
+	}
 }
