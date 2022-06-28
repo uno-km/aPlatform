@@ -118,5 +118,5 @@ function addUserInterestStocks() {
 	}
 }
 function asd() {
-	
+	asd
 }
