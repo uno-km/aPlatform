@@ -46,7 +46,7 @@ public class FinanceRetvBOC
 		financeRetvBO.insertUserInterestShare(commonOutVO, param);
 		return commonOutVO;
 	}
-	public Map<String, String> getUserInterestShares()
+	public CommonOutVO getUserInterestShares()
 	{
 		return this.financeRetvBO.getUserInterestShares();
 	}

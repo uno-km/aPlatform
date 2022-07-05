@@ -35,7 +35,7 @@ public class FinanceRetvBO
 	public synchronized CommonOutVO excelInsert(final MultipartFile file)
 	{
 		CommonOutVO commonoutVO = new CommonOutVO();
-		ResultDTO result = new ResultDTO();  
+		ResultDTO result = new ResultDTO();
 		commonoutVO.setResultDTO(result);
 		try
 		{
@@ -67,11 +67,23 @@ public class FinanceRetvBO
 			return commonoutVO;
 		}
 	}
-	public Map<String, String> getUserInterestShares()
+	public CommonOutVO getUserInterestShares()
 	{
-		return null;
+		CommonOutVO commonoutVO = new CommonOutVO();
+		ResultDTO result = new ResultDTO();
+		commonoutVO.setResultDTO(result);
+		try
+		{
+			
+		}
+		catch (Exception e)
+		{
+			commonoutVO.setError(e.getMessage());
+			result.setCodeMessage("500", "알수없는 오류가 발생했습니다. 관리자에게 문의하세요.");
+			// TODO: handle exception
+		}
+		return commonoutVO;
 	}
-	// public void insertUserInterestShare(CommonOutVO commonOutVO, FinanceVO financeVO)
 	public void insertUserInterestShare(CommonOutVO commonOutVO, final Map<String, String> param)
 	{
 		ResultDTO result = new ResultDTO();
