@@ -35,7 +35,7 @@ public class FinanceRetvSO
 		return this.financeRetvBOC.reternMainPage();
 	}
 	@PostMapping(value = "/main")
-	private Map<String, String> getUserInterestShares()
+	private CommonOutVO getUserInterestShares()
 	{
 		return this.financeRetvBOC.getUserInterestShares();
 	}
