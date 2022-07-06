@@ -74,7 +74,7 @@ public class FinanceRetvBO
 		commonoutVO.setResultDTO(result);
 		try
 		{
-			
+			this.financeDataMapper.getUserInterest(new String("qwe"));
 		}
 		catch (Exception e)
 		{
