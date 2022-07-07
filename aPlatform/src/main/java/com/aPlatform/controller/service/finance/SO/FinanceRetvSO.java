@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.aPlatform.controller.common.model.CommonOutVO;
 import com.aPlatform.controller.service.finance.BOC.FinanceRetvBOC;
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
+import com.aPlatform.controller.service.finance.VO.FinanceInDTO;
 
 @RestController
 @RequestMapping(value = "/service/finance")
@@ -52,11 +53,23 @@ public class FinanceRetvSO
 		return mv;
 	}
 	@GetMapping(value = "/{dataform}")
-	private Object getData(@PathVariable final String dataform, @RequestParam Map<String, Object> map) throws Exception
+	private Object getData(@PathVariable final String dataform, @RequestParam FinanceInDTO inDTO) throws Exception
 	{
 		System.out.println("Client required " + dataform + " data...");
-		return this.financeSearchBOC.getInfo(financeDataMatrix, dataform, map);
+		return this.financeSearchBOC.getInfo(financeDataMatrix, dataform, inDTO);
 	}
+	@PostMapping(value = "/{dataform}")
+	private Object getDataPost(@PathVariable final String dataform, @RequestBody FinanceInDTO inDTO) throws Exception
+	{
+		System.out.println("Client required " + dataform + " data...");
+		return this.financeSearchBOC.getInfo(financeDataMatrix, dataform, inDTO);
+	}
+	// @GetMapping(value = "/{dataform}")
+	// private Object getData(@PathVariable final String dataform, @RequestParam Map<String, Object> map) throws Exception
+	// {
+	// System.out.println("Client required " + dataform + " data...");
+	// return this.financeSearchBOC.getInfo(financeDataMatrix, dataform, map);
+	// }
 	@PostMapping(value = "/addUserInterest", produces = {MediaType.APPLICATION_JSON_VALUE })
 	private CommonOutVO insertUserInterestShare(@RequestBody Map<String, String> param)
 	{

@@ -29,14 +29,21 @@ function AJAX(TYPE_,URL_,DATA_,ASYNC_,fn1 ,fn2) {
 	let inURL_ = URL_;
 	let inDATA_ = DATA_;
 	let inASYNC_ = ASYNC_;
-	if(inTYPE_==null || inTYPE_ ==undefined) {
-		TYPE_="GET"
-	}
+	let inContextType_ = 'application/json; charset=utf-8';
 	if(inURL_==null || inURL_==undefined) {
 		inURL_ = "error/404"
 	}
 	if(inDATA_==null || inDATA_==undefined) {
+		if(TYPE_=="POST") {
+			inDATA_ = JSON.stringify(`${DATA_}`);
+		}
 		inDATA_ = null;
+	}
+	if(inTYPE_==null || inTYPE_ ==undefined) {
+		inTYPE_="GET";
+		inContextType_ = 'application/x-www-form-urlencoded; charset=UTF-8;';
+	}else if(inTYPE_.toLocaleUpperCase()=="GET") {
+		inContextType_ = 'application/x-www-form-urlencoded; charset=UTF-8;';
 	}
 	if(inASYNC_==null || inASYNC_==undefined) {
 		inASYNC_ = false;
@@ -47,7 +54,7 @@ function AJAX(TYPE_,URL_,DATA_,ASYNC_,fn1 ,fn2) {
         data : inDATA_,
         dataType: 'JSON', 
         async: inASYNC_,
-        contentType: 'application/json; charset=utf-8',
+        contentType: inContextType_,
         success: function (data) {
 			if(fn1!=null||fn1!=undefined) {
 				fn1(data)
