@@ -232,7 +232,7 @@ function getShareInfoDTL(code) {
         ,   "pharseType" : "detail"  
         ,	"code" : code
         };
-    AJAX('POST','/service/finance/shareInfo',sendingVO,false,function (data) {
+    AJAX('POST','/service/finance/data/shareInfo',sendingVO,false,function (data) {
     	shareDetailInfo = data;
 		let shareName = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
 		curSearchShareName = shareName;

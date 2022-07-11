@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -51,20 +52,20 @@ public class FinanceRetvSO
 		mv.setViewName("finance/popup/excelUploadPopup");
 		return mv;
 	}
-	@PostMapping(value = "/{dataform}")
+	@PostMapping(value = "/data/{dataform}")
 	public Object getDataPost(@PathVariable final String dataform, @RequestBody FinanceInDTO inDTO) throws Exception
 	{
 		System.out.println("Client required " + dataform + " data...");
 		return this.financeSearchBOC.getInfo(financeDataMatrix, dataform, inDTO);
 	}
-	@PostMapping(value = "/addUserInterest", produces = {MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(value = "/interest", produces = {MediaType.APPLICATION_JSON_VALUE })
 	public CommonOutVO insertUserInterestShare(@RequestBody Map<String, String> param)
 	{
 		System.out.println("Client required insertUserInterestShare data...");
 		return this.financeRetvBOC.insertUserInterestShare(param);
 	}
-	@PostMapping(value = "/getUserInterest")
-	public CommonOutVO getUserInterestShare(@RequestBody Map<String, String> param)
+	@GetMapping(value = "/interest")
+	public CommonOutVO getUserInterestShare(@RequestParam Map<String, String> param)
 	{
 		return this.financeRetvBOC.insertUserInterestShare(param);
 	}

@@ -6,16 +6,16 @@ function getFindata(marketType) {
 		case "kospi":
 			financeInDTO = {"url" : "kospi"
 		        	,   'pharseType' : "kospi"};
-		    AJAX('POST' ,`/service/finance/${marketType}` ,financeInDTO ,true ,setKospiData ,null);
+		    AJAX('POST' ,`/service/finance/data/${marketType}` ,financeInDTO ,true ,setKospiData ,null);
 			break;
 		case "kosdaq" :
 			financeInDTO = {'url' : "kosdaq"
 				,  'pharseType' : "kosdaq"};
-		    AJAX('POST' ,`/service/finance/${marketType}` ,financeInDTO  ,true ,setKosdaqData ,null);
+		    AJAX('POST' ,`/service/finance/data/${marketType}` ,financeInDTO  ,true ,setKosdaqData ,null);
 			break;
 		case "total" :
 			financeInDTO = {};
-		    AJAX('POST' ,`/service/finance/${marketType}` ,financeInDTO  ,true ,setTotalData ,null);
+		    AJAX('POST' ,`/service/finance/data/${marketType}` ,financeInDTO  ,true ,setTotalData ,null);
 			break;
 	}
 	function setKospiData(outData) {

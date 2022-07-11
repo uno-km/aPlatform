@@ -4,7 +4,7 @@ function getOilInterestExchange() {
             url : "main"
         ,   pharseType : "etcIndex"
         }
-    AJAX('POST','/service/finance/etcIndex',sendingVO,true,function(data){
+    AJAX('POST','/service/finance/data/etcIndex',sendingVO,true,function(data){
 		console.log(data);
 		setExchange(data);
     },null);

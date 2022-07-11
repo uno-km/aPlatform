@@ -2,9 +2,9 @@ package com.aPlatform.utils;
 
 public class FinanceUtils
 {
-	public static String KOSPI = "kospi";
-	public static String KOSDAQ = "kosdaq";
-	public static String CODE = "code";
-	public static String DETAIL_URL = "https://finance.naver.com/item/main.naver?code=";
-	public static String DETAIL_PHARSETYPE = ".h_th2";
+	public static final String KOSPI = "kospi";
+	public static final String KOSDAQ = "kosdaq";
+	public static final String CODE = "code";
+	public static final String DETAIL_URL = "https://finance.naver.com/item/main.naver?code=";
+	public static final String DETAIL_PHARSETYPE = ".h_th2";
 }
