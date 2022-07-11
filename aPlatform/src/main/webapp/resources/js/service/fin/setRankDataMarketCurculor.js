@@ -6,7 +6,7 @@ function getRankdata() {
             "url" : "main"
         ,   "pharseType" : "rankMC"  
         }
-    AJAX('GET','/service/finance/rank?',sendingVO,true,function (data) {
+    AJAX('POST','/service/finance/rank',sendingVO,true,function (data) {
 		rankDataMC =data;
 		setRankDataMC();
 		setRankDataMCColor();

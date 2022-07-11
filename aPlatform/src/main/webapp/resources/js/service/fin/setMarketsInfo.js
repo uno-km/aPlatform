@@ -1,20 +1,21 @@
 /*최초 메인메이지를 보여주는 화면*/
 function getFindata(marketType) {
 	let outData='';
-	let FinanceInDTO ='';
+	let financeInDTO ='';
 	switch(marketType) {
 		case "kospi":
-			FinanceInDTO = {"url" : "kospi"
-		        	,   "pharseType" : "kospi"};
-		    AJAX('GET' ,`/service/finance/${marketType}` ,FinanceInDTO ,true ,setKospiData ,null);
+			financeInDTO = {"url" : "kospi"
+		        	,   'pharseType' : "kospi"};
+		    AJAX('POST' ,`/service/finance/${marketType}` ,financeInDTO ,true ,setKospiData ,null);
 			break;
 		case "kosdaq" :
-			FinanceInDTO = {"url" : "kosdaq"
-				,   "pharseType" : "kosdaq"};
-		    AJAX('GET' ,`/service/finance/${marketType}` ,null ,true ,setKosdaqData ,null);
+			financeInDTO = {'url' : "kosdaq"
+				,  'pharseType' : "kosdaq"};
+		    AJAX('POST' ,`/service/finance/${marketType}` ,financeInDTO  ,true ,setKosdaqData ,null);
 			break;
 		case "total" :
-		    AJAX('GET' ,`/service/finance/${marketType}` ,FinanceInDTO ,true ,setTotalData ,null);
+			financeInDTO = {};
+		    AJAX('POST' ,`/service/finance/${marketType}` ,financeInDTO  ,true ,setTotalData ,null);
 			break;
 	}
 	function setKospiData(outData) {

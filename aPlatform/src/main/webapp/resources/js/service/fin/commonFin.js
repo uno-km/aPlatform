@@ -24,43 +24,39 @@ function setSessionSharesInfo() {
     localStorage.setItem('sharesInfo' ,objData);
 }
 
-function AJAX(TYPE_,URL_,DATA_,ASYNC_,fn1 ,fn2) {
-	let inTYPE_ = TYPE_;
-	let inURL_ = URL_;
-	let inDATA_ = DATA_;
-	let inASYNC_ = ASYNC_;
+function AJAX(inType, inUrl,inData,inAsync,fn1 ,fn2) {
+	let inTYPE_ = inType;
+	let inURL_ = inUrl;
+	let inDATA_ = inData;
+	let inASYNC_ = inAsync;
+	let inDataType= 'JSON';
 	let inContextType_ = 'application/json; charset=utf-8';
-	if(inURL_==null || inURL_==undefined) {
+	if(inURL_==='' || inURL_==null || inURL_==undefined) {
 		inURL_ = "error/404"
 	}
-	if(inDATA_==null || inDATA_==undefined) {
-		if(TYPE_=="POST") {
-			inDATA_ = JSON.stringify(`${DATA_}`);
+	if(!(inType === ''||inType==null || inType==undefined)) {
+		if(inType=="POST") {
+			inDATA_ = JSON.stringify(inData);
 		}
-		inDATA_ = null;
-	}
-	if(inTYPE_==null || inTYPE_ ==undefined) {
+	}else {
 		inTYPE_="GET";
-		inContextType_ = 'application/x-www-form-urlencoded; charset=UTF-8;';
-	}else if(inTYPE_.toLocaleUpperCase()=="GET") {
-		inContextType_ = 'application/x-www-form-urlencoded; charset=UTF-8;';
 	}
 	if(inASYNC_==null || inASYNC_==undefined) {
 		inASYNC_ = false;
 	}
 	$.ajax({
-        type: inTYPE_,
-        url: inURL_,
-        data : inDATA_,
-        dataType: 'JSON', 
-        async: inASYNC_,
-        contentType: inContextType_,
-        success: function (data) {
+        type: inTYPE_
+        ,url: inURL_
+        ,data : inDATA_
+        ,dataType: inDataType 
+        ,async: inASYNC_
+        ,contentType: inContextType_
+        ,success: function (data) {
 			if(fn1!=null||fn1!=undefined) {
 				fn1(data)
 			}
-        },
-        error: function () {
+        }
+        ,error: function () {
             alert('통신실패!!');
         }
     });

@@ -232,27 +232,37 @@ function getShareInfoDTL(code) {
         ,   "pharseType" : "detail"  
         ,	"code" : code
         };
-    $.ajax({
-        type: 'GET',
-        url: `/service/finance/shareInfo`,
-        data: sendingVO,
-        dataType: 'JSON', 
-        async: false,
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-	    	shareDetailInfo = data;
-			let shareName = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
-			curSearchShareName = shareName;
-			setInfoShareDetail(data.statement);
-			history.pushState({'name':shareName,'code':code},'종목상세보기','main');
-			window.scrollTo(0,0);
-			localStorage.setItem('BeforeScroll',window.scrollY);
-			document.getElementById('searchShareInput').value=shareName;
-	    },
-        error: function () {
-            alert('통신실패!!');
-        }
-    });
+    AJAX('POST','/service/finance/shareInfo',sendingVO,false,function (data) {
+    	shareDetailInfo = data;
+		let shareName = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
+		curSearchShareName = shareName;
+		setInfoShareDetail(data.statement);
+		history.pushState({'name':shareName,'code':code},'종목상세보기','main');
+		window.scrollTo(0,0);
+		localStorage.setItem('BeforeScroll',window.scrollY);
+		document.getElementById('searchShareInput').value=shareName;
+    },null);
+//    $.ajax({
+//        type: 'GET',
+//        url: '/service/finance/shareInfo',
+//        data: sendingVO,
+//        dataType: 'JSON', 
+//        async: false,
+//        contentType: 'application/json; charset=utf-8',
+//        success: function (data) {
+//	    	shareDetailInfo = data;
+//			let shareName = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
+//			curSearchShareName = shareName;
+//			setInfoShareDetail(data.statement);
+//			history.pushState({'name':shareName,'code':code},'종목상세보기','main');
+//			window.scrollTo(0,0);
+//			localStorage.setItem('BeforeScroll',window.scrollY);
+//			document.getElementById('searchShareInput').value=shareName;
+//	    },
+//        error: function () {
+//            alert('통신실패!!');
+//        }
+//    });
 }
 function getKeyByValue(object, value) {
 	  return Object.keys(object).find(key => object[key] === value);

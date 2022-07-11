@@ -31,35 +31,35 @@ public class FinanceRetvSO
 	private FinanceDataMatrix financeDataMatrix;
 
 	@GetMapping(value = "/main")
-	private ModelAndView reternMainPage(Model model)
+	public ModelAndView reternMainPage(Model model)
 	{
 		return this.financeRetvBOC.reternMainPage();
 	}
 	@PostMapping(value = "/main")
-	private CommonOutVO getUserInterestShares()
+	public CommonOutVO getUserInterestShares()
 	{
 		return this.financeRetvBOC.getUserInterestShares();
 	}
 	@GetMapping(value = "/codeAllMap")
-	private Map<String, String> getCodeMap()
+	public Map<String, String> getCodeMap()
 	{
 		return this.financeRetvBOC.getCodeMap();
 	}
 	@GetMapping(value = "/excelUploadPopup")
-	private ModelAndView returnPopupExcelUpload()
+	public ModelAndView returnPopupExcelUpload()
 	{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("finance/popup/excelUploadPopup");
 		return mv;
 	}
 	@GetMapping(value = "/{dataform}")
-	private Object getData(@PathVariable final String dataform, @RequestParam FinanceInDTO inDTO) throws Exception
+	public Object getData(@PathVariable final String dataform, @RequestParam FinanceInDTO inDTO) throws Exception
 	{
 		System.out.println("Client required " + dataform + " data...");
 		return this.financeSearchBOC.getInfo(financeDataMatrix, dataform, inDTO);
 	}
 	@PostMapping(value = "/{dataform}")
-	private Object getDataPost(@PathVariable final String dataform, @RequestBody FinanceInDTO inDTO) throws Exception
+	public Object getDataPost(@PathVariable final String dataform, @RequestBody FinanceInDTO inDTO) throws Exception
 	{
 		System.out.println("Client required " + dataform + " data...");
 		return this.financeSearchBOC.getInfo(financeDataMatrix, dataform, inDTO);
@@ -71,13 +71,13 @@ public class FinanceRetvSO
 	// return this.financeSearchBOC.getInfo(financeDataMatrix, dataform, map);
 	// }
 	@PostMapping(value = "/addUserInterest", produces = {MediaType.APPLICATION_JSON_VALUE })
-	private CommonOutVO insertUserInterestShare(@RequestBody Map<String, String> param)
+	public CommonOutVO insertUserInterestShare(@RequestBody Map<String, String> param)
 	{
 		System.out.println("Client required insertUserInterestShare data...");
 		return this.financeRetvBOC.insertUserInterestShare(param);
 	}
 	@PostMapping(value = "/getUserInterest")
-	private CommonOutVO getUserInterestShare(@RequestBody Map<String, String> param)
+	public CommonOutVO getUserInterestShare(@RequestBody Map<String, String> param)
 	{
 		return this.financeRetvBOC.insertUserInterestShare(param);
 	}
