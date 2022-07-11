@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aPlatform.mappers.FinanceDataMapper;
+import com.aPlatform.utils.FinanceUtils;
 
 import lombok.Data;
 
@@ -22,16 +23,16 @@ public class FinanceDataMatrix
 	private FinanceDataMapper financeDataMapper;
 	private Map<String, Document> pageDOCMap = new HashMap<String, Document>();
 	private Map<String, String> marketURLMap = new HashMap<String, String>();
-	private String[] innerArr = {"kospi" , "kosdaq" };
+	private String[] innerArr = {FinanceUtils.KOSPI , FinanceUtils.KOSDAQ };
 
 	public void setMarketURLMap(FinanceInDTO inDTO)
 	{
 		setMarketURLMap();
 		if(inDTO.getCode() != null)
 		{
-			marketURLMap.put("code", inDTO.getCode());
-			marketURLMap.put(inDTO.getUrl(), "https://finance.naver.com/item/main.naver?code=" + inDTO.getCode());
-			marketURLMap.put(inDTO.getPharseType(), ".h_th2");
+			marketURLMap.put(FinanceUtils.CODE, inDTO.getCode());
+			marketURLMap.put(inDTO.getUrl(), FinanceUtils.DETAIL_URL + inDTO.getCode());
+			marketURLMap.put(inDTO.getPharseType(), FinanceUtils.DETAIL_PHARSETYPE);
 		}
 	}
 	public void setMarketURLMap()

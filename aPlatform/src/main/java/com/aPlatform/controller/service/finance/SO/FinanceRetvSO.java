@@ -26,6 +26,7 @@ public class FinanceRetvSO
 	private FinanceRetvBOC financeRetvBOC;
 	@Autowired
 	private FinanceSearchBOC financeSearchBOC;
+	@Autowired
 	private FinanceDataMatrix financeDataMatrix;
 
 	@GetMapping(value = "/main")
