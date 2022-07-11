@@ -3,8 +3,8 @@
  */
 function getRankdata() {
     const sendingVO = {
-            "url" : "main"
-        ,   "pharseType" : "rankMC"  
+            url : "main"
+        ,   pharseType : "rankMC"  
         }
     AJAX('POST','/service/finance/rank',sendingVO,true,function (data) {
 		rankDataMC =data;

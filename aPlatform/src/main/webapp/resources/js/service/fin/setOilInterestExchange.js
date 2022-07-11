@@ -1,8 +1,8 @@
 ;
 function getOilInterestExchange() {
     const sendingVO = {
-            "url" : "main"
-        ,   "pharseType" : "etcIndex"
+            url : "main"
+        ,   pharseType : "etcIndex"
         }
     AJAX('POST','/service/finance/etcIndex',sendingVO,true,function(data){
 		console.log(data);

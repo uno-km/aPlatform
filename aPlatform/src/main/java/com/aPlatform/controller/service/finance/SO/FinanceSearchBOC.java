@@ -17,11 +17,13 @@ public class FinanceSearchBOC
 	@Autowired
 	GetURLInfo getUrlInfo;
 
-	// public Object getInfo(FinanceDataMatrix financeDataMatrix, final String dataform, final Map<String, Object> map) throws Exception
+	Object outData = null;
+	String url = "";
+	String pharseType = "";
 	public Object getInfo(FinanceDataMatrix financeDataMatrix, final String dataform, FinanceInDTO inDTO) throws Exception
 	{
-		String url = inDTO.getUrl();
-		String pharseType = inDTO.getPharseType();
+		this.url = inDTO.getUrl();
+		this.pharseType = inDTO.getPharseType();
 		switch (dataform) {
 			case "total" : /* 코스피 코스닥 전부 */
 				financeDataMatrix.setMarketURLMap();
@@ -32,16 +34,12 @@ public class FinanceSearchBOC
 				return totalArr;
 			// case "all" : /* 지수제외 모든 데이터 */
 			// return getUrlInfo.getUrlInfoAllObject(financeDataMatrix, inDTO);
-			case "shareInfo" :
-				financeDataMatrix.setMarketURLMap(inDTO);
-				financeDataMatrix.setPageDOC(url);
-				Object outData = getUrlInfo.getUrlInfoObject(financeDataMatrix, url, pharseType);
-				financeDataMatrix.clearMatrix();
-				return outData;
 			default :
 				financeDataMatrix.setMarketURLMap(inDTO);
-				financeDataMatrix.setPageDOC(url);
-				return getUrlInfo.getUrlInfoObject(financeDataMatrix, url, pharseType);
+				financeDataMatrix.setPageDOC(this.url);
+				this.outData = getUrlInfo.getUrlInfoObject(financeDataMatrix, this.url, this.pharseType);
+				financeDataMatrix.clearMatrix();
+				return this.outData;
 		}
 	}
 }

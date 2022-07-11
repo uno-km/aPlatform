@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,7 +26,6 @@ public class FinanceRetvSO
 	private FinanceRetvBOC financeRetvBOC;
 	@Autowired
 	private FinanceSearchBOC financeSearchBOC;
-	@Autowired
 	private FinanceDataMatrix financeDataMatrix;
 
 	@GetMapping(value = "/main")
@@ -52,24 +50,12 @@ public class FinanceRetvSO
 		mv.setViewName("finance/popup/excelUploadPopup");
 		return mv;
 	}
-	@GetMapping(value = "/{dataform}")
-	public Object getData(@PathVariable final String dataform, @RequestParam FinanceInDTO inDTO) throws Exception
-	{
-		System.out.println("Client required " + dataform + " data...");
-		return this.financeSearchBOC.getInfo(financeDataMatrix, dataform, inDTO);
-	}
 	@PostMapping(value = "/{dataform}")
 	public Object getDataPost(@PathVariable final String dataform, @RequestBody FinanceInDTO inDTO) throws Exception
 	{
 		System.out.println("Client required " + dataform + " data...");
 		return this.financeSearchBOC.getInfo(financeDataMatrix, dataform, inDTO);
 	}
-	// @GetMapping(value = "/{dataform}")
-	// private Object getData(@PathVariable final String dataform, @RequestParam Map<String, Object> map) throws Exception
-	// {
-	// System.out.println("Client required " + dataform + " data...");
-	// return this.financeSearchBOC.getInfo(financeDataMatrix, dataform, map);
-	// }
 	@PostMapping(value = "/addUserInterest", produces = {MediaType.APPLICATION_JSON_VALUE })
 	public CommonOutVO insertUserInterestShare(@RequestBody Map<String, String> param)
 	{
