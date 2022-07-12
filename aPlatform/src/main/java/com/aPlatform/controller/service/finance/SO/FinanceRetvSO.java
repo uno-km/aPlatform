@@ -5,12 +5,13 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,11 +36,7 @@ public class FinanceRetvSO
 	{
 		return this.financeRetvBOC.reternMainPage();
 	}
-	@PostMapping(value = "/main")
-	public CommonOutVO getUserInterestShares()
-	{
-		return this.financeRetvBOC.getUserInterestShares();
-	}
+
 	@GetMapping(value = "/codeAllMap")
 	public Map<String, String> getCodeMap()
 	{
@@ -65,8 +62,18 @@ public class FinanceRetvSO
 		return this.financeRetvBOC.insertUserInterestShare(param);
 	}
 	@GetMapping(value = "/interest")
-	public CommonOutVO getUserInterestShare(@RequestParam Map<String, String> param)
+	public CommonOutVO getUserInterestShares()
 	{
-		return this.financeRetvBOC.insertUserInterestShare(param);
+		return this.financeRetvBOC.getUserInterestShares();
+	}
+	@PutMapping(value = "/interest")
+	public CommonOutVO putUserInterestShares()
+	{
+		return null;
+	}
+	@DeleteMapping(value = "/interest")
+	public CommonOutVO deleteUserInterestShares()
+	{
+		return null;
 	}
 }
