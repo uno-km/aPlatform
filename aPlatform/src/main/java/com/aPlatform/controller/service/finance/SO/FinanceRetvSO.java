@@ -3,19 +3,15 @@ package com.aPlatform.controller.service.finance.SO;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.aPlatform.controller.common.model.CommonOutVO;
 import com.aPlatform.controller.service.finance.BOC.FinanceRetvBOC;
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 import com.aPlatform.controller.service.finance.VO.FinanceInDTO;
@@ -54,26 +50,5 @@ public class FinanceRetvSO
 	{
 		System.out.println("Client required " + dataform + " data...");
 		return this.financeSearchBOC.getInfo(financeDataMatrix, dataform, inDTO);
-	}
-	@PostMapping(value = "/interest", produces = {MediaType.APPLICATION_JSON_VALUE })
-	public CommonOutVO insertUserInterestShare(@RequestBody Map<String, String> param)
-	{
-		System.out.println("Client required insertUserInterestShare data...");
-		return this.financeRetvBOC.insertUserInterestShare(param);
-	}
-	@GetMapping(value = "/interest")
-	public CommonOutVO getUserInterestShares()
-	{
-		return this.financeRetvBOC.getUserInterestShares();
-	}
-	@PutMapping(value = "/interest")
-	public CommonOutVO putUserInterestShares()
-	{
-		return null;
-	}
-	@DeleteMapping(value = "/interest")
-	public CommonOutVO deleteUserInterestShares()
-	{
-		return null;
 	}
 }

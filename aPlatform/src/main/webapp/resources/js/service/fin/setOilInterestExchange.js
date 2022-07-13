@@ -20,5 +20,4 @@ function setExchange(data){
 		i+=3;
 	}
 	document.getElementById('exChange').innerHTML = struct_div;
-	
 }
