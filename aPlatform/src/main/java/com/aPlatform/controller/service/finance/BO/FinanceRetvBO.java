@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.aPlatform.controller.common.model.CommonOutVO;
 import com.aPlatform.controller.common.model.ResultDTO;
+import com.aPlatform.controller.service.finance.VO.FinanceInDTO;
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
 import com.aPlatform.controller.service.finance.model.ExcelData;
 import com.aPlatform.mappers.FinanceDataMapper;
@@ -84,12 +85,12 @@ public class FinanceRetvBO
 		}
 		return commonoutVO;
 	}
-	public void insertUserInterestShare(CommonOutVO commonOutVO, final Map<String, String> param)
+	public void insertUserInterestShare(CommonOutVO commonOutVO, final FinanceVO inVO)
 	{
 		ResultDTO result = new ResultDTO();
 		try
 		{
-			this.financeDataMapper.insertUserInterest(param);
+			this.financeDataMapper.insertUserInterest(inVO);
 			result.setCodeMessage("200", "관심종목 저장이 완료되었습니다.");
 		}
 		catch (Exception e)

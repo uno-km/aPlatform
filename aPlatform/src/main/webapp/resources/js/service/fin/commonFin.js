@@ -61,6 +61,6 @@ function AJAX(inType, inUrl,inData,inAsync,fn1 ,fn2) {
         }
     });
 	if(fn2!=null||fn2!=undefined) {
-		infn2
+		fn2
 	}
 }
