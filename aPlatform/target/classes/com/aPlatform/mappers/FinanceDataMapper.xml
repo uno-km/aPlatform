@@ -40,8 +40,7 @@
 		]]>
 	</select>
 	<select parameterType="string"
-	resultType="com.aPlatform.controller.service.finance.VO.FinanceVO"
-		id="getUserInterest">
+		resultType="com.aPlatform.controller.service.finance.VO.FinanceVO" id="getUserInterest">
 		<![CDATA[
 			SELECT 
 				FIN_CODE
@@ -104,8 +103,8 @@
 		 		, #{finName}
 		 		, #{exchange}
 		 		, #{userId}
-		 		, SYSDATE
-		 		, SYSDATE
+		 		, TO_CHAR(SYSDATE, 'YYYYMMDD HH24:MI:SS')
+		 		, TO_CHAR(SYSDATE, 'YYYYMMDD HH24:MI:SS')
 		 		, #{interestYn}
 		 		, #{ctgCulNm}
 		 		, #{userId}
