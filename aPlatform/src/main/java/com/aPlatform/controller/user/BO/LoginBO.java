@@ -51,25 +51,21 @@ public class LoginBO
 			result.setMessage("로그인 성공!");
 			if(Validation.isNullCheck(outVO))
 			{
-				result.setCode("500");
-				result.setMessage("입력하신 정보가 없습니다! 다시 시도해주세요!");
+				result.setCodeMessage("500", "입력하신 정보가 없습니다! 다시 시도해주세요!");
 			}
 			if(!outVO.getUser_id().equals(UserinfoVO.getUser_id()))
 			{
-				result.setCode("500");
-				result.setMessage("입력하신 아이디정보가 없습니다! 다시 시도해주세요!");
+				result.setCodeMessage("500", "입력하신 아이디정보가 없습니다! 다시 시도해주세요!");
 			}
 			if(!outVO.getUser_password().equals(UserinfoVO.getUser_password()))
 			{
-				result.setCode("500");
-				result.setMessage("입력하신 정보가 없습니다! 다시 시도해주세요!");
+				result.setCodeMessage("500", "입력하신 정보가 없습니다! 다시 시도해주세요!");
 			}
 			commonoutVO.setReturnResultDTO(outVO);
 		}
 		catch (Exception e)
 		{
-			result.setCode("500");
-			result.setMessage("입력하신 정보가 없습니다! 다시 시도해주세요!");
+			result.setCodeMessage("500", "입력하신 정보가 없습니다! 다시 시도해주세요!");
 			commonoutVO.setError(e.getMessage());
 		}
 		return commonoutVO;
@@ -85,15 +81,12 @@ public class LoginBO
 		System.out.println(list.toString());
 		if(userActiveMapper.checkDuplicationId(UserinfoVO) == 0)
 		{
-			result.setCode("200");
-			result.setMessage("사용하실 수 있는 아이디입니다.");
+			result.setCodeMessage("200", "사용하실 수 있는 아이디입니다.");
 		}
 		else
 		{
-			result.setCode("500");
-			result.setMessage("사용하실 수 없는 아이디입니다.\n사유 : 중복");
+			result.setCodeMessage("500", "사용하실 수 없는 아이디입니다.\n사유 : 중복");
 		}
 		return commonoutVO;
 	}
-
 }

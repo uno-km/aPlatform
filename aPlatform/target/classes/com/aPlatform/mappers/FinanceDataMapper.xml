@@ -21,7 +21,7 @@
 				COM_CD_BAS
 			WHERE
 				GROUP_ID 		= '20'
-				AND SERVICE_ID 		= 'FIN'
+				AND SERVICE_ID 	= 'FIN'
 				AND SUB_CONTENT = 'url'
 		   ]]>
 	</select>
@@ -78,7 +78,6 @@
 				SHARES_FIN_INFO
 		]]>
 	</delete>
-	<!-- <insert id="insertUserInterest" parameterType="com.aPlatform.controller.service.finance.VO.FinanceVO"> -->
 	<insert id="insertUserInterest" parameterType="map">
 		 <![CDATA[
 		 	INSERT INTO
