@@ -1,4 +1,4 @@
-package com.aPlatform.controller.service.finance.SO;
+package com.aPlatform.controller.service.finance.BOC;
 
 import java.util.ArrayList;
 import java.util.Collection;
