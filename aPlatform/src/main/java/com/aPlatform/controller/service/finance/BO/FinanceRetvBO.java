@@ -42,7 +42,7 @@ public class FinanceRetvBO
 		{
 			try
 			{
-				/* 기존 SHARES_FIN_INFO 의 모든 종목을 삭제한다. - 테이블 데이터 초기화 */
+				/* 기존 SHARES_FIN_INFO 의 모든 종목을 삭제한다. - 테이블 데이터 초기화 */ 
 				this.financeDataMapper.deleteAllDataInShareTable();
 			}
 			catch (Exception e)
