@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aPlatform.controller.common.model.CommonOutVO;
-import com.aPlatform.controller.service.finance.BOC.FinanceRetvBOC;
+import com.aPlatform.controller.service.finance.BOC.FinanceInterestBOC;
 import com.aPlatform.controller.service.finance.VO.FinanceInDTO;
 
 @RestController
@@ -19,17 +19,17 @@ import com.aPlatform.controller.service.finance.VO.FinanceInDTO;
 public class FinanceInterestSO
 {
 	@Autowired
-	private FinanceRetvBOC financeRetvBOC;
+	private FinanceInterestBOC financeInterestBOC;
 	@PostMapping(produces = {MediaType.APPLICATION_JSON_VALUE })
 	public CommonOutVO insertUserInterestShare(@RequestBody FinanceInDTO inDTO)
 	{
 		System.out.println("Client required insertUserInterestShare data...");
-		return this.financeRetvBOC.insertUserInterestShare(inDTO);
+		return this.financeInterestBOC.insertUserInterestShare(inDTO);
 	}
 	@GetMapping
 	public CommonOutVO getUserInterestShares()
 	{
-		return this.financeRetvBOC.getUserInterestShares();
+		return this.financeInterestBOC.getUserInterestShares();
 	}
 	@PutMapping
 	public CommonOutVO putUserInterestShares()

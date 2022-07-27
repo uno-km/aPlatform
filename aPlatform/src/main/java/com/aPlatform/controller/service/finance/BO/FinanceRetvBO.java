@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.aPlatform.controller.common.model.CommonOutVO;
 import com.aPlatform.controller.common.model.ResultDTO;
-import com.aPlatform.controller.service.finance.VO.FinanceInDTO;
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
 import com.aPlatform.controller.service.finance.model.ExcelData;
 import com.aPlatform.mappers.FinanceDataMapper;
@@ -42,7 +41,7 @@ public class FinanceRetvBO
 		{
 			try
 			{
-				/* 기존 SHARES_FIN_INFO 의 모든 종목을 삭제한다. - 테이블 데이터 초기화 */ 
+				/* 기존 SHARES_FIN_INFO 의 모든 종목을 삭제한다. - 테이블 데이터 초기화 */
 				this.financeDataMapper.deleteAllDataInShareTable();
 			}
 			catch (Exception e)
@@ -67,36 +66,5 @@ public class FinanceRetvBO
 			result.setCodeMessage("500", "알수없는 오류가 발생했습니다. 관리자에게 문의하세요.");
 			return commonoutVO;
 		}
-	}
-	public CommonOutVO getUserInterestShares()
-	{
-		CommonOutVO commonoutVO = new CommonOutVO();
-		ResultDTO result = new ResultDTO();
-		commonoutVO.setResultDTO(result);
-		try
-		{
-			this.financeDataMapper.getUserInterest(new String("qwe"));
-		}
-		catch (Exception e)
-		{
-			commonoutVO.setError(e.getMessage());
-			result.setCodeMessage("500", "알수없는 오류가 발생했습니다. 관리자에게 문의하세요.");
-			// TODO: handle exception
-		}
-		return commonoutVO;
-	}
-	public void insertUserInterestShare(CommonOutVO commonOutVO, final FinanceVO inVO)
-	{
-		ResultDTO result = new ResultDTO();
-		try
-		{
-			this.financeDataMapper.insertUserInterest(inVO);
-			result.setCodeMessage("200", "관심종목 저장이 완료되었습니다.");
-		}
-		catch (Exception e)
-		{
-			result.setCodeMessage("500", "알수없는 이유로 저장에 실패했습니다. 다시시도 해주세요.");
-		}
-		commonOutVO.setResultDTO(result);
 	}
 }
