@@ -29,4 +29,12 @@ public class FinanceInterestBOC
 	{
 		return this.financeInterestBO.getUserInterestShares();
 	}
+	public CommonOutVO updateInterests()
+	{
+		return this.financeInterestBO.getUserInterestShares();
+	}
+	public CommonOutVO deleteInterests()
+	{
+		return this.financeInterestBO.getUserInterestShares();
+	}
 }

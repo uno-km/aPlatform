@@ -1,5 +1,7 @@
 package com.aPlatform.controller.service.finance.SO;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,11 +36,11 @@ public class FinanceInterestSO
 	@PutMapping
 	public CommonOutVO putUserInterestShares()
 	{
-		return null;
+		return this.financeInterestBOC.updateInterests();
 	}
 	@DeleteMapping
 	public CommonOutVO deleteUserInterestShares()
 	{
-		return null;
+		return this.financeInterestBOC.deleteInterests();
 	}
 }
