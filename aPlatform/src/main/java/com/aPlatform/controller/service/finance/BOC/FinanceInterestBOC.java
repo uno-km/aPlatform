@@ -29,12 +29,16 @@ public class FinanceInterestBOC
 	{
 		return this.financeInterestBO.getUserInterestShares();
 	}
-	public CommonOutVO updateInterests()
+	public CommonOutVO updateInterests(final FinanceInDTO inDTO)
 	{
-		return this.financeInterestBO.getUserInterestShares();
+		CommonOutVO commonOutVO = new CommonOutVO();
+		this.financeInterestBO.updateUserInterestShare(commonOutVO, inDTO);
+		return commonOutVO;
 	}
-	public CommonOutVO deleteInterests()
+	public CommonOutVO deleteInterests(final FinanceInDTO inDTO)
 	{
-		return this.financeInterestBO.getUserInterestShares();
+		CommonOutVO commonOutVO = new CommonOutVO();
+		this.financeInterestBO.deleteUserInterestShare(commonOutVO, inDTO);
+		return commonOutVO;
 	}
 }
