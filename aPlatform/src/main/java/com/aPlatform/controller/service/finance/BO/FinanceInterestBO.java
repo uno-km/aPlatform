@@ -51,7 +51,7 @@ public class FinanceInterestBO
 		try
 		{
 			this.financeDataMapper.deleteUserInterest(inDto);
-			result.setCodeMessage("200", "관심종목 저장이 완료되었습니다.");
+			result.setCodeMessage("200", "관심종목 제거가 완료되었습니다.");
 		}
 		catch (Exception e)
 		{
@@ -65,7 +65,7 @@ public class FinanceInterestBO
 		try
 		{
 			this.financeDataMapper.updateUserInterest(inDto);
-			result.setCodeMessage("200", "관심종목 저장이 완료되었습니다.");
+			result.setCodeMessage("200", "관심종목 수정이 완료되었습니다.");
 		}
 		catch (Exception e)
 		{
