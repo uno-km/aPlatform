@@ -22,8 +22,4 @@ public interface FinanceDataMapper
 	abstract public void deleteUserInterest(final FinanceInDTO inDto);
 	/* 기존 전종목 모두 삭제 */
 	abstract public void deleteAllDataInShareTable();
-	/* 사용자 관심종목 저장 */
-	abstract public void insertUserInterest(final FinanceVO inDTO);
-
-	abstract public List<FinanceVO> getUserInterest(final String userId);
 }
