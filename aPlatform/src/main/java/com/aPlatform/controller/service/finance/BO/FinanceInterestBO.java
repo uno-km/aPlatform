@@ -7,13 +7,13 @@ import com.aPlatform.controller.common.model.CommonOutVO;
 import com.aPlatform.controller.common.model.ResultDTO;
 import com.aPlatform.controller.service.finance.VO.FinanceInDTO;
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
-import com.aPlatform.mappers.FinanceDataMapper;
+import com.aPlatform.mappers.FinanceUserInterestMapper;
 
 @Service
 public class FinanceInterestBO
 {
 	@Autowired
-	private FinanceDataMapper financeDataMapper;
+	private FinanceUserInterestMapper financeUserInterestMapper;
 	public CommonOutVO getUserInterestShares()
 	{
 		CommonOutVO commonoutVO = new CommonOutVO();
@@ -21,7 +21,7 @@ public class FinanceInterestBO
 		commonoutVO.setResultDTO(result);
 		try
 		{
-			this.financeDataMapper.getUserInterest(new String("qwe"));
+			this.financeUserInterestMapper.getUserInterest(new String("qwe"));
 		}
 		catch (Exception e)
 		{
@@ -36,7 +36,7 @@ public class FinanceInterestBO
 		ResultDTO result = new ResultDTO();
 		try
 		{
-			this.financeDataMapper.insertUserInterest(inVO);
+			this.financeUserInterestMapper.insertUserInterest(inVO);
 			result.setCodeMessage("200", "관심종목 저장이 완료되었습니다.");
 		}
 		catch (Exception e)
@@ -50,7 +50,7 @@ public class FinanceInterestBO
 		ResultDTO result = new ResultDTO();
 		try
 		{
-			this.financeDataMapper.deleteUserInterest(inDto);
+			this.financeUserInterestMapper.deleteUserInterest(inDto);
 			result.setCodeMessage("200", "관심종목 제거가 완료되었습니다.");
 		}
 		catch (Exception e)
@@ -64,7 +64,7 @@ public class FinanceInterestBO
 		ResultDTO result = new ResultDTO();
 		try
 		{
-			this.financeDataMapper.updateUserInterest(inDto);
+			this.financeUserInterestMapper.updateUserInterest(inDto);
 			result.setCodeMessage("200", "관심종목 수정이 완료되었습니다.");
 		}
 		catch (Exception e)

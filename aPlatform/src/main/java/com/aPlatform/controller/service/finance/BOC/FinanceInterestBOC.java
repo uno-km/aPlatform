@@ -21,7 +21,6 @@ public class FinanceInterestBOC
 		finVO.setFinName(inDTO.getFinName());
 		finVO.setExchange(inDTO.getExchange());
 		finVO.setInterestYn(inDTO.getInterestYn());
-		// financeRetvBO.insertUserInterestShare(commonOutVO, finVO);
 		financeInterestBO.insertUserInterestShare(commonOutVO, finVO);
 		return commonOutVO;
 	}
