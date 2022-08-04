@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aPlatform.mappers.FinanceUserInterestMapper">
+	<select parameterType="string"
+		resultType="com.aPlatform.controller.service.finance.VO.FinanceVO" id="getUserInterest">
+		<![CDATA[
+			SELECT 
+				FIN_CODE
+				,FIN_NAME
+				,FIN_EXCHANGE 
+			FROM  
+				SHARES_USER_INTEREST_DTL 
+			WHERE 
+				SYS_TGT_USERID	=	#{userId}
+				AND INTEREST_YN	=	'Y'
+		]]>
+	</select>
+	<insert id="insertUserInterest"
+		parameterType="com.aPlatform.controller.service.finance.VO.FinanceVO">
+		 <![CDATA[
+		 	INSERT INTO
+		 		SHARES_USER_INTEREST_DTL
+		 		(
+		 		FIN_CODE
+				, FIN_NAME
+				, FIN_EXCHANGE
+				, SYS_TGT_USERID
+				, SYS_CREAT_DT
+				, SYS_CHAG_DT
+				, INTEREST_YN
+				, CTG_CUL_NM
+				, FIN_REGI_USERID
+				, COLUMN10
+				, COLUMN11
+				, COLUMN12 
+		 		)
+		 	VALUES
+		 		(
+		 		#{finCode}
+		 		, #{finName}
+		 		, #{exchange}
+		 		, #{userId}
+		 		, TO_CHAR(SYSDATE, 'YYYYMMDD HH24:MI:SS')
+		 		, TO_CHAR(SYSDATE, 'YYYYMMDD HH24:MI:SS')
+		 		, #{interestYn}
+		 		, #{ctgCulNm}
+		 		, #{userId}
+		 		, null
+		 		, null
+		 		, null
+		 		)
+		 ]]>
+	</insert>
+</mapper>

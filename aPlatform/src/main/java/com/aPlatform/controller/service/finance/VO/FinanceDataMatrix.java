@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aPlatform.mappers.FinanceDataMapper;
+import com.aPlatform.utils.FinanceUtils;
 
 import lombok.Data;
 
@@ -22,16 +23,16 @@ public class FinanceDataMatrix
 	private FinanceDataMapper financeDataMapper;
 	private Map<String, Document> pageDOCMap = new HashMap<String, Document>();
 	private Map<String, String> marketURLMap = new HashMap<String, String>();
-	private String[] innerArr = {"kospi" , "kosdaq" };
+	private String[] innerArr = {FinanceUtils.KOSPI , FinanceUtils.KOSDAQ };
 
-	public void setMarketURLMap(Map<String, Object> map)
+	public void setMarketURLMap(FinanceInDTO inDTO)
 	{
 		setMarketURLMap();
-		if(map.containsKey("code"))
+		if(inDTO.getCode() != null)
 		{
-			marketURLMap.put((String) map.get("url"), "https://finance.naver.com/item/main.naver?code=" + map.get("code"));
-			marketURLMap.put((String) map.get("pharseType"), ".h_th2");
-			marketURLMap.put("code", (String) map.get("code"));
+			marketURLMap.put(FinanceUtils.CODE, inDTO.getCode());
+			marketURLMap.put(inDTO.getUrl(), FinanceUtils.DETAIL_URL + inDTO.getCode());
+			marketURLMap.put(inDTO.getPharseType(), FinanceUtils.DETAIL_PHARSETYPE);
 		}
 	}
 	public void setMarketURLMap()
@@ -56,7 +57,8 @@ public class FinanceDataMatrix
 		for (String str : this.innerArr)
 			if(!this.pageDOCMap.containsKey(str)) this.pageDOCMap.put(str, Jsoup.connect(this.marketURLMap.get(str)).get());
 	}
-	public void clearMatrix() {
+	public void clearMatrix()
+	{
 		this.pageDOCMap.clear();
 		this.marketURLMap.clear();
 	}

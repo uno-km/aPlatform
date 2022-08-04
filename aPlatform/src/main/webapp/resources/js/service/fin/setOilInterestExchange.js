@@ -1,10 +1,10 @@
 ;
 function getOilInterestExchange() {
     const sendingVO = {
-            "url" : "main"
-        ,   "pharseType" : "etcIndex"
+            url : "main"
+        ,   pharseType : "etcIndex"
         }
-    AJAX('GET','/service/finance/etcIndex?',sendingVO,true,function(data){
+    AJAX('POST','/service/finance/data/etcIndex',sendingVO,true,function(data){
 		console.log(data);
 		setExchange(data);
     },null);
@@ -20,5 +20,4 @@ function setExchange(data){
 		i+=3;
 	}
 	document.getElementById('exChange').innerHTML = struct_div;
-	
 }

@@ -117,3 +117,6 @@ function addUserInterestStocks() {
         });
 	}
 }
+function asd() {
+	alert('qwe');
+}

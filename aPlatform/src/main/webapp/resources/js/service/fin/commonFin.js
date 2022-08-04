@@ -24,40 +24,43 @@ function setSessionSharesInfo() {
     localStorage.setItem('sharesInfo' ,objData);
 }
 
-function AJAX(TYPE_,URL_,DATA_,ASYNC_,fn1 ,fn2) {
-	let inTYPE_ = TYPE_;
-	let inURL_ = URL_;
-	let inDATA_ = DATA_;
-	let inASYNC_ = ASYNC_;
-	if(inTYPE_==null || inTYPE_ ==undefined) {
-		TYPE_="GET"
-	}
-	if(inURL_==null || inURL_==undefined) {
+function AJAX(inType, inUrl,inData,inAsync,fn1 ,fn2) {
+	let inTYPE_ = inType;
+	let inURL_ = inUrl;
+	let inDATA_ = inData;
+	let inASYNC_ = inAsync;
+	let inDataType= 'JSON';
+	let inContextType_ = 'application/json; charset=utf-8';
+	if(inURL_==='' || inURL_==null || inURL_==undefined) {
 		inURL_ = "error/404"
 	}
-	if(inDATA_==null || inDATA_==undefined) {
-		inDATA_ = null;
+	if(!(inType === ''||inType==null || inType==undefined)) {
+		if(inType=="POST") {
+			inDATA_ = JSON.stringify(inData);
+		}
+	}else {
+		inTYPE_="GET";
 	}
 	if(inASYNC_==null || inASYNC_==undefined) {
 		inASYNC_ = false;
 	}
 	$.ajax({
-        type: inTYPE_,
-        url: inURL_,
-        data : inDATA_,
-        dataType: 'JSON', 
-        async: inASYNC_,
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
+        type: inTYPE_
+        ,url: inURL_
+        ,data : inDATA_
+        ,dataType: inDataType 
+        ,async: inASYNC_
+        ,contentType: inContextType_
+        ,success: function (data) {
 			if(fn1!=null||fn1!=undefined) {
 				fn1(data)
 			}
-        },
-        error: function () {
+        }
+        ,error: function () {
             alert('통신실패!!');
         }
     });
 	if(fn2!=null||fn2!=undefined) {
-		infn2
+		fn2
 	}
 }

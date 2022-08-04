@@ -20,7 +20,7 @@ function getNewsdata() {
         ,   "pharseType" : "news"  
         }
 	let outData='';
-    AJAX('GET','/service/finance/news?',sendingVO,true,function (data) {
+    AJAX('POST','/service/finance/data/news',sendingVO,true,function (data) {
 		outData=data;
 		newsData = outData;
 		setNewdata();
