@@ -16,5 +16,5 @@ public class FinanceVO
 	private String userId;
 	private String interestYn;
 	private String ctgCulNm;
-	
+
 }

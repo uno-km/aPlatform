@@ -16,7 +16,8 @@
 				AND INTEREST_YN	=	'Y'
 		]]>
 	</select>
-	<insert id="insertUserInterest" parameterType="map">
+	<insert id="insertUserInterest"
+		parameterType="com.aPlatform.controller.service.finance.VO.FinanceVO">
 		 <![CDATA[
 		 	INSERT INTO
 		 		SHARES_USER_INTEREST_DTL
