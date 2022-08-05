@@ -17,7 +17,7 @@ function setSessionSharesInfo() {
         },
         error: function () {
             alert('통신실패!!');
-        }
+        } 
     });
     this.codeInfo = JSON.stringify(outData);
     let objData = JSON.stringify(outData);
