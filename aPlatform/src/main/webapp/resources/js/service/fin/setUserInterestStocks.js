@@ -8,7 +8,7 @@ function getInterestList(){
 		const userId = localStorage.user_id;
 		$.ajax({
 			type:'POST',
-			url: "/service/finance/getUserInterest",
+			url: "/service/finance/interest",
 			data: userId,
 			dataType: 'JSON', 
 			async : true,
@@ -105,7 +105,7 @@ function addUserInterestStocks() {
 		};
 		$.ajax({
             type:'POST',
-            url: "/service/finance/addUserInterest",
+            url: "/service/finance/interest",
             data: JSON.stringify(sendingVO),
             dataType: 'JSON', 
             async : true,
@@ -115,6 +115,32 @@ function addUserInterestStocks() {
 		},
             error: function () {alert('통신실패!!');}
         });
+	}
+}
+function updateUserInterestStocks() {
+	if(curSearchShareName.length>0||curSearchShareName!="") {
+		let sharesInfo = JSON.parse(localStorage.sharesInfo);
+		let searchData = sharesInfo[curSearchShareName];
+		if(searchData == undefined || searchData == null) {}
+		let sendingVO = {
+				userId : localStorage.user_id
+				, finCode : searchData
+				, finName : curSearchShareName
+				, excange : shareDetailInfo.sichongList[1]
+						, interestYn : 'Y'
+		};
+		$.ajax({
+			type:'PUT',
+			url: "/service/finance/interest",
+			data: JSON.stringify(sendingVO),
+			dataType: 'JSON', 
+			async : true,
+			contentType: 'application/json; charset=utf-8',
+			success:  function (data) {
+			document.location.reload();
+		},
+			error: function () {alert('통신실패!!');}
+		});
 	}
 }
 function asd() {
