@@ -3,7 +3,7 @@ document.write("<script src='/resources/lib/jspdf.min.js'></script>");
 //^^PDF생성 라이브러리 파일
 /**
  * 
- */
+ */ 
 function setSessionSharesInfo() {
 	let outData ="";
     $.ajax({
@@ -17,7 +17,7 @@ function setSessionSharesInfo() {
         },
         error: function () {
             alert('통신실패!!');
-        }
+        } 
     });
     this.codeInfo = JSON.stringify(outData);
     let objData = JSON.stringify(outData);
