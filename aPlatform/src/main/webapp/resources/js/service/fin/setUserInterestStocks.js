@@ -143,6 +143,6 @@ function updateUserInterestStocks() {
 		});
 	}
 }
-function asd() {
-	alert('qwe');
+function getListUserRegistedInterestShares(){
+	;
 }
