@@ -24,6 +24,7 @@ public class FinanceSearchBOC
 
 	public Object getInfo(FinanceDataMatrix financeDataMatrix, final String dataform, FinanceInDTO inDTO) throws Exception
 	{
+		financeDataMatrix.clearMatrix();
 		switch (dataform) {
 			case "total" : /* 코스피 코스닥 전부 */
 				financeDataMatrix.setMarketURLMap();
@@ -42,7 +43,6 @@ public class FinanceSearchBOC
 				financeDataMatrix.setMarketURLMap(inDTO);
 				financeDataMatrix.setPageDOC(this.url);
 				this.outData = getUrlInfo.getUrlInfoObject(financeDataMatrix, this.url, this.pharseType);
-				// financeDataMatrix.clearMatrix();
 				return this.outData;
 		}
 	}

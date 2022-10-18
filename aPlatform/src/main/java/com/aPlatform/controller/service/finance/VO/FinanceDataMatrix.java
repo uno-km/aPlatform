@@ -57,7 +57,7 @@ public class FinanceDataMatrix
 		for (String str : this.innerArr)
 			if(!this.pageDOCMap.containsKey(str)) this.pageDOCMap.put(str, Jsoup.connect(this.marketURLMap.get(str)).get());
 	}
-	public void clearMatrix()
+	public final void clearMatrix()
 	{
 		this.pageDOCMap.clear();
 		this.marketURLMap.clear();
