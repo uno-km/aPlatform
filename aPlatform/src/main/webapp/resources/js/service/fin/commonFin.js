@@ -24,7 +24,7 @@ function setSessionSharesInfo() {
     localStorage.setItem('sharesInfo' ,objData);
 }
 
-function AJAX(inType, inUrl,inData,inAsync,fn1 ,fn2) {
+async function AJAX(inType, inUrl,inData,inAsync,fn1 ,fn2) {
 	let inTYPE_ = inType;
 	let inURL_ = inUrl;
 	let inDATA_ = inData;
