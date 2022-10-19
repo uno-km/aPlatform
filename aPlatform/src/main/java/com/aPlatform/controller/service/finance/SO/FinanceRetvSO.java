@@ -25,8 +25,6 @@ public class FinanceRetvSO
 	private FinanceRetvBOC financeRetvBOC;
 	@Autowired
 	private FinanceSearchBOC financeSearchBOC;
-	@Autowired
-	private FinanceDataMatrix financeDataMatrix;
 
 	@GetMapping(value = "/main")
 	public ModelAndView reternMainPage(Model model)
@@ -50,6 +48,7 @@ public class FinanceRetvSO
 	public Object getDataPost(@PathVariable final String dataform, @RequestBody FinanceInDTO inDTO) throws Exception
 	{
 		System.out.println("Client required " + dataform + " data...");
+		FinanceDataMatrix financeDataMatrix = new FinanceDataMatrix();
 		return this.financeSearchBOC.getInfo(financeDataMatrix, dataform, inDTO);
 	}
 }
