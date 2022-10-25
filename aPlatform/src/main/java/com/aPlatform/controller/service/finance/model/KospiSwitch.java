@@ -23,9 +23,7 @@ public class KospiSwitch implements UrlFactory
 		String[] indexSub = {"_index" , "_per" , "_change" };
 		parsingContainer = contents.text().split(" ");
 		for (int i = 0; i < indexSub.length; i++)
-		{
 			outMap.put(market + indexSub[i], parsingContainer[i]);
-		}
 		kospiArr.add((Map<String, String>) outMap.clone());
 		outMap.clear();
 		/* 매매주체 */
@@ -35,10 +33,7 @@ public class KospiSwitch implements UrlFactory
 		parsingContainer = contents.text().split(" ");
 		for (int i = 1; i < parsingContainer.length; i++)
 		{
-			if(bcnt == 3)
-			{
-				break;
-			}
+			if(bcnt == 3) break;
 			outMap.put(market + buyerSub[bcnt], parsingContainer[i]);
 			i++;
 			bcnt++;
@@ -47,17 +42,9 @@ public class KospiSwitch implements UrlFactory
 		outMap.clear();
 		/* 차트 이미지 */
 		contents = doc.select(financeDataMatrix.getMarketURLMap().get("image"));
-		int icnt = 0;
 		String[] isub = {"_day" , "_day90" , "_day365" , "_day1095" };
-		parsingContainer = contents.toString().split("<img src=\"");
-		for (int i = 0; i < parsingContainer.length; i++)
-		{
-			if(!parsingContainer[i].isEmpty())
-			{
-				outMap.put(market + isub[icnt], parsingContainer[i].split("\" alt=")[0]);
-				icnt++;
-			}
-		}
+		for (int i = 0; i < contents.size(); i++)
+			outMap.put(market + isub[i], contents.get(i).attr("src"));
 		kospiArr.add((Map<String, String>) outMap.clone());
 		return kospiArr;
 	}
