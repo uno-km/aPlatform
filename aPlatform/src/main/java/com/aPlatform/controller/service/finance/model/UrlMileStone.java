@@ -8,7 +8,7 @@ public enum UrlMileStone
 	, RANKMC("RankSwitch")
 	, DETAIL("DetailSwitch")
 	, NEWS("NewsSwitch")
-	, KOSPI("KospiSwitch")
+	, KOSPI("KosdaqSwitch")
 	, KOSDAQ("KosdaqSwitch")
 	, ETCINDEX("EtcIndexSwitch");
 
