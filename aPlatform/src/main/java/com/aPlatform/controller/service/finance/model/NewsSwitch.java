@@ -16,22 +16,15 @@ public class NewsSwitch implements UrlFactory
 	public Object excute(FinanceDataMatrix financeDataMatrix, Document doc, Elements contents, HashMap<String, String> outMap,
 			String[] parsingContainer, String market, String pharseType)
 	{
-		contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType));
-		Elements aTag = doc.select("a");
+		contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType)).select("a");
 		List<List<String>> newsListList = new ArrayList<List<String>>();
-		for (int i = 0; i < aTag.size(); i++)
+		for (int i = 0; i < contents.size(); i++)
 		{
-			String newsStartUrl = "<a href=\"/news/news_read.naver?mode=mainnews&";
-			if(aTag.get(i).toString().contains(newsStartUrl))
-			{
-				List<String> newsList = new ArrayList<String>();
-				parsingContainer = aTag.get(i).toString().split("<a href=\"");
-				newsList.add(aTag.get(i).text());
-				newsList.add(parsingContainer[1].split("\" onclick")[0].replace("&amp;", "&"));
-				newsListList.add(newsList);
-			}
+			List<String> newsList = new ArrayList<String>();
+			newsList.add(contents.get(i).text());
+			newsList.add(contents.get(i).attr("href"));
+			newsListList.add(newsList);
 		}
 		return newsListList;
 	}
-
 }
