@@ -17,9 +17,9 @@ public class KospiSwitch implements UrlFactory
 	public Object excute(FinanceDataMatrix financeDataMatrix, Document doc, Elements contents, HashMap<String, String> outMap,
 			String[] parsingContainer, String market, String pharseType)
 	{
-		contents = doc.select(financeDataMatrix.getMarketURLMap().get("index"));
 		ArrayList<Map<String, String>> kospiArr = new ArrayList<Map<String, String>>();
 		/* 하루 움직임 동향 */
+		contents = doc.select(financeDataMatrix.getMarketURLMap().get("index"));
 		String[] indexSub = {"_index" , "_per" , "_change" };
 		parsingContainer = contents.text().split(" ");
 		for (int i = 0; i < indexSub.length; i++)
@@ -27,16 +27,17 @@ public class KospiSwitch implements UrlFactory
 		kospiArr.add((Map<String, String>) outMap.clone());
 		outMap.clear();
 		/* 매매주체 */
-		contents = doc.select(financeDataMatrix.getMarketURLMap().get("buyer"));
 		int bcnt = 0;
+		contents = doc.select(financeDataMatrix.getMarketURLMap().get("buyer")).select("span");
 		String[] buyerSub = {"_ant" , "_org" , "_frg" };
-		parsingContainer = contents.text().split(" ");
-		for (int i = 1; i < parsingContainer.length; i++)
+		for (int i = 1; i < contents.size(); i++)
 		{
 			if(bcnt == 3) break;
-			outMap.put(market + buyerSub[bcnt], parsingContainer[i]);
-			i++;
-			bcnt++;
+			if(i % 2 == 0)
+			{
+				outMap.put(market + buyerSub[bcnt], contents.get(i).text());
+				bcnt++;
+			}
 		}
 		kospiArr.add((Map<String, String>) outMap.clone());
 		outMap.clear();

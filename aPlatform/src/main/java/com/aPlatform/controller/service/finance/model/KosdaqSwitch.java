@@ -19,34 +19,38 @@ public class KosdaqSwitch implements UrlFactory
 	{
 		contents = doc.select(financeDataMatrix.getMarketURLMap().get("index"));
 		ArrayList<Map<String, String>> kosdaqArr = new ArrayList<Map<String, String>>();
-		/* 하루 움직임 동향 */
+		/* 하루 움직임 동향 시작*/
 		String[] indexSub = {"_index" , "_per" , "_change" };
 		parsingContainer = contents.text().split(" ");
 		for (int i = 0; i < indexSub.length; i++)
 			outMap.put(market + indexSub[i], parsingContainer[i]);
 		kosdaqArr.add((Map<String, String>) outMap.clone());
 		outMap.clear();
-		/* 매매주체 */
-		contents = doc.select(financeDataMatrix.getMarketURLMap().get("buyer"));
+		/* 하루 움직임 동향  종료*/
+		/* 매매주체 시작*/
 		int bcnt = 0;
+		contents = doc.select(financeDataMatrix.getMarketURLMap().get("buyer")).select("span");
 		String[] buyerSub = {"_ant" , "_org" , "_frg" };
-		parsingContainer = contents.text().split(" ");
-		for (int i = 1; i < parsingContainer.length; i++)
+		for (int i = 0; i < contents.size(); i++)
 		{
 			if(bcnt == 3) break;
-			outMap.put(market + buyerSub[bcnt], parsingContainer[i]);
-			i++;
-			bcnt++;
+			if(i % 2 == 0)
+			{
+				outMap.put(market + buyerSub[bcnt], contents.get(i).text());
+				bcnt++;
+			}
 		}
 		kosdaqArr.add((Map<String, String>) outMap.clone());
 		outMap.clear();
-		/* 차트 이미지 */
+		/* 매매주체  종료*/
+		/* 차트 이미지 시작*/
 		contents = doc.select(financeDataMatrix.getMarketURLMap().get("image"));
 		String[] isub = {"_day" , "_day90" , "_day365" , "_day1095" };
 		parsingContainer = contents.toString().split("<img src=\"");
 		for (int i = 0; i < contents.size(); i++)
 			outMap.put(market + isub[i], contents.get(i).attr("src"));
 		kosdaqArr.add((Map<String, String>) outMap.clone());
+		/* 차트 이미지 종료*/
 		return kosdaqArr;
 	}
 
