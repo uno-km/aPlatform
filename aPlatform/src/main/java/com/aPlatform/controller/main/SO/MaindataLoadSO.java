@@ -33,4 +33,11 @@ public class MaindataLoadSO
 		modelandview.addObject("test", "ㅎㅇ");
 		return modelandview;
 	}
+	@GetMapping(value = "/fileTest")
+	public ModelAndView go2fileTestWeb()
+	{
+		ModelAndView modelandview = new ModelAndView();
+		modelandview.setViewName("fileTest");
+		return modelandview;
+	}
 }

@@ -27,9 +27,9 @@
 </body>
 </html>
 </body>
-<div id='moveEvent' style='background-color: #aaa; height: 200px; width: 400px; position: absolute; left: 0px; top: 0px; cursor: pointer; cursor: hand' onmousedown='startDrag(event, this)'>
-	<h1>하하하</h1>
-</div>
+<!-- <div id='moveEvent' style='background-color: #aaa; height: 200px; width: 400px; position: absolute; left: 0px; top: 0px; cursor: pointer; cursor: hand' onmousedown='startDrag(event, this)'> -->
+<!-- 	<h1>하하하</h1> -->
+<!-- </div> -->
 <label class="switch-button"> 
 <input type="checkbox" /> <span class="onoff-switch"></span>
 </label>
