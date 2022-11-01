@@ -9,7 +9,7 @@ import org.jsoup.select.Elements;
 
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 
-public class KosdaqSwitch implements UrlFactory
+public class KospiKosdaqSwitch implements UrlFactory
 {
 
 	@SuppressWarnings("unchecked")
