@@ -1,14 +1,14 @@
 ;
 'use strict';
 /*삽입될 JS파일들*/
-document.write("<script src='/resources/js/service/fin/setContentsSection.js'></script>");
-document.write("<script src='/resources/js/service/fin/setInfoShareDetailData.js'></script>");
-document.write("<script src='/resources/js/service/fin/setMarketsInfo.js'></script>");
-document.write("<script src='/resources/js/service/fin/setRankDataMarketCurculor.js'></script>");
-document.write("<script src='/resources/js/service/fin/setNewsData.js'></script>");
-document.write("<script src='/resources/js/service/fin/setOilInterestExchange.js'></script>");
-document.write("<script src='/resources/js/service/fin/setUserInterestStocks.js'></script>");
-document.write("<script src='/resources/js/service/fin/commonFin.js'></script>");
+/*컨텐트섹션그리기*/document.write("<script src='/resources/js/service/fin/setContentsSection.js'></script>");
+/*주식종목세부정보*/document.write("<script src='/resources/js/service/fin/setInfoShareDetailData.js'></script>");
+/*코스피코스닥정보*/document.write("<script src='/resources/js/service/fin/setMarketsInfo.js'></script>");
+/*시가총액순위정보*/document.write("<script src='/resources/js/service/fin/setRankDataMarketCurculor.js'></script>");
+/*최신뉴스리스트출력*/document.write("<script src='/resources/js/service/fin/setNewsData.js'></script>");
+/*기타상품정보*/document.write("<script src='/resources/js/service/fin/setOilInterestExchange.js'></script>");
+/*유저관심종목관리*/document.write("<script src='/resources/js/service/fin/setUserInterestStocks.js'></script>");
+/*fin서비스내 공통JS소스*/document.write("<script src='/resources/js/service/fin/commonFin.js'></script>");
 /*데이터 전역변수*/
 var nowFinData='';
 var kospiIndex='';
@@ -47,7 +47,6 @@ function addEvent() {
 	for(let i = 0 ; i<document.querySelectorAll('.inner_title').length;i++) {
 		document.getElementsByClassName('inner_title')[i].addEventListener('click',refreshInfo);
 	}
-	
 }
 function refreshInfo(e){
 	switch(e.target.innerText) {
