@@ -2,14 +2,15 @@ package com.aPlatform.controller.service.finance.model;
 
 public enum UrlMileStone
 {
-	INDEX("IndexSwitch")
-	, BUYER("BuyerSwitch")
-	, IMAGE("ImageSwitch")
-	, RANKMC("RankSwitch")
+//	INDEX("IndexSwitch")
+//	, BUYER("BuyerSwitch")
+//	, IMAGE("ImageSwitch")
+	RANKMC("RankSwitch")
 	, DETAIL("DetailSwitch")
 	, NEWS("NewsSwitch")
-	, KOSPI("KosdaqSwitch")
-	, KOSDAQ("KosdaqSwitch")
+	, KOSPI("KospiKosdaqSwitch")
+	, KOSDAQ("KospiKosdaqSwitch")
+	, ALLMARKET("KospiKosdaqSwitch")
 	, ETCINDEX("EtcIndexSwitch");
 
 	private final String value;
