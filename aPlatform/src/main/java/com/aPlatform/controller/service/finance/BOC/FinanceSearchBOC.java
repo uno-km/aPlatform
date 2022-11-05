@@ -35,9 +35,9 @@ public class FinanceSearchBOC
 				financeDataMatrix.setPageDOC();
 				ArrayList<Map<String, String>> totalArr = new ArrayList<Map<String, String>>();
 				totalArr.addAll((Collection<? extends Map<String, String>>) getUrlInfo.getUrlInfoObject(financeDataMatrix, FinanceUtils.KOSPI,
-						FinanceUtils.KOSPI));
+						FinanceUtils.ALLMARKET));
 				totalArr.addAll((Collection<? extends Map<String, String>>) getUrlInfo.getUrlInfoObject(financeDataMatrix, FinanceUtils.KOSDAQ,
-						FinanceUtils.KOSDAQ));
+						FinanceUtils.ALLMARKET));
 				return totalArr;
 			// case "all" : /* 지수제외 모든 데이터 */
 			// return getUrlInfo.getUrlInfoAllObject(financeDataMatrix, inDTO);
