@@ -2,9 +2,6 @@ package com.aPlatform.controller.service.finance.model;
 
 public enum UrlMileStone
 {
-//	INDEX("IndexSwitch")
-//	, BUYER("BuyerSwitch")
-//	, IMAGE("ImageSwitch")
 	RANKMC("RankSwitch")
 	, DETAIL("DetailSwitch")
 	, NEWS("NewsSwitch")
