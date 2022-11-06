@@ -17,7 +17,7 @@ import com.aPlatform.controller.service.finance.VO.FinanceVO;
 @SuppressWarnings("resource")
 public class ExcelData
 {
-	public List<FinanceVO> callExcel(File file) throws Exception
+	public void insertExcelData(File file) throws Exception
 	{
 		List<FinanceVO> outList = new ArrayList<FinanceVO>();
 		XSSFWorkbook workbook = new XSSFWorkbook(file);
@@ -75,6 +75,5 @@ public class ExcelData
 				outList.add(inVO);
 			}
 		}
-		return outList;
 	}
 }

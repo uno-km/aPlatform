@@ -51,7 +51,7 @@ public class FinanceRetvBO
 				result.setCodeMessage("500", "알수없는 오류가 발생했습니다. 관리자에게 문의하세요.");
 				return commonoutVO;
 			}
-			List<FinanceVO> innerList = this.excelData.callExcel(FileUnoUtils.multipartFileToFile(file));
+			List<FinanceVO> innerList = this.excelData.insertExcelData(FileUnoUtils.multipartFileToFile(file));
 			for (FinanceVO finVO : innerList)
 				/* 종목을 하나씩 삽입한다. */
 				this.financeDataMapper.insertSharesInfo(finVO);
