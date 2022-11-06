@@ -43,10 +43,10 @@ public class ExcelData
 						if(excelCell != null)
 						{
 							switch (excelCell.getColumnIndex()) {
-								case 2 :
+								case 1 :
 									inVO.setFinCode(excelCell.getStringCellValue());
 									break;
-								case 4 :
+								case 3 :
 									inVO.setFinName(excelCell.getStringCellValue());
 									break;
 								case 6 :
