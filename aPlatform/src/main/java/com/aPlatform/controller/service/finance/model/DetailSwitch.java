@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
@@ -21,21 +22,14 @@ public class DetailSwitch implements UrlFactory
 		List<List<String>> dtlOutList = new ArrayList<List<String>>();
 		contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType));
 		List<String> infoTitleList = contents.eachText().subList(3, 19);
-		List<String> monthList = new ArrayList<String>();
+		List<String> tableHeaderList = new ArrayList<String>();
 		Elements tdElements = doc.select("td");
-		Elements thElements = doc.select("th");
+		Elements table = doc.select(".sub_section").last().select("table");
+		Element tableHeader = table.select("thead").select("tr").get(1);
 		dtlOutList.add(infoTitleList);
-		int thCnt = 0;
-		for (int i = 0; i < thElements.size(); i++)
-		{
-			if(thCnt == 10) break;
-			if(thElements.get(i).text().contains("."))
-			{
-				monthList.add(thElements.get(i).text());
-				thCnt++;
-			}
-		}
-		dtlOutList.add(monthList);
+		for (int tableHeaderIdx = 0; tableHeaderIdx < tableHeader.childrenSize(); tableHeaderIdx++)
+			tableHeaderList.add(tableHeader.child(tableHeaderIdx).text());
+		dtlOutList.add(tableHeaderList);
 		for (int i = 57; i < 216; i++)
 		{
 			List<String> innerList = new ArrayList<String>();
@@ -55,13 +49,13 @@ public class DetailSwitch implements UrlFactory
 		List<String> perEpsList = new ArrayList<>();
 		Elements no_today = doc.select(".no_today");
 		Elements no_exday = doc.select(".no_exday");
-		infoTodayList.add(no_today.text().split(" ")[0]);
-		infoTodayList.add(no_exday.text().split("l")[0].split(" ")[1]);
-		infoTodayList.add(no_exday.text().split("l")[0].split(" ")[2]);
-		if(no_exday.text().split("l")[0].split(" ")[1].equals("보합"))
-			infoTodayList.add(no_exday.text().split("l")[1].split(" ")[1]);
+		infoTodayList.add(no_today.select(".blind").text());
+		infoTodayList.add(no_exday.select(".ico").get(0).text());
+		infoTodayList.add(no_exday.select(".blind").get(0).text());
+		if(no_exday.select(".ico").get(0).text().equals("보합"))
+			infoTodayList.add(no_exday.select(".blind").get(1).text());
 		else
-			infoTodayList.add(no_exday.text().split("l")[1].split(" ")[1] + no_exday.text().split("l")[1].split(" ")[2]);
+			infoTodayList.add(no_exday.select(".ico").get(1).text() + no_exday.select(".blind").get(1).text());
 		outMapList.put("today", infoTodayList);
 		String[] areaArr = {"day" , "week" , "month3" , "year" , "year3" , "year5" , "year10" };
 		String[] candleArr = {"day" , "week" , "month" };
