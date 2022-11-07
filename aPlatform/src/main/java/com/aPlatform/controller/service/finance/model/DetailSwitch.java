@@ -19,26 +19,31 @@ public class DetailSwitch implements UrlFactory
 			String[] parsingContainer, String market, String pharseType)
 	{
 		Map<String, Object> outMapList = new HashMap<>();
-		List<List<String>> dtlOutList = new ArrayList<List<String>>();
-		contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType));
-		List<String> infoTitleList = contents.eachText().subList(3, 19);
+		List<List<String>> tableBodyList = new ArrayList<List<String>>();
 		List<String> tableHeaderList = new ArrayList<String>();
-		Elements tdElements = doc.select("td");
+
 		Elements table = doc.select(".sub_section").last().select("table");
 		Element tableHeader = table.select("thead").select("tr").get(1);
-		dtlOutList.add(infoTitleList);
+		Elements tableBody = table.select("tbody").select("tr");
+
 		for (int tableHeaderIdx = 0; tableHeaderIdx < tableHeader.childrenSize(); tableHeaderIdx++)
+		{
 			tableHeaderList.add(tableHeader.child(tableHeaderIdx).text());
-		dtlOutList.add(tableHeaderList);
-		for (int i = 57; i < 216; i++)
+		}
+		tableBodyList.add(tableHeaderList);
+		
+		for (int tableBodyIdx = 0; tableBodyIdx < tableBody.size(); tableBodyIdx++)
 		{
 			List<String> innerList = new ArrayList<String>();
-			for (int j = 0; j < 10; j++)
-				innerList.add(tdElements.get(i + j).text());
-			dtlOutList.add(innerList);
-			i += 9;
+			innerList.add(tableBody.get(tableBodyIdx).select("th").text());
+			for (int tagIdx = 0; tagIdx < tableBody.get(tableBodyIdx).select("td").size(); tagIdx++)
+			{
+				innerList.add(tableBody.get(tableBodyIdx).select("td").get(tagIdx).text());
+			}
+			tableBodyList.add(innerList);
 		}
-		outMapList.put("statement", dtlOutList);
+		outMapList.put("statement", tableBodyList);
+
 		List<String> infoTodayList = new ArrayList<>();
 		List<String> chartAreaList = new ArrayList<>();
 		List<String> chartCandleList = new ArrayList<>();
