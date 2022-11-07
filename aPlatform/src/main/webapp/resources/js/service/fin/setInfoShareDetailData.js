@@ -103,19 +103,7 @@ function setInfoShareDetailData(data) {
 			{
 				struct_div += `<th scope="row">${data[rowIdx][cellIdx]}</th>`;
 			}
-			else if(cellIdx==3) 
-			{
-				if(data[rowIdx][cellIdx].length<1) {
-					struct_div += `<td class='info_detail_expect'>-</td>`;
-				}else if(data[rowIdx][cellIdx]>data[rowIdx][cellIdx-1]) {
-					struct_div += `<td class='info_detail_expect' style='color : #ff3d3d;'>↑ ${data[rowIdx][cellIdx]}</td>`;
-				}else if(data[rowIdx][cellIdx]<data[rowIdx][cellIdx-1]) {
-					struct_div += `<td class='info_detail_expect' style='color : #a695ff;'>↓ ${data[rowIdx][cellIdx]}</td>`;
-				}else {
-					struct_div += `<td class='info_detail_expect'>${data[rowIdx][cellIdx]}</td>`;
-				}
-			}
-			else if(cellIdx==9)
+			else if(cellIdx==4 || cellIdx==10) 
 			{
 				if(data[rowIdx][cellIdx].length<1) {
 					struct_div += `<td class='info_detail_expect'>-</td>`;
