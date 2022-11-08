@@ -33,7 +33,8 @@ public class DetailSwitch implements UrlFactory
 		Elements forign = document.select(".lwidth");
 		Elements opinon = document.select(".rwidth");
 		Elements perEps = document.select(".per_table");
-		Elements same = document.select(".gray");
+		Elements same = document.select(".gray").get(1).select("table").select("tbody").select("tr").select("td");
+		;
 		for (int tableHeaderIdx = 0; tableHeaderIdx < tableHeader.childrenSize(); tableHeaderIdx++)
 		{
 			tableHeaderList.add(tableHeader.child(tableHeaderIdx).text());
@@ -105,8 +106,8 @@ public class DetailSwitch implements UrlFactory
 		perEpsList.add(perEps.eachText().get(0).split("합니다.")[4].split("l")[0]);
 		perEpsList.add(perEps.eachText().get(0).split("합니다.")[4].split("l")[1].split(" ")[1]);
 		outMapList.put("perEpsList", perEpsList);
-		sameList.add(same.eachText().get(1).split(" ")[4]);
-		sameList.add(same.eachText().get(1).split(" ")[7]);
+		sameList.add(same.get(0).text());
+		sameList.add(same.get(1).text());
 		outMapList.put("sameList", sameList);
 		return outMapList;
 	}
