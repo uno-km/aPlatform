@@ -83,43 +83,39 @@ function setInfoShareDetailData(data) {
 	struct_div +='<th scope="col"></th>';
 	for(let day = 0 ; day <10;day++) {
 		if(day==3) {
-			struct_div += `<td class='info_detail_expect'>${data[1][day]}</td>`;
+			struct_div += `<td class='info_detail_expect'>${data[0][day]}</td>`;
 		}else if(day==9){
-			struct_div += `<td class='info_detail_expect'>${data[1][day]}</td>`;
+			struct_div += `<td class='info_detail_expect'>${data[0][day]}</td>`;
 		}else {
-			struct_div += `<td>${data[1][day]}</td>`;
+			struct_div += `<td>${data[0][day]}</td>`;
 		}
 	}
 	let inputBody = document.getElementById('monthList');
 	inputBody.innerHTML = struct_div;
 	//세부 내용출력
 	struct_div =``;
-	for(let y =2 ; y <data.length;y++) {
+	for(let rowIdx = 1 ; rowIdx <data.length;rowIdx++) 
+	{
 		struct_div += `<tr>`;
-		struct_div += `<th scope="row">${data[0][y-2]}</th>`;
-		for(let x = 0 ; x<10;x++) {
-			if(x==3) {
-				if(data[y][x].length<1) {
+		for(let cellIdx = 0 ; cellIdx < data[rowIdx].length ; cellIdx++ )
+		{
+			if(cellIdx==0)
+			{
+				struct_div += `<th scope="row">${data[rowIdx][cellIdx]}</th>`;
+			}
+			else if(cellIdx==4 || cellIdx==10) 
+			{
+				if(data[rowIdx][cellIdx].length<1) {
 					struct_div += `<td class='info_detail_expect'>-</td>`;
-				}else if(data[y][x]>data[y][x-1]) {
-					struct_div += `<td class='info_detail_expect' style='color : #ff3d3d;'>↑ ${data[y][x]}</td>`;
-				}else if(data[y][x]<data[y][x-1]) {
-					struct_div += `<td class='info_detail_expect' style='color : #a695ff;'>↓ ${data[y][x]}</td>`;
+				}else if(data[rowIdx][cellIdx]>data[rowIdx][cellIdx-1]) {
+					struct_div += `<td class='info_detail_expect' style='color : #ff3d3d;'>↑ ${data[rowIdx][cellIdx]}</td>`;
+				}else if(data[rowIdx][cellIdx]<data[rowIdx][cellIdx-1]) {
+					struct_div += `<td class='info_detail_expect' style='color : #a695ff;'>↓ ${data[rowIdx][cellIdx]}</td>`;
 				}else {
-					struct_div += `<td class='info_detail_expect'>${data[y][x]}</td>`;
-				}
-			}else if(x==9){
-				if(data[y][x].length<1) {
-					struct_div += `<td class='info_detail_expect'>-</td>`;
-				}else if(data[y][x]>data[y][x-1]) {
-					struct_div += `<td class='info_detail_expect' style='color : #ff3d3d;'>↑ ${data[y][x]}</td>`;
-				}else if(data[y][x]<data[y][x-1]) {
-					struct_div += `<td class='info_detail_expect' style='color : #a695ff;'>↓ ${data[y][x]}</td>`;
-				}else {
-					struct_div += `<td class='info_detail_expect'>${data[y][x]}</td>`;
+					struct_div += `<td class='info_detail_expect'>${data[rowIdx][cellIdx]}</td>`;
 				}
 			}else {
-				struct_div += `<td>${data[y][x]}</td>`;
+				struct_div += `<td>${data[rowIdx][cellIdx]}</td>`;
 			}
 		}
 		struct_div += `</tr>`;
