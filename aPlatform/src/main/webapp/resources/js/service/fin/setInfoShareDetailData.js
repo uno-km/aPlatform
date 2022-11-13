@@ -173,6 +173,7 @@ function setInfoShareAreaChart(e) {
 	if(e==null) { //기본값
 		let imgsrc = ``;
 		imgsrc = shareDetailInfo.areaChart[0];
+		loadInputBodyImgSrc();
 		inPutBody(imgsrc);
 	}else {
 		if(e.target.id.substring(0,e.target.id.indexOf('_'))=='area'){
@@ -180,6 +181,7 @@ function setInfoShareAreaChart(e) {
 				if(shareDetailInfo.areaChart[i].includes(e.target.id.substring(e.target.id.indexOf('_')+1))) {
 					imgsrc = shareDetailInfo.areaChart[i];
 					inPutBody(imgsrc);
+					return;
 				}
 			}
 		}else {
@@ -187,16 +189,28 @@ function setInfoShareAreaChart(e) {
 				if(shareDetailInfo.candleChart[i].includes(e.target.id.substring(e.target.id.indexOf('_')+1))) {
 					imgsrc = shareDetailInfo.candleChart[i];
 					inPutBody(imgsrc);
+					return;
 				}
 			}
 		}
 	}
-	function inPutBody(imgsrc) {
-		const inputBody= document.getElementById('detailChart');
-		inputBody.style.backgroundImage=`URL('${imgsrc}')`;
-		inputBody.style.backgroundSize="100% 100%";
-		inputBody.style.backgroundPosition="center";
+	function loadInputBodyImgSrc() {
+		let imgsrc = ``;
+		for(let i = 0 ; i<shareDetailInfo.areaChart.length;i++  ) {
+			let inputBody= document.getElementById('detailChart');
+			inputBody.style.backgroundImage=`URL('${shareDetailInfo.areaChart[i]}')`;
+		}
+		for(let i = 0 ; i<shareDetailInfo.candleChart.length;i++) {
+			let inputBody= document.getElementById('detailChart');
+			inputBody.style.backgroundImage=`URL('${shareDetailInfo.candleChart[i]}')`;
+		}
 	}
+}
+function inPutBody(imgsrc) {
+	const inputBody= document.getElementById('detailChart');
+	inputBody.style.backgroundSize="100% 100%";
+	inputBody.style.backgroundPosition="center";
+	inputBody.style.backgroundImage=`URL('${imgsrc}')`;
 }
 
 function goShareInfo(input) {
