@@ -16,7 +16,9 @@ import lombok.Data;
 @Data
 public class FinanceDataMatrix
 {
-
+	private String pharseType;
+	private String market;
+	private Document connectedDoc;
 	private Map<String, Document> pageDOCMap = new HashMap<String, Document>();
 	private Map<String, String> marketURLMap = new HashMap<String, String>();
 	private String[] innerArr = {FinanceUtils.KOSPI , FinanceUtils.KOSDAQ };

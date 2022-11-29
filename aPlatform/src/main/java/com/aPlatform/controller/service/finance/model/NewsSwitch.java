@@ -1,7 +1,6 @@
 package com.aPlatform.controller.service.finance.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.jsoup.nodes.Document;
@@ -13,10 +12,11 @@ public class NewsSwitch implements UrlFactory
 {
 
 	@Override
-	public Object excute(FinanceDataMatrix financeDataMatrix, Document doc, Elements contents, HashMap<String, String> outMap,
-			String[] parsingContainer, String market, String pharseType)
+	public Object excute(FinanceDataMatrix financeDataMatrix)
 	{
-		contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType)).select("a");
+		Elements contents = null;
+		Document doc = financeDataMatrix.getConnectedDoc();
+		contents = doc.select(financeDataMatrix.getMarketURLMap().get(financeDataMatrix.getPharseType())).select("a");
 		List<List<String>> newsListList = new ArrayList<List<String>>();
 		for (int i = 0; i < contents.size(); i++)
 		{

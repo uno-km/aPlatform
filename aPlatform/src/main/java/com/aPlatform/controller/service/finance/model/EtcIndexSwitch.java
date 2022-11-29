@@ -11,16 +11,16 @@ import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 public class EtcIndexSwitch implements UrlFactory
 {
 	@Override
-	public Object excute(FinanceDataMatrix financeDataMatrix, Document doc, Elements contents, HashMap<String, String> outMap,
-			String[] parsingContainer, String market, String pharseType)
+	public Object excute(FinanceDataMatrix financeDataMatrix)
 	{
 		HashMap<String, ArrayList<String>> outListMap = new HashMap<>();
 		ArrayList<String> exChangeList = new ArrayList<String>();
 		ArrayList<String> interestList = new ArrayList<String>();
 		ArrayList<String> oilList = new ArrayList<String>();
 		ArrayList<String> elementsList = new ArrayList<String>();
-		
-		contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType));
+		Elements contents = null;
+		Document doc = financeDataMatrix.getConnectedDoc();
+		contents = doc.select(financeDataMatrix.getMarketURLMap().get(financeDataMatrix.getPharseType()));
 		String[] Exc = contents.select("table").get(0).select("tbody").text().split(" ");
 		for (String input : Exc)
 			if(!input.contains("(")) exChangeList.add(input);

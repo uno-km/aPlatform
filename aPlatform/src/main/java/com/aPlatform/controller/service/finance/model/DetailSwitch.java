@@ -17,12 +17,12 @@ public class DetailSwitch implements UrlFactory
 {
 
 	@Override
-	public Object excute(FinanceDataMatrix financeDataMatrix, Document doc, Elements contents, HashMap<String, String> outMap,
-			String[] parsingContainer, String market, String pharseType)
+	public Object excute(FinanceDataMatrix financeDataMatrix)
 	{
 		Map<String, Object> outMapList = new HashMap<>();
 		List<List<String>> tableBodyList = new ArrayList<List<String>>();
 		List<String> tableHeaderList = new ArrayList<String>();
+		Document doc = financeDataMatrix.getConnectedDoc();
 		Element document = doc.select("#middle").get(0);
 		Elements no_today = document.select(".no_today");
 		Elements no_exday = document.select(".no_exday");

@@ -1,7 +1,6 @@
 package com.aPlatform.controller.service.finance.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -14,11 +13,12 @@ public class RankSwitch implements UrlFactory
 {
 
 	@Override
-	public Object excute(FinanceDataMatrix financeDataMatrix, Document doc, Elements contents, HashMap<String, String> outMap,
-			String[] parsingContainer, String market, String pharseType)
-
+	public Object excute(FinanceDataMatrix financeDataMatrix)
 	{
-		contents = doc.select(financeDataMatrix.getMarketURLMap().get(pharseType));
+		Elements contents = null;
+		Document doc = financeDataMatrix.getConnectedDoc();
+		String[] parsingContainer = {};
+		contents = doc.select(financeDataMatrix.getMarketURLMap().get(financeDataMatrix.getPharseType()));
 		Map<String, ArrayList<String>> outListMap = new LinkedHashMap<>();
 		parsingContainer = contents.text().split(" ");
 		int rankCnt = 0;
