@@ -13,7 +13,7 @@ import com.aPlatform.controller.service.finance.VO.FinanceInDTO;
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
 import com.aPlatform.controller.service.finance.model.GetURLInfo;
 import com.aPlatform.mappers.FinanceDataMapper;
-import com.aPlatform.utils.FinanceUtils;
+import com.aPlatform.utils.FinanceConstants;
 @Service
 @SuppressWarnings("unchecked")
 public class FinanceSearchBOC
@@ -34,10 +34,10 @@ public class FinanceSearchBOC
 				this.setMarketURLMap(financeDataMatrix);
 				financeDataMatrix.setPageDOC();
 				ArrayList<Map<String, String>> totalArr = new ArrayList<Map<String, String>>();
-				totalArr.addAll((Collection<? extends Map<String, String>>) getUrlInfo.getUrlInfoObject(financeDataMatrix, FinanceUtils.KOSPI,
-						FinanceUtils.ALLMARKET));
-				totalArr.addAll((Collection<? extends Map<String, String>>) getUrlInfo.getUrlInfoObject(financeDataMatrix, FinanceUtils.KOSDAQ,
-						FinanceUtils.ALLMARKET));
+				totalArr.addAll((Collection<? extends Map<String, String>>) getUrlInfo.getUrlInfoObject(financeDataMatrix, FinanceConstants.KOSPI,
+						FinanceConstants.ALLMARKET));
+				totalArr.addAll((Collection<? extends Map<String, String>>) getUrlInfo.getUrlInfoObject(financeDataMatrix, FinanceConstants.KOSDAQ,
+						FinanceConstants.ALLMARKET));
 				return totalArr;
 			// case "all" : /* 지수제외 모든 데이터 */
 			// return getUrlInfo.getUrlInfoAllObject(financeDataMatrix, inDTO);
@@ -67,9 +67,9 @@ public class FinanceSearchBOC
 		setMarketURLMap(financeDataMatrix);
 		if(inDTO.getCode() != null)
 		{
-			financeDataMatrix.putMarketURLMap(FinanceUtils.CODE, inDTO.getCode());
-			financeDataMatrix.putMarketURLMap(inDTO.getUrl(), FinanceUtils.DETAIL_URL + inDTO.getCode());
-			financeDataMatrix.putMarketURLMap(inDTO.getPharseType(), FinanceUtils.DETAIL_PHARSETYPE);
+			financeDataMatrix.putMarketURLMap(FinanceConstants.CODE, inDTO.getCode());
+			financeDataMatrix.putMarketURLMap(inDTO.getUrl(), FinanceConstants.DETAIL_URL + inDTO.getCode());
+			financeDataMatrix.putMarketURLMap(inDTO.getPharseType(), FinanceConstants.DETAIL_PHARSETYPE);
 		}
 	}
 }
