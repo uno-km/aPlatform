@@ -8,7 +8,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
 
-import com.aPlatform.utils.FinanceUtils;
+import com.aPlatform.utils.constants.FinanceConstants;
 
 import lombok.Data;
 
@@ -16,10 +16,12 @@ import lombok.Data;
 @Data
 public class FinanceDataMatrix
 {
-
+	private String pharseType;
+	private String market;
+	private Document connectedDoc;
 	private Map<String, Document> pageDOCMap = new HashMap<String, Document>();
 	private Map<String, String> marketURLMap = new HashMap<String, String>();
-	private String[] innerArr = {FinanceUtils.KOSPI , FinanceUtils.KOSDAQ };
+	private String[] innerArr = {FinanceConstants.KOSPI , FinanceConstants.KOSDAQ };
 
 	public void setPageDOC(String input) throws IOException
 	{
