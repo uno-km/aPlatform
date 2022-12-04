@@ -13,7 +13,7 @@ import com.aPlatform.controller.service.finance.VO.FinanceInDTO;
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
 import com.aPlatform.controller.service.finance.model.GetURLInfo;
 import com.aPlatform.mappers.FinanceDataMapper;
-import com.aPlatform.utils.FinanceConstants;
+import com.aPlatform.utils.constants.FinanceConstants;
 @Service
 @SuppressWarnings("unchecked")
 public class FinanceSearchBOC

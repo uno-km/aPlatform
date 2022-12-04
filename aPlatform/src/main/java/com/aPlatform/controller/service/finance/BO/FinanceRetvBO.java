@@ -13,7 +13,7 @@ import com.aPlatform.controller.common.model.ResultDTO;
 import com.aPlatform.controller.service.finance.VO.FinanceVO;
 import com.aPlatform.controller.service.finance.model.ExcelData;
 import com.aPlatform.mappers.FinanceDataMapper;
-import com.aPlatform.utils.FileUnoUtils;
+import com.aPlatform.utils.Utils;
 
 @Service
 public class FinanceRetvBO
@@ -51,7 +51,7 @@ public class FinanceRetvBO
 				result.setCodeMessage("500", "알수없는 오류가 발생했습니다. 관리자에게 문의하세요.");
 				return commonoutVO;
 			}
-			this.excelData.insertExcelData(commonoutVO, FileUnoUtils.multipartFileToFile(file));
+			this.excelData.insertExcelData(commonoutVO, Utils.file.multipartFileToFile(file));
 			/* 성공하면 200 응답. */
 			return commonoutVO;
 		}

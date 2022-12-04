@@ -4,38 +4,35 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
+import com.aPlatform.controller.service.finance.arch.SuperFinance;
+import com.aPlatform.utils.Constants;
 
-public class RankSwitch implements UrlFactory
+public class RankSwitch extends SuperFinance implements UrlFactory
 {
 
 	@Override
 	public Object excute(FinanceDataMatrix financeDataMatrix)
 	{
-		Elements contents = null;
-		Document doc = financeDataMatrix.getConnectedDoc();
-		String[] parsingContainer = {};
-		contents = doc.select(financeDataMatrix.getMarketURLMap().get(financeDataMatrix.getPharseType()));
+		super.doc = financeDataMatrix.getConnectedDoc();
+		super.contents = super.doc.select(financeDataMatrix.getMarketURLMap().get(financeDataMatrix.getPharseType()));
 		Map<String, ArrayList<String>> outListMap = new LinkedHashMap<>();
-		parsingContainer = contents.text().split(" ");
+		parsingContainer = super.contents.text().split(" ");
 		int rankCnt = 0;
-		for (int i = 0; i < parsingContainer.length; i++)
+		for (int i = 0; i < super.parsingContainer.length; i++)
 		{
 			ArrayList<String> innerArr = new ArrayList<>();
 			for (int innerCnt = 0; innerCnt < 5; innerCnt++)
 			{
-				if(parsingContainer[i + innerCnt].equals("보합"))
+				if(super.parsingContainer[i + innerCnt].equals(Constants.STEADY))
 				{
 					innerArr.add("0");
-					innerArr.add(parsingContainer[i + innerCnt]);
-					innerArr.add(parsingContainer[i + innerCnt + 1]);
+					innerArr.add(super.parsingContainer[i + innerCnt]);
+					innerArr.add(super.parsingContainer[i + innerCnt + 1]);
 					i--;
 					break;
 				}
-				innerArr.add(parsingContainer[i + innerCnt]);
+				innerArr.add(super.parsingContainer[i + innerCnt]);
 			}
 			outListMap.put(Integer.toString(rankCnt), innerArr);
 			rankCnt++;

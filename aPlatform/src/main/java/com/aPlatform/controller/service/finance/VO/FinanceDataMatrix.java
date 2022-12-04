@@ -8,7 +8,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
 
-import com.aPlatform.utils.FinanceConstants;
+import com.aPlatform.utils.constants.FinanceConstants;
 
 import lombok.Data;
 
