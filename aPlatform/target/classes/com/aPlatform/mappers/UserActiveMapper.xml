@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aPlatform.mappers.UserActiveMapper">
+
+	<select resultType="int" parameterType="com.aPlatform.controller.user.VO.UserinfoVO"
+		id="checkDuplicationId">
+		SELECT
+			COUNT(*)
+		FROM
+			USER_INFO
+		WHERE
+			USER_ID = #{user_id}
+	</select>
+	<select resultType="com.aPlatform.controller.user.VO.UserinfoVO" id="loadAllUserInfo">
+		SELECT
+			USER_ID
+			, USER_PASSWORD
+			, USER_EMAIL
+			, USER_NAME
+			, USER_PHONENUM
+			, USER_AUTH
+			, USER_BIRTH
+		FROM
+			USER_INFO
+	</select>
+	<select parameterType="com.aPlatform.controller.user.VO.UserinfoVO"
+		resultType="com.aPlatform.controller.user.VO.UserinfoOutVO" id="getUserInfo">
+		SELECT
+			USER_ID
+			, USER_PASSWORD
+			, USER_EMAIL
+			, USER_NAME
+			, USER_PHONENUM
+			, USER_AUTH
+			, USER_BIRTH
+		FROM
+			USER_INFO
+		WHERE
+			USER_ID = #{user_id}
+		AND USER_PASSWORD = #{user_password}
+	</select>
+	<insert parameterType="com.aPlatform.controller.user.VO.UserinfoVO" id="signUp">
+		INSERT INTO
+			USER_INFO
+			(
+				USER_ID
+				, USER_PASSWORD
+				, USER_EMAIL
+				, USER_NAME
+				, USER_PHONENUM
+				, USER_AUTH
+				, USER_BIRTH
+			)
+			VALUES
+			(
+				#{user_id}
+				, #{user_password}
+				, #{user_email}
+				, #{user_name}
+				, #{user_phonenum}
+				, #{user_auth}
+				, #{user_birth}
+			)
+	</insert>
+</mapper>
