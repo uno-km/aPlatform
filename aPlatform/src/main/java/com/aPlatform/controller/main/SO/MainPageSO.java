@@ -20,7 +20,6 @@ public class MainPageSO
 	{
 		return "index";
 	}
-
 	@RequestMapping(value = "/favicon.ico", method = RequestMethod.GET)
 	public void favicon(HttpServletRequest request, HttpServletResponse reponse) throws IOException
 	{
