@@ -22,16 +22,15 @@ public class FinanceRetvBO
 	private FinanceDataMapper financeDataMapper;
 	@Autowired
 	private ExcelData excelData;
-
+	
 	public Map<String, String> getCodeMap()
 	{
 		Map<String, String> outMap = new HashMap<>();
 		List<FinanceVO> innerList = this.financeDataMapper.getAllCode();
-		for (FinanceVO finVO : innerList)
-			outMap.put(finVO.getFinName(), finVO.getFinCode());
+		for (FinanceVO finVO : innerList) outMap.put(finVO.getFinName(), finVO.getFinCode());
 		return outMap;
 	}
-
+	
 	public synchronized CommonOutVO excelInsert(final MultipartFile file)
 	{
 		CommonOutVO commonoutVO = new CommonOutVO();
