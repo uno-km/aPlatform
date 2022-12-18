@@ -24,7 +24,7 @@ function setSessionSharesInfo() {
     localStorage.setItem('sharesInfo' ,objData);
 }
 
-async function AJAX(inType, inUrl,inData,inAsync,fn1 ,fn2) {
+function AJAX(inType, inUrl,inData,inAsync,fn1 ,fn2) {
 	let inTYPE_ = inType;
 	let inURL_ = inUrl;
 	let inDATA_ = inData;
@@ -45,13 +45,13 @@ async function AJAX(inType, inUrl,inData,inAsync,fn1 ,fn2) {
 		inASYNC_ = false;
 	}
 	$.ajax({
-        type: inTYPE_
-        ,url: inURL_
-        ,data : inDATA_
-        ,dataType: inDataType 
-        ,async: inASYNC_
-        ,contentType: inContextType_
-        ,success: function (data) {
+        type	:	inTYPE_
+        ,	url	:	inURL_
+        ,	data : inDATA_
+        ,	dataType: inDataType 
+        ,	async: inASYNC_
+        ,	contentType: inContextType_
+        ,	success: function (data) {
 			if(fn1!=null||fn1!=undefined) {
 				fn1(data)
 			}
@@ -64,3 +64,5 @@ async function AJAX(inType, inUrl,inData,inAsync,fn1 ,fn2) {
 		fn2
 	}
 }
+class Hi{constructor(){}}
+window.Hi =  new Hi();
