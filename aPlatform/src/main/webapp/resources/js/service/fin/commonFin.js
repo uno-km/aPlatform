@@ -5,20 +5,25 @@ document.write("<script src='/resources/lib/jspdf.min.js'></script>");
  * 
  */ 
 function setSessionSharesInfo() {
-	let outData ="";
-    $.ajax({
-        type: 'GET',
-        url: '/service/finance/codeAllMap', 
-        dataType: 'JSON', 
-        async: false,
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-    		outData=data;
-        },
-        error: function () {
-            alert('통신실패!!');
-        } 
-    });
+	CommonAjax.setAsync(false);
+	CommonAjax.setMethod('get');
+	CommonAjax.setUrl('/service/finance/codeAllMap');
+	CommonAjax.setAsync(false);
+	let outData =CommonAjax.excute();
+	CommonAjax.flush();
+//    $.ajax({
+//        type: 'GET',
+//        url: '/service/finance/codeAllMap', 
+//        dataType: 'JSON', 
+//        async: false,
+//        contentType: 'application/json; charset=utf-8',
+//        success: function (data) {
+//    		outData=data;
+//        },
+//        error: function () {
+//            alert('통신실패!!');
+//        } 
+//    });
     this.codeInfo = JSON.stringify(outData);
     let objData = JSON.stringify(outData);
     localStorage.setItem('sharesInfo' ,objData);
