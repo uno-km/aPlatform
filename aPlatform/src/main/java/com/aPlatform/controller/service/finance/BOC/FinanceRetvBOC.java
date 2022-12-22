@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aPlatform.controller.common.model.CommonOutVO;
-import com.aPlatform.controller.file.SO.FileUploadBO;
+import com.aPlatform.controller.file.BO.FileUploadBO;
 import com.aPlatform.controller.service.finance.BO.FinanceRetvBO;
 @Service
 public class FinanceRetvBOC

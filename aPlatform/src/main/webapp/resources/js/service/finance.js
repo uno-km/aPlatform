@@ -68,27 +68,6 @@ function refreshInfo(e){
 			break;
 	}
 }
-function getSendingData() {
-    const reqJson = {
-            "url" : "main"
-        ,   "pharseType" : "news"  
-        }
-	let httpRequest =  new XMLHttpRequest();
-    httpRequest.onreadystatechange = () => {
-	    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-		      if (httpRequest.status === 200) {
-		    	let result = httpRequest.response;
-		    	console.log(result);
-		      } else {
-		        alert('request에 뭔가 문제가 있어요.');
-		      }
-		}
-    };
-    httpRequest.open('POST', '/service/finance/getSendingData', true);
-    httpRequest.responseType = "json";
-    httpRequest.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-    httpRequest.send(JSON.stringify(reqJson));
-}
 function finPageInit() {
 	nowFinData=null;
 	setContentsSection();
@@ -133,7 +112,8 @@ function getPDFFile() {
 var cssRule		= 	"font-size:2em;"
 var cssLogo1 	=	"color:#EEEEEE;" +"font-size: 60px;" +"font-weight: bold;" 
 					+"letter-space:-1px;" +"font-family:Tahoma,Arial,sans-serif";
-if(window.console!=undefined){
+if(window.console!=undefined)
+{
 	setTimeout(console.log.bind(console,"%caFinance", cssLogo1),0);
 	setTimeout(console.log.bind(console,"%c 내 손안의 금융",cssRule),0);
 }

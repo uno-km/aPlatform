@@ -1,4 +1,4 @@
-package com.aPlatform.controller.file.SO;
+package com.aPlatform.controller.file.BO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
