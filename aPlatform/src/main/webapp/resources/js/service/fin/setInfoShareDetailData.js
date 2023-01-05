@@ -242,16 +242,23 @@ function getShareInfoDTL(code) {
         ,   "pharseType" : "detail"  
         ,	"code" : code
         };
-    AJAX('POST','/service/finance/data/shareInfo',sendingVO,false,function (data) {
-    	shareDetailInfo = data;
+	CommonAjax.setAsync(false);
+	CommonAjax.setData(sendingVO);
+	CommonAjax.setMethod('POST');
+	CommonAjax.setUrl('/service/finance/data/shareInfo');
+	CommonAjax.setAsync(false);
+	CommonAjax.setCallBack((rs)=>{
+		shareDetailInfo = rs;
 		let shareName = getKeyByValue(JSON.parse(localStorage.sharesInfo), code);
 		curSearchShareName = shareName;
-		setInfoShareDetail(data.statement);
+		setInfoShareDetail(rs.statement);
 		history.pushState({'name':shareName,'code':code},'종목상세보기','main');
 		window.scrollTo(0,0);
 		localStorage.setItem('BeforeScroll',window.scrollY);
 		document.getElementById('searchShareInput').value=shareName;
-    },null);
+	});
+	CommonAjax.excute();
+	CommonAjax.flush();
 }
 function getKeyByValue(object, value) {
 	  return Object.keys(object).find(key => object[key] === value);
@@ -312,11 +319,13 @@ function focusShareInputValue()	{
     	}
 	}
 }
-function toggleHide()	{
+function toggleHide()
+{
 	onblurShareInputValue();
 	document.querySelector('.toggleHide').style.visibility = 'hidden';
 }
-function onblurShareInputValue()	{
+function onblurShareInputValue()	
+{
 	document.getElementById('ext').className = 'btn btn-outline-primary dropdown-toggle dropdown-toggle-split';
 	document.getElementById('searchingList').className = 'dropdown-menu shareSearchInput';
 	document.getElementById('searchingList').style = "visibility:hidden;";
