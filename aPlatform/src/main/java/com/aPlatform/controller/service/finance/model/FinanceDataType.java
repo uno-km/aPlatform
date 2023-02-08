@@ -2,7 +2,9 @@ package com.aPlatform.controller.service.finance.model;
 
 import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 
-public interface UrlFactory
+public interface FinanceDataType
 {
-	public Object excute(FinanceDataMatrix financeDataMatrix);
+	public String getType();
+	
+	public abstract Object excute(FinanceDataMatrix financeDataMatrix);
 }

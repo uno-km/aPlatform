@@ -8,9 +8,9 @@ import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 import com.aPlatform.controller.service.finance.arch.SuperFinance;
 import com.aPlatform.utils.Constants;
 
-public class RankSwitch extends SuperFinance implements UrlFactory
+public class RankSwitch extends SuperFinance implements FinanceDataType
 {
-
+	
 	@Override
 	public Object excute(FinanceDataMatrix financeDataMatrix)
 	{
@@ -24,7 +24,7 @@ public class RankSwitch extends SuperFinance implements UrlFactory
 			ArrayList<String> innerArr = new ArrayList<>();
 			for (int innerCnt = 0; innerCnt < 5; innerCnt++)
 			{
-				if(super.parsingContainer[i + innerCnt].equals(Constants.STEADY))
+				if (super.parsingContainer[i + innerCnt].equals(Constants.STEADY))
 				{
 					innerArr.add("0");
 					innerArr.add(super.parsingContainer[i + innerCnt]);
@@ -40,5 +40,11 @@ public class RankSwitch extends SuperFinance implements UrlFactory
 		}
 		return outListMap;
 	}
-
+	
+	@Override
+	public String getType()
+	{
+		return Constants.RANKMC_URL;
+	}
+	
 }

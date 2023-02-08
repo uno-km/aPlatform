@@ -15,7 +15,12 @@ public interface FinanceConstants
 	public static final String RANK_STR = "위";
 	public static final String MULTI_STR = "배";
 	public static final String STEADY = "보합";
-
-	public static final String[] CHART_AREA_ARR = {"day" , "week" , "month3" , "year" , "year3" , "year5" , "year10" };
-	public static final String[] CHART_CANDLE_ARR = {"day" , "week" , "month" };
+	public static final String KOSPI_KOSDAQ_URL = "KospiKosdaqSwitch";
+	public static final String NEWS_URL = "NewsSwitch";
+	public static final String ETC_INDEX_URL = "EtcIndexSwitch";
+	public static final String RANKMC_URL = "RANKMC";
+	public static final String DETAIL_SHEREINFO_URL = "KospiKosdaqSwitch";
+	
+	public static final String[] CHART_AREA_ARR = {"day", "week", "month3", "year", "year3", "year5", "year10"};
+	public static final String[] CHART_CANDLE_ARR = {"day", "week", "month"};
 }
