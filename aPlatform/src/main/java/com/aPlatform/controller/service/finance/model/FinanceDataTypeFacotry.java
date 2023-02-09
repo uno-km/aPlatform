@@ -14,7 +14,7 @@ public class FinanceDataTypeFacotry
 	@Autowired
 	FinanceDataTypeFacotry()
 	{
-		List<FinanceDataType> financeDataTypes = new ArrayList<>();
+		List<	> financeDataTypes = new ArrayList<>();
 		for (FinanceDataType financeDataType : financeDataTypes)
 		{
 			this.finDtTypeCache.put(financeDataType.getType(), financeDataType);
