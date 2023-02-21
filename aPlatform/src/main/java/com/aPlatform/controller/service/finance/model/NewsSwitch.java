@@ -7,9 +7,9 @@ import com.aPlatform.controller.service.finance.VO.FinanceDataMatrix;
 import com.aPlatform.controller.service.finance.arch.SuperFinance;
 import com.aPlatform.utils.Constants;
 
-public class NewsSwitch extends SuperFinance implements UrlFactory
+public class NewsSwitch extends SuperFinance implements FinanceDataType
 {
-
+	
 	@Override
 	public Object excute(FinanceDataMatrix financeDataMatrix)
 	{
@@ -24,5 +24,11 @@ public class NewsSwitch extends SuperFinance implements UrlFactory
 			newsListList.add(newsList);
 		}
 		return newsListList;
+	}
+	
+	@Override
+	public String getType()
+	{
+		return Constants.NEWS_URL;
 	}
 }
